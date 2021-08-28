@@ -1,8 +1,8 @@
-@extends('layouts.main')
 
-@section('title', 'Login')
 
-@section('content')
+<?php $__env->startSection('title', 'Login'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <div class="container col-md-12 d-flex justify-content-center">
     <div class="col-md-5 d-flex justify-content-center flex-column">
@@ -35,4 +35,5 @@
     </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/register.blade.php ENDPATH**/ ?>

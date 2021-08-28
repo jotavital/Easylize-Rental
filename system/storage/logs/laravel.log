@@ -5646,3 +5646,7 @@ ode_modules...')
 #63 D:\\OneDrive\\Faculdade\\6 sem\\eng software 2\\Easylize-Rental\\system\\server.php(21): require_once('D:\\\\OneDrive\\\\Fac...')
 #64 {main}
 "} 
+[2021-08-27 13:29:15] local.ERROR: Cannot redeclare App\Http\Controllers\UserController::login() {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare App\\Http\\Controllers\\UserController::login() at D:\\OneDrive\\Faculdade\\6 sem\\eng software 2\\Easylize-Rental\\system\\app\\Http\\Controllers\\UserController.php:13)
+[stacktrace]
+#0 {main}
+"} 
