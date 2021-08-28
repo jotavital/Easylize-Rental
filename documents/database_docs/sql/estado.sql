@@ -1,53 +1,40 @@
---
--- Estrutura da tabela "estado"
---
+-- Create Table --
 
-CREATE TABLE `estado` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(75) DEFAULT NULL,
-  `uf` varchar(2) DEFAULT NULL,
-  `ibge` int(2) DEFAULT NULL,
-  `pais` int(3) DEFAULT NULL,
-  `ddd` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Unidades Federativas';
+CREATE TABLE estado (
+    id       INT          NOT NULL AUTO_INCREMENT,
+    codigo_uf INT          NOT NULL,
+    nome     VARCHAR (50) NOT NULL,
+    uf       CHAR 	 (2)  NOT NULL,
+    regiao   INT	      NOT NULL,
+    PRIMARY KEY (id)
+);
 
---
--- Inserindo dados na tabela "estado"
---
+-- Insert Data --
 
-INSERT INTO `estado` (`id`, `nome`, `uf`, `ibge`, `pais`, `ddd`) VALUES
-(1, 'Acre', 'AC', 12, 1, '68'),
-(2, 'Alagoas', 'AL', 27, 1, '82'),
-(3, 'Amazonas', 'AM', 13, 1, '97,92'),
-(4, 'Amapá', 'AP', 16, 1, '96'),
-(5, 'Bahia', 'BA', 29, 1, '77,75,73,74,71'),
-(6, 'Ceará', 'CE', 23, 1, '88,85'),
-(7, 'Distrito Federal', 'DF', 53, 1, '61'),
-(8, 'Espírito Santo', 'ES', 32, 1, '28,27'),
-(9, 'Goiás', 'GO', 52, 1, '62,64,61'),
-(10, 'Maranhão', 'MA', 21, 1, '99,98'),
-(11, 'Minas Gerais', 'MG', 31, 1, '34,37,31,33,35,38,32'),
-(12, 'Mato Grosso do Sul', 'MS', 50, 1, '67'),
-(13, 'Mato Grosso', 'MT', 51, 1, '65,66'),
-(14, 'Pará', 'PA', 15, 1, '91,94,93'),
-(15, 'Paraíba', 'PB', 25, 1, '83'),
-(16, 'Pernambuco', 'PE', 26, 1, '81,87'),
-(17, 'Piauí', 'PI', 22, 1, '89,86'),
-(18, 'Paraná', 'PR', 41, 1, '43,41,42,44,45,46'),
-(19, 'Rio de Janeiro', 'RJ', 33, 1, '24,22,21'),
-(20, 'Rio Grande do Norte', 'RN', 24, 1, '84'),
-(21, 'Rondônia', 'RO', 11, 1, '69'),
-(22, 'Roraima', 'RR', 14, 1, '95'),
-(23, 'Rio Grande do Sul', 'RS', 43, 1, '53,54,55,51'),
-(24, 'Santa Catarina', 'SC', 42, 1, '47,48,49'),
-(25, 'Sergipe', 'SE', 28, 1, '79'),
-(26, 'São Paulo', 'SP', 35, 1, '11,12,13,14,15,16,17,18,19'),
-(27, 'Tocantins', 'TO', 17, 1, '63'),
-(99, 'Exterior', 'EX', 99, NULL, NULL);
-
---
--- Indexes for table "estado"
---
-
-ALTER TABLE `estado`
-  ADD PRIMARY KEY (`id`);
+Insert into estado (codigo_uf, nome, uf, regiao) values (12, 'Acre', 'AC', 1);
+Insert into estado (codigo_uf, nome, uf, regiao) values (27, 'Alagoas', 'AL', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (16, 'Amapá', 'AP', 1);
+Insert into estado (codigo_uf, nome, uf, regiao) values (13, 'Amazonas', 'AM', 1);
+Insert into estado (codigo_uf, nome, uf, regiao) values (29, 'Bahia', 'BA', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (23, 'Ceará', 'CE', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (53, 'Distrito Federal', 'DF', 5);
+Insert into estado (codigo_uf, nome, uf, regiao) values (32, 'Espírito Santo', 'ES', 3);
+Insert into estado (codigo_uf, nome, uf, regiao) values (52, 'Goiás', 'GO', 5);
+Insert into estado (codigo_uf, nome, uf, regiao) values (21, 'Maranhão', 'MA', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (51, 'Mato Grosso', 'MT', 5);
+Insert into estado (codigo_uf, nome, uf, regiao) values (50, 'Mato Grosso do Sul', 'MS', 5);
+Insert into estado (codigo_uf, nome, uf, regiao) values (31, 'Minas Gerais', 'MG', 3);
+Insert into estado (codigo_uf, nome, uf, regiao) values (15, 'Pará', 'PA', 1);
+Insert into estado (codigo_uf, nome, uf, regiao) values (25, 'Paraíba', 'PB', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (41, 'Paraná', 'PR', 4);
+Insert into estado (codigo_uf, nome, uf, regiao) values (26, 'Pernambuco', 'PE', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (22, 'Piauí', 'PI', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (33, 'Rio de Janeiro', 'RJ', 3);
+Insert into estado (codigo_uf, nome, uf, regiao) values (24, 'Rio Grande do Norte', 'RN', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (43, 'Rio Grande do Sul', 'RS', 4);
+Insert into estado (codigo_uf, nome, uf, regiao) values (11, 'Rondônia', 'RO', 1);
+Insert into estado (codigo_uf, nome, uf, regiao) values (14, 'Roraima', 'RR', 1);
+Insert into estado (codigo_uf, nome, uf, regiao) values (42, 'Santa Catarina', 'SC', 4);
+Insert into estado (codigo_uf, nome, uf, regiao) values (35, 'São Paulo', 'SP', 3);
+Insert into estado (codigo_uf, nome, uf, regiao) values (28, 'Sergipe', 'SE', 2);
+Insert into estado (codigo_uf, nome, uf, regiao) values (17, 'Tocantins', 'TO', 1);

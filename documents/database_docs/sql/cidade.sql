@@ -1,5622 +1,5582 @@
---
--- Estrutura da tabela "cidade"
---
+-- Create Table --
 
-DROP TABLE IF EXISTS `cidade`;
-CREATE TABLE `cidade` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(120) DEFAULT NULL,
-  `uf` int(2) DEFAULT NULL,
-  `ibge` int(7) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Municipios das Unidades Federativas';
+CREATE TABLE cidade (
+  id 	 INT 		  NOT NULL AUTO_INCREMENT,
+  codigo_cidade INT		  NOT NULL,
+  nome 	 VARCHAR(255) NOT NULL,
+  uf	 CHAR(2)	  NOT NULL,
+  PRIMARY KEY (id)
+);
 
---
--- Inserindo dados na tabela "cidade"
---
+-- Insert Data --
 
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
-(1, 'Afonso Cláudio', 8, 3200102),
-(2, 'Água Doce do Norte', 8, 3200169),
-(3, 'Águia Branca', 8, 3200136),
-(4, 'Alegre', 8, 3200201),
-(5, 'Alfredo Chaves', 8, 3200300),
-(6, 'Alto Rio Novo', 8, 3200359),
-(7, 'Anchieta', 8, 3200409),
-(8, 'Apiacá', 8, 3200508),
-(9, 'Aracruz', 8, 3200607),
-(10, 'Atilio Vivacqua', 8, 3200706),
-(11, 'Baixo Guandu', 8, 3200805),
-(12, 'Barra de São Francisco', 8, 3200904),
-(13, 'Boa Esperança', 8, 3201001),
-(14, 'Bom Jesus do Norte', 8, 3201100),
-(15, 'Brejetuba', 8, 3201159),
-(16, 'Cachoeiro de Itapemirim', 8, 3201209),
-(17, 'Cariacica', 8, 3201308),
-(18, 'Castelo', 8, 3201407),
-(19, 'Colatina', 8, 3201506),
-(20, 'Conceição da Barra', 8, 3201605),
-(21, 'Conceição do Castelo', 8, 3201704),
-(22, 'Divino de São Lourenço', 8, 3201803),
-(23, 'Domingos Martins', 8, 3201902),
-(24, 'Dores do Rio Preto', 8, 3202009),
-(25, 'Ecoporanga', 8, 3202108),
-(26, 'Fundão', 8, 3202207),
-(27, 'Governador Lindenberg', 8, 3202256),
-(28, 'Guaçuí', 8, 3202306),
-(29, 'Guarapari', 8, 3202405),
-(30, 'Ibatiba', 8, 3202454),
-(31, 'Ibiraçu', 8, 3202504),
-(32, 'Ibitirama', 8, 3202553),
-(33, 'Iconha', 8, 3202603),
-(34, 'Irupi', 8, 3202652),
-(35, 'Itaguaçu', 8, 3202702),
-(36, 'Itapemirim', 8, 3202801),
-(37, 'Itarana', 8, 3202900),
-(38, 'Iúna', 8, 3203007),
-(39, 'Jaguaré', 8, 3203056),
-(40, 'Jerônimo Monteiro', 8, 3203106),
-(41, 'João Neiva', 8, 3203130),
-(42, 'Laranja da Terra', 8, 3203163),
-(43, 'Linhares', 8, 3203205),
-(44, 'Mantenópolis', 8, 3203304),
-(45, 'Marataízes', 8, 3203320),
-(46, 'Marechal Floriano', 8, 3203346),
-(47, 'Marilândia', 8, 3203353),
-(48, 'Mimoso do Sul', 8, 3203403),
-(49, 'Montanha', 8, 3203502),
-(50, 'Mucurici', 8, 3203601),
-(51, 'Muniz Freire', 8, 3203700),
-(52, 'Muqui', 8, 3203809),
-(53, 'Nova Venécia', 8, 3203908),
-(54, 'Pancas', 8, 3204005),
-(55, 'Pedro Canário', 8, 3204054),
-(56, 'Pinheiros', 8, 3204104),
-(57, 'Piúma', 8, 3204203),
-(58, 'Ponto Belo', 8, 3204252),
-(59, 'Presidente Kennedy', 8, 3204302),
-(60, 'Rio Bananal', 8, 3204351),
-(61, 'Rio Novo do Sul', 8, 3204401),
-(62, 'Santa Leopoldina', 8, 3204500),
-(63, 'Santa Maria de Jetibá', 8, 3204559),
-(64, 'Santa Teresa', 8, 3204609),
-(65, 'São Domingos do Norte', 8, 3204658),
-(66, 'São Gabriel da Palha', 8, 3204708),
-(67, 'São José do Calçado', 8, 3204807),
-(68, 'São Mateus', 8, 3204906),
-(69, 'São Roque do Canaã', 8, 3204955),
-(70, 'Serra', 8, 3205002),
-(71, 'Sooretama', 8, 3205010),
-(72, 'Vargem Alta', 8, 3205036),
-(73, 'Venda Nova do Imigrante', 8, 3205069),
-(74, 'Viana', 8, 3205101),
-(75, 'Vila Pavão', 8, 3205150),
-(76, 'Vila Valério', 8, 3205176),
-(77, 'Vila Velha', 8, 3205200),
-(78, 'Vitória', 8, 3205309),
-(79, 'Acrelândia', 1, 1200013),
-(80, 'Assis Brasil', 1, 1200054),
-(81, 'Brasiléia', 1, 1200104),
-(82, 'Bujari', 1, 1200138),
-(83, 'Capixaba', 1, 1200179),
-(84, 'Cruzeiro do Sul', 1, 1200203),
-(85, 'Epitaciolândia', 1, 1200252),
-(86, 'Feijó', 1, 1200302),
-(87, 'Jordão', 1, 1200328),
-(88, 'Mâncio Lima', 1, 1200336),
-(89, 'Manoel Urbano', 1, 1200344),
-(90, 'Marechal Thaumaturgo', 1, 1200351),
-(91, 'Plácido de Castro', 1, 1200385),
-(92, 'Porto Acre', 1, 1200807),
-(93, 'Porto Walter', 1, 1200393),
-(94, 'Rio Branco', 1, 1200401),
-(95, 'Rodrigues Alves', 1, 1200427),
-(96, 'Santa Rosa do Purus', 1, 1200435),
-(97, 'Sena Madureira', 1, 1200500),
-(98, 'Senador Guiomard', 1, 1200450),
-(99, 'Tarauacá', 1, 1200609),
-(100, 'Xapuri', 1, 1200708),
-(101, 'Água Branca', 2, 2700102),
-(102, 'Anadia', 2, 2700201),
-(103, 'Arapiraca', 2, 2700300),
-(104, 'Atalaia', 2, 2700409),
-(105, 'Barra de Santo Antônio', 2, 2700508),
-(106, 'Barra de São Miguel', 2, 2700607),
-(107, 'Batalha', 2, 2700706),
-(108, 'Belém', 2, 2700805),
-(109, 'Belo Monte', 2, 2700904),
-(110, 'Boca da Mata', 2, 2701001),
-(111, 'Branquinha', 2, 2701100),
-(112, 'Cacimbinhas', 2, 2701209),
-(113, 'Cajueiro', 2, 2701308),
-(114, 'Campestre', 2, 2701357),
-(115, 'Campo Alegre', 2, 2701407),
-(116, 'Campo Grande', 2, 2701506),
-(117, 'Canapi', 2, 2701605),
-(118, 'Capela', 2, 2701704),
-(119, 'Carneiros', 2, 2701803),
-(120, 'Chã Preta', 2, 2701902),
-(121, 'Coité do Nóia', 2, 2702009),
-(122, 'Colônia Leopoldina', 2, 2702108),
-(123, 'Coqueiro Seco', 2, 2702207),
-(124, 'Coruripe', 2, 2702306),
-(125, 'Craíbas', 2, 2702355),
-(126, 'Delmiro Gouveia', 2, 2702405),
-(127, 'Dois Riachos', 2, 2702504),
-(128, 'Estrela de Alagoas', 2, 2702553),
-(129, 'Feira Grande', 2, 2702603),
-(130, 'Feliz Deserto', 2, 2702702),
-(131, 'Flexeiras', 2, 2702801),
-(132, 'Girau do Ponciano', 2, 2702900),
-(133, 'Ibateguara', 2, 2703007),
-(134, 'Igaci', 2, 2703106),
-(135, 'Igreja Nova', 2, 2703205),
-(136, 'Inhapi', 2, 2703304),
-(137, 'Jacaré dos Homens', 2, 2703403),
-(138, 'Jacuípe', 2, 2703502),
-(139, 'Japaratinga', 2, 2703601),
-(140, 'Jaramataia', 2, 2703700),
-(141, 'Jequiá da Praia', 2, 2703759),
-(142, 'Joaquim Gomes', 2, 2703809),
-(143, 'Jundiá', 2, 2703908),
-(144, 'Junqueiro', 2, 2704005),
-(145, 'Lagoa da Canoa', 2, 2704104),
-(146, 'Limoeiro de Anadia', 2, 2704203),
-(147, 'Maceió', 2, 2704302),
-(148, 'Major Isidoro', 2, 2704401),
-(149, 'Mar Vermelho', 2, 2704906),
-(150, 'Maragogi', 2, 2704500),
-(151, 'Maravilha', 2, 2704609),
-(152, 'Marechal Deodoro', 2, 2704708),
-(153, 'Maribondo', 2, 2704807),
-(154, 'Mata Grande', 2, 2705002),
-(155, 'Matriz de Camaragibe', 2, 2705101),
-(156, 'Messias', 2, 2705200),
-(157, 'Minador do Negrão', 2, 2705309),
-(158, 'Monteirópolis', 2, 2705408),
-(159, 'Murici', 2, 2705507),
-(160, 'Novo Lino', 2, 2705606),
-(161, 'Olho d`Água das Flores', 2, 2705705),
-(162, 'Olho d`Água do Casado', 2, 2705804),
-(163, 'Olho d`Água Grande', 2, 2705903),
-(164, 'Olivença', 2, 2706000),
-(165, 'Ouro Branco', 2, 2706109),
-(166, 'Palestina', 2, 2706208),
-(167, 'Palmeira dos Índios', 2, 2706307),
-(168, 'Pão de Açúcar', 2, 2706406),
-(169, 'Pariconha', 2, 2706422),
-(170, 'Paripueira', 2, 2706448),
-(171, 'Passo de Camaragibe', 2, 2706505),
-(172, 'Paulo Jacinto', 2, 2706604),
-(173, 'Penedo', 2, 2706703),
-(174, 'Piaçabuçu', 2, 2706802),
-(175, 'Pilar', 2, 2706901),
-(176, 'Pindoba', 2, 2707008),
-(177, 'Piranhas', 2, 2707107),
-(178, 'Poço das Trincheiras', 2, 2707206),
-(179, 'Porto Calvo', 2, 2707305),
-(180, 'Porto de Pedras', 2, 2707404),
-(181, 'Porto Real do Colégio', 2, 2707503),
-(182, 'Quebrangulo', 2, 2707602),
-(183, 'Rio Largo', 2, 2707701),
-(184, 'Roteiro', 2, 2707800),
-(185, 'Santa Luzia do Norte', 2, 2707909),
-(186, 'Santana do Ipanema', 2, 2708006),
-(187, 'Santana do Mundaú', 2, 2708105),
-(188, 'São Brás', 2, 2708204),
-(189, 'São José da Laje', 2, 2708303),
-(190, 'São José da Tapera', 2, 2708402),
-(191, 'São Luís do Quitunde', 2, 2708501),
-(192, 'São Miguel dos Campos', 2, 2708600),
-(193, 'São Miguel dos Milagres', 2, 2708709),
-(194, 'São Sebastião', 2, 2708808),
-(195, 'Satuba', 2, 2708907),
-(196, 'Senador Rui Palmeira', 2, 2708956),
-(197, 'Tanque d`Arca', 2, 2709004),
-(198, 'Taquarana', 2, 2709103),
-(199, 'Teotônio Vilela', 2, 2709152),
-(200, 'Traipu', 2, 2709202),
-(201, 'União dos Palmares', 2, 2709301),
-(202, 'Viçosa', 2, 2709400),
-(203, 'Amapá', 4, 1600105),
-(204, 'Calçoene', 4, 1600204),
-(205, 'Cutias', 4, 1600212),
-(206, 'Ferreira Gomes', 4, 1600238),
-(207, 'Itaubal', 4, 1600253),
-(208, 'Laranjal do Jari', 4, 1600279),
-(209, 'Macapá', 4, 1600303),
-(210, 'Mazagão', 4, 1600402),
-(211, 'Oiapoque', 4, 1600501),
-(212, 'Pedra Branca do Amaparí', 4, 1600154),
-(213, 'Porto Grande', 4, 1600535),
-(214, 'Pracuúba', 4, 1600550),
-(215, 'Santana', 4, 1600600),
-(216, 'Serra do Navio', 4, 1600055),
-(217, 'Tartarugalzinho', 4, 1600709),
-(218, 'Vitória do Jari', 4, 1600808),
-(219, 'Alvarães', 3, 1300029),
-(220, 'Amaturá', 3, 1300060),
-(221, 'Anamã', 3, 1300086),
-(222, 'Anori', 3, 1300102),
-(223, 'Apuí', 3, 1300144),
-(224, 'Atalaia do Norte', 3, 1300201),
-(225, 'Autazes', 3, 1300300),
-(226, 'Barcelos', 3, 1300409),
-(227, 'Barreirinha', 3, 1300508),
-(228, 'Benjamin Constant', 3, 1300607),
-(229, 'Beruri', 3, 1300631),
-(230, 'Boa Vista do Ramos', 3, 1300680),
-(231, 'Boca do Acre', 3, 1300706),
-(232, 'Borba', 3, 1300805),
-(233, 'Caapiranga', 3, 1300839),
-(234, 'Canutama', 3, 1300904),
-(235, 'Carauari', 3, 1301001),
-(236, 'Careiro', 3, 1301100),
-(237, 'Careiro da Várzea', 3, 1301159),
-(238, 'Coari', 3, 1301209),
-(239, 'Codajás', 3, 1301308),
-(240, 'Eirunepé', 3, 1301407),
-(241, 'Envira', 3, 1301506),
-(242, 'Fonte Boa', 3, 1301605),
-(243, 'Guajará', 3, 1301654),
-(244, 'Humaitá', 3, 1301704),
-(245, 'Ipixuna', 3, 1301803),
-(246, 'Iranduba', 3, 1301852),
-(247, 'Itacoatiara', 3, 1301902),
-(248, 'Itamarati', 3, 1301951),
-(249, 'Itapiranga', 3, 1302009),
-(250, 'Japurá', 3, 1302108),
-(251, 'Juruá', 3, 1302207),
-(252, 'Jutaí', 3, 1302306),
-(253, 'Lábrea', 3, 1302405),
-(254, 'Manacapuru', 3, 1302504),
-(255, 'Manaquiri', 3, 1302553),
-(256, 'Manaus', 3, 1302603),
-(257, 'Manicoré', 3, 1302702),
-(258, 'Maraã', 3, 1302801),
-(259, 'Maués', 3, 1302900),
-(260, 'Nhamundá', 3, 1303007),
-(261, 'Nova Olinda do Norte', 3, 1303106),
-(262, 'Novo Airão', 3, 1303205),
-(263, 'Novo Aripuanã', 3, 1303304),
-(264, 'Parintins', 3, 1303403),
-(265, 'Pauini', 3, 1303502),
-(266, 'Presidente Figueiredo', 3, 1303536),
-(267, 'Rio Preto da Eva', 3, 1303569),
-(268, 'Santa Isabel do Rio Negro', 3, 1303601),
-(269, 'Santo Antônio do Içá', 3, 1303700),
-(270, 'São Gabriel da Cachoeira', 3, 1303809),
-(271, 'São Paulo de Olivença', 3, 1303908),
-(272, 'São Sebastião do Uatumã', 3, 1303957),
-(273, 'Silves', 3, 1304005),
-(274, 'Tabatinga', 3, 1304062),
-(275, 'Tapauá', 3, 1304104),
-(276, 'Tefé', 3, 1304203),
-(277, 'Tonantins', 3, 1304237),
-(278, 'Uarini', 3, 1304260),
-(279, 'Urucará', 3, 1304302),
-(280, 'Urucurituba', 3, 1304401),
-(281, 'Abaíra', 5, 2900108),
-(282, 'Abaré', 5, 2900207),
-(283, 'Acajutiba', 5, 2900306),
-(284, 'Adustina', 5, 2900355),
-(285, 'Água Fria', 5, 2900405),
-(286, 'Aiquara', 5, 2900603),
-(287, 'Alagoinhas', 5, 2900702),
-(288, 'Alcobaça', 5, 2900801),
-(289, 'Almadina', 5, 2900900),
-(290, 'Amargosa', 5, 2901007),
-(291, 'Amélia Rodrigues', 5, 2901106),
-(292, 'América Dourada', 5, 2901155),
-(293, 'Anagé', 5, 2901205),
-(294, 'Andaraí', 5, 2901304),
-(295, 'Andorinha', 5, 2901353),
-(296, 'Angical', 5, 2901403),
-(297, 'Anguera', 5, 2901502),
-(298, 'Antas', 5, 2901601),
-(299, 'Antônio Cardoso', 5, 2901700),
-(300, 'Antônio Gonçalves', 5, 2901809),
-(301, 'Aporá', 5, 2901908),
-(302, 'Apuarema', 5, 2901957),
-(303, 'Araças', 5, 2902054),
-(304, 'Aracatu', 5, 2902005),
-(305, 'Araci', 5, 2902104),
-(306, 'Aramari', 5, 2902203),
-(307, 'Arataca', 5, 2902252),
-(308, 'Aratuípe', 5, 2902302),
-(309, 'Aurelino Leal', 5, 2902401),
-(310, 'Baianópolis', 5, 2902500),
-(311, 'Baixa Grande', 5, 2902609),
-(312, 'Banzaê', 5, 2902658),
-(313, 'Barra', 5, 2902708),
-(314, 'Barra da Estiva', 5, 2902807),
-(315, 'Barra do Choça', 5, 2902906),
-(316, 'Barra do Mendes', 5, 2903003),
-(317, 'Barra do Rocha', 5, 2903102),
-(318, 'Barreiras', 5, 2903201),
-(319, 'Barro Alto', 5, 2903235),
-(320, 'Barro Preto (antigo Gov. Lomanto Jr.)', 5, 2903300),
-(321, 'Barrocas', 5, 2903276),
-(322, 'Belmonte', 5, 2903409),
-(323, 'Belo Campo', 5, 2903508),
-(324, 'Biritinga', 5, 2903607),
-(325, 'Boa Nova', 5, 2903706),
-(326, 'Boa Vista do Tupim', 5, 2903805),
-(327, 'Bom Jesus da Lapa', 5, 2903904),
-(328, 'Bom Jesus da Serra', 5, 2903953),
-(329, 'Boninal', 5, 2904001),
-(330, 'Bonito', 5, 2904050),
-(331, 'Boquira', 5, 2904100),
-(332, 'Botuporã', 5, 2904209),
-(333, 'Brejões', 5, 2904308),
-(334, 'Brejolândia', 5, 2904407),
-(335, 'Brotas de Macaúbas', 5, 2904506),
-(336, 'Brumado', 5, 2904605),
-(337, 'Buerarema', 5, 2904704),
-(338, 'Buritirama', 5, 2904753),
-(339, 'Caatiba', 5, 2904803),
-(340, 'Cabaceiras do Paraguaçu', 5, 2904852),
-(341, 'Cachoeira', 5, 2904902),
-(342, 'Caculé', 5, 2905008),
-(343, 'Caém', 5, 2905107),
-(344, 'Caetanos', 5, 2905156),
-(345, 'Caetité', 5, 2905206),
-(346, 'Cafarnaum', 5, 2905305),
-(347, 'Cairu', 5, 2905404),
-(348, 'Caldeirão Grande', 5, 2905503),
-(349, 'Camacan', 5, 2905602),
-(350, 'Camaçari', 5, 2905701),
-(351, 'Camamu', 5, 2905800),
-(352, 'Campo Alegre de Lourdes', 5, 2905909),
-(353, 'Campo Formoso', 5, 2906006),
-(354, 'Canápolis', 5, 2906105),
-(355, 'Canarana', 5, 2906204),
-(356, 'Canavieiras', 5, 2906303),
-(357, 'Candeal', 5, 2906402),
-(358, 'Candeias', 5, 2906501),
-(359, 'Candiba', 5, 2906600),
-(360, 'Cândido Sales', 5, 2906709),
-(361, 'Cansanção', 5, 2906808),
-(362, 'Canudos', 5, 2906824),
-(363, 'Capela do Alto Alegre', 5, 2906857),
-(364, 'Capim Grosso', 5, 2906873),
-(365, 'Caraíbas', 5, 2906899),
-(366, 'Caravelas', 5, 2906907),
-(367, 'Cardeal da Silva', 5, 2907004),
-(368, 'Carinhanha', 5, 2907103),
-(369, 'Casa Nova', 5, 2907202),
-(370, 'Castro Alves', 5, 2907301),
-(371, 'Catolândia', 5, 2907400),
-(372, 'Catu', 5, 2907509),
-(373, 'Caturama', 5, 2907558),
-(374, 'Central', 5, 2907608),
-(375, 'Chorrochó', 5, 2907707),
-(376, 'Cícero Dantas', 5, 2907806),
-(377, 'Cipó', 5, 2907905),
-(378, 'Coaraci', 5, 2908002),
-(379, 'Cocos', 5, 2908101),
-(380, 'Conceição da Feira', 5, 2908200),
-(381, 'Conceição do Almeida', 5, 2908309),
-(382, 'Conceição do Coité', 5, 2908408),
-(383, 'Conceição do Jacuípe', 5, 2908507),
-(384, 'Conde', 5, 2908606),
-(385, 'Condeúba', 5, 2908705),
-(386, 'Contendas do Sincorá', 5, 2908804),
-(387, 'Coração de Maria', 5, 2908903),
-(388, 'Cordeiros', 5, 2909000),
-(389, 'Coribe', 5, 2909109),
-(390, 'Coronel João Sá', 5, 2909208),
-(391, 'Correntina', 5, 2909307),
-(392, 'Cotegipe', 5, 2909406),
-(393, 'Cravolândia', 5, 2909505),
-(394, 'Crisópolis', 5, 2909604),
-(395, 'Cristópolis', 5, 2909703),
-(396, 'Cruz das Almas', 5, 2909802),
-(397, 'Curaçá', 5, 2909901),
-(398, 'Dário Meira', 5, 2910008),
-(399, 'Dias d`Ávila', 5, 2910057),
-(400, 'Dom Basílio', 5, 2910107),
-(401, 'Dom Macedo Costa', 5, 2910206),
-(402, 'Elísio Medrado', 5, 2910305),
-(403, 'Encruzilhada', 5, 2910404),
-(404, 'Entre Rios', 5, 2910503),
-(405, 'Érico Cardoso', 5, 2900504),
-(406, 'Esplanada', 5, 2910602),
-(407, 'Euclides da Cunha', 5, 2910701),
-(408, 'Eunápolis', 5, 2910727),
-(409, 'Fátima', 5, 2910750),
-(410, 'Feira da Mata', 5, 2910776),
-(411, 'Feira de Santana', 5, 2910800),
-(412, 'Filadélfia', 5, 2910859),
-(413, 'Firmino Alves', 5, 2910909),
-(414, 'Floresta Azul', 5, 2911006),
-(415, 'Formosa do Rio Preto', 5, 2911105),
-(416, 'Gandu', 5, 2911204),
-(417, 'Gavião', 5, 2911253),
-(418, 'Gentio do Ouro', 5, 2911303),
-(419, 'Glória', 5, 2911402),
-(420, 'Gongogi', 5, 2911501),
-(421, 'Governador Mangabeira', 5, 2911600),
-(422, 'Guajeru', 5, 2911659),
-(423, 'Guanambi', 5, 2911709),
-(424, 'Guaratinga', 5, 2911808),
-(425, 'Heliópolis', 5, 2911857),
-(426, 'Iaçu', 5, 2911907),
-(427, 'Ibiassucê', 5, 2912004),
-(428, 'Ibicaraí', 5, 2912103),
-(429, 'Ibicoara', 5, 2912202),
-(430, 'Ibicuí', 5, 2912301),
-(431, 'Ibipeba', 5, 2912400),
-(432, 'Ibipitanga', 5, 2912509),
-(433, 'Ibiquera', 5, 2912608),
-(434, 'Ibirapitanga', 5, 2912707),
-(435, 'Ibirapuã', 5, 2912806),
-(436, 'Ibirataia', 5, 2912905),
-(437, 'Ibitiara', 5, 2913002),
-(438, 'Ibititá', 5, 2913101),
-(439, 'Ibotirama', 5, 2913200),
-(440, 'Ichu', 5, 2913309),
-(441, 'Igaporã', 5, 2913408),
-(442, 'Igrapiúna', 5, 2913457),
-(443, 'Iguaí', 5, 2913507),
-(444, 'Ilhéus', 5, 2913606),
-(445, 'Inhambupe', 5, 2913705),
-(446, 'Ipecaetá', 5, 2913804),
-(447, 'Ipiaú', 5, 2913903),
-(448, 'Ipirá', 5, 2914000),
-(449, 'Ipupiara', 5, 2914109),
-(450, 'Irajuba', 5, 2914208),
-(451, 'Iramaia', 5, 2914307),
-(452, 'Iraquara', 5, 2914406),
-(453, 'Irará', 5, 2914505),
-(454, 'Irecê', 5, 2914604),
-(455, 'Itabela', 5, 2914653),
-(456, 'Itaberaba', 5, 2914703),
-(457, 'Itabuna', 5, 2914802),
-(458, 'Itacaré', 5, 2914901),
-(459, 'Itaeté', 5, 2915007),
-(460, 'Itagi', 5, 2915106),
-(461, 'Itagibá', 5, 2915205),
-(462, 'Itagimirim', 5, 2915304),
-(463, 'Itaguaçu da Bahia', 5, 2915353),
-(464, 'Itaju do Colônia', 5, 2915403),
-(465, 'Itajuípe', 5, 2915502),
-(466, 'Itamaraju', 5, 2915601),
-(467, 'Itamari', 5, 2915700),
-(468, 'Itambé', 5, 2915809),
-(469, 'Itanagra', 5, 2915908),
-(470, 'Itanhém', 5, 2916005),
-(471, 'Itaparica', 5, 2916104),
-(472, 'Itapé', 5, 2916203),
-(473, 'Itapebi', 5, 2916302),
-(474, 'Itapetinga', 5, 2916401),
-(475, 'Itapicuru', 5, 2916500),
-(476, 'Itapitanga', 5, 2916609),
-(477, 'Itaquara', 5, 2916708),
-(478, 'Itarantim', 5, 2916807),
-(479, 'Itatim', 5, 2916856),
-(480, 'Itiruçu', 5, 2916906),
-(481, 'Itiúba', 5, 2917003),
-(482, 'Itororó', 5, 2917102),
-(483, 'Ituaçu', 5, 2917201),
-(484, 'Ituberá', 5, 2917300),
-(485, 'Iuiú', 5, 2917334),
-(486, 'Jaborandi', 5, 2917359),
-(487, 'Jacaraci', 5, 2917409),
-(488, 'Jacobina', 5, 2917508),
-(489, 'Jaguaquara', 5, 2917607),
-(490, 'Jaguarari', 5, 2917706),
-(491, 'Jaguaripe', 5, 2917805),
-(492, 'Jandaíra', 5, 2917904),
-(493, 'Jequié', 5, 2918001),
-(494, 'Jeremoabo', 5, 2918100),
-(495, 'Jiquiriçá', 5, 2918209),
-(496, 'Jitaúna', 5, 2918308),
-(497, 'João Dourado', 5, 2918357),
-(498, 'Juazeiro', 5, 2918407),
-(499, 'Jucuruçu', 5, 2918456),
-(500, 'Jussara', 5, 2918506),
-(501, 'Jussari', 5, 2918555),
-(502, 'Jussiape', 5, 2918605),
-(503, 'Lafaiete Coutinho', 5, 2918704),
-(504, 'Lagoa Real', 5, 2918753),
-(505, 'Laje', 5, 2918803),
-(506, 'Lajedão', 5, 2918902),
-(507, 'Lajedinho', 5, 2919009),
-(508, 'Lajedo do Tabocal', 5, 2919058),
-(509, 'Lamarão', 5, 2919108),
-(510, 'Lapão', 5, 2919157),
-(511, 'Lauro de Freitas', 5, 2919207),
-(512, 'Lençóis', 5, 2919306),
-(513, 'Licínio de Almeida', 5, 2919405),
-(514, 'Livramento de Nossa Senhora', 5, 2919504),
-(515, 'Luís Eduardo Magalhães', 5, 2919553),
-(516, 'Macajuba', 5, 2919603),
-(517, 'Macarani', 5, 2919702),
-(518, 'Macaúbas', 5, 2919801),
-(519, 'Macururé', 5, 2919900),
-(520, 'Madre de Deus', 5, 2919926),
-(521, 'Maetinga', 5, 2919959),
-(522, 'Maiquinique', 5, 2920007),
-(523, 'Mairi', 5, 2920106),
-(524, 'Malhada', 5, 2920205),
-(525, 'Malhada de Pedras', 5, 2920304),
-(526, 'Manoel Vitorino', 5, 2920403),
-(527, 'Mansidão', 5, 2920452),
-(528, 'Maracás', 5, 2920502),
-(529, 'Maragogipe', 5, 2920601),
-(530, 'Maraú', 5, 2920700),
-(531, 'Marcionílio Souza', 5, 2920809),
-(532, 'Mascote', 5, 2920908),
-(533, 'Mata de São João', 5, 2921005),
-(534, 'Matina', 5, 2921054),
-(535, 'Medeiros Neto', 5, 2921104),
-(536, 'Miguel Calmon', 5, 2921203),
-(537, 'Milagres', 5, 2921302),
-(538, 'Mirangaba', 5, 2921401),
-(539, 'Mirante', 5, 2921450),
-(540, 'Monte Santo', 5, 2921500),
-(541, 'Morpará', 5, 2921609),
-(542, 'Morro do Chapéu', 5, 2921708),
-(543, 'Mortugaba', 5, 2921807),
-(544, 'Mucugê', 5, 2921906),
-(545, 'Mucuri', 5, 2922003),
-(546, 'Mulungu do Morro', 5, 2922052),
-(547, 'Mundo Novo', 5, 2922102),
-(548, 'Muniz Ferreira', 5, 2922201),
-(549, 'Muquém de São Francisco', 5, 2922250),
-(550, 'Muritiba', 5, 2922300),
-(551, 'Mutuípe', 5, 2922409),
-(552, 'Nazaré', 5, 2922508),
-(553, 'Nilo Peçanha', 5, 2922607),
-(554, 'Nordestina', 5, 2922656),
-(555, 'Nova Canaã', 5, 2922706),
-(556, 'Nova Fátima', 5, 2922730),
-(557, 'Nova Ibiá', 5, 2922755),
-(558, 'Nova Itarana', 5, 2922805),
-(559, 'Nova Redenção', 5, 2922854),
-(560, 'Nova Soure', 5, 2922904),
-(561, 'Nova Viçosa', 5, 2923001),
-(562, 'Novo Horizonte', 5, 2923035),
-(563, 'Novo Triunfo', 5, 2923050),
-(564, 'Olindina', 5, 2923100),
-(565, 'Oliveira dos Brejinhos', 5, 2923209),
-(566, 'Ouriçangas', 5, 2923308),
-(567, 'Ourolândia', 5, 2923357),
-(568, 'Palmas de Monte Alto', 5, 2923407),
-(569, 'Palmeiras', 5, 2923506),
-(570, 'Paramirim', 5, 2923605),
-(571, 'Paratinga', 5, 2923704),
-(572, 'Paripiranga', 5, 2923803),
-(573, 'Pau Brasil', 5, 2923902),
-(574, 'Paulo Afonso', 5, 2924009),
-(575, 'Pé de Serra', 5, 2924058),
-(576, 'Pedrão', 5, 2924108),
-(577, 'Pedro Alexandre', 5, 2924207),
-(578, 'Piatã', 5, 2924306),
-(579, 'Pilão Arcado', 5, 2924405),
-(580, 'Pindaí', 5, 2924504),
-(581, 'Pindobaçu', 5, 2924603),
-(582, 'Pintadas', 5, 2924652),
-(583, 'Piraí do Norte', 5, 2924678),
-(584, 'Piripá', 5, 2924702),
-(585, 'Piritiba', 5, 2924801),
-(586, 'Planaltino', 5, 2924900),
-(587, 'Planalto', 5, 2925006),
-(588, 'Poções', 5, 2925105),
-(589, 'Pojuca', 5, 2925204),
-(590, 'Ponto Novo', 5, 2925253),
-(591, 'Porto Seguro', 5, 2925303),
-(592, 'Potiraguá', 5, 2925402),
-(593, 'Prado', 5, 2925501),
-(594, 'Presidente Dutra', 5, 2925600),
-(595, 'Presidente Jânio Quadros', 5, 2925709),
-(596, 'Presidente Tancredo Neves', 5, 2925758),
-(597, 'Queimadas', 5, 2925808),
-(598, 'Quijingue', 5, 2925907),
-(599, 'Quixabeira', 5, 2925931),
-(600, 'Rafael Jambeiro', 5, 2925956),
-(601, 'Remanso', 5, 2926004),
-(602, 'Retirolândia', 5, 2926103),
-(603, 'Riachão das Neves', 5, 2926202),
-(604, 'Riachão do Jacuípe', 5, 2926301),
-(605, 'Riacho de Santana', 5, 2926400),
-(606, 'Ribeira do Amparo', 5, 2926509),
-(607, 'Ribeira do Pombal', 5, 2926608),
-(608, 'Ribeirão do Largo', 5, 2926657),
-(609, 'Rio de Contas', 5, 2926707),
-(610, 'Rio do Antônio', 5, 2926806),
-(611, 'Rio do Pires', 5, 2926905),
-(612, 'Rio Real', 5, 2927002),
-(613, 'Rodelas', 5, 2927101),
-(614, 'Ruy Barbosa', 5, 2927200),
-(615, 'Salinas da Margarida', 5, 2927309),
-(616, 'Salvador', 5, 2927408),
-(617, 'Santa Bárbara', 5, 2927507),
-(618, 'Santa Brígida', 5, 2927606),
-(619, 'Santa Cruz Cabrália', 5, 2927705),
-(620, 'Santa Cruz da Vitória', 5, 2927804),
-(621, 'Santa Inês', 5, 2927903),
-(622, 'Santa Luzia', 5, 2928059),
-(623, 'Santa Maria da Vitória', 5, 2928109),
-(624, 'Santa Rita de Cássia', 5, 2928406),
-(625, 'Santa Teresinha', 5, 2928505),
-(626, 'Santaluz', 5, 2928000),
-(627, 'Santana', 5, 2928208),
-(628, 'Santanópolis', 5, 2928307),
-(629, 'Santo Amaro', 5, 2928604),
-(630, 'Santo Antônio de Jesus', 5, 2928703),
-(631, 'Santo Estêvão', 5, 2928802),
-(632, 'São Desidério', 5, 2928901),
-(633, 'São Domingos', 5, 2928950),
-(634, 'São Felipe', 5, 2929107),
-(635, 'São Félix', 5, 2929008),
-(636, 'São Félix do Coribe', 5, 2929057),
-(637, 'São Francisco do Conde', 5, 2929206),
-(638, 'São Gabriel', 5, 2929255),
-(639, 'São Gonçalo dos Campos', 5, 2929305),
-(640, 'São José da Vitória', 5, 2929354),
-(641, 'São José do Jacuípe', 5, 2929370),
-(642, 'São Miguel das Matas', 5, 2929404),
-(643, 'São Sebastião do Passé', 5, 2929503),
-(644, 'Sapeaçu', 5, 2929602),
-(645, 'Sátiro Dias', 5, 2929701),
-(646, 'Saubara', 5, 2929750),
-(647, 'Saúde', 5, 2929800),
-(648, 'Seabra', 5, 2929909),
-(649, 'Sebastião Laranjeiras', 5, 2930006),
-(650, 'Senhor do Bonfim', 5, 2930105),
-(651, 'Sento Sé', 5, 2930204),
-(652, 'Serra do Ramalho', 5, 2930154),
-(653, 'Serra Dourada', 5, 2930303),
-(654, 'Serra Preta', 5, 2930402),
-(655, 'Serrinha', 5, 2930501),
-(656, 'Serrolândia', 5, 2930600),
-(657, 'Simões Filho', 5, 2930709),
-(658, 'Sítio do Mato', 5, 2930758),
-(659, 'Sítio do Quinto', 5, 2930766),
-(660, 'Sobradinho', 5, 2930774),
-(661, 'Souto Soares', 5, 2930808),
-(662, 'Tabocas do Brejo Velho', 5, 2930907),
-(663, 'Tanhaçu', 5, 2931004),
-(664, 'Tanque Novo', 5, 2931053),
-(665, 'Tanquinho', 5, 2931103),
-(666, 'Taperoá', 5, 2931202),
-(667, 'Tapiramutá', 5, 2931301),
-(668, 'Teixeira de Freitas', 5, 2931350),
-(669, 'Teodoro Sampaio', 5, 2931400),
-(670, 'Teofilândia', 5, 2931509),
-(671, 'Teolândia', 5, 2931608),
-(672, 'Terra Nova', 5, 2931707),
-(673, 'Tremedal', 5, 2931806),
-(674, 'Tucano', 5, 2931905),
-(675, 'Uauá', 5, 2932002),
-(676, 'Ubaíra', 5, 2932101),
-(677, 'Ubaitaba', 5, 2932200),
-(678, 'Ubatã', 5, 2932309),
-(679, 'Uibaí', 5, 2932408),
-(680, 'Umburanas', 5, 2932457),
-(681, 'Una', 5, 2932507),
-(682, 'Urandi', 5, 2932606),
-(683, 'Uruçuca', 5, 2932705),
-(684, 'Utinga', 5, 2932804),
-(685, 'Valença', 5, 2932903),
-(686, 'Valente', 5, 2933000),
-(687, 'Várzea da Roça', 5, 2933059),
-(688, 'Várzea do Poço', 5, 2933109),
-(689, 'Várzea Nova', 5, 2933158),
-(690, 'Varzedo', 5, 2933174),
-(691, 'Vera Cruz', 5, 2933208),
-(692, 'Vereda', 5, 2933257),
-(693, 'Vitória da Conquista', 5, 2933307),
-(694, 'Wagner', 5, 2933406),
-(695, 'Wanderley', 5, 2933455),
-(696, 'Wenceslau Guimarães', 5, 2933505),
-(697, 'Xique-Xique', 5, 2933604),
-(698, 'Abaiara', 6, 2300101),
-(699, 'Acarape', 6, 2300150),
-(700, 'Acaraú', 6, 2300200),
-(701, 'Acopiara', 6, 2300309),
-(702, 'Aiuaba', 6, 2300408),
-(703, 'Alcântaras', 6, 2300507),
-(704, 'Altaneira', 6, 2300606),
-(705, 'Alto Santo', 6, 2300705),
-(706, 'Amontada', 6, 2300754),
-(707, 'Antonina do Norte', 6, 2300804),
-(708, 'Apuiarés', 6, 2300903),
-(709, 'Aquiraz', 6, 2301000),
-(710, 'Aracati', 6, 2301109),
-(711, 'Aracoiaba', 6, 2301208),
-(712, 'Ararendá', 6, 2301257),
-(713, 'Araripe', 6, 2301307),
-(714, 'Aratuba', 6, 2301406),
-(715, 'Arneiroz', 6, 2301505),
-(716, 'Assaré', 6, 2301604),
-(717, 'Aurora', 6, 2301703),
-(718, 'Baixio', 6, 2301802),
-(719, 'Banabuiú', 6, 2301851),
-(720, 'Barbalha', 6, 2301901),
-(721, 'Barreira', 6, 2301950),
-(722, 'Barro', 6, 2302008),
-(723, 'Barroquinha', 6, 2302057),
-(724, 'Baturité', 6, 2302107),
-(725, 'Beberibe', 6, 2302206),
-(726, 'Bela Cruz', 6, 2302305),
-(727, 'Boa Viagem', 6, 2302404),
-(728, 'Brejo Santo', 6, 2302503),
-(729, 'Camocim', 6, 2302602),
-(730, 'Campos Sales', 6, 2302701),
-(731, 'Canindé', 6, 2302800),
-(732, 'Capistrano', 6, 2302909),
-(733, 'Caridade', 6, 2303006),
-(734, 'Cariré', 6, 2303105),
-(735, 'Caririaçu', 6, 2303204),
-(736, 'Cariús', 6, 2303303),
-(737, 'Carnaubal', 6, 2303402),
-(738, 'Cascavel', 6, 2303501),
-(739, 'Catarina', 6, 2303600),
-(740, 'Catunda', 6, 2303659),
-(741, 'Caucaia', 6, 2303709),
-(742, 'Cedro', 6, 2303808),
-(743, 'Chaval', 6, 2303907),
-(744, 'Choró', 6, 2303931),
-(745, 'Chorozinho', 6, 2303956),
-(746, 'Coreaú', 6, 2304004),
-(747, 'Crateús', 6, 2304103),
-(748, 'Crato', 6, 2304202),
-(749, 'Croatá', 6, 2304236),
-(750, 'Cruz', 6, 2304251),
-(751, 'Deputado Irapuan Pinheiro', 6, 2304269),
-(752, 'Ererê', 6, 2304277),
-(753, 'Eusébio', 6, 2304285),
-(754, 'Farias Brito', 6, 2304301),
-(755, 'Forquilha', 6, 2304350),
-(756, 'Fortaleza', 6, 2304400),
-(757, 'Fortim', 6, 2304459),
-(758, 'Frecheirinha', 6, 2304509),
-(759, 'General Sampaio', 6, 2304608),
-(760, 'Graça', 6, 2304657),
-(761, 'Granja', 6, 2304707),
-(762, 'Granjeiro', 6, 2304806),
-(763, 'Groaíras', 6, 2304905),
-(764, 'Guaiúba', 6, 2304954),
-(765, 'Guaraciaba do Norte', 6, 2305001),
-(766, 'Guaramiranga', 6, 2305100),
-(767, 'Hidrolândia', 6, 2305209),
-(768, 'Horizonte', 6, 2305233),
-(769, 'Ibaretama', 6, 2305266),
-(770, 'Ibiapina', 6, 2305308),
-(771, 'Ibicuitinga', 6, 2305332),
-(772, 'Icapuí', 6, 2305357),
-(773, 'Icó', 6, 2305407),
-(774, 'Iguatu', 6, 2305506),
-(775, 'Independência', 6, 2305605),
-(776, 'Ipaporanga', 6, 2305654),
-(777, 'Ipaumirim', 6, 2305704),
-(778, 'Ipu', 6, 2305803),
-(779, 'Ipueiras', 6, 2305902),
-(780, 'Iracema', 6, 2306009),
-(781, 'Irauçuba', 6, 2306108),
-(782, 'Itaiçaba', 6, 2306207),
-(783, 'Itaitinga', 6, 2306256),
-(784, 'Itapagé', 6, 2306306),
-(785, 'Itapipoca', 6, 2306405),
-(786, 'Itapiúna', 6, 2306504),
-(787, 'Itarema', 6, 2306553),
-(788, 'Itatira', 6, 2306603),
-(789, 'Jaguaretama', 6, 2306702),
-(790, 'Jaguaribara', 6, 2306801),
-(791, 'Jaguaribe', 6, 2306900),
-(792, 'Jaguaruana', 6, 2307007),
-(793, 'Jardim', 6, 2307106),
-(794, 'Jati', 6, 2307205),
-(795, 'Jijoca de Jericoacoara', 6, 2307254),
-(796, 'Juazeiro do Norte', 6, 2307304),
-(797, 'Jucás', 6, 2307403),
-(798, 'Lavras da Mangabeira', 6, 2307502),
-(799, 'Limoeiro do Norte', 6, 2307601),
-(800, 'Madalena', 6, 2307635),
-(801, 'Maracanaú', 6, 2307650),
-(802, 'Maranguape', 6, 2307700),
-(803, 'Marco', 6, 2307809),
-(804, 'Martinópole', 6, 2307908),
-(805, 'Massapê', 6, 2308005),
-(806, 'Mauriti', 6, 2308104),
-(807, 'Meruoca', 6, 2308203),
-(808, 'Milagres', 6, 2308302),
-(809, 'Milhã', 6, 2308351),
-(810, 'Miraíma', 6, 2308377),
-(811, 'Missão Velha', 6, 2308401),
-(812, 'Mombaça', 6, 2308500),
-(813, 'Monsenhor Tabosa', 6, 2308609),
-(814, 'Morada Nova', 6, 2308708),
-(815, 'Moraújo', 6, 2308807),
-(816, 'Morrinhos', 6, 2308906),
-(817, 'Mucambo', 6, 2309003),
-(818, 'Mulungu', 6, 2309102),
-(819, 'Nova Olinda', 6, 2309201),
-(820, 'Nova Russas', 6, 2309300),
-(821, 'Novo Oriente', 6, 2309409),
-(822, 'Ocara', 6, 2309458),
-(823, 'Orós', 6, 2309508),
-(824, 'Pacajus', 6, 2309607),
-(825, 'Pacatuba', 6, 2309706),
-(826, 'Pacoti', 6, 2309805),
-(827, 'Pacujá', 6, 2309904),
-(828, 'Palhano', 6, 2310001),
-(829, 'Palmácia', 6, 2310100),
-(830, 'Paracuru', 6, 2310209),
-(831, 'Paraipaba', 6, 2310258),
-(832, 'Parambu', 6, 2310308),
-(833, 'Paramoti', 6, 2310407),
-(834, 'Pedra Branca', 6, 2310506),
-(835, 'Penaforte', 6, 2310605),
-(836, 'Pentecoste', 6, 2310704),
-(837, 'Pereiro', 6, 2310803),
-(838, 'Pindoretama', 6, 2310852),
-(839, 'Piquet Carneiro', 6, 2310902),
-(840, 'Pires Ferreira', 6, 2310951),
-(841, 'Poranga', 6, 2311009),
-(842, 'Porteiras', 6, 2311108),
-(843, 'Potengi', 6, 2311207),
-(844, 'Potiretama', 6, 2311231),
-(845, 'Quiterianópolis', 6, 2311264),
-(846, 'Quixadá', 6, 2311306),
-(847, 'Quixelô', 6, 2311355),
-(848, 'Quixeramobim', 6, 2311405),
-(849, 'Quixeré', 6, 2311504),
-(850, 'Redenção', 6, 2311603),
-(851, 'Reriutaba', 6, 2311702),
-(852, 'Russas', 6, 2311801),
-(853, 'Saboeiro', 6, 2311900),
-(854, 'Salitre', 6, 2311959),
-(855, 'Santa Quitéria', 6, 2312205),
-(856, 'Santana do Acaraú', 6, 2312007),
-(857, 'Santana do Cariri', 6, 2312106),
-(858, 'São Benedito', 6, 2312304),
-(859, 'São Gonçalo do Amarante', 6, 2312403),
-(860, 'São João do Jaguaribe', 6, 2312502),
-(861, 'São Luís do Curu', 6, 2312601),
-(862, 'Senador Pompeu', 6, 2312700),
-(863, 'Senador Sá', 6, 2312809),
-(864, 'Sobral', 6, 2312908),
-(865, 'Solonópole', 6, 2313005),
-(866, 'Tabuleiro do Norte', 6, 2313104),
-(867, 'Tamboril', 6, 2313203),
-(868, 'Tarrafas', 6, 2313252),
-(869, 'Tauá', 6, 2313302),
-(870, 'Tejuçuoca', 6, 2313351),
-(871, 'Tianguá', 6, 2313401),
-(872, 'Trairi', 6, 2313500),
-(873, 'Tururu', 6, 2313559),
-(874, 'Ubajara', 6, 2313609),
-(875, 'Umari', 6, 2313708),
-(876, 'Umirim', 6, 2313757),
-(877, 'Uruburetama', 6, 2313807),
-(878, 'Uruoca', 6, 2313906),
-(879, 'Varjota', 6, 2313955),
-(880, 'Várzea Alegre', 6, 2314003),
-(881, 'Viçosa do Ceará', 6, 2314102),
-(882, 'Brasília', 7, 5300108),
-(883, 'Abadia de Goiás', 9, 5200050),
-(884, 'Abadiânia', 9, 5200100),
-(885, 'Acreúna', 9, 5200134),
-(886, 'Adelândia', 9, 5200159),
-(887, 'Água Fria de Goiás', 9, 5200175),
-(888, 'Água Limpa', 9, 5200209),
-(889, 'Águas Lindas de Goiás', 9, 5200258),
-(890, 'Alexânia', 9, 5200308),
-(891, 'Aloândia', 9, 5200506),
-(892, 'Alto Horizonte', 9, 5200555),
-(893, 'Alto Paraíso de Goiás', 9, 5200605),
-(894, 'Alvorada do Norte', 9, 5200803),
-(895, 'Amaralina', 9, 5200829),
-(896, 'Americano do Brasil', 9, 5200852),
-(897, 'Amorinópolis', 9, 5200902),
-(898, 'Anápolis', 9, 5201108),
-(899, 'Anhanguera', 9, 5201207),
-(900, 'Anicuns', 9, 5201306),
-(901, 'Aparecida de Goiânia', 9, 5201405),
-(902, 'Aparecida do Rio Doce', 9, 5201454),
-(903, 'Aporé', 9, 5201504),
-(904, 'Araçu', 9, 5201603),
-(905, 'Aragarças', 9, 5201702),
-(906, 'Aragoiânia', 9, 5201801),
-(907, 'Araguapaz', 9, 5202155),
-(908, 'Arenópolis', 9, 5202353),
-(909, 'Aruanã', 9, 5202502),
-(910, 'Aurilândia', 9, 5202601),
-(911, 'Avelinópolis', 9, 5202809),
-(912, 'Baliza', 9, 5203104),
-(913, 'Barro Alto', 9, 5203203),
-(914, 'Bela Vista de Goiás', 9, 5203302),
-(915, 'Bom Jardim de Goiás', 9, 5203401),
-(916, 'Bom Jesus de Goiás', 9, 5203500),
-(917, 'Bonfinópolis', 9, 5203559),
-(918, 'Bonópolis', 9, 5203575),
-(919, 'Brazabrantes', 9, 5203609),
-(920, 'Britânia', 9, 5203807),
-(921, 'Buriti Alegre', 9, 5203906),
-(922, 'Buriti de Goiás', 9, 5203939),
-(923, 'Buritinópolis', 9, 5203962),
-(924, 'Cabeceiras', 9, 5204003),
-(925, 'Cachoeira Alta', 9, 5204102),
-(926, 'Cachoeira de Goiás', 9, 5204201),
-(927, 'Cachoeira Dourada', 9, 5204250),
-(928, 'Caçu', 9, 5204300),
-(929, 'Caiapônia', 9, 5204409),
-(930, 'Caldas Novas', 9, 5204508),
-(931, 'Caldazinha', 9, 5204557),
-(932, 'Campestre de Goiás', 9, 5204607),
-(933, 'Campinaçu', 9, 5204656),
-(934, 'Campinorte', 9, 5204706),
-(935, 'Campo Alegre de Goiás', 9, 5204805),
-(936, 'Campo Limpo de Goiás', 9, 5204854),
-(937, 'Campos Belos', 9, 5204904),
-(938, 'Campos Verdes', 9, 5204953),
-(939, 'Carmo do Rio Verde', 9, 5205000),
-(940, 'Castelândia', 9, 5205059),
-(941, 'Catalão', 9, 5205109),
-(942, 'Caturaí', 9, 5205208),
-(943, 'Cavalcante', 9, 5205307),
-(944, 'Ceres', 9, 5205406),
-(945, 'Cezarina', 9, 5205455),
-(946, 'Chapadão do Céu', 9, 5205471),
-(947, 'Cidade Ocidental', 9, 5205497),
-(948, 'Cocalzinho de Goiás', 9, 5205513),
-(949, 'Colinas do Sul', 9, 5205521),
-(950, 'Córrego do Ouro', 9, 5205703),
-(951, 'Corumbá de Goiás', 9, 5205802),
-(952, 'Corumbaíba', 9, 5205901),
-(953, 'Cristalina', 9, 5206206),
-(954, 'Cristianópolis', 9, 5206305),
-(955, 'Crixás', 9, 5206404),
-(956, 'Cromínia', 9, 5206503),
-(957, 'Cumari', 9, 5206602),
-(958, 'Damianópolis', 9, 5206701),
-(959, 'Damolândia', 9, 5206800),
-(960, 'Davinópolis', 9, 5206909),
-(961, 'Diorama', 9, 5207105),
-(962, 'Divinópolis de Goiás', 9, 5208301),
-(963, 'Doverlândia', 9, 5207253),
-(964, 'Edealina', 9, 5207352),
-(965, 'Edéia', 9, 5207402),
-(966, 'Estrela do Norte', 9, 5207501),
-(967, 'Faina', 9, 5207535),
-(968, 'Fazenda Nova', 9, 5207600),
-(969, 'Firminópolis', 9, 5207808),
-(970, 'Flores de Goiás', 9, 5207907),
-(971, 'Formosa', 9, 5208004),
-(972, 'Formoso', 9, 5208103),
-(973, 'Gameleira de Goiás', 9, 5208152),
-(974, 'Goianápolis', 9, 5208400),
-(975, 'Goiandira', 9, 5208509),
-(976, 'Goianésia', 9, 5208608),
-(977, 'Goiânia', 9, 5208707),
-(978, 'Goianira', 9, 5208806),
-(979, 'Goiás', 9, 5208905),
-(980, 'Goiatuba', 9, 5209101),
-(981, 'Gouvelândia', 9, 5209150),
-(982, 'Guapó', 9, 5209200),
-(983, 'Guaraíta', 9, 5209291),
-(984, 'Guarani de Goiás', 9, 5209408),
-(985, 'Guarinos', 9, 5209457),
-(986, 'Heitoraí', 9, 5209606),
-(987, 'Hidrolândia', 9, 5209705),
-(988, 'Hidrolina', 9, 5209804),
-(989, 'Iaciara', 9, 5209903),
-(990, 'Inaciolândia', 9, 5209937),
-(991, 'Indiara', 9, 5209952),
-(992, 'Inhumas', 9, 5210000),
-(993, 'Ipameri', 9, 5210109),
-(994, 'Ipiranga de Goiás', 9, 5210158),
-(995, 'Iporá', 9, 5210208),
-(996, 'Israelândia', 9, 5210307),
-(997, 'Itaberaí', 9, 5210406),
-(998, 'Itaguari', 9, 5210562),
-(999, 'Itaguaru', 9, 5210604),
-(1000, 'Itajá', 9, 5210802),
-(1001, 'Itapaci', 9, 5210901),
-(1002, 'Itapirapuã', 9, 5211008),
-(1003, 'Itapuranga', 9, 5211206),
-(1004, 'Itarumã', 9, 5211305),
-(1005, 'Itauçu', 9, 5211404),
-(1006, 'Itumbiara', 9, 5211503),
-(1007, 'Ivolândia', 9, 5211602),
-(1008, 'Jandaia', 9, 5211701),
-(1009, 'Jaraguá', 9, 5211800),
-(1010, 'Jataí', 9, 5211909),
-(1011, 'Jaupaci', 9, 5212006),
-(1012, 'Jesúpolis', 9, 5212055),
-(1013, 'Joviânia', 9, 5212105),
-(1014, 'Jussara', 9, 5212204),
-(1015, 'Lagoa Santa', 9, 5212253),
-(1016, 'Leopoldo de Bulhões', 9, 5212303),
-(1017, 'Luziânia', 9, 5212501),
-(1018, 'Mairipotaba', 9, 5212600),
-(1019, 'Mambaí', 9, 5212709),
-(1020, 'Mara Rosa', 9, 5212808),
-(1021, 'Marzagão', 9, 5212907),
-(1022, 'Matrinchã', 9, 5212956),
-(1023, 'Maurilândia', 9, 5213004),
-(1024, 'Mimoso de Goiás', 9, 5213053),
-(1025, 'Minaçu', 9, 5213087),
-(1026, 'Mineiros', 9, 5213103),
-(1027, 'Moiporá', 9, 5213400),
-(1028, 'Monte Alegre de Goiás', 9, 5213509),
-(1029, 'Montes Claros de Goiás', 9, 5213707),
-(1030, 'Montividiu', 9, 5213756),
-(1031, 'Montividiu do Norte', 9, 5213772),
-(1032, 'Morrinhos', 9, 5213806),
-(1033, 'Morro Agudo de Goiás', 9, 5213855),
-(1034, 'Mossâmedes', 9, 5213905),
-(1035, 'Mozarlândia', 9, 5214002),
-(1036, 'Mundo Novo', 9, 5214051),
-(1037, 'Mutunópolis', 9, 5214101),
-(1038, 'Nazário', 9, 5214408),
-(1039, 'Nerópolis', 9, 5214507),
-(1040, 'Niquelândia', 9, 5214606),
-(1041, 'Nova América', 9, 5214705),
-(1042, 'Nova Aurora', 9, 5214804),
-(1043, 'Nova Crixás', 9, 5214838),
-(1044, 'Nova Glória', 9, 5214861),
-(1045, 'Nova Iguaçu de Goiás', 9, 5214879),
-(1046, 'Nova Roma', 9, 5214903),
-(1047, 'Nova Veneza', 9, 5215009),
-(1048, 'Novo Brasil', 9, 5215207),
-(1049, 'Novo Gama', 9, 5215231),
-(1050, 'Novo Planalto', 9, 5215256),
-(1051, 'Orizona', 9, 5215306),
-(1052, 'Ouro Verde de Goiás', 9, 5215405),
-(1053, 'Ouvidor', 9, 5215504),
-(1054, 'Padre Bernardo', 9, 5215603),
-(1055, 'Palestina de Goiás', 9, 5215652),
-(1056, 'Palmeiras de Goiás', 9, 5215702),
-(1057, 'Palmelo', 9, 5215801),
-(1058, 'Palminópolis', 9, 5215900),
-(1059, 'Panamá', 9, 5216007),
-(1060, 'Paranaiguara', 9, 5216304),
-(1061, 'Paraúna', 9, 5216403),
-(1062, 'Perolândia', 9, 5216452),
-(1063, 'Petrolina de Goiás', 9, 5216809),
-(1064, 'Pilar de Goiás', 9, 5216908),
-(1065, 'Piracanjuba', 9, 5217104),
-(1066, 'Piranhas', 9, 5217203),
-(1067, 'Pirenópolis', 9, 5217302),
-(1068, 'Pires do Rio', 9, 5217401),
-(1069, 'Planaltina', 9, 5217609),
-(1070, 'Pontalina', 9, 5217708),
-(1071, 'Porangatu', 9, 5218003),
-(1072, 'Porteirão', 9, 5218052),
-(1073, 'Portelândia', 9, 5218102),
-(1074, 'Posse', 9, 5218300),
-(1075, 'Professor Jamil', 9, 5218391),
-(1076, 'Quirinópolis', 9, 5218508),
-(1077, 'Rialma', 9, 5218607),
-(1078, 'Rianápolis', 9, 5218706),
-(1079, 'Rio Quente', 9, 5218789),
-(1080, 'Rio Verde', 9, 5218805),
-(1081, 'Rubiataba', 9, 5218904),
-(1082, 'Sanclerlândia', 9, 5219001),
-(1083, 'Santa Bárbara de Goiás', 9, 5219100),
-(1084, 'Santa Cruz de Goiás', 9, 5219209),
-(1085, 'Santa Fé de Goiás', 9, 5219258),
-(1086, 'Santa Helena de Goiás', 9, 5219308),
-(1087, 'Santa Isabel', 9, 5219357),
-(1088, 'Santa Rita do Araguaia', 9, 5219407),
-(1089, 'Santa Rita do Novo Destino', 9, 5219456),
-(1090, 'Santa Rosa de Goiás', 9, 5219506),
-(1091, 'Santa Tereza de Goiás', 9, 5219605),
-(1092, 'Santa Terezinha de Goiás', 9, 5219704),
-(1093, 'Santo Antônio da Barra', 9, 5219712),
-(1094, 'Santo Antônio de Goiás', 9, 5219738),
-(1095, 'Santo Antônio do Descoberto', 9, 5219753),
-(1096, 'São Domingos', 9, 5219803),
-(1097, 'São Francisco de Goiás', 9, 5219902),
-(1098, 'São João d`Aliança', 9, 5220009),
-(1099, 'São João da Paraúna', 9, 5220058),
-(1100, 'São Luís de Montes Belos', 9, 5220108),
-(1101, 'São Luíz do Norte', 9, 5220157),
-(1102, 'São Miguel do Araguaia', 9, 5220207),
-(1103, 'São Miguel do Passa Quatro', 9, 5220264),
-(1104, 'São Patrício', 9, 5220280),
-(1105, 'São Simão', 9, 5220405),
-(1106, 'Senador Canedo', 9, 5220454),
-(1107, 'Serranópolis', 9, 5220504),
-(1108, 'Silvânia', 9, 5220603),
-(1109, 'Simolândia', 9, 5220686),
-(1110, 'Sítio d`Abadia', 9, 5220702),
-(1111, 'Taquaral de Goiás', 9, 5221007),
-(1112, 'Teresina de Goiás', 9, 5221080),
-(1113, 'Terezópolis de Goiás', 9, 5221197),
-(1114, 'Três Ranchos', 9, 5221304),
-(1115, 'Trindade', 9, 5221403),
-(1116, 'Trombas', 9, 5221452),
-(1117, 'Turvânia', 9, 5221502),
-(1118, 'Turvelândia', 9, 5221551),
-(1119, 'Uirapuru', 9, 5221577),
-(1120, 'Uruaçu', 9, 5221601),
-(1121, 'Uruana', 9, 5221700),
-(1122, 'Urutaí', 9, 5221809),
-(1123, 'Valparaíso de Goiás', 9, 5221858),
-(1124, 'Varjão', 9, 5221908),
-(1125, 'Vianópolis', 9, 5222005),
-(1126, 'Vicentinópolis', 9, 5222054),
-(1127, 'Vila Boa', 9, 5222203),
-(1128, 'Vila Propício', 9, 5222302),
-(1129, 'Açailândia', 10, 2100055),
-(1130, 'Afonso Cunha', 10, 2100105),
-(1131, 'Água Doce do Maranhão', 10, 2100154),
-(1132, 'Alcântara', 10, 2100204),
-(1133, 'Aldeias Altas', 10, 2100303),
-(1134, 'Altamira do Maranhão', 10, 2100402),
-(1135, 'Alto Alegre do Maranhão', 10, 2100436),
-(1136, 'Alto Alegre do Pindaré', 10, 2100477),
-(1137, 'Alto Parnaíba', 10, 2100501),
-(1138, 'Amapá do Maranhão', 10, 2100550),
-(1139, 'Amarante do Maranhão', 10, 2100600),
-(1140, 'Anajatuba', 10, 2100709),
-(1141, 'Anapurus', 10, 2100808),
-(1142, 'Apicum-Açu', 10, 2100832),
-(1143, 'Araguanã', 10, 2100873),
-(1144, 'Araioses', 10, 2100907),
-(1145, 'Arame', 10, 2100956),
-(1146, 'Arari', 10, 2101004),
-(1147, 'Axixá', 10, 2101103),
-(1148, 'Bacabal', 10, 2101202),
-(1149, 'Bacabeira', 10, 2101251),
-(1150, 'Bacuri', 10, 2101301),
-(1151, 'Bacurituba', 10, 2101350),
-(1152, 'Balsas', 10, 2101400),
-(1153, 'Barão de Grajaú', 10, 2101509),
-(1154, 'Barra do Corda', 10, 2101608),
-(1155, 'Barreirinhas', 10, 2101707),
-(1156, 'Bela Vista do Maranhão', 10, 2101772),
-(1157, 'Belágua', 10, 2101731),
-(1158, 'Benedito Leite', 10, 2101806),
-(1159, 'Bequimão', 10, 2101905),
-(1160, 'Bernardo do Mearim', 10, 2101939),
-(1161, 'Boa Vista do Gurupi', 10, 2101970),
-(1162, 'Bom Jardim', 10, 2102002),
-(1163, 'Bom Jesus das Selvas', 10, 2102036),
-(1164, 'Bom Lugar', 10, 2102077),
-(1165, 'Brejo', 10, 2102101),
-(1166, 'Brejo de Areia', 10, 2102150),
-(1167, 'Buriti', 10, 2102200),
-(1168, 'Buriti Bravo', 10, 2102309),
-(1169, 'Buriticupu', 10, 2102325),
-(1170, 'Buritirana', 10, 2102358),
-(1171, 'Cachoeira Grande', 10, 2102374),
-(1172, 'Cajapió', 10, 2102408),
-(1173, 'Cajari', 10, 2102507),
-(1174, 'Campestre do Maranhão', 10, 2102556),
-(1175, 'Cândido Mendes', 10, 2102606),
-(1176, 'Cantanhede', 10, 2102705),
-(1177, 'Capinzal do Norte', 10, 2102754),
-(1178, 'Carolina', 10, 2102804),
-(1179, 'Carutapera', 10, 2102903),
-(1180, 'Caxias', 10, 2103000),
-(1181, 'Cedral', 10, 2103109),
-(1182, 'Central do Maranhão', 10, 2103125),
-(1183, 'Centro do Guilherme', 10, 2103158),
-(1184, 'Centro Novo do Maranhão', 10, 2103174),
-(1185, 'Chapadinha', 10, 2103208),
-(1186, 'Cidelândia', 10, 2103257),
-(1187, 'Codó', 10, 2103307),
-(1188, 'Coelho Neto', 10, 2103406),
-(1189, 'Colinas', 10, 2103505),
-(1190, 'Conceição do Lago-Açu', 10, 2103554),
-(1191, 'Coroatá', 10, 2103604),
-(1192, 'Cururupu', 10, 2103703),
-(1193, 'Davinópolis', 10, 2103752),
-(1194, 'Dom Pedro', 10, 2103802),
-(1195, 'Duque Bacelar', 10, 2103901),
-(1196, 'Esperantinópolis', 10, 2104008),
-(1197, 'Estreito', 10, 2104057),
-(1198, 'Feira Nova do Maranhão', 10, 2104073),
-(1199, 'Fernando Falcão', 10, 2104081),
-(1200, 'Formosa da Serra Negra', 10, 2104099),
-(1201, 'Fortaleza dos Nogueiras', 10, 2104107),
-(1202, 'Fortuna', 10, 2104206),
-(1203, 'Godofredo Viana', 10, 2104305),
-(1204, 'Gonçalves Dias', 10, 2104404),
-(1205, 'Governador Archer', 10, 2104503),
-(1206, 'Governador Edison Lobão', 10, 2104552),
-(1207, 'Governador Eugênio Barros', 10, 2104602),
-(1208, 'Governador Luiz Rocha', 10, 2104628),
-(1209, 'Governador Newton Bello', 10, 2104651),
-(1210, 'Governador Nunes Freire', 10, 2104677),
-(1211, 'Graça Aranha', 10, 2104701),
-(1212, 'Grajaú', 10, 2104800),
-(1213, 'Guimarães', 10, 2104909),
-(1214, 'Humberto de Campos', 10, 2105005),
-(1215, 'Icatu', 10, 2105104),
-(1216, 'Igarapé do Meio', 10, 2105153),
-(1217, 'Igarapé Grande', 10, 2105203),
-(1218, 'Imperatriz', 10, 2105302),
-(1219, 'Itaipava do Grajaú', 10, 2105351),
-(1220, 'Itapecuru Mirim', 10, 2105401),
-(1221, 'Itinga do Maranhão', 10, 2105427),
-(1222, 'Jatobá', 10, 2105450),
-(1223, 'Jenipapo dos Vieiras', 10, 2105476),
-(1224, 'João Lisboa', 10, 2105500),
-(1225, 'Joselândia', 10, 2105609),
-(1226, 'Junco do Maranhão', 10, 2105658),
-(1227, 'Lago da Pedra', 10, 2105708),
-(1228, 'Lago do Junco', 10, 2105807),
-(1229, 'Lago dos Rodrigues', 10, 2105948),
-(1230, 'Lago Verde', 10, 2105906),
-(1231, 'Lagoa do Mato', 10, 2105922),
-(1232, 'Lagoa Grande do Maranhão', 10, 2105963),
-(1233, 'Lajeado Novo', 10, 2105989),
-(1234, 'Lima Campos', 10, 2106003),
-(1235, 'Loreto', 10, 2106102),
-(1236, 'Luís Domingues', 10, 2106201),
-(1237, 'Magalhães de Almeida', 10, 2106300),
-(1238, 'Maracaçumé', 10, 2106326),
-(1239, 'Marajá do Sena', 10, 2106359),
-(1240, 'Maranhãozinho', 10, 2106375),
-(1241, 'Mata Roma', 10, 2106409),
-(1242, 'Matinha', 10, 2106508),
-(1243, 'Matões', 10, 2106607),
-(1244, 'Matões do Norte', 10, 2106631),
-(1245, 'Milagres do Maranhão', 10, 2106672),
-(1246, 'Mirador', 10, 2106706),
-(1247, 'Miranda do Norte', 10, 2106755),
-(1248, 'Mirinzal', 10, 2106805),
-(1249, 'Monção', 10, 2106904),
-(1250, 'Montes Altos', 10, 2107001),
-(1251, 'Morros', 10, 2107100),
-(1252, 'Nina Rodrigues', 10, 2107209),
-(1253, 'Nova Colinas', 10, 2107258),
-(1254, 'Nova Iorque', 10, 2107308),
-(1255, 'Nova Olinda do Maranhão', 10, 2107357),
-(1256, 'Olho d`Água das Cunhãs', 10, 2107407),
-(1257, 'Olinda Nova do Maranhão', 10, 2107456),
-(1258, 'Paço do Lumiar', 10, 2107506),
-(1259, 'Palmeirândia', 10, 2107605),
-(1260, 'Paraibano', 10, 2107704),
-(1261, 'Parnarama', 10, 2107803),
-(1262, 'Passagem Franca', 10, 2107902),
-(1263, 'Pastos Bons', 10, 2108009),
-(1264, 'Paulino Neves', 10, 2108058),
-(1265, 'Paulo Ramos', 10, 2108108),
-(1266, 'Pedreiras', 10, 2108207),
-(1267, 'Pedro do Rosário', 10, 2108256),
-(1268, 'Penalva', 10, 2108306),
-(1269, 'Peri Mirim', 10, 2108405),
-(1270, 'Peritoró', 10, 2108454),
-(1271, 'Pindaré-Mirim', 10, 2108504),
-(1272, 'Pinheiro', 10, 2108603),
-(1273, 'Pio XII', 10, 2108702),
-(1274, 'Pirapemas', 10, 2108801),
-(1275, 'Poção de Pedras', 10, 2108900),
-(1276, 'Porto Franco', 10, 2109007),
-(1277, 'Porto Rico do Maranhão', 10, 2109056),
-(1278, 'Presidente Dutra', 10, 2109106),
-(1279, 'Presidente Juscelino', 10, 2109205),
-(1280, 'Presidente Médici', 10, 2109239),
-(1281, 'Presidente Sarney', 10, 2109270),
-(1282, 'Presidente Vargas', 10, 2109304),
-(1283, 'Primeira Cruz', 10, 2109403),
-(1284, 'Raposa', 10, 2109452),
-(1285, 'Riachão', 10, 2109502),
-(1286, 'Ribamar Fiquene', 10, 2109551),
-(1287, 'Rosário', 10, 2109601),
-(1288, 'Sambaíba', 10, 2109700),
-(1289, 'Santa Filomena do Maranhão', 10, 2109759),
-(1290, 'Santa Helena', 10, 2109809),
-(1291, 'Santa Inês', 10, 2109908),
-(1292, 'Santa Luzia', 10, 2110005),
-(1293, 'Santa Luzia do Paruá', 10, 2110039),
-(1294, 'Santa Quitéria do Maranhão', 10, 2110104),
-(1295, 'Santa Rita', 10, 2110203),
-(1296, 'Santana do Maranhão', 10, 2110237),
-(1297, 'Santo Amaro do Maranhão', 10, 2110278),
-(1298, 'Santo Antônio dos Lopes', 10, 2110302),
-(1299, 'São Benedito do Rio Preto', 10, 2110401),
-(1300, 'São Bento', 10, 2110500),
-(1301, 'São Bernardo', 10, 2110609),
-(1302, 'São Domingos do Azeitão', 10, 2110658),
-(1303, 'São Domingos do Maranhão', 10, 2110708),
-(1304, 'São Félix de Balsas', 10, 2110807),
-(1305, 'São Francisco do Brejão', 10, 2110856),
-(1306, 'São Francisco do Maranhão', 10, 2110906),
-(1307, 'São João Batista', 10, 2111003),
-(1308, 'São João do Carú', 10, 2111029),
-(1309, 'São João do Paraíso', 10, 2111052),
-(1310, 'São João do Soter', 10, 2111078),
-(1311, 'São João dos Patos', 10, 2111102),
-(1312, 'São José de Ribamar', 10, 2111201),
-(1313, 'São José dos Basílios', 10, 2111250),
-(1314, 'São Luís', 10, 2111300),
-(1315, 'São Luís Gonzaga do Maranhão', 10, 2111409),
-(1316, 'São Mateus do Maranhão', 10, 2111508),
-(1317, 'São Pedro da Água Branca', 10, 2111532),
-(1318, 'São Pedro dos Crentes', 10, 2111573),
-(1319, 'São Raimundo das Mangabeiras', 10, 2111607),
-(1320, 'São Raimundo do Doca Bezerra', 10, 2111631),
-(1321, 'São Roberto', 10, 2111672),
-(1322, 'São Vicente Ferrer', 10, 2111706),
-(1323, 'Satubinha', 10, 2111722),
-(1324, 'Senador Alexandre Costa', 10, 2111748),
-(1325, 'Senador La Rocque', 10, 2111763),
-(1326, 'Serrano do Maranhão', 10, 2111789),
-(1327, 'Sítio Novo', 10, 2111805),
-(1328, 'Sucupira do Norte', 10, 2111904),
-(1329, 'Sucupira do Riachão', 10, 2111953),
-(1330, 'Tasso Fragoso', 10, 2112001),
-(1331, 'Timbiras', 10, 2112100),
-(1332, 'Timon', 10, 2112209),
-(1333, 'Trizidela do Vale', 10, 2112233),
-(1334, 'Tufilândia', 10, 2112274),
-(1335, 'Tuntum', 10, 2112308),
-(1336, 'Turiaçu', 10, 2112407),
-(1337, 'Turilândia', 10, 2112456),
-(1338, 'Tutóia', 10, 2112506),
-(1339, 'Urbano Santos', 10, 2112605),
-(1340, 'Vargem Grande', 10, 2112704),
-(1341, 'Viana', 10, 2112803),
-(1342, 'Vila Nova dos Martírios', 10, 2112852),
-(1343, 'Vitória do Mearim', 10, 2112902),
-(1344, 'Vitorino Freire', 10, 2113009),
-(1345, 'Zé Doca', 10, 2114007),
-(1346, 'Acorizal', 13, 5100102),
-(1347, 'Água Boa', 13, 5100201),
-(1348, 'Alta Floresta', 13, 5100250),
-(1349, 'Alto Araguaia', 13, 5100300),
-(1350, 'Alto Boa Vista', 13, 5100359),
-(1351, 'Alto Garças', 13, 5100409),
-(1352, 'Alto Paraguai', 13, 5100508),
-(1353, 'Alto Taquari', 13, 5100607),
-(1354, 'Apiacás', 13, 5100805),
-(1355, 'Araguaiana', 13, 5101001),
-(1356, 'Araguainha', 13, 5101209),
-(1357, 'Araputanga', 13, 5101258),
-(1358, 'Arenápolis', 13, 5101308),
-(1359, 'Aripuanã', 13, 5101407),
-(1360, 'Barão de Melgaço', 13, 5101605),
-(1361, 'Barra do Bugres', 13, 5101704),
-(1362, 'Barra do Garças', 13, 5101803),
-(1363, 'Bom Jesus do Araguaia', 13, 5101852),
-(1364, 'Brasnorte', 13, 5101902),
-(1365, 'Cáceres', 13, 5102504),
-(1366, 'Campinápolis', 13, 5102603),
-(1367, 'Campo Novo do Parecis', 13, 5102637),
-(1368, 'Campo Verde', 13, 5102678),
-(1369, 'Campos de Júlio', 13, 5102686),
-(1370, 'Canabrava do Norte', 13, 5102694),
-(1371, 'Canarana', 13, 5102702),
-(1372, 'Carlinda', 13, 5102793),
-(1373, 'Castanheira', 13, 5102850),
-(1374, 'Chapada dos Guimarães', 13, 5103007),
-(1375, 'Cláudia', 13, 5103056),
-(1376, 'Cocalinho', 13, 5103106),
-(1377, 'Colíder', 13, 5103205),
-(1378, 'Colniza', 13, 5103254),
-(1379, 'Comodoro', 13, 5103304),
-(1380, 'Confresa', 13, 5103353),
-(1381, 'Conquista d`Oeste', 13, 5103361),
-(1382, 'Cotriguaçu', 13, 5103379),
-(1383, 'Cuiabá', 13, 5103403),
-(1384, 'Curvelândia', 13, 5103437),
-(1386, 'Denise', 13, 5103452),
-(1387, 'Diamantino', 13, 5103502),
-(1388, 'Dom Aquino', 13, 5103601),
-(1389, 'Feliz Natal', 13, 5103700),
-(1390, 'Figueirópolis d`Oeste', 13, 5103809),
-(1391, 'Gaúcha do Norte', 13, 5103858),
-(1392, 'General Carneiro', 13, 5103908),
-(1393, 'Glória d`Oeste', 13, 5103957),
-(1394, 'Guarantã do Norte', 13, 5104104),
-(1395, 'Guiratinga', 13, 5104203),
-(1396, 'Indiavaí', 13, 5104500),
-(1397, 'Ipiranga do Norte', 13, 5104526),
-(1398, 'Itanhangá', 13, 5104542),
-(1399, 'Itaúba', 13, 5104559),
-(1400, 'Itiquira', 13, 5104609),
-(1401, 'Jaciara', 13, 5104807),
-(1402, 'Jangada', 13, 5104906),
-(1403, 'Jauru', 13, 5105002),
-(1404, 'Juara', 13, 5105101),
-(1405, 'Juína', 13, 5105150),
-(1406, 'Juruena', 13, 5105176),
-(1407, 'Juscimeira', 13, 5105200),
-(1408, 'Lambari d`Oeste', 13, 5105234),
-(1409, 'Lucas do Rio Verde', 13, 5105259),
-(1410, 'Luciára', 13, 5105309),
-(1411, 'Marcelândia', 13, 5105580),
-(1412, 'Matupá', 13, 5105606),
-(1413, 'Mirassol d`Oeste', 13, 5105622),
-(1414, 'Nobres', 13, 5105903),
-(1415, 'Nortelândia', 13, 5106000),
-(1416, 'Nossa Senhora do Livramento', 13, 5106109),
-(1417, 'Nova Bandeirantes', 13, 5106158),
-(1418, 'Nova Brasilândia', 13, 5106208),
-(1419, 'Nova Canaã do Norte', 13, 5106216),
-(1420, 'Nova Guarita', 13, 5108808),
-(1421, 'Nova Lacerda', 13, 5106182),
-(1422, 'Nova Marilândia', 13, 5108857),
-(1423, 'Nova Maringá', 13, 5108907),
-(1424, 'Nova Monte verde', 13, 5108956),
-(1425, 'Nova Mutum', 13, 5106224),
-(1426, 'Nova Olímpia', 13, 5106232),
-(1427, 'Nova Santa Helena', 13, 5106190),
-(1428, 'Nova Ubiratã', 13, 5106240),
-(1429, 'Nova Xavantina', 13, 5106257),
-(1430, 'Novo Horizonte do Norte', 13, 5106273),
-(1431, 'Novo Mundo', 13, 5106265),
-(1432, 'Novo Santo Antônio', 13, 5106315),
-(1433, 'Novo São Joaquim', 13, 5106281),
-(1434, 'Paranaíta', 13, 5106299),
-(1435, 'Paranatinga', 13, 5106307),
-(1436, 'Pedra Preta', 13, 5106372),
-(1437, 'Peixoto de Azevedo', 13, 5106422),
-(1438, 'Planalto da Serra', 13, 5106455),
-(1439, 'Poconé', 13, 5106505),
-(1440, 'Pontal do Araguaia', 13, 5106653),
-(1441, 'Ponte Branca', 13, 5106703),
-(1442, 'Pontes e Lacerda', 13, 5106752),
-(1443, 'Porto Alegre do Norte', 13, 5106778),
-(1444, 'Porto dos Gaúchos', 13, 5106802),
-(1445, 'Porto Esperidião', 13, 5106828),
-(1446, 'Porto Estrela', 13, 5106851),
-(1447, 'Poxoréo', 13, 5107008),
-(1448, 'Primavera do Leste', 13, 5107040),
-(1449, 'Querência', 13, 5107065),
-(1450, 'Reserva do Cabaçal', 13, 5107156),
-(1451, 'Ribeirão Cascalheira', 13, 5107180),
-(1452, 'Ribeirãozinho', 13, 5107198),
-(1453, 'Rio Branco', 13, 5107206),
-(1454, 'Rondolândia', 13, 5107578),
-(1455, 'Rondonópolis', 13, 5107602),
-(1456, 'Rosário Oeste', 13, 5107701),
-(1457, 'Salto do Céu', 13, 5107750),
-(1458, 'Santa Carmem', 13, 5107248),
-(1459, 'Santa Cruz do Xingu', 13, 5107743),
-(1460, 'Santa Rita do Trivelato', 13, 5107768),
-(1461, 'Santa Terezinha', 13, 5107776),
-(1462, 'Santo Afonso', 13, 5107263),
-(1463, 'Santo Antônio do Leste', 13, 5107792),
-(1464, 'Santo Antônio do Leverger', 13, 5107800),
-(1465, 'São Félix do Araguaia', 13, 5107859),
-(1466, 'São José do Povo', 13, 5107297),
-(1467, 'São José do Rio Claro', 13, 5107305),
-(1468, 'São José do Xingu', 13, 5107354),
-(1469, 'São José dos Quatro Marcos', 13, 5107107),
-(1470, 'São Pedro da Cipa', 13, 5107404),
-(1471, 'Sapezal', 13, 5107875),
-(1472, 'Serra Nova Dourada', 13, 5107883),
-(1473, 'Sinop', 13, 5107909),
-(1474, 'Sorriso', 13, 5107925),
-(1475, 'Tabaporã', 13, 5107941),
-(1476, 'Tangará da Serra', 13, 5107958),
-(1477, 'Tapurah', 13, 5108006),
-(1478, 'Terra Nova do Norte', 13, 5108055),
-(1479, 'Tesouro', 13, 5108105),
-(1480, 'Torixoréu', 13, 5108204),
-(1481, 'União do Sul', 13, 5108303),
-(1482, 'Vale de São Domingos', 13, 5108352),
-(1483, 'Várzea Grande', 13, 5108402),
-(1484, 'Vera', 13, 5108501),
-(1485, 'Vila Bela da Santíssima Trindade', 13, 5105507),
-(1486, 'Vila Rica', 13, 5108600),
-(1487, 'Água Clara', 12, 5000203),
-(1488, 'Alcinópolis', 12, 5000252),
-(1489, 'Amambaí', 12, 5000609),
-(1490, 'Anastácio', 12, 5000708),
-(1491, 'Anaurilândia', 12, 5000807),
-(1492, 'Angélica', 12, 5000856),
-(1493, 'Antônio João', 12, 5000906),
-(1494, 'Aparecida do Taboado', 12, 5001003),
-(1495, 'Aquidauana', 12, 5001102),
-(1496, 'Aral Moreira', 12, 5001243),
-(1497, 'Bandeirantes', 12, 5001508),
-(1498, 'Bataguassu', 12, 5001904),
-(1500, 'Bela Vista', 12, 5002100),
-(1501, 'Bodoquena', 12, 5002159),
-(1502, 'Bonito', 12, 5002209),
-(1503, 'Brasilândia', 12, 5002308),
-(1504, 'Caarapó', 12, 5002407),
-(1505, 'Camapuã', 12, 5002605),
-(1506, 'Campo Grande', 12, 5002704),
-(1507, 'Caracol', 12, 5002803),
-(1508, 'Cassilândia', 12, 5002902),
-(1509, 'Chapadão do Sul', 12, 5002951),
-(1510, 'Corguinho', 12, 5003108),
-(1511, 'Coronel Sapucaia', 12, 5003157),
-(1512, 'Corumbá', 12, 5003207),
-(1513, 'Costa Rica', 12, 5003256),
-(1514, 'Coxim', 12, 5003306),
-(1515, 'Deodápolis', 12, 5003454),
-(1516, 'Dois Irmãos do Buriti', 12, 5003488),
-(1517, 'Douradina', 12, 5003504),
-(1518, 'Dourados', 12, 5003702),
-(1519, 'Eldorado', 12, 5003751);
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
-(1520, 'Fátima do Sul', 12, 5003801),
-(1521, 'Figueirão', 12, 5003900),
-(1522, 'Glória de Dourados', 12, 5004007),
-(1523, 'Guia Lopes da Laguna', 12, 5004106),
-(1524, 'Iguatemi', 12, 5004304),
-(1525, 'Inocência', 12, 5004403),
-(1526, 'Itaporã', 12, 5004502),
-(1527, 'Itaquiraí', 12, 5004601),
-(1528, 'Ivinhema', 12, 5004700),
-(1529, 'Japorã', 12, 5004809),
-(1530, 'Jaraguari', 12, 5004908),
-(1531, 'Jardim', 12, 5005004),
-(1532, 'Jateí', 12, 5005103),
-(1533, 'Juti', 12, 5005152),
-(1534, 'Ladário', 12, 5005202),
-(1535, 'Laguna Carapã', 12, 5005251),
-(1536, 'Maracaju', 12, 5005400),
-(1537, 'Miranda', 12, 5005608),
-(1538, 'Mundo Novo', 12, 5005681),
-(1539, 'Naviraí', 12, 5005707),
-(1540, 'Nioaque', 12, 5005806),
-(1541, 'Nova Alvorada do Sul', 12, 5006002),
-(1542, 'Nova Andradina', 12, 5006200),
-(1543, 'Novo Horizonte do Sul', 12, 5006259),
-(1544, 'Paranaíba', 12, 5006309),
-(1545, 'Paranhos', 12, 5006358),
-(1546, 'Pedro Gomes', 12, 5006408),
-(1547, 'Ponta Porã', 12, 5006606),
-(1548, 'Porto Murtinho', 12, 5006903),
-(1549, 'Ribas do Rio Pardo', 12, 5007109),
-(1550, 'Rio Brilhante', 12, 5007208),
-(1551, 'Rio Negro', 12, 5007307),
-(1552, 'Rio Verde de Mato Grosso', 12, 5007406),
-(1553, 'Rochedo', 12, 5007505),
-(1554, 'Santa Rita do Pardo', 12, 5007554),
-(1555, 'São Gabriel do Oeste', 12, 5007695),
-(1556, 'Selvíria', 12, 5007802),
-(1557, 'Sete Quedas', 12, 5007703),
-(1558, 'Sidrolândia', 12, 5007901),
-(1559, 'Sonora', 12, 5007935),
-(1560, 'Tacuru', 12, 5007950),
-(1561, 'Taquarussu', 12, 5007976),
-(1562, 'Terenos', 12, 5008008),
-(1563, 'Três Lagoas', 12, 5008305),
-(1564, 'Vicentina', 12, 5008404),
-(1565, 'Abadia dos Dourados', 11, 3100104),
-(1566, 'Abaeté', 11, 3100203),
-(1567, 'Abre Campo', 11, 3100302),
-(1568, 'Acaiaca', 11, 3100401),
-(1569, 'Açucena', 11, 3100500),
-(1570, 'Água Boa', 11, 3100609),
-(1571, 'Água Comprida', 11, 3100708),
-(1572, 'Aguanil', 11, 3100807),
-(1573, 'Águas Formosas', 11, 3100906),
-(1574, 'Águas Vermelhas', 11, 3101003),
-(1575, 'Aimorés', 11, 3101102),
-(1576, 'Aiuruoca', 11, 3101201),
-(1577, 'Alagoa', 11, 3101300),
-(1578, 'Albertina', 11, 3101409),
-(1579, 'Além Paraíba', 11, 3101508),
-(1580, 'Alfenas', 11, 3101607),
-(1581, 'Alfredo Vasconcelos', 11, 3101631),
-(1582, 'Almenara', 11, 3101706),
-(1583, 'Alpercata', 11, 3101805),
-(1584, 'Alpinópolis', 11, 3101904),
-(1585, 'Alterosa', 11, 3102001),
-(1586, 'Alto Caparaó', 11, 3102050),
-(1587, 'Alto Jequitibá', 11, 3153509),
-(1588, 'Alto Rio Doce', 11, 3102100),
-(1589, 'Alvarenga', 11, 3102209),
-(1590, 'Alvinópolis', 11, 3102308),
-(1591, 'Alvorada de Minas', 11, 3102407),
-(1592, 'Amparo do Serra', 11, 3102506),
-(1593, 'Andradas', 11, 3102605),
-(1594, 'Andrelândia', 11, 3102803),
-(1595, 'Angelândia', 11, 3102852),
-(1596, 'Antônio Carlos', 11, 3102902),
-(1597, 'Antônio Dias', 11, 3103009),
-(1598, 'Antônio Prado de Minas', 11, 3103108),
-(1599, 'Araçaí', 11, 3103207),
-(1600, 'Aracitaba', 11, 3103306),
-(1601, 'Araçuaí', 11, 3103405),
-(1602, 'Araguari', 11, 3103504),
-(1603, 'Arantina', 11, 3103603),
-(1604, 'Araponga', 11, 3103702),
-(1605, 'Araporã', 11, 3103751),
-(1606, 'Arapuá', 11, 3103801),
-(1607, 'Araújos', 11, 3103900),
-(1608, 'Araxá', 11, 3104007),
-(1609, 'Arceburgo', 11, 3104106),
-(1610, 'Arcos', 11, 3104205),
-(1611, 'Areado', 11, 3104304),
-(1612, 'Argirita', 11, 3104403),
-(1613, 'Aricanduva', 11, 3104452),
-(1614, 'Arinos', 11, 3104502),
-(1615, 'Astolfo Dutra', 11, 3104601),
-(1616, 'Ataléia', 11, 3104700),
-(1617, 'Augusto de Lima', 11, 3104809),
-(1618, 'Baependi', 11, 3104908),
-(1619, 'Baldim', 11, 3105004),
-(1620, 'Bambuí', 11, 3105103),
-(1621, 'Bandeira', 11, 3105202),
-(1622, 'Bandeira do Sul', 11, 3105301),
-(1623, 'Barão de Cocais', 11, 3105400),
-(1624, 'Barão de Monte Alto', 11, 3105509),
-(1625, 'Barbacena', 11, 3105608),
-(1626, 'Barra Longa', 11, 3105707),
-(1627, 'Barroso', 11, 3105905),
-(1628, 'Bela Vista de Minas', 11, 3106002),
-(1629, 'Belmiro Braga', 11, 3106101),
-(1630, 'Belo Horizonte', 11, 3106200),
-(1631, 'Belo Oriente', 11, 3106309),
-(1632, 'Belo Vale', 11, 3106408),
-(1633, 'Berilo', 11, 3106507),
-(1634, 'Berizal', 11, 3106655),
-(1635, 'Bertópolis', 11, 3106606),
-(1636, 'Betim', 11, 3106705),
-(1637, 'Bias Fortes', 11, 3106804),
-(1638, 'Bicas', 11, 3106903),
-(1639, 'Biquinhas', 11, 3107000),
-(1640, 'Boa Esperança', 11, 3107109),
-(1641, 'Bocaina de Minas', 11, 3107208),
-(1642, 'Bocaiúva', 11, 3107307),
-(1643, 'Bom Despacho', 11, 3107406),
-(1644, 'Bom Jardim de Minas', 11, 3107505),
-(1645, 'Bom Jesus da Penha', 11, 3107604),
-(1646, 'Bom Jesus do Amparo', 11, 3107703),
-(1647, 'Bom Jesus do Galho', 11, 3107802),
-(1648, 'Bom Repouso', 11, 3107901),
-(1649, 'Bom Sucesso', 11, 3108008),
-(1650, 'Bonfim', 11, 3108107),
-(1651, 'Bonfinópolis de Minas', 11, 3108206),
-(1652, 'Bonito de Minas', 11, 3108255),
-(1653, 'Borda da Mata', 11, 3108305),
-(1654, 'Botelhos', 11, 3108404),
-(1655, 'Botumirim', 11, 3108503),
-(1656, 'Brás Pires', 11, 3108701),
-(1657, 'Brasilândia de Minas', 11, 3108552),
-(1658, 'Brasília de Minas', 11, 3108602),
-(1659, 'Brasópolis', 11, 3108909),
-(1660, 'Braúnas', 11, 3108800),
-(1661, 'Brumadinho', 11, 3109006),
-(1662, 'Bueno Brandão', 11, 3109105),
-(1663, 'Buenópolis', 11, 3109204),
-(1664, 'Bugre', 11, 3109253),
-(1665, 'Buritis', 11, 3109303),
-(1666, 'Buritizeiro', 11, 3109402),
-(1667, 'Cabeceira Grande', 11, 3109451),
-(1668, 'Cabo Verde', 11, 3109501),
-(1669, 'Cachoeira da Prata', 11, 3109600),
-(1670, 'Cachoeira de Minas', 11, 3109709),
-(1671, 'Cachoeira de Pajeú', 11, 3102704),
-(1672, 'Cachoeira Dourada', 11, 3109808),
-(1673, 'Caetanópolis', 11, 3109907),
-(1674, 'Caeté', 11, 3110004),
-(1675, 'Caiana', 11, 3110103),
-(1676, 'Cajuri', 11, 3110202),
-(1677, 'Caldas', 11, 3110301),
-(1678, 'Camacho', 11, 3110400),
-(1679, 'Camanducaia', 11, 3110509),
-(1680, 'Cambuí', 11, 3110608),
-(1681, 'Cambuquira', 11, 3110707),
-(1682, 'Campanário', 11, 3110806),
-(1683, 'Campanha', 11, 3110905),
-(1684, 'Campestre', 11, 3111002),
-(1685, 'Campina Verde', 11, 3111101),
-(1686, 'Campo Azul', 11, 3111150),
-(1687, 'Campo Belo', 11, 3111200),
-(1688, 'Campo do Meio', 11, 3111309),
-(1689, 'Campo Florido', 11, 3111408),
-(1690, 'Campos Altos', 11, 3111507),
-(1691, 'Campos Gerais', 11, 3111606),
-(1692, 'Cana Verde', 11, 3111903),
-(1693, 'Canaã', 11, 3111705),
-(1694, 'Canápolis', 11, 3111804),
-(1695, 'Candeias', 11, 3112000),
-(1696, 'Cantagalo', 11, 3112059),
-(1697, 'Caparaó', 11, 3112109),
-(1698, 'Capela Nova', 11, 3112208),
-(1699, 'Capelinha', 11, 3112307),
-(1700, 'Capetinga', 11, 3112406),
-(1701, 'Capim Branco', 11, 3112505),
-(1702, 'Capinópolis', 11, 3112604),
-(1703, 'Capitão Andrade', 11, 3112653),
-(1704, 'Capitão Enéas', 11, 3112703),
-(1705, 'Capitólio', 11, 3112802),
-(1706, 'Caputira', 11, 3112901),
-(1707, 'Caraí', 11, 3113008),
-(1708, 'Caranaíba', 11, 3113107),
-(1709, 'Carandaí', 11, 3113206),
-(1710, 'Carangola', 11, 3113305),
-(1711, 'Caratinga', 11, 3113404),
-(1712, 'Carbonita', 11, 3113503),
-(1713, 'Careaçu', 11, 3113602),
-(1714, 'Carlos Chagas', 11, 3113701),
-(1715, 'Carmésia', 11, 3113800),
-(1716, 'Carmo da Cachoeira', 11, 3113909),
-(1717, 'Carmo da Mata', 11, 3114006),
-(1718, 'Carmo de Minas', 11, 3114105),
-(1719, 'Carmo do Cajuru', 11, 3114204),
-(1720, 'Carmo do Paranaíba', 11, 3114303),
-(1721, 'Carmo do Rio Claro', 11, 3114402),
-(1722, 'Carmópolis de Minas', 11, 3114501),
-(1723, 'Carneirinho', 11, 3114550),
-(1724, 'Carrancas', 11, 3114600),
-(1725, 'Carvalhópolis', 11, 3114709),
-(1726, 'Carvalhos', 11, 3114808),
-(1727, 'Casa Grande', 11, 3114907),
-(1728, 'Cascalho Rico', 11, 3115003),
-(1729, 'Cássia', 11, 3115102),
-(1730, 'Cataguases', 11, 3115300),
-(1731, 'Catas Altas', 11, 3115359),
-(1732, 'Catas Altas da Noruega', 11, 3115409),
-(1733, 'Catuji', 11, 3115458),
-(1734, 'Catuti', 11, 3115474),
-(1735, 'Caxambu', 11, 3115508),
-(1736, 'Cedro do Abaeté', 11, 3115607),
-(1737, 'Central de Minas', 11, 3115706),
-(1738, 'Centralina', 11, 3115805),
-(1739, 'Chácara', 11, 3115904),
-(1740, 'Chalé', 11, 3116001),
-(1741, 'Chapada do Norte', 11, 3116100),
-(1742, 'Chapada Gaúcha', 11, 3116159),
-(1743, 'Chiador', 11, 3116209),
-(1744, 'Cipotânea', 11, 3116308),
-(1745, 'Claraval', 11, 3116407),
-(1746, 'Claro dos Poções', 11, 3116506),
-(1747, 'Cláudio', 11, 3116605),
-(1748, 'Coimbra', 11, 3116704),
-(1749, 'Coluna', 11, 3116803),
-(1750, 'Comendador Gomes', 11, 3116902),
-(1751, 'Comercinho', 11, 3117009),
-(1752, 'Conceição da Aparecida', 11, 3117108),
-(1753, 'Conceição da Barra de Minas', 11, 3115201),
-(1754, 'Conceição das Alagoas', 11, 3117306),
-(1755, 'Conceição das Pedras', 11, 3117207),
-(1756, 'Conceição de Ipanema', 11, 3117405),
-(1757, 'Conceição do Mato Dentro', 11, 3117504),
-(1758, 'Conceição do Pará', 11, 3117603),
-(1759, 'Conceição do Rio Verde', 11, 3117702),
-(1760, 'Conceição dos Ouros', 11, 3117801),
-(1761, 'Cônego Marinho', 11, 3117836),
-(1762, 'Confins', 11, 3117876),
-(1763, 'Congonhal', 11, 3117900),
-(1764, 'Congonhas', 11, 3118007),
-(1765, 'Congonhas do Norte', 11, 3118106),
-(1766, 'Conquista', 11, 3118205),
-(1767, 'Conselheiro Lafaiete', 11, 3118304),
-(1768, 'Conselheiro Pena', 11, 3118403),
-(1769, 'Consolação', 11, 3118502),
-(1770, 'Contagem', 11, 3118601),
-(1771, 'Coqueiral', 11, 3118700),
-(1772, 'Coração de Jesus', 11, 3118809),
-(1773, 'Cordisburgo', 11, 3118908),
-(1774, 'Cordislândia', 11, 3119005),
-(1775, 'Corinto', 11, 3119104),
-(1776, 'Coroaci', 11, 3119203),
-(1777, 'Coromandel', 11, 3119302),
-(1778, 'Coronel Fabriciano', 11, 3119401),
-(1779, 'Coronel Murta', 11, 3119500),
-(1780, 'Coronel Pacheco', 11, 3119609),
-(1781, 'Coronel Xavier Chaves', 11, 3119708),
-(1782, 'Córrego Danta', 11, 3119807),
-(1783, 'Córrego do Bom Jesus', 11, 3119906),
-(1784, 'Córrego Fundo', 11, 3119955),
-(1785, 'Córrego Novo', 11, 3120003),
-(1786, 'Couto de Magalhães de Minas', 11, 3120102),
-(1787, 'Crisólita', 11, 3120151),
-(1788, 'Cristais', 11, 3120201),
-(1789, 'Cristália', 11, 3120300),
-(1790, 'Cristiano Otoni', 11, 3120409),
-(1791, 'Cristina', 11, 3120508),
-(1792, 'Crucilândia', 11, 3120607),
-(1793, 'Cruzeiro da Fortaleza', 11, 3120706),
-(1794, 'Cruzília', 11, 3120805),
-(1795, 'Cuparaque', 11, 3120839),
-(1796, 'Curral de Dentro', 11, 3120870),
-(1797, 'Curvelo', 11, 3120904),
-(1798, 'Datas', 11, 3121001),
-(1799, 'Delfim Moreira', 11, 3121100),
-(1800, 'Delfinópolis', 11, 3121209),
-(1801, 'Delta', 11, 3121258),
-(1802, 'Descoberto', 11, 3121308),
-(1803, 'Desterro de Entre Rios', 11, 3121407),
-(1804, 'Desterro do Melo', 11, 3121506),
-(1805, 'Diamantina', 11, 3121605),
-(1806, 'Diogo de Vasconcelos', 11, 3121704),
-(1807, 'Dionísio', 11, 3121803),
-(1808, 'Divinésia', 11, 3121902),
-(1809, 'Divino', 11, 3122009),
-(1810, 'Divino das Laranjeiras', 11, 3122108),
-(1811, 'Divinolândia de Minas', 11, 3122207),
-(1812, 'Divinópolis', 11, 3122306),
-(1813, 'Divisa Alegre', 11, 3122355),
-(1814, 'Divisa Nova', 11, 3122405),
-(1815, 'Divisópolis', 11, 3122454),
-(1816, 'Dom Bosco', 11, 3122470),
-(1817, 'Dom Cavati', 11, 3122504),
-(1818, 'Dom Joaquim', 11, 3122603),
-(1819, 'Dom Silvério', 11, 3122702),
-(1820, 'Dom Viçoso', 11, 3122801),
-(1821, 'Dona Eusébia', 11, 3122900),
-(1822, 'Dores de Campos', 11, 3123007),
-(1823, 'Dores de Guanhães', 11, 3123106),
-(1824, 'Dores do Indaiá', 11, 3123205),
-(1825, 'Dores do Turvo', 11, 3123304),
-(1826, 'Doresópolis', 11, 3123403),
-(1827, 'Douradoquara', 11, 3123502),
-(1828, 'Durandé', 11, 3123528),
-(1829, 'Elói Mendes', 11, 3123601),
-(1830, 'Engenheiro Caldas', 11, 3123700),
-(1831, 'Engenheiro Navarro', 11, 3123809),
-(1832, 'Entre Folhas', 11, 3123858),
-(1833, 'Entre Rios de Minas', 11, 3123908),
-(1834, 'Ervália', 11, 3124005),
-(1835, 'Esmeraldas', 11, 3124104),
-(1836, 'Espera Feliz', 11, 3124203),
-(1837, 'Espinosa', 11, 3124302),
-(1838, 'Espírito Santo do Dourado', 11, 3124401),
-(1839, 'Estiva', 11, 3124500),
-(1840, 'Estrela Dalva', 11, 3124609),
-(1841, 'Estrela do Indaiá', 11, 3124708),
-(1842, 'Estrela do Sul', 11, 3124807),
-(1843, 'Eugenópolis', 11, 3124906),
-(1844, 'Ewbank da Câmara', 11, 3125002),
-(1845, 'Extrema', 11, 3125101),
-(1846, 'Fama', 11, 3125200),
-(1847, 'Faria Lemos', 11, 3125309),
-(1848, 'Felício dos Santos', 11, 3125408),
-(1849, 'Felisburgo', 11, 3125606),
-(1850, 'Felixlândia', 11, 3125705),
-(1851, 'Fernandes Tourinho', 11, 3125804),
-(1852, 'Ferros', 11, 3125903),
-(1853, 'Fervedouro', 11, 3125952),
-(1854, 'Florestal', 11, 3126000),
-(1855, 'Formiga', 11, 3126109),
-(1856, 'Formoso', 11, 3126208),
-(1857, 'Fortaleza de Minas', 11, 3126307),
-(1858, 'Fortuna de Minas', 11, 3126406),
-(1859, 'Francisco Badaró', 11, 3126505),
-(1860, 'Francisco Dumont', 11, 3126604),
-(1861, 'Francisco Sá', 11, 3126703),
-(1862, 'Franciscópolis', 11, 3126752),
-(1863, 'Frei Gaspar', 11, 3126802),
-(1864, 'Frei Inocêncio', 11, 3126901),
-(1865, 'Frei Lagonegro', 11, 3126950),
-(1866, 'Fronteira', 11, 3127008),
-(1867, 'Fronteira dos Vales', 11, 3127057),
-(1868, 'Fruta de Leite', 11, 3127073),
-(1869, 'Frutal', 11, 3127107),
-(1870, 'Funilândia', 11, 3127206),
-(1871, 'Galiléia', 11, 3127305),
-(1872, 'Gameleiras', 11, 3127339),
-(1873, 'Glaucilândia', 11, 3127354),
-(1874, 'Goiabeira', 11, 3127370),
-(1875, 'Goianá', 11, 3127388),
-(1876, 'Gonçalves', 11, 3127404),
-(1877, 'Gonzaga', 11, 3127503),
-(1878, 'Gouveia', 11, 3127602),
-(1879, 'Governador Valadares', 11, 3127701),
-(1880, 'Grão Mogol', 11, 3127800),
-(1881, 'Grupiara', 11, 3127909),
-(1882, 'Guanhães', 11, 3128006),
-(1883, 'Guapé', 11, 3128105),
-(1884, 'Guaraciaba', 11, 3128204),
-(1885, 'Guaraciama', 11, 3128253),
-(1886, 'Guaranésia', 11, 3128303),
-(1887, 'Guarani', 11, 3128402),
-(1888, 'Guarará', 11, 3128501),
-(1889, 'Guarda-Mor', 11, 3128600),
-(1890, 'Guaxupé', 11, 3128709),
-(1891, 'Guidoval', 11, 3128808),
-(1892, 'Guimarânia', 11, 3128907),
-(1893, 'Guiricema', 11, 3129004),
-(1894, 'Gurinhatã', 11, 3129103),
-(1895, 'Heliodora', 11, 3129202),
-(1896, 'Iapu', 11, 3129301),
-(1897, 'Ibertioga', 11, 3129400),
-(1898, 'Ibiá', 11, 3129509),
-(1899, 'Ibiaí', 11, 3129608),
-(1900, 'Ibiracatu', 11, 3129657),
-(1901, 'Ibiraci', 11, 3129707),
-(1902, 'Ibirité', 11, 3129806),
-(1903, 'Ibitiúra de Minas', 11, 3129905),
-(1904, 'Ibituruna', 11, 3130002),
-(1905, 'Icaraí de Minas', 11, 3130051),
-(1906, 'Igarapé', 11, 3130101),
-(1907, 'Igaratinga', 11, 3130200),
-(1908, 'Iguatama', 11, 3130309),
-(1909, 'Ijaci', 11, 3130408),
-(1910, 'Ilicínea', 11, 3130507),
-(1911, 'Imbé de Minas', 11, 3130556),
-(1912, 'Inconfidentes', 11, 3130606),
-(1913, 'Indaiabira', 11, 3130655),
-(1914, 'Indianópolis', 11, 3130705),
-(1915, 'Ingaí', 11, 3130804),
-(1916, 'Inhapim', 11, 3130903),
-(1917, 'Inhaúma', 11, 3131000),
-(1918, 'Inimutaba', 11, 3131109),
-(1919, 'Ipaba', 11, 3131158),
-(1920, 'Ipanema', 11, 3131208),
-(1921, 'Ipatinga', 11, 3131307),
-(1922, 'Ipiaçu', 11, 3131406),
-(1923, 'Ipuiúna', 11, 3131505),
-(1924, 'Iraí de Minas', 11, 3131604),
-(1925, 'Itabira', 11, 3131703),
-(1927, 'Itabirito', 11, 3131901),
-(1928, 'Itacambira', 11, 3132008),
-(1929, 'Itacarambi', 11, 3132107),
-(1930, 'Itaguara', 11, 3132206),
-(1931, 'Itaipé', 11, 3132305),
-(1932, 'Itajubá', 11, 3132404),
-(1933, 'Itamarandiba', 11, 3132503),
-(1934, 'Itamarati de Minas', 11, 3132602),
-(1935, 'Itambacuri', 11, 3132701),
-(1936, 'Itambé do Mato Dentro', 11, 3132800),
-(1937, 'Itamogi', 11, 3132909),
-(1938, 'Itamonte', 11, 3133006),
-(1939, 'Itanhandu', 11, 3133105),
-(1940, 'Itanhomi', 11, 3133204),
-(1941, 'Itaobim', 11, 3133303),
-(1942, 'Itapagipe', 11, 3133402),
-(1943, 'Itapecerica', 11, 3133501),
-(1944, 'Itapeva', 11, 3133600),
-(1945, 'Itatiaiuçu', 11, 3133709),
-(1946, 'Itaú de Minas', 11, 3133758),
-(1947, 'Itaúna', 11, 3133808),
-(1948, 'Itaverava', 11, 3133907),
-(1949, 'Itinga', 11, 3134004),
-(1950, 'Itueta', 11, 3134103),
-(1951, 'Ituiutaba', 11, 3134202),
-(1952, 'Itumirim', 11, 3134301),
-(1953, 'Iturama', 11, 3134400),
-(1954, 'Itutinga', 11, 3134509),
-(1955, 'Jaboticatubas', 11, 3134608),
-(1956, 'Jacinto', 11, 3134707),
-(1957, 'Jacuí', 11, 3134806),
-(1958, 'Jacutinga', 11, 3134905),
-(1959, 'Jaguaraçu', 11, 3135001),
-(1960, 'Jaíba', 11, 3135050),
-(1961, 'Jampruca', 11, 3135076),
-(1962, 'Janaúba', 11, 3135100),
-(1963, 'Januária', 11, 3135209),
-(1964, 'Japaraíba', 11, 3135308),
-(1965, 'Japonvar', 11, 3135357),
-(1966, 'Jeceaba', 11, 3135407),
-(1967, 'Jenipapo de Minas', 11, 3135456),
-(1968, 'Jequeri', 11, 3135506),
-(1969, 'Jequitaí', 11, 3135605),
-(1970, 'Jequitibá', 11, 3135704),
-(1971, 'Jequitinhonha', 11, 3135803),
-(1972, 'Jesuânia', 11, 3135902),
-(1973, 'Joaíma', 11, 3136009),
-(1974, 'Joanésia', 11, 3136108),
-(1975, 'João Monlevade', 11, 3136207),
-(1976, 'João Pinheiro', 11, 3136306),
-(1977, 'Joaquim Felício', 11, 3136405),
-(1978, 'Jordânia', 11, 3136504),
-(1979, 'José Gonçalves de Minas', 11, 3136520),
-(1980, 'José Raydan', 11, 3136553),
-(1981, 'Josenópolis', 11, 3136579),
-(1982, 'Juatuba', 11, 3136652),
-(1983, 'Juiz de Fora', 11, 3136702),
-(1984, 'Juramento', 11, 3136801),
-(1985, 'Juruaia', 11, 3136900),
-(1986, 'Juvenília', 11, 3136959),
-(1987, 'Ladainha', 11, 3137007),
-(1988, 'Lagamar', 11, 3137106),
-(1989, 'Lagoa da Prata', 11, 3137205),
-(1990, 'Lagoa dos Patos', 11, 3137304),
-(1991, 'Lagoa Dourada', 11, 3137403),
-(1992, 'Lagoa Formosa', 11, 3137502),
-(1993, 'Lagoa Grande', 11, 3137536),
-(1994, 'Lagoa Santa', 11, 3137601),
-(1995, 'Lajinha', 11, 3137700),
-(1996, 'Lambari', 11, 3137809),
-(1997, 'Lamim', 11, 3137908),
-(1998, 'Laranjal', 11, 3138005),
-(1999, 'Lassance', 11, 3138104),
-(2000, 'Lavras', 11, 3138203),
-(2001, 'Leandro Ferreira', 11, 3138302),
-(2002, 'Leme do Prado', 11, 3138351),
-(2003, 'Leopoldina', 11, 3138401),
-(2004, 'Liberdade', 11, 3138500),
-(2005, 'Lima Duarte', 11, 3138609),
-(2006, 'Limeira do Oeste', 11, 3138625),
-(2007, 'Lontra', 11, 3138658),
-(2008, 'Luisburgo', 11, 3138674),
-(2009, 'Luislândia', 11, 3138682),
-(2010, 'Luminárias', 11, 3138708),
-(2011, 'Luz', 11, 3138807),
-(2012, 'Machacalis', 11, 3138906),
-(2013, 'Machado', 11, 3139003),
-(2014, 'Madre de Deus de Minas', 11, 3139102),
-(2015, 'Malacacheta', 11, 3139201),
-(2016, 'Mamonas', 11, 3139250),
-(2017, 'Manga', 11, 3139300),
-(2018, 'Manhuaçu', 11, 3139409),
-(2019, 'Manhumirim', 11, 3139508),
-(2020, 'Mantena', 11, 3139607),
-(2021, 'Mar de Espanha', 11, 3139805),
-(2022, 'Maravilhas', 11, 3139706),
-(2023, 'Maria da Fé', 11, 3139904),
-(2024, 'Mariana', 11, 3140001),
-(2025, 'Marilac', 11, 3140100),
-(2026, 'Mário Campos', 11, 3140159),
-(2027, 'Maripá de Minas', 11, 3140209),
-(2028, 'Marliéria', 11, 3140308),
-(2029, 'Marmelópolis', 11, 3140407),
-(2030, 'Martinho Campos', 11, 3140506),
-(2031, 'Martins Soares', 11, 3140530),
-(2032, 'Mata Verde', 11, 3140555),
-(2033, 'Materlândia', 11, 3140605),
-(2034, 'Mateus Leme', 11, 3140704),
-(2035, 'Mathias Lobato', 11, 3171501),
-(2036, 'Matias Barbosa', 11, 3140803),
-(2037, 'Matias Cardoso', 11, 3140852),
-(2038, 'Matipó', 11, 3140902),
-(2039, 'Mato Verde', 11, 3141009),
-(2040, 'Matozinhos', 11, 3141108),
-(2041, 'Matutina', 11, 3141207),
-(2042, 'Medeiros', 11, 3141306),
-(2043, 'Medina', 11, 3141405),
-(2044, 'Mendes Pimentel', 11, 3141504),
-(2045, 'Mercês', 11, 3141603),
-(2046, 'Mesquita', 11, 3141702),
-(2047, 'Minas Novas', 11, 3141801),
-(2048, 'Minduri', 11, 3141900),
-(2049, 'Mirabela', 11, 3142007),
-(2050, 'Miradouro', 11, 3142106),
-(2051, 'Miraí', 11, 3142205),
-(2052, 'Miravânia', 11, 3142254),
-(2053, 'Moeda', 11, 3142304),
-(2054, 'Moema', 11, 3142403),
-(2055, 'Monjolos', 11, 3142502),
-(2056, 'Monsenhor Paulo', 11, 3142601),
-(2057, 'Montalvânia', 11, 3142700),
-(2058, 'Monte Alegre de Minas', 11, 3142809),
-(2059, 'Monte Azul', 11, 3142908),
-(2060, 'Monte Belo', 11, 3143005),
-(2061, 'Monte Carmelo', 11, 3143104),
-(2062, 'Monte Formoso', 11, 3143153),
-(2063, 'Monte Santo de Minas', 11, 3143203),
-(2064, 'Monte Sião', 11, 3143401),
-(2065, 'Montes Claros', 11, 3143302),
-(2066, 'Montezuma', 11, 3143450),
-(2067, 'Morada Nova de Minas', 11, 3143500),
-(2068, 'Morro da Garça', 11, 3143609),
-(2069, 'Morro do Pilar', 11, 3143708),
-(2070, 'Munhoz', 11, 3143807),
-(2071, 'Muriaé', 11, 3143906),
-(2072, 'Mutum', 11, 3144003),
-(2073, 'Muzambinho', 11, 3144102),
-(2074, 'Nacip Raydan', 11, 3144201),
-(2075, 'Nanuque', 11, 3144300),
-(2076, 'Naque', 11, 3144359),
-(2077, 'Natalândia', 11, 3144375),
-(2078, 'Natércia', 11, 3144409),
-(2079, 'Nazareno', 11, 3144508),
-(2080, 'Nepomuceno', 11, 3144607),
-(2081, 'Ninheira', 11, 3144656),
-(2082, 'Nova Belém', 11, 3144672),
-(2083, 'Nova Era', 11, 3144706),
-(2084, 'Nova Lima', 11, 3144805),
-(2085, 'Nova Módica', 11, 3144904),
-(2086, 'Nova Ponte', 11, 3145000),
-(2087, 'Nova Porteirinha', 11, 3145059),
-(2088, 'Nova Resende', 11, 3145109),
-(2089, 'Nova Serrana', 11, 3145208),
-(2090, 'Nova União', 11, 3136603),
-(2091, 'Novo Cruzeiro', 11, 3145307),
-(2092, 'Novo Oriente de Minas', 11, 3145356),
-(2093, 'Novorizonte', 11, 3145372),
-(2094, 'Olaria', 11, 3145406),
-(2095, 'Olhos-d`Água', 11, 3145455),
-(2096, 'Olímpio Noronha', 11, 3145505),
-(2097, 'Oliveira', 11, 3145604),
-(2098, 'Oliveira Fortes', 11, 3145703),
-(2099, 'Onça de Pitangui', 11, 3145802),
-(2100, 'Oratórios', 11, 3145851),
-(2101, 'Orizânia', 11, 3145877),
-(2102, 'Ouro Branco', 11, 3145901),
-(2103, 'Ouro Fino', 11, 3146008),
-(2104, 'Ouro Preto', 11, 3146107),
-(2105, 'Ouro Verde de Minas', 11, 3146206),
-(2106, 'Padre Carvalho', 11, 3146255),
-(2107, 'Padre Paraíso', 11, 3146305),
-(2108, 'Pai Pedro', 11, 3146552),
-(2109, 'Paineiras', 11, 3146404),
-(2110, 'Pains', 11, 3146503),
-(2111, 'Paiva', 11, 3146602),
-(2112, 'Palma', 11, 3146701),
-(2113, 'Palmópolis', 11, 3146750),
-(2114, 'Papagaios', 11, 3146909),
-(2115, 'Pará de Minas', 11, 3147105),
-(2116, 'Paracatu', 11, 3147006),
-(2117, 'Paraguaçu', 11, 3147204),
-(2118, 'Paraisópolis', 11, 3147303),
-(2119, 'Paraopeba', 11, 3147402),
-(2120, 'Passa Quatro', 11, 3147600),
-(2121, 'Passa Tempo', 11, 3147709),
-(2122, 'Passabém', 11, 3147501),
-(2123, 'Passa-Vinte', 11, 3147808),
-(2124, 'Passos', 11, 3147907),
-(2125, 'Patis', 11, 3147956),
-(2126, 'Patos de Minas', 11, 3148004),
-(2127, 'Patrocínio', 11, 3148103),
-(2128, 'Patrocínio do Muriaé', 11, 3148202),
-(2129, 'Paula Cândido', 11, 3148301),
-(2130, 'Paulistas', 11, 3148400),
-(2131, 'Pavão', 11, 3148509),
-(2132, 'Peçanha', 11, 3148608),
-(2133, 'Pedra Azul', 11, 3148707),
-(2134, 'Pedra Bonita', 11, 3148756),
-(2135, 'Pedra do Anta', 11, 3148806),
-(2136, 'Pedra do Indaiá', 11, 3148905),
-(2137, 'Pedra Dourada', 11, 3149002),
-(2138, 'Pedralva', 11, 3149101),
-(2139, 'Pedras de Maria da Cruz', 11, 3149150),
-(2140, 'Pedrinópolis', 11, 3149200),
-(2141, 'Pedro Leopoldo', 11, 3149309),
-(2142, 'Pedro Teixeira', 11, 3149408),
-(2143, 'Pequeri', 11, 3149507),
-(2144, 'Pequi', 11, 3149606),
-(2145, 'Perdigão', 11, 3149705),
-(2146, 'Perdizes', 11, 3149804),
-(2147, 'Perdões', 11, 3149903),
-(2148, 'Periquito', 11, 3149952),
-(2149, 'Pescador', 11, 3150000),
-(2150, 'Piau', 11, 3150109),
-(2151, 'Piedade de Caratinga', 11, 3150158),
-(2152, 'Piedade de Ponte Nova', 11, 3150208),
-(2153, 'Piedade do Rio Grande', 11, 3150307),
-(2154, 'Piedade dos Gerais', 11, 3150406),
-(2155, 'Pimenta', 11, 3150505),
-(2156, 'Pingo-d`Água', 11, 3150539),
-(2157, 'Pintópolis', 11, 3150570),
-(2158, 'Piracema', 11, 3150604),
-(2159, 'Pirajuba', 11, 3150703),
-(2160, 'Piranga', 11, 3150802),
-(2161, 'Piranguçu', 11, 3150901),
-(2162, 'Piranguinho', 11, 3151008),
-(2163, 'Pirapetinga', 11, 3151107),
-(2164, 'Pirapora', 11, 3151206),
-(2165, 'Piraúba', 11, 3151305),
-(2166, 'Pitangui', 11, 3151404),
-(2167, 'Piumhi', 11, 3151503),
-(2168, 'Planura', 11, 3151602),
-(2169, 'Poço Fundo', 11, 3151701),
-(2170, 'Poços de Caldas', 11, 3151800),
-(2171, 'Pocrane', 11, 3151909),
-(2172, 'Pompéu', 11, 3152006),
-(2173, 'Ponte Nova', 11, 3152105),
-(2174, 'Ponto Chique', 11, 3152131),
-(2175, 'Ponto dos Volantes', 11, 3152170),
-(2176, 'Porteirinha', 11, 3152204),
-(2177, 'Porto Firme', 11, 3152303),
-(2178, 'Poté', 11, 3152402),
-(2179, 'Pouso Alegre', 11, 3152501),
-(2180, 'Pouso Alto', 11, 3152600),
-(2181, 'Prados', 11, 3152709),
-(2182, 'Prata', 11, 3152808),
-(2183, 'Pratápolis', 11, 3152907),
-(2184, 'Pratinha', 11, 3153004),
-(2185, 'Presidente Bernardes', 11, 3153103),
-(2186, 'Presidente Juscelino', 11, 3153202),
-(2187, 'Presidente Kubitschek', 11, 3153301),
-(2188, 'Presidente Olegário', 11, 3153400),
-(2189, 'Prudente de Morais', 11, 3153608),
-(2190, 'Quartel Geral', 11, 3153707),
-(2191, 'Queluzito', 11, 3153806),
-(2192, 'Raposos', 11, 3153905),
-(2193, 'Raul Soares', 11, 3154002),
-(2194, 'Recreio', 11, 3154101),
-(2195, 'Reduto', 11, 3154150),
-(2196, 'Resende Costa', 11, 3154200),
-(2197, 'Resplendor', 11, 3154309),
-(2198, 'Ressaquinha', 11, 3154408),
-(2199, 'Riachinho', 11, 3154457),
-(2200, 'Riacho dos Machados', 11, 3154507),
-(2201, 'Ribeirão das Neves', 11, 3154606),
-(2202, 'Ribeirão Vermelho', 11, 3154705),
-(2203, 'Rio Acima', 11, 3154804),
-(2204, 'Rio Casca', 11, 3154903),
-(2205, 'Rio do Prado', 11, 3155108),
-(2206, 'Rio Doce', 11, 3155009),
-(2207, 'Rio Espera', 11, 3155207),
-(2208, 'Rio Manso', 11, 3155306),
-(2209, 'Rio Novo', 11, 3155405),
-(2210, 'Rio Paranaíba', 11, 3155504),
-(2211, 'Rio Pardo de Minas', 11, 3155603),
-(2212, 'Rio Piracicaba', 11, 3155702),
-(2213, 'Rio Pomba', 11, 3155801),
-(2214, 'Rio Preto', 11, 3155900),
-(2215, 'Rio Vermelho', 11, 3156007),
-(2216, 'Ritápolis', 11, 3156106),
-(2217, 'Rochedo de Minas', 11, 3156205),
-(2218, 'Rodeiro', 11, 3156304),
-(2219, 'Romaria', 11, 3156403),
-(2220, 'Rosário da Limeira', 11, 3156452),
-(2221, 'Rubelita', 11, 3156502),
-(2222, 'Rubim', 11, 3156601),
-(2223, 'Sabará', 11, 3156700),
-(2224, 'Sabinópolis', 11, 3156809),
-(2225, 'Sacramento', 11, 3156908),
-(2226, 'Salinas', 11, 3157005),
-(2227, 'Salto da Divisa', 11, 3157104),
-(2228, 'Santa Bárbara', 11, 3157203),
-(2229, 'Santa Bárbara do Leste', 11, 3157252),
-(2230, 'Santa Bárbara do Monte Verde', 11, 3157278),
-(2231, 'Santa Bárbara do Tugúrio', 11, 3157302),
-(2232, 'Santa Cruz de Minas', 11, 3157336),
-(2233, 'Santa Cruz de Salinas', 11, 3157377),
-(2234, 'Santa Cruz do Escalvado', 11, 3157401),
-(2235, 'Santa Efigênia de Minas', 11, 3157500),
-(2236, 'Santa Fé de Minas', 11, 3157609),
-(2237, 'Santa Helena de Minas', 11, 3157658),
-(2238, 'Santa Juliana', 11, 3157708),
-(2239, 'Santa Luzia', 11, 3157807),
-(2240, 'Santa Margarida', 11, 3157906),
-(2241, 'Santa Maria de Itabira', 11, 3158003),
-(2242, 'Santa Maria do Salto', 11, 3158102),
-(2243, 'Santa Maria do Suaçuí', 11, 3158201),
-(2244, 'Santa Rita de Caldas', 11, 3159209),
-(2245, 'Santa Rita de Ibitipoca', 11, 3159407),
-(2246, 'Santa Rita de Jacutinga', 11, 3159308),
-(2247, 'Santa Rita de Minas', 11, 3159357),
-(2248, 'Santa Rita do Itueto', 11, 3159506),
-(2249, 'Santa Rita do Sapucaí', 11, 3159605),
-(2250, 'Santa Rosa da Serra', 11, 3159704),
-(2251, 'Santa Vitória', 11, 3159803),
-(2252, 'Santana da Vargem', 11, 3158300),
-(2253, 'Santana de Cataguases', 11, 3158409),
-(2254, 'Santana de Pirapama', 11, 3158508),
-(2255, 'Santana do Deserto', 11, 3158607),
-(2256, 'Santana do Garambéu', 11, 3158706),
-(2257, 'Santana do Jacaré', 11, 3158805),
-(2258, 'Santana do Manhuaçu', 11, 3158904),
-(2259, 'Santana do Paraíso', 11, 3158953),
-(2260, 'Santana do Riacho', 11, 3159001),
-(2261, 'Santana dos Montes', 11, 3159100),
-(2262, 'Santo Antônio do Amparo', 11, 3159902),
-(2263, 'Santo Antônio do Aventureiro', 11, 3160009),
-(2264, 'Santo Antônio do Grama', 11, 3160108),
-(2265, 'Santo Antônio do Itambé', 11, 3160207),
-(2266, 'Santo Antônio do Jacinto', 11, 3160306),
-(2267, 'Santo Antônio do Monte', 11, 3160405),
-(2268, 'Santo Antônio do Retiro', 11, 3160454),
-(2269, 'Santo Antônio do Rio Abaixo', 11, 3160504),
-(2270, 'Santo Hipólito', 11, 3160603),
-(2271, 'Santos Dumont', 11, 3160702),
-(2272, 'São Bento Abade', 11, 3160801),
-(2273, 'São Brás do Suaçuí', 11, 3160900),
-(2274, 'São Domingos das Dores', 11, 3160959),
-(2275, 'São Domingos do Prata', 11, 3161007),
-(2276, 'São Félix de Minas', 11, 3161056),
-(2277, 'São Francisco', 11, 3161106),
-(2278, 'São Francisco de Paula', 11, 3161205),
-(2279, 'São Francisco de Sales', 11, 3161304),
-(2280, 'São Francisco do Glória', 11, 3161403),
-(2281, 'São Geraldo', 11, 3161502),
-(2282, 'São Geraldo da Piedade', 11, 3161601),
-(2283, 'São Geraldo do Baixio', 11, 3161650),
-(2284, 'São Gonçalo do Abaeté', 11, 3161700),
-(2285, 'São Gonçalo do Pará', 11, 3161809),
-(2286, 'São Gonçalo do Rio Abaixo', 11, 3161908),
-(2287, 'São Gonçalo do Rio Preto', 11, 3125507),
-(2288, 'São Gonçalo do Sapucaí', 11, 3162005),
-(2289, 'São Gotardo', 11, 3162104),
-(2290, 'São João Batista do Glória', 11, 3162203),
-(2291, 'São João da Lagoa', 11, 3162252),
-(2292, 'São João da Mata', 11, 3162302),
-(2293, 'São João da Ponte', 11, 3162401),
-(2294, 'São João das Missões', 11, 3162450),
-(2295, 'São João del Rei', 11, 3162500),
-(2296, 'São João do Manhuaçu', 11, 3162559),
-(2297, 'São João do Manteninha', 11, 3162575),
-(2298, 'São João do Oriente', 11, 3162609),
-(2299, 'São João do Pacuí', 11, 3162658),
-(2300, 'São João do Paraíso', 11, 3162708),
-(2301, 'São João Evangelista', 11, 3162807),
-(2302, 'São João Nepomuceno', 11, 3162906),
-(2303, 'São Joaquim de Bicas', 11, 3162922),
-(2304, 'São José da Barra', 11, 3162948),
-(2305, 'São José da Lapa', 11, 3162955),
-(2306, 'São José da Safira', 11, 3163003),
-(2307, 'São José da Varginha', 11, 3163102),
-(2308, 'São José do Alegre', 11, 3163201),
-(2309, 'São José do Divino', 11, 3163300),
-(2310, 'São José do Goiabal', 11, 3163409),
-(2311, 'São José do Jacuri', 11, 3163508),
-(2312, 'São José do Mantimento', 11, 3163607),
-(2313, 'São Lourenço', 11, 3163706),
-(2314, 'São Miguel do Anta', 11, 3163805),
-(2315, 'São Pedro da União', 11, 3163904),
-(2316, 'São Pedro do Suaçuí', 11, 3164100),
-(2317, 'São Pedro dos Ferros', 11, 3164001),
-(2318, 'São Romão', 11, 3164209),
-(2319, 'São Roque de Minas', 11, 3164308),
-(2320, 'São Sebastião da Bela Vista', 11, 3164407),
-(2321, 'São Sebastião da Vargem Alegre', 11, 3164431),
-(2322, 'São Sebastião do Anta', 11, 3164472),
-(2323, 'São Sebastião do Maranhão', 11, 3164506),
-(2324, 'São Sebastião do Oeste', 11, 3164605),
-(2325, 'São Sebastião do Paraíso', 11, 3164704),
-(2326, 'São Sebastião do Rio Preto', 11, 3164803),
-(2327, 'São Sebastião do Rio Verde', 11, 3164902),
-(2328, 'São Thomé das Letras', 11, 3165206),
-(2329, 'São Tiago', 11, 3165008),
-(2330, 'São Tomás de Aquino', 11, 3165107),
-(2331, 'São Vicente de Minas', 11, 3165305),
-(2332, 'Sapucaí-Mirim', 11, 3165404),
-(2333, 'Sardoá', 11, 3165503),
-(2334, 'Sarzedo', 11, 3165537),
-(2335, 'Sem-Peixe', 11, 3165560),
-(2336, 'Senador Amaral', 11, 3165578),
-(2337, 'Senador Cortes', 11, 3165602),
-(2338, 'Senador Firmino', 11, 3165701),
-(2339, 'Senador José Bento', 11, 3165800),
-(2340, 'Senador Modestino Gonçalves', 11, 3165909),
-(2341, 'Senhora de Oliveira', 11, 3166006),
-(2342, 'Senhora do Porto', 11, 3166105),
-(2343, 'Senhora dos Remédios', 11, 3166204),
-(2344, 'Sericita', 11, 3166303),
-(2345, 'Seritinga', 11, 3166402),
-(2346, 'Serra Azul de Minas', 11, 3166501),
-(2347, 'Serra da Saudade', 11, 3166600),
-(2348, 'Serra do Salitre', 11, 3166808),
-(2349, 'Serra dos Aimorés', 11, 3166709),
-(2350, 'Serrania', 11, 3166907),
-(2351, 'Serranópolis de Minas', 11, 3166956),
-(2352, 'Serranos', 11, 3167004),
-(2353, 'Serro', 11, 3167103),
-(2354, 'Sete Lagoas', 11, 3167202),
-(2355, 'Setubinha', 11, 3165552),
-(2356, 'Silveirânia', 11, 3167301),
-(2357, 'Silvianópolis', 11, 3167400),
-(2358, 'Simão Pereira', 11, 3167509),
-(2359, 'Simonésia', 11, 3167608),
-(2360, 'Sobrália', 11, 3167707),
-(2361, 'Soledade de Minas', 11, 3167806),
-(2362, 'Tabuleiro', 11, 3167905),
-(2363, 'Taiobeiras', 11, 3168002),
-(2364, 'Taparuba', 11, 3168051),
-(2365, 'Tapira', 11, 3168101),
-(2366, 'Tapiraí', 11, 3168200),
-(2367, 'Taquaraçu de Minas', 11, 3168309),
-(2368, 'Tarumirim', 11, 3168408),
-(2369, 'Teixeiras', 11, 3168507),
-(2370, 'Teófilo Otoni', 11, 3168606),
-(2371, 'Timóteo', 11, 3168705),
-(2372, 'Tiradentes', 11, 3168804),
-(2373, 'Tiros', 11, 3168903),
-(2374, 'Tocantins', 11, 3169000),
-(2375, 'Tocos do Moji', 11, 3169059),
-(2376, 'Toledo', 11, 3169109),
-(2377, 'Tombos', 11, 3169208),
-(2378, 'Três Corações', 11, 3169307),
-(2379, 'Três Marias', 11, 3169356),
-(2380, 'Três Pontas', 11, 3169406),
-(2381, 'Tumiritinga', 11, 3169505),
-(2382, 'Tupaciguara', 11, 3169604),
-(2383, 'Turmalina', 11, 3169703),
-(2384, 'Turvolândia', 11, 3169802),
-(2385, 'Ubá', 11, 3169901),
-(2386, 'Ubaí', 11, 3170008),
-(2387, 'Ubaporanga', 11, 3170057),
-(2388, 'Uberaba', 11, 3170107),
-(2389, 'Uberlândia', 11, 3170206),
-(2390, 'Umburatiba', 11, 3170305),
-(2391, 'Unaí', 11, 3170404),
-(2392, 'União de Minas', 11, 3170438),
-(2393, 'Uruana de Minas', 11, 3170479),
-(2394, 'Urucânia', 11, 3170503),
-(2395, 'Urucuia', 11, 3170529),
-(2396, 'Vargem Alegre', 11, 3170578),
-(2397, 'Vargem Bonita', 11, 3170602),
-(2398, 'Vargem Grande do Rio Pardo', 11, 3170651),
-(2399, 'Varginha', 11, 3170701),
-(2400, 'Varjão de Minas', 11, 3170750),
-(2401, 'Várzea da Palma', 11, 3170800),
-(2402, 'Varzelândia', 11, 3170909),
-(2403, 'Vazante', 11, 3171006),
-(2404, 'Verdelândia', 11, 3171030),
-(2405, 'Veredinha', 11, 3171071),
-(2406, 'Veríssimo', 11, 3171105),
-(2407, 'Vermelho Novo', 11, 3171154),
-(2408, 'Vespasiano', 11, 3171204),
-(2409, 'Viçosa', 11, 3171303),
-(2410, 'Vieiras', 11, 3171402),
-(2411, 'Virgem da Lapa', 11, 3171600),
-(2412, 'Virgínia', 11, 3171709),
-(2413, 'Virginópolis', 11, 3171808),
-(2414, 'Virgolândia', 11, 3171907),
-(2415, 'Visconde do Rio Branco', 11, 3172004),
-(2416, 'Volta Grande', 11, 3172103),
-(2417, 'Wenceslau Braz', 11, 3172202),
-(2418, 'Abaetetuba', 14, 1500107),
-(2419, 'Abel Figueiredo', 14, 1500131),
-(2420, 'Acará', 14, 1500206),
-(2421, 'Afuá', 14, 1500305),
-(2422, 'Água Azul do Norte', 14, 1500347),
-(2423, 'Alenquer', 14, 1500404),
-(2424, 'Almeirim', 14, 1500503),
-(2425, 'Altamira', 14, 1500602),
-(2426, 'Anajás', 14, 1500701),
-(2427, 'Ananindeua', 14, 1500800),
-(2428, 'Anapu', 14, 1500859),
-(2429, 'Augusto Corrêa', 14, 1500909),
-(2430, 'Aurora do Pará', 14, 1500958),
-(2431, 'Aveiro', 14, 1501006),
-(2432, 'Bagre', 14, 1501105),
-(2433, 'Baião', 14, 1501204),
-(2434, 'Bannach', 14, 1501253),
-(2435, 'Barcarena', 14, 1501303),
-(2436, 'Belém', 14, 1501402),
-(2437, 'Belterra', 14, 1501451),
-(2438, 'Benevides', 14, 1501501),
-(2439, 'Bom Jesus do Tocantins', 14, 1501576),
-(2440, 'Bonito', 14, 1501600),
-(2441, 'Bragança', 14, 1501709),
-(2442, 'Brasil Novo', 14, 1501725),
-(2443, 'Brejo Grande do Araguaia', 14, 1501758),
-(2444, 'Breu Branco', 14, 1501782),
-(2445, 'Breves', 14, 1501808),
-(2446, 'Bujaru', 14, 1501907),
-(2447, 'Cachoeira do Arari', 14, 1502004),
-(2448, 'Cachoeira do Piriá', 14, 1501956),
-(2449, 'Cametá', 14, 1502103),
-(2450, 'Canaã dos Carajás', 14, 1502152),
-(2451, 'Capanema', 14, 1502202),
-(2452, 'Capitão Poço', 14, 1502301),
-(2453, 'Castanhal', 14, 1502400),
-(2454, 'Chaves', 14, 1502509),
-(2455, 'Colares', 14, 1502608),
-(2456, 'Conceição do Araguaia', 14, 1502707),
-(2457, 'Concórdia do Pará', 14, 1502756),
-(2458, 'Cumaru do Norte', 14, 1502764),
-(2459, 'Curionópolis', 14, 1502772),
-(2460, 'Curralinho', 14, 1502806),
-(2461, 'Curuá', 14, 1502855),
-(2462, 'Curuçá', 14, 1502905),
-(2463, 'Dom Eliseu', 14, 1502939),
-(2464, 'Eldorado dos Carajás', 14, 1502954),
-(2465, 'Faro', 14, 1503002),
-(2466, 'Floresta do Araguaia', 14, 1503044),
-(2467, 'Garrafão do Norte', 14, 1503077),
-(2468, 'Goianésia do Pará', 14, 1503093),
-(2469, 'Gurupá', 14, 1503101),
-(2470, 'Igarapé-Açu', 14, 1503200),
-(2471, 'Igarapé-Miri', 14, 1503309),
-(2472, 'Inhangapi', 14, 1503408),
-(2473, 'Ipixuna do Pará', 14, 1503457),
-(2474, 'Irituia', 14, 1503507),
-(2475, 'Itaituba', 14, 1503606),
-(2476, 'Itupiranga', 14, 1503705),
-(2477, 'Jacareacanga', 14, 1503754),
-(2478, 'Jacundá', 14, 1503804),
-(2479, 'Juruti', 14, 1503903),
-(2480, 'Limoeiro do Ajuru', 14, 1504000),
-(2481, 'Mãe do Rio', 14, 1504059),
-(2482, 'Magalhães Barata', 14, 1504109),
-(2483, 'Marabá', 14, 1504208),
-(2484, 'Maracanã', 14, 1504307),
-(2485, 'Marapanim', 14, 1504406),
-(2486, 'Marituba', 14, 1504422),
-(2487, 'Medicilândia', 14, 1504455),
-(2488, 'Melgaço', 14, 1504505),
-(2489, 'Mocajuba', 14, 1504604),
-(2490, 'Moju', 14, 1504703),
-(2491, 'Monte Alegre', 14, 1504802),
-(2492, 'Muaná', 14, 1504901),
-(2493, 'Nova Esperança do Piriá', 14, 1504950),
-(2494, 'Nova Ipixuna', 14, 1504976),
-(2495, 'Nova Timboteua', 14, 1505007),
-(2496, 'Novo Progresso', 14, 1505031),
-(2497, 'Novo Repartimento', 14, 1505064),
-(2498, 'Óbidos', 14, 1505106),
-(2499, 'Oeiras do Pará', 14, 1505205),
-(2500, 'Oriximiná', 14, 1505304),
-(2501, 'Ourém', 14, 1505403),
-(2502, 'Ourilândia do Norte', 14, 1505437),
-(2503, 'Pacajá', 14, 1505486),
-(2504, 'Palestina do Pará', 14, 1505494),
-(2505, 'Paragominas', 14, 1505502),
-(2506, 'Parauapebas', 14, 1505536),
-(2507, 'Pau d`Arco', 14, 1505551),
-(2508, 'Peixe-Boi', 14, 1505601),
-(2509, 'Piçarra', 14, 1505635),
-(2510, 'Placas', 14, 1505650),
-(2511, 'Ponta de Pedras', 14, 1505700),
-(2512, 'Portel', 14, 1505809),
-(2513, 'Porto de Moz', 14, 1505908),
-(2514, 'Prainha', 14, 1506005),
-(2515, 'Primavera', 14, 1506104),
-(2516, 'Quatipuru', 14, 1506112),
-(2517, 'Redenção', 14, 1506138),
-(2518, 'Rio Maria', 14, 1506161),
-(2519, 'Rondon do Pará', 14, 1506187),
-(2520, 'Rurópolis', 14, 1506195),
-(2521, 'Salinópolis', 14, 1506203),
-(2522, 'Salvaterra', 14, 1506302),
-(2523, 'Santa Bárbara do Pará', 14, 1506351),
-(2524, 'Santa Cruz do Arari', 14, 1506401),
-(2525, 'Santa Isabel do Pará', 14, 1506500),
-(2526, 'Santa Luzia do Pará', 14, 1506559),
-(2527, 'Santa Maria das Barreiras', 14, 1506583),
-(2528, 'Santa Maria do Pará', 14, 1506609),
-(2529, 'Santana do Araguaia', 14, 1506708),
-(2530, 'Santarém', 14, 1506807),
-(2531, 'Santarém Novo', 14, 1506906),
-(2532, 'Santo Antônio do Tauá', 14, 1507003),
-(2533, 'São Caetano de Odivelas', 14, 1507102),
-(2534, 'São Domingos do Araguaia', 14, 1507151),
-(2535, 'São Domingos do Capim', 14, 1507201),
-(2536, 'São Félix do Xingu', 14, 1507300),
-(2537, 'São Francisco do Pará', 14, 1507409),
-(2538, 'São Geraldo do Araguaia', 14, 1507458),
-(2539, 'São João da Ponta', 14, 1507466),
-(2540, 'São João de Pirabas', 14, 1507474),
-(2541, 'São João do Araguaia', 14, 1507508),
-(2542, 'São Miguel do Guamá', 14, 1507607),
-(2543, 'São Sebastião da Boa Vista', 14, 1507706),
-(2544, 'Sapucaia', 14, 1507755),
-(2545, 'Senador José Porfírio', 14, 1507805),
-(2546, 'Soure', 14, 1507904),
-(2547, 'Tailândia', 14, 1507953),
-(2548, 'Terra Alta', 14, 1507961),
-(2549, 'Terra Santa', 14, 1507979),
-(2550, 'Tomé-Açu', 14, 1508001),
-(2551, 'Tracuateua', 14, 1508035),
-(2552, 'Trairão', 14, 1508050),
-(2553, 'Tucumã', 14, 1508084),
-(2554, 'Tucuruí', 14, 1508100),
-(2555, 'Ulianópolis', 14, 1508126),
-(2556, 'Uruará', 14, 1508159),
-(2557, 'Vigia', 14, 1508209),
-(2558, 'Viseu', 14, 1508308),
-(2559, 'Vitória do Xingu', 14, 1508357),
-(2560, 'Xinguara', 14, 1508407),
-(2561, 'Água Branca', 15, 2500106),
-(2562, 'Aguiar', 15, 2500205),
-(2563, 'Alagoa Grande', 15, 2500304),
-(2564, 'Alagoa Nova', 15, 2500403),
-(2565, 'Alagoinha', 15, 2500502),
-(2566, 'Alcantil', 15, 2500536),
-(2567, 'Algodão de Jandaíra', 15, 2500577),
-(2568, 'Alhandra', 15, 2500601),
-(2569, 'Amparo', 15, 2500734),
-(2570, 'Aparecida', 15, 2500775),
-(2571, 'Araçagi', 15, 2500809),
-(2572, 'Arara', 15, 2500908),
-(2573, 'Araruna', 15, 2501005),
-(2574, 'Areia', 15, 2501104),
-(2575, 'Areia de Baraúnas', 15, 2501153),
-(2576, 'Areial', 15, 2501203),
-(2577, 'Aroeiras', 15, 2501302),
-(2578, 'Assunção', 15, 2501351),
-(2579, 'Baía da Traição', 15, 2501401),
-(2580, 'Bananeiras', 15, 2501500),
-(2581, 'Baraúna', 15, 2501534),
-(2582, 'Barra de Santa Rosa', 15, 2501609),
-(2583, 'Barra de Santana', 15, 2501575),
-(2584, 'Barra de São Miguel', 15, 2501708),
-(2585, 'Bayeux', 15, 2501807),
-(2586, 'Belém', 15, 2501906),
-(2587, 'Belém do Brejo do Cruz', 15, 2502003),
-(2588, 'Bernardino Batista', 15, 2502052),
-(2589, 'Boa Ventura', 15, 2502102),
-(2590, 'Boa Vista', 15, 2502151),
-(2591, 'Bom Jesus', 15, 2502201),
-(2592, 'Bom Sucesso', 15, 2502300),
-(2593, 'Bonito de Santa Fé', 15, 2502409),
-(2594, 'Boqueirão', 15, 2502508),
-(2595, 'Borborema', 15, 2502706),
-(2596, 'Brejo do Cruz', 15, 2502805),
-(2597, 'Brejo dos Santos', 15, 2502904),
-(2598, 'Caaporã', 15, 2503001),
-(2599, 'Cabaceiras', 15, 2503100),
-(2600, 'Cabedelo', 15, 2503209),
-(2601, 'Cachoeira dos Índios', 15, 2503308),
-(2602, 'Cacimba de Areia', 15, 2503407),
-(2603, 'Cacimba de Dentro', 15, 2503506),
-(2604, 'Cacimbas', 15, 2503555),
-(2605, 'Caiçara', 15, 2503605),
-(2606, 'Cajazeiras', 15, 2503704),
-(2607, 'Cajazeirinhas', 15, 2503753),
-(2608, 'Caldas Brandão', 15, 2503803),
-(2609, 'Camalaú', 15, 2503902),
-(2610, 'Campina Grande', 15, 2504009),
-(2611, 'Campo de Santana', 15, 2516409),
-(2612, 'Capim', 15, 2504033),
-(2613, 'Caraúbas', 15, 2504074),
-(2614, 'Carrapateira', 15, 2504108),
-(2615, 'Casserengue', 15, 2504157),
-(2616, 'Catingueira', 15, 2504207),
-(2617, 'Catolé do Rocha', 15, 2504306),
-(2618, 'Caturité', 15, 2504355),
-(2619, 'Conceição', 15, 2504405),
-(2620, 'Condado', 15, 2504504),
-(2621, 'Conde', 15, 2504603),
-(2622, 'Congo', 15, 2504702),
-(2623, 'Coremas', 15, 2504801),
-(2624, 'Coxixola', 15, 2504850),
-(2625, 'Cruz do Espírito Santo', 15, 2504900),
-(2626, 'Cubati', 15, 2505006),
-(2627, 'Cuité', 15, 2505105),
-(2628, 'Cuité de Mamanguape', 15, 2505238),
-(2629, 'Cuitegi', 15, 2505204),
-(2630, 'Curral de Cima', 15, 2505279),
-(2631, 'Curral Velho', 15, 2505303),
-(2632, 'Damião', 15, 2505352),
-(2633, 'Desterro', 15, 2505402),
-(2634, 'Diamante', 15, 2505600),
-(2635, 'Dona Inês', 15, 2505709),
-(2636, 'Duas Estradas', 15, 2505808),
-(2637, 'Emas', 15, 2505907),
-(2638, 'Esperança', 15, 2506004),
-(2639, 'Fagundes', 15, 2506103),
-(2640, 'Frei Martinho', 15, 2506202),
-(2641, 'Gado Bravo', 15, 2506251),
-(2642, 'Guarabira', 15, 2506301),
-(2643, 'Gurinhém', 15, 2506400),
-(2644, 'Gurjão', 15, 2506509),
-(2645, 'Ibiara', 15, 2506608),
-(2646, 'Igaracy', 15, 2502607),
-(2647, 'Imaculada', 15, 2506707),
-(2648, 'Ingá', 15, 2506806),
-(2649, 'Itabaiana', 15, 2506905),
-(2650, 'Itaporanga', 15, 2507002),
-(2651, 'Itapororoca', 15, 2507101),
-(2652, 'Itatuba', 15, 2507200),
-(2653, 'Jacaraú', 15, 2507309),
-(2654, 'Jericó', 15, 2507408),
-(2655, 'João Pessoa', 15, 2507507),
-(2656, 'Juarez Távora', 15, 2507606),
-(2657, 'Juazeirinho', 15, 2507705),
-(2658, 'Junco do Seridó', 15, 2507804),
-(2659, 'Juripiranga', 15, 2507903),
-(2660, 'Juru', 15, 2508000),
-(2661, 'Lagoa', 15, 2508109),
-(2662, 'Lagoa de Dentro', 15, 2508208),
-(2663, 'Lagoa Seca', 15, 2508307),
-(2664, 'Lastro', 15, 2508406),
-(2665, 'Livramento', 15, 2508505),
-(2666, 'Logradouro', 15, 2508554),
-(2667, 'Lucena', 15, 2508604),
-(2668, 'Mãe d`Água', 15, 2508703),
-(2669, 'Malta', 15, 2508802),
-(2670, 'Mamanguape', 15, 2508901),
-(2671, 'Manaíra', 15, 2509008),
-(2672, 'Marcação', 15, 2509057),
-(2673, 'Mari', 15, 2509107),
-(2674, 'Marizópolis', 15, 2509156),
-(2675, 'Massaranduba', 15, 2509206),
-(2676, 'Mataraca', 15, 2509305),
-(2677, 'Matinhas', 15, 2509339),
-(2678, 'Mato Grosso', 15, 2509370),
-(2679, 'Maturéia', 15, 2509396),
-(2680, 'Mogeiro', 15, 2509404),
-(2681, 'Montadas', 15, 2509503),
-(2682, 'Monte Horebe', 15, 2509602),
-(2683, 'Monteiro', 15, 2509701),
-(2684, 'Mulungu', 15, 2509800),
-(2685, 'Natuba', 15, 2509909),
-(2686, 'Nazarezinho', 15, 2510006),
-(2687, 'Nova Floresta', 15, 2510105),
-(2688, 'Nova Olinda', 15, 2510204),
-(2689, 'Nova Palmeira', 15, 2510303),
-(2690, 'Olho d`Água', 15, 2510402),
-(2691, 'Olivedos', 15, 2510501),
-(2692, 'Ouro Velho', 15, 2510600),
-(2693, 'Parari', 15, 2510659),
-(2694, 'Passagem', 15, 2510709),
-(2695, 'Patos', 15, 2510808),
-(2696, 'Paulista', 15, 2510907),
-(2697, 'Pedra Branca', 15, 2511004),
-(2698, 'Pedra Lavrada', 15, 2511103),
-(2699, 'Pedras de Fogo', 15, 2511202),
-(2700, 'Pedro Régis', 15, 2512721),
-(2701, 'Piancó', 15, 2511301),
-(2702, 'Picuí', 15, 2511400),
-(2703, 'Pilar', 15, 2511509),
-(2704, 'Pilões', 15, 2511608),
-(2705, 'Pilõezinhos', 15, 2511707),
-(2706, 'Pirpirituba', 15, 2511806),
-(2707, 'Pitimbu', 15, 2511905),
-(2708, 'Pocinhos', 15, 2512002),
-(2709, 'Poço Dantas', 15, 2512036),
-(2710, 'Poço de José de Moura', 15, 2512077),
-(2711, 'Pombal', 15, 2512101),
-(2712, 'Prata', 15, 2512200),
-(2713, 'Princesa Isabel', 15, 2512309),
-(2714, 'Puxinanã', 15, 2512408),
-(2715, 'Queimadas', 15, 2512507),
-(2716, 'Quixabá', 15, 2512606),
-(2717, 'Remígio', 15, 2512705),
-(2718, 'Riachão', 15, 2512747),
-(2719, 'Riachão do Bacamarte', 15, 2512754),
-(2720, 'Riachão do Poço', 15, 2512762),
-(2721, 'Riacho de Santo Antônio', 15, 2512788),
-(2722, 'Riacho dos Cavalos', 15, 2512804),
-(2723, 'Rio Tinto', 15, 2512903),
-(2724, 'Salgadinho', 15, 2513000),
-(2725, 'Salgado de São Félix', 15, 2513109),
-(2726, 'Santa Cecília', 15, 2513158),
-(2727, 'Santa Cruz', 15, 2513208),
-(2728, 'Santa Helena', 15, 2513307),
-(2729, 'Santa Inês', 15, 2513356),
-(2730, 'Santa Luzia', 15, 2513406),
-(2731, 'Santa Rita', 15, 2513703),
-(2732, 'Santa Teresinha', 15, 2513802),
-(2733, 'Santana de Mangueira', 15, 2513505),
-(2734, 'Santana dos Garrotes', 15, 2513604),
-(2735, 'Santarém', 15, 2513653),
-(2736, 'Santo André', 15, 2513851),
-(2737, 'São Bentinho', 15, 2513927),
-(2738, 'São Bento', 15, 2513901),
-(2739, 'São Domingos de Pombal', 15, 2513968),
-(2740, 'São Domingos do Cariri', 15, 2513943),
-(2741, 'São Francisco', 15, 2513984),
-(2742, 'São João do Cariri', 15, 2514008),
-(2743, 'São João do Rio do Peixe', 15, 2500700),
-(2744, 'São João do Tigre', 15, 2514107),
-(2745, 'São José da Lagoa Tapada', 15, 2514206),
-(2746, 'São José de Caiana', 15, 2514305),
-(2747, 'São José de Espinharas', 15, 2514404),
-(2748, 'São José de Piranhas', 15, 2514503),
-(2749, 'São José de Princesa', 15, 2514552),
-(2750, 'São José do Bonfim', 15, 2514602),
-(2751, 'São José do Brejo do Cruz', 15, 2514651),
-(2752, 'São José do Sabugi', 15, 2514701),
-(2753, 'São José dos Cordeiros', 15, 2514800),
-(2754, 'São José dos Ramos', 15, 2514453),
-(2755, 'São Mamede', 15, 2514909),
-(2756, 'São Miguel de Taipu', 15, 2515005),
-(2757, 'São Sebastião de Lagoa de Roça', 15, 2515104),
-(2758, 'São Sebastião do Umbuzeiro', 15, 2515203),
-(2759, 'Sapé', 15, 2515302),
-(2760, 'Seridó', 15, 2515401),
-(2761, 'Serra Branca', 15, 2515500),
-(2762, 'Serra da Raiz', 15, 2515609),
-(2763, 'Serra Grande', 15, 2515708),
-(2764, 'Serra Redonda', 15, 2515807),
-(2765, 'Serraria', 15, 2515906),
-(2766, 'Sertãozinho', 15, 2515930),
-(2767, 'Sobrado', 15, 2515971),
-(2768, 'Solânea', 15, 2516003),
-(2769, 'Soledade', 15, 2516102),
-(2770, 'Sossêgo', 15, 2516151),
-(2771, 'Sousa', 15, 2516201),
-(2772, 'Sumé', 15, 2516300),
-(2773, 'Taperoá', 15, 2516508),
-(2774, 'Tavares', 15, 2516607),
-(2775, 'Teixeira', 15, 2516706),
-(2776, 'Tenório', 15, 2516755),
-(2777, 'Triunfo', 15, 2516805),
-(2778, 'Uiraúna', 15, 2516904),
-(2779, 'Umbuzeiro', 15, 2517001),
-(2780, 'Várzea', 15, 2517100),
-(2781, 'Vieirópolis', 15, 2517209),
-(2782, 'Vista Serrana', 15, 2505501),
-(2783, 'Zabelê', 15, 2517407),
-(2784, 'Abatiá', 18, 4100103),
-(2785, 'Adrianópolis', 18, 4100202),
-(2786, 'Agudos do Sul', 18, 4100301),
-(2787, 'Almirante Tamandaré', 18, 4100400),
-(2788, 'Altamira do Paraná', 18, 4100459),
-(2789, 'Alto Paraíso', 18, 4128625),
-(2790, 'Alto Paraná', 18, 4100608),
-(2791, 'Alto Piquiri', 18, 4100707),
-(2792, 'Altônia', 18, 4100509),
-(2793, 'Alvorada do Sul', 18, 4100806),
-(2794, 'Amaporã', 18, 4100905),
-(2795, 'Ampére', 18, 4101002),
-(2796, 'Anahy', 18, 4101051),
-(2797, 'Andirá', 18, 4101101),
-(2798, 'Ângulo', 18, 4101150),
-(2799, 'Antonina', 18, 4101200),
-(2800, 'Antônio Olinto', 18, 4101309),
-(2801, 'Apucarana', 18, 4101408),
-(2802, 'Arapongas', 18, 4101507),
-(2803, 'Arapoti', 18, 4101606),
-(2804, 'Arapuã', 18, 4101655),
-(2805, 'Araruna', 18, 4101705),
-(2806, 'Araucária', 18, 4101804),
-(2807, 'Ariranha do Ivaí', 18, 4101853),
-(2808, 'Assaí', 18, 4101903),
-(2809, 'Assis Chateaubriand', 18, 4102000),
-(2810, 'Astorga', 18, 4102109),
-(2811, 'Atalaia', 18, 4102208),
-(2812, 'Balsa Nova', 18, 4102307),
-(2813, 'Bandeirantes', 18, 4102406),
-(2814, 'Barbosa Ferraz', 18, 4102505),
-(2815, 'Barra do Jacaré', 18, 4102703),
-(2816, 'Barracão', 18, 4102604),
-(2817, 'Bela Vista da Caroba', 18, 4102752),
-(2818, 'Bela Vista do Paraíso', 18, 4102802),
-(2819, 'Bituruna', 18, 4102901),
-(2820, 'Boa Esperança', 18, 4103008),
-(2821, 'Boa Esperança do Iguaçu', 18, 4103024),
-(2822, 'Boa Ventura de São Roque', 18, 4103040),
-(2823, 'Boa Vista da Aparecida', 18, 4103057),
-(2824, 'Bocaiúva do Sul', 18, 4103107),
-(2825, 'Bom Jesus do Sul', 18, 4103156),
-(2826, 'Bom Sucesso', 18, 4103206),
-(2827, 'Bom Sucesso do Sul', 18, 4103222),
-(2828, 'Borrazópolis', 18, 4103305),
-(2829, 'Braganey', 18, 4103354),
-(2830, 'Brasilândia do Sul', 18, 4103370),
-(2831, 'Cafeara', 18, 4103404),
-(2832, 'Cafelândia', 18, 4103453),
-(2833, 'Cafezal do Sul', 18, 4103479),
-(2834, 'Califórnia', 18, 4103503),
-(2835, 'Cambará', 18, 4103602),
-(2836, 'Cambé', 18, 4103701),
-(2837, 'Cambira', 18, 4103800),
-(2838, 'Campina da Lagoa', 18, 4103909),
-(2839, 'Campina do Simão', 18, 4103958),
-(2840, 'Campina Grande do Sul', 18, 4104006),
-(2841, 'Campo Bonito', 18, 4104055),
-(2842, 'Campo do Tenente', 18, 4104105),
-(2843, 'Campo Largo', 18, 4104204),
-(2844, 'Campo Magro', 18, 4104253),
-(2845, 'Campo Mourão', 18, 4104303),
-(2846, 'Cândido de Abreu', 18, 4104402),
-(2847, 'Candói', 18, 4104428),
-(2848, 'Cantagalo', 18, 4104451),
-(2849, 'Capanema', 18, 4104501),
-(2850, 'Capitão Leônidas Marques', 18, 4104600),
-(2851, 'Carambeí', 18, 4104659),
-(2852, 'Carlópolis', 18, 4104709),
-(2853, 'Cascavel', 18, 4104808),
-(2854, 'Castro', 18, 4104907),
-(2855, 'Catanduvas', 18, 4105003),
-(2856, 'Centenário do Sul', 18, 4105102),
-(2857, 'Cerro Azul', 18, 4105201),
-(2858, 'Céu Azul', 18, 4105300),
-(2859, 'Chopinzinho', 18, 4105409),
-(2860, 'Cianorte', 18, 4105508),
-(2861, 'Cidade Gaúcha', 18, 4105607),
-(2862, 'Clevelândia', 18, 4105706),
-(2863, 'Colombo', 18, 4105805),
-(2864, 'Colorado', 18, 4105904),
-(2865, 'Congonhinhas', 18, 4106001),
-(2866, 'Conselheiro Mairinck', 18, 4106100),
-(2867, 'Contenda', 18, 4106209),
-(2868, 'Corbélia', 18, 4106308),
-(2869, 'Cornélio Procópio', 18, 4106407),
-(2870, 'Coronel Domingos Soares', 18, 4106456),
-(2871, 'Coronel Vivida', 18, 4106506),
-(2872, 'Corumbataí do Sul', 18, 4106555),
-(2873, 'Cruz Machado', 18, 4106803),
-(2874, 'Cruzeiro do Iguaçu', 18, 4106571),
-(2875, 'Cruzeiro do Oeste', 18, 4106605),
-(2876, 'Cruzeiro do Sul', 18, 4106704),
-(2877, 'Cruzmaltina', 18, 4106852),
-(2878, 'Curitiba', 18, 4106902),
-(2879, 'Curiúva', 18, 4107009),
-(2880, 'Diamante d`Oeste', 18, 4107157),
-(2881, 'Diamante do Norte', 18, 4107108),
-(2882, 'Diamante do Sul', 18, 4107124),
-(2883, 'Dois Vizinhos', 18, 4107207),
-(2884, 'Douradina', 18, 4107256),
-(2885, 'Doutor Camargo', 18, 4107306),
-(2886, 'Doutor Ulysses', 18, 4128633),
-(2887, 'Enéas Marques', 18, 4107405),
-(2888, 'Engenheiro Beltrão', 18, 4107504),
-(2889, 'Entre Rios do Oeste', 18, 4107538),
-(2890, 'Esperança Nova', 18, 4107520),
-(2891, 'Espigão Alto do Iguaçu', 18, 4107546),
-(2892, 'Farol', 18, 4107553),
-(2893, 'Faxinal', 18, 4107603),
-(2894, 'Fazenda Rio Grande', 18, 4107652),
-(2895, 'Fênix', 18, 4107702),
-(2896, 'Fernandes Pinheiro', 18, 4107736),
-(2897, 'Figueira', 18, 4107751),
-(2898, 'Flor da Serra do Sul', 18, 4107850),
-(2899, 'Floraí', 18, 4107801),
-(2900, 'Floresta', 18, 4107900),
-(2901, 'Florestópolis', 18, 4108007),
-(2902, 'Flórida', 18, 4108106),
-(2903, 'Formosa do Oeste', 18, 4108205),
-(2904, 'Foz do Iguaçu', 18, 4108304),
-(2905, 'Foz do Jordão', 18, 4108452),
-(2906, 'Francisco Alves', 18, 4108320),
-(2907, 'Francisco Beltrão', 18, 4108403),
-(2908, 'General Carneiro', 18, 4108502),
-(2909, 'Godoy Moreira', 18, 4108551),
-(2910, 'Goioerê', 18, 4108601),
-(2911, 'Goioxim', 18, 4108650),
-(2912, 'Grandes Rios', 18, 4108700),
-(2913, 'Guaíra', 18, 4108809),
-(2914, 'Guairaçá', 18, 4108908),
-(2915, 'Guamiranga', 18, 4108957),
-(2916, 'Guapirama', 18, 4109005),
-(2917, 'Guaporema', 18, 4109104),
-(2918, 'Guaraci', 18, 4109203),
-(2919, 'Guaraniaçu', 18, 4109302),
-(2920, 'Guarapuava', 18, 4109401),
-(2921, 'Guaraqueçaba', 18, 4109500),
-(2922, 'Guaratuba', 18, 4109609),
-(2923, 'Honório Serpa', 18, 4109658),
-(2924, 'Ibaiti', 18, 4109708),
-(2925, 'Ibema', 18, 4109757),
-(2926, 'Ibiporã', 18, 4109807),
-(2927, 'Icaraíma', 18, 4109906),
-(2928, 'Iguaraçu', 18, 4110003),
-(2929, 'Iguatu', 18, 4110052),
-(2930, 'Imbaú', 18, 4110078),
-(2931, 'Imbituva', 18, 4110102),
-(2932, 'Inácio Martins', 18, 4110201),
-(2933, 'Inajá', 18, 4110300),
-(2934, 'Indianópolis', 18, 4110409),
-(2935, 'Ipiranga', 18, 4110508),
-(2936, 'Iporã', 18, 4110607),
-(2937, 'Iracema do Oeste', 18, 4110656),
-(2938, 'Irati', 18, 4110706),
-(2939, 'Iretama', 18, 4110805),
-(2940, 'Itaguajé', 18, 4110904),
-(2941, 'Itaipulândia', 18, 4110953),
-(2942, 'Itambaracá', 18, 4111001),
-(2943, 'Itambé', 18, 4111100),
-(2944, 'Itapejara d`Oeste', 18, 4111209),
-(2945, 'Itaperuçu', 18, 4111258),
-(2946, 'Itaúna do Sul', 18, 4111308),
-(2947, 'Ivaí', 18, 4111407),
-(2948, 'Ivaiporã', 18, 4111506),
-(2949, 'Ivaté', 18, 4111555),
-(2950, 'Ivatuba', 18, 4111605),
-(2951, 'Jaboti', 18, 4111704),
-(2952, 'Jacarezinho', 18, 4111803),
-(2953, 'Jaguapitã', 18, 4111902),
-(2954, 'Jaguariaíva', 18, 4112009),
-(2955, 'Jandaia do Sul', 18, 4112108),
-(2956, 'Janiópolis', 18, 4112207),
-(2957, 'Japira', 18, 4112306),
-(2958, 'Japurá', 18, 4112405),
-(2959, 'Jardim Alegre', 18, 4112504),
-(2960, 'Jardim Olinda', 18, 4112603),
-(2961, 'Jataizinho', 18, 4112702);
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
-(2962, 'Jesuítas', 18, 4112751),
-(2963, 'Joaquim Távora', 18, 4112801),
-(2964, 'Jundiaí do Sul', 18, 4112900),
-(2965, 'Juranda', 18, 4112959),
-(2966, 'Jussara', 18, 4113007),
-(2967, 'Kaloré', 18, 4113106),
-(2968, 'Lapa', 18, 4113205),
-(2969, 'Laranjal', 18, 4113254),
-(2970, 'Laranjeiras do Sul', 18, 4113304),
-(2971, 'Leópolis', 18, 4113403),
-(2972, 'Lidianópolis', 18, 4113429),
-(2973, 'Lindoeste', 18, 4113452),
-(2974, 'Loanda', 18, 4113502),
-(2975, 'Lobato', 18, 4113601),
-(2976, 'Londrina', 18, 4113700),
-(2977, 'Luiziana', 18, 4113734),
-(2978, 'Lunardelli', 18, 4113759),
-(2979, 'Lupionópolis', 18, 4113809),
-(2980, 'Mallet', 18, 4113908),
-(2981, 'Mamborê', 18, 4114005),
-(2982, 'Mandaguaçu', 18, 4114104),
-(2983, 'Mandaguari', 18, 4114203),
-(2984, 'Mandirituba', 18, 4114302),
-(2985, 'Manfrinópolis', 18, 4114351),
-(2986, 'Mangueirinha', 18, 4114401),
-(2987, 'Manoel Ribas', 18, 4114500),
-(2988, 'Marechal Cândido Rondon', 18, 4114609),
-(2989, 'Maria Helena', 18, 4114708),
-(2990, 'Marialva', 18, 4114807),
-(2991, 'Marilândia do Sul', 18, 4114906),
-(2992, 'Marilena', 18, 4115002),
-(2993, 'Mariluz', 18, 4115101),
-(2994, 'Maringá', 18, 4115200),
-(2995, 'Mariópolis', 18, 4115309),
-(2996, 'Maripá', 18, 4115358),
-(2997, 'Marmeleiro', 18, 4115408),
-(2998, 'Marquinho', 18, 4115457),
-(2999, 'Marumbi', 18, 4115507),
-(3000, 'Matelândia', 18, 4115606),
-(3001, 'Matinhos', 18, 4115705),
-(3002, 'Mato Rico', 18, 4115739),
-(3003, 'Mauá da Serra', 18, 4115754),
-(3004, 'Medianeira', 18, 4115804),
-(3005, 'Mercedes', 18, 4115853),
-(3006, 'Mirador', 18, 4115903),
-(3007, 'Miraselva', 18, 4116000),
-(3008, 'Missal', 18, 4116059),
-(3009, 'Moreira Sales', 18, 4116109),
-(3010, 'Morretes', 18, 4116208),
-(3011, 'Munhoz de Melo', 18, 4116307),
-(3012, 'Nossa Senhora das Graças', 18, 4116406),
-(3013, 'Nova Aliança do Ivaí', 18, 4116505),
-(3014, 'Nova América da Colina', 18, 4116604),
-(3015, 'Nova Aurora', 18, 4116703),
-(3016, 'Nova Cantu', 18, 4116802),
-(3017, 'Nova Esperança', 18, 4116901),
-(3018, 'Nova Esperança do Sudoeste', 18, 4116950),
-(3019, 'Nova Fátima', 18, 4117008),
-(3020, 'Nova Laranjeiras', 18, 4117057),
-(3021, 'Nova Londrina', 18, 4117107),
-(3022, 'Nova Olímpia', 18, 4117206),
-(3023, 'Nova Prata do Iguaçu', 18, 4117255),
-(3024, 'Nova Santa Bárbara', 18, 4117214),
-(3025, 'Nova Santa Rosa', 18, 4117222),
-(3026, 'Nova Tebas', 18, 4117271),
-(3027, 'Novo Itacolomi', 18, 4117297),
-(3028, 'Ortigueira', 18, 4117305),
-(3029, 'Ourizona', 18, 4117404),
-(3030, 'Ouro Verde do Oeste', 18, 4117453),
-(3031, 'Paiçandu', 18, 4117503),
-(3032, 'Palmas', 18, 4117602),
-(3033, 'Palmeira', 18, 4117701),
-(3034, 'Palmital', 18, 4117800),
-(3035, 'Palotina', 18, 4117909),
-(3036, 'Paraíso do Norte', 18, 4118006),
-(3037, 'Paranacity', 18, 4118105),
-(3038, 'Paranaguá', 18, 4118204),
-(3039, 'Paranapoema', 18, 4118303),
-(3040, 'Paranavaí', 18, 4118402),
-(3041, 'Pato Bragado', 18, 4118451),
-(3042, 'Pato Branco', 18, 4118501),
-(3043, 'Paula Freitas', 18, 4118600),
-(3044, 'Paulo Frontin', 18, 4118709),
-(3045, 'Peabiru', 18, 4118808),
-(3046, 'Perobal', 18, 4118857),
-(3047, 'Pérola', 18, 4118907),
-(3048, 'Pérola d`Oeste', 18, 4119004),
-(3049, 'Piên', 18, 4119103),
-(3050, 'Pinhais', 18, 4119152),
-(3051, 'Pinhal de São Bento', 18, 4119251),
-(3052, 'Pinhalão', 18, 4119202),
-(3053, 'Pinhão', 18, 4119301),
-(3054, 'Piraí do Sul', 18, 4119400),
-(3055, 'Piraquara', 18, 4119509),
-(3056, 'Pitanga', 18, 4119608),
-(3057, 'Pitangueiras', 18, 4119657),
-(3058, 'Planaltina do Paraná', 18, 4119707),
-(3059, 'Planalto', 18, 4119806),
-(3060, 'Ponta Grossa', 18, 4119905),
-(3061, 'Pontal do Paraná', 18, 4119954),
-(3062, 'Porecatu', 18, 4120002),
-(3063, 'Porto Amazonas', 18, 4120101),
-(3064, 'Porto Barreiro', 18, 4120150),
-(3065, 'Porto Rico', 18, 4120200),
-(3066, 'Porto Vitória', 18, 4120309),
-(3067, 'Prado Ferreira', 18, 4120333),
-(3068, 'Pranchita', 18, 4120358),
-(3069, 'Presidente Castelo Branco', 18, 4120408),
-(3070, 'Primeiro de Maio', 18, 4120507),
-(3071, 'Prudentópolis', 18, 4120606),
-(3072, 'Quarto Centenário', 18, 4120655),
-(3073, 'Quatiguá', 18, 4120705),
-(3074, 'Quatro Barras', 18, 4120804),
-(3075, 'Quatro Pontes', 18, 4120853),
-(3076, 'Quedas do Iguaçu', 18, 4120903),
-(3077, 'Querência do Norte', 18, 4121000),
-(3078, 'Quinta do Sol', 18, 4121109),
-(3079, 'Quitandinha', 18, 4121208),
-(3080, 'Ramilândia', 18, 4121257),
-(3081, 'Rancho Alegre', 18, 4121307),
-(3082, 'Rancho Alegre d`Oeste', 18, 4121356),
-(3083, 'Realeza', 18, 4121406),
-(3084, 'Rebouças', 18, 4121505),
-(3085, 'Renascença', 18, 4121604),
-(3086, 'Reserva', 18, 4121703),
-(3087, 'Reserva do Iguaçu', 18, 4121752),
-(3088, 'Ribeirão Claro', 18, 4121802),
-(3089, 'Ribeirão do Pinhal', 18, 4121901),
-(3090, 'Rio Azul', 18, 4122008),
-(3091, 'Rio Bom', 18, 4122107),
-(3092, 'Rio Bonito do Iguaçu', 18, 4122156),
-(3093, 'Rio Branco do Ivaí', 18, 4122172),
-(3094, 'Rio Branco do Sul', 18, 4122206),
-(3095, 'Rio Negro', 18, 4122305),
-(3096, 'Rolândia', 18, 4122404),
-(3097, 'Roncador', 18, 4122503),
-(3098, 'Rondon', 18, 4122602),
-(3099, 'Rosário do Ivaí', 18, 4122651),
-(3100, 'Sabáudia', 18, 4122701),
-(3101, 'Salgado Filho', 18, 4122800),
-(3102, 'Salto do Itararé', 18, 4122909),
-(3103, 'Salto do Lontra', 18, 4123006),
-(3104, 'Santa Amélia', 18, 4123105),
-(3105, 'Santa Cecília do Pavão', 18, 4123204),
-(3106, 'Santa Cruz de Monte Castelo', 18, 4123303),
-(3107, 'Santa Fé', 18, 4123402),
-(3108, 'Santa Helena', 18, 4123501),
-(3109, 'Santa Inês', 18, 4123600),
-(3110, 'Santa Isabel do Ivaí', 18, 4123709),
-(3111, 'Santa Izabel do Oeste', 18, 4123808),
-(3112, 'Santa Lúcia', 18, 4123824),
-(3113, 'Santa Maria do Oeste', 18, 4123857),
-(3114, 'Santa Mariana', 18, 4123907),
-(3115, 'Santa Mônica', 18, 4123956),
-(3116, 'Santa Tereza do Oeste', 18, 4124020),
-(3117, 'Santa Terezinha de Itaipu', 18, 4124053),
-(3118, 'Santana do Itararé', 18, 4124004),
-(3119, 'Santo Antônio da Platina', 18, 4124103),
-(3120, 'Santo Antônio do Caiuá', 18, 4124202),
-(3121, 'Santo Antônio do Paraíso', 18, 4124301),
-(3122, 'Santo Antônio do Sudoeste', 18, 4124400),
-(3123, 'Santo Inácio', 18, 4124509),
-(3124, 'São Carlos do Ivaí', 18, 4124608),
-(3125, 'São Jerônimo da Serra', 18, 4124707),
-(3126, 'São João', 18, 4124806),
-(3127, 'São João do Caiuá', 18, 4124905),
-(3128, 'São João do Ivaí', 18, 4125001),
-(3129, 'São João do Triunfo', 18, 4125100),
-(3130, 'São Jorge d`Oeste', 18, 4125209),
-(3131, 'São Jorge do Ivaí', 18, 4125308),
-(3132, 'São Jorge do Patrocínio', 18, 4125357),
-(3133, 'São José da Boa Vista', 18, 4125407),
-(3134, 'São José das Palmeiras', 18, 4125456),
-(3135, 'São José dos Pinhais', 18, 4125506),
-(3136, 'São Manoel do Paraná', 18, 4125555),
-(3137, 'São Mateus do Sul', 18, 4125605),
-(3138, 'São Miguel do Iguaçu', 18, 4125704),
-(3139, 'São Pedro do Iguaçu', 18, 4125753),
-(3140, 'São Pedro do Ivaí', 18, 4125803),
-(3141, 'São Pedro do Paraná', 18, 4125902),
-(3142, 'São Sebastião da Amoreira', 18, 4126009),
-(3143, 'São Tomé', 18, 4126108),
-(3144, 'Sapopema', 18, 4126207),
-(3145, 'Sarandi', 18, 4126256),
-(3146, 'Saudade do Iguaçu', 18, 4126272),
-(3147, 'Sengés', 18, 4126306),
-(3148, 'Serranópolis do Iguaçu', 18, 4126355),
-(3149, 'Sertaneja', 18, 4126405),
-(3150, 'Sertanópolis', 18, 4126504),
-(3151, 'Siqueira Campos', 18, 4126603),
-(3152, 'Sulina', 18, 4126652),
-(3153, 'Tamarana', 18, 4126678),
-(3154, 'Tamboara', 18, 4126702),
-(3155, 'Tapejara', 18, 4126801),
-(3156, 'Tapira', 18, 4126900),
-(3157, 'Teixeira Soares', 18, 4127007),
-(3158, 'Telêmaco Borba', 18, 4127106),
-(3159, 'Terra Boa', 18, 4127205),
-(3160, 'Terra Rica', 18, 4127304),
-(3161, 'Terra Roxa', 18, 4127403),
-(3162, 'Tibagi', 18, 4127502),
-(3163, 'Tijucas do Sul', 18, 4127601),
-(3164, 'Toledo', 18, 4127700),
-(3165, 'Tomazina', 18, 4127809),
-(3166, 'Três Barras do Paraná', 18, 4127858),
-(3167, 'Tunas do Paraná', 18, 4127882),
-(3168, 'Tuneiras do Oeste', 18, 4127908),
-(3169, 'Tupãssi', 18, 4127957),
-(3170, 'Turvo', 18, 4127965),
-(3171, 'Ubiratã', 18, 4128005),
-(3172, 'Umuarama', 18, 4128104),
-(3173, 'União da Vitória', 18, 4128203),
-(3174, 'Uniflor', 18, 4128302),
-(3175, 'Uraí', 18, 4128401),
-(3176, 'Ventania', 18, 4128534),
-(3177, 'Vera Cruz do Oeste', 18, 4128559),
-(3178, 'Verê', 18, 4128609),
-(3179, 'Virmond', 18, 4128658),
-(3180, 'Vitorino', 18, 4128708),
-(3181, 'Wenceslau Braz', 18, 4128500),
-(3182, 'Xambrê', 18, 4128807),
-(3183, 'Abreu e Lima', 16, 2600054),
-(3184, 'Afogados da Ingazeira', 16, 2600104),
-(3185, 'Afrânio', 16, 2600203),
-(3186, 'Agrestina', 16, 2600302),
-(3187, 'Água Preta', 16, 2600401),
-(3188, 'Águas Belas', 16, 2600500),
-(3189, 'Alagoinha', 16, 2600609),
-(3190, 'Aliança', 16, 2600708),
-(3191, 'Altinho', 16, 2600807),
-(3192, 'Amaraji', 16, 2600906),
-(3193, 'Angelim', 16, 2601003),
-(3194, 'Araçoiaba', 16, 2601052),
-(3195, 'Araripina', 16, 2601102),
-(3196, 'Arcoverde', 16, 2601201),
-(3197, 'Barra de Guabiraba', 16, 2601300),
-(3198, 'Barreiros', 16, 2601409),
-(3199, 'Belém de Maria', 16, 2601508),
-(3200, 'Belém de São Francisco', 16, 2601607),
-(3201, 'Belo Jardim', 16, 2601706),
-(3202, 'Betânia', 16, 2601805),
-(3203, 'Bezerros', 16, 2601904),
-(3204, 'Bodocó', 16, 2602001),
-(3205, 'Bom Conselho', 16, 2602100),
-(3206, 'Bom Jardim', 16, 2602209),
-(3207, 'Bonito', 16, 2602308),
-(3208, 'Brejão', 16, 2602407),
-(3209, 'Brejinho', 16, 2602506),
-(3210, 'Brejo da Madre de Deus', 16, 2602605),
-(3211, 'Buenos Aires', 16, 2602704),
-(3212, 'Buíque', 16, 2602803),
-(3213, 'Cabo de Santo Agostinho', 16, 2602902),
-(3214, 'Cabrobó', 16, 2603009),
-(3215, 'Cachoeirinha', 16, 2603108),
-(3216, 'Caetés', 16, 2603207),
-(3217, 'Calçado', 16, 2603306),
-(3218, 'Calumbi', 16, 2603405),
-(3219, 'Camaragibe', 16, 2603454),
-(3220, 'Camocim de São Félix', 16, 2603504),
-(3221, 'Camutanga', 16, 2603603),
-(3222, 'Canhotinho', 16, 2603702),
-(3223, 'Capoeiras', 16, 2603801),
-(3224, 'Carnaíba', 16, 2603900),
-(3225, 'Carnaubeira da Penha', 16, 2603926),
-(3226, 'Carpina', 16, 2604007),
-(3227, 'Caruaru', 16, 2604106),
-(3228, 'Casinhas', 16, 2604155),
-(3229, 'Catende', 16, 2604205),
-(3230, 'Cedro', 16, 2604304),
-(3231, 'Chã de Alegria', 16, 2604403),
-(3232, 'Chã Grande', 16, 2604502),
-(3233, 'Condado', 16, 2604601),
-(3234, 'Correntes', 16, 2604700),
-(3235, 'Cortês', 16, 2604809),
-(3236, 'Cumaru', 16, 2604908),
-(3237, 'Cupira', 16, 2605004),
-(3238, 'Custódia', 16, 2605103),
-(3239, 'Dormentes', 16, 2605152),
-(3240, 'Escada', 16, 2605202),
-(3241, 'Exu', 16, 2605301),
-(3242, 'Feira Nova', 16, 2605400),
-(3243, 'Fernando de Noronha', 16, 2605459),
-(3244, 'Ferreiros', 16, 2605509),
-(3245, 'Flores', 16, 2605608),
-(3246, 'Floresta', 16, 2605707),
-(3247, 'Frei Miguelinho', 16, 2605806),
-(3248, 'Gameleira', 16, 2605905),
-(3249, 'Garanhuns', 16, 2606002),
-(3250, 'Glória do Goitá', 16, 2606101),
-(3251, 'Goiana', 16, 2606200),
-(3252, 'Granito', 16, 2606309),
-(3253, 'Gravatá', 16, 2606408),
-(3254, 'Iati', 16, 2606507),
-(3255, 'Ibimirim', 16, 2606606),
-(3256, 'Ibirajuba', 16, 2606705),
-(3257, 'Igarassu', 16, 2606804),
-(3258, 'Iguaraci', 16, 2606903),
-(3259, 'Ilha de Itamaracá', 16, 2607604),
-(3260, 'Inajá', 16, 2607000),
-(3261, 'Ingazeira', 16, 2607109),
-(3262, 'Ipojuca', 16, 2607208),
-(3263, 'Ipubi', 16, 2607307),
-(3264, 'Itacuruba', 16, 2607406),
-(3265, 'Itaíba', 16, 2607505),
-(3266, 'Itambé', 16, 2607653),
-(3267, 'Itapetim', 16, 2607703),
-(3268, 'Itapissuma', 16, 2607752),
-(3269, 'Itaquitinga', 16, 2607802),
-(3270, 'Jaboatão dos Guararapes', 16, 2607901),
-(3271, 'Jaqueira', 16, 2607950),
-(3272, 'Jataúba', 16, 2608008),
-(3273, 'Jatobá', 16, 2608057),
-(3274, 'João Alfredo', 16, 2608107),
-(3275, 'Joaquim Nabuco', 16, 2608206),
-(3276, 'Jucati', 16, 2608255),
-(3277, 'Jupi', 16, 2608305),
-(3278, 'Jurema', 16, 2608404),
-(3279, 'Lagoa do Carro', 16, 2608453),
-(3280, 'Lagoa do Itaenga', 16, 2608503),
-(3281, 'Lagoa do Ouro', 16, 2608602),
-(3282, 'Lagoa dos Gatos', 16, 2608701),
-(3283, 'Lagoa Grande', 16, 2608750),
-(3284, 'Lajedo', 16, 2608800),
-(3285, 'Limoeiro', 16, 2608909),
-(3286, 'Macaparana', 16, 2609006),
-(3287, 'Machados', 16, 2609105),
-(3288, 'Manari', 16, 2609154),
-(3289, 'Maraial', 16, 2609204),
-(3290, 'Mirandiba', 16, 2609303),
-(3291, 'Moreilândia', 16, 2614303),
-(3292, 'Moreno', 16, 2609402),
-(3293, 'Nazaré da Mata', 16, 2609501),
-(3294, 'Olinda', 16, 2609600),
-(3295, 'Orobó', 16, 2609709),
-(3296, 'Orocó', 16, 2609808),
-(3297, 'Ouricuri', 16, 2609907),
-(3298, 'Palmares', 16, 2610004),
-(3299, 'Palmeirina', 16, 2610103),
-(3300, 'Panelas', 16, 2610202),
-(3301, 'Paranatama', 16, 2610301),
-(3302, 'Parnamirim', 16, 2610400),
-(3303, 'Passira', 16, 2610509),
-(3304, 'Paudalho', 16, 2610608),
-(3305, 'Paulista', 16, 2610707),
-(3306, 'Pedra', 16, 2610806),
-(3307, 'Pesqueira', 16, 2610905),
-(3308, 'Petrolândia', 16, 2611002),
-(3309, 'Petrolina', 16, 2611101),
-(3310, 'Poção', 16, 2611200),
-(3311, 'Pombos', 16, 2611309),
-(3312, 'Primavera', 16, 2611408),
-(3313, 'Quipapá', 16, 2611507),
-(3314, 'Quixaba', 16, 2611533),
-(3315, 'Recife', 16, 2611606),
-(3316, 'Riacho das Almas', 16, 2611705),
-(3317, 'Ribeirão', 16, 2611804),
-(3318, 'Rio Formoso', 16, 2611903),
-(3319, 'Sairé', 16, 2612000),
-(3320, 'Salgadinho', 16, 2612109),
-(3321, 'Salgueiro', 16, 2612208),
-(3322, 'Saloá', 16, 2612307),
-(3323, 'Sanharó', 16, 2612406),
-(3324, 'Santa Cruz', 16, 2612455),
-(3325, 'Santa Cruz da Baixa Verde', 16, 2612471),
-(3326, 'Santa Cruz do Capibaribe', 16, 2612505),
-(3327, 'Santa Filomena', 16, 2612554),
-(3328, 'Santa Maria da Boa Vista', 16, 2612604),
-(3329, 'Santa Maria do Cambucá', 16, 2612703),
-(3330, 'Santa Terezinha', 16, 2612802),
-(3331, 'São Benedito do Sul', 16, 2612901),
-(3332, 'São Bento do Una', 16, 2613008),
-(3333, 'São Caitano', 16, 2613107),
-(3334, 'São João', 16, 2613206),
-(3335, 'São Joaquim do Monte', 16, 2613305),
-(3336, 'São José da Coroa Grande', 16, 2613404),
-(3337, 'São José do Belmonte', 16, 2613503),
-(3338, 'São José do Egito', 16, 2613602),
-(3339, 'São Lourenço da Mata', 16, 2613701),
-(3340, 'São Vicente Ferrer', 16, 2613800),
-(3341, 'Serra Talhada', 16, 2613909),
-(3342, 'Serrita', 16, 2614006),
-(3343, 'Sertânia', 16, 2614105),
-(3344, 'Sirinhaém', 16, 2614204),
-(3345, 'Solidão', 16, 2614402),
-(3346, 'Surubim', 16, 2614501),
-(3347, 'Tabira', 16, 2614600),
-(3348, 'Tacaimbó', 16, 2614709),
-(3349, 'Tacaratu', 16, 2614808),
-(3350, 'Tamandaré', 16, 2614857),
-(3351, 'Taquaritinga do Norte', 16, 2615003),
-(3352, 'Terezinha', 16, 2615102),
-(3353, 'Terra Nova', 16, 2615201),
-(3354, 'Timbaúba', 16, 2615300),
-(3355, 'Toritama', 16, 2615409),
-(3356, 'Tracunhaém', 16, 2615508),
-(3357, 'Trindade', 16, 2615607),
-(3358, 'Triunfo', 16, 2615706),
-(3359, 'Tupanatinga', 16, 2615805),
-(3360, 'Tuparetama', 16, 2615904),
-(3361, 'Venturosa', 16, 2616001),
-(3362, 'Verdejante', 16, 2616100),
-(3363, 'Vertente do Lério', 16, 2616183),
-(3364, 'Vertentes', 16, 2616209),
-(3365, 'Vicência', 16, 2616308),
-(3366, 'Vitória de Santo Antão', 16, 2616407),
-(3367, 'Xexéu', 16, 2616506),
-(3368, 'Acauã', 17, 2200053),
-(3369, 'Agricolândia', 17, 2200103),
-(3370, 'Água Branca', 17, 2200202),
-(3371, 'Alagoinha do Piauí', 17, 2200251),
-(3372, 'Alegrete do Piauí', 17, 2200277),
-(3373, 'Alto Longá', 17, 2200301),
-(3374, 'Altos', 17, 2200400),
-(3375, 'Alvorada do Gurguéia', 17, 2200459),
-(3376, 'Amarante', 17, 2200509),
-(3377, 'Angical do Piauí', 17, 2200608),
-(3378, 'Anísio de Abreu', 17, 2200707),
-(3379, 'Antônio Almeida', 17, 2200806),
-(3380, 'Aroazes', 17, 2200905),
-(3381, 'Aroeiras do Itaim', 17, 2200954),
-(3382, 'Arraial', 17, 2201002),
-(3383, 'Assunção do Piauí', 17, 2201051),
-(3384, 'Avelino Lopes', 17, 2201101),
-(3385, 'Baixa Grande do Ribeiro', 17, 2201150),
-(3386, 'Barra d`Alcântara', 17, 2201176),
-(3387, 'Barras', 17, 2201200),
-(3388, 'Barreiras do Piauí', 17, 2201309),
-(3389, 'Barro Duro', 17, 2201408),
-(3390, 'Batalha', 17, 2201507),
-(3391, 'Bela Vista do Piauí', 17, 2201556),
-(3392, 'Belém do Piauí', 17, 2201572),
-(3393, 'Beneditinos', 17, 2201606),
-(3394, 'Bertolínia', 17, 2201705),
-(3395, 'Betânia do Piauí', 17, 2201739),
-(3396, 'Boa Hora', 17, 2201770),
-(3397, 'Bocaina', 17, 2201804),
-(3398, 'Bom Jesus', 17, 2201903),
-(3399, 'Bom Princípio do Piauí', 17, 2201919),
-(3400, 'Bonfim do Piauí', 17, 2201929),
-(3401, 'Boqueirão do Piauí', 17, 2201945),
-(3402, 'Brasileira', 17, 2201960),
-(3403, 'Brejo do Piauí', 17, 2201988),
-(3404, 'Buriti dos Lopes', 17, 2202000),
-(3405, 'Buriti dos Montes', 17, 2202026),
-(3406, 'Cabeceiras do Piauí', 17, 2202059),
-(3407, 'Cajazeiras do Piauí', 17, 2202075),
-(3408, 'Cajueiro da Praia', 17, 2202083),
-(3409, 'Caldeirão Grande do Piauí', 17, 2202091),
-(3410, 'Campinas do Piauí', 17, 2202109),
-(3411, 'Campo Alegre do Fidalgo', 17, 2202117),
-(3412, 'Campo Grande do Piauí', 17, 2202133),
-(3413, 'Campo Largo do Piauí', 17, 2202174),
-(3414, 'Campo Maior', 17, 2202208),
-(3415, 'Canavieira', 17, 2202251),
-(3416, 'Canto do Buriti', 17, 2202307),
-(3417, 'Capitão de Campos', 17, 2202406),
-(3418, 'Capitão Gervásio Oliveira', 17, 2202455),
-(3419, 'Caracol', 17, 2202505),
-(3420, 'Caraúbas do Piauí', 17, 2202539),
-(3421, 'Caridade do Piauí', 17, 2202554),
-(3422, 'Castelo do Piauí', 17, 2202604),
-(3423, 'Caxingó', 17, 2202653),
-(3424, 'Cocal', 17, 2202703),
-(3425, 'Cocal de Telha', 17, 2202711),
-(3426, 'Cocal dos Alves', 17, 2202729),
-(3427, 'Coivaras', 17, 2202737),
-(3428, 'Colônia do Gurguéia', 17, 2202752),
-(3429, 'Colônia do Piauí', 17, 2202778),
-(3430, 'Conceição do Canindé', 17, 2202802),
-(3431, 'Coronel José Dias', 17, 2202851),
-(3432, 'Corrente', 17, 2202901),
-(3433, 'Cristalândia do Piauí', 17, 2203008),
-(3434, 'Cristino Castro', 17, 2203107),
-(3435, 'Curimatá', 17, 2203206),
-(3436, 'Currais', 17, 2203230),
-(3437, 'Curral Novo do Piauí', 17, 2203271),
-(3438, 'Curralinhos', 17, 2203255),
-(3439, 'Demerval Lobão', 17, 2203305),
-(3440, 'Dirceu Arcoverde', 17, 2203354),
-(3441, 'Dom Expedito Lopes', 17, 2203404),
-(3442, 'Dom Inocêncio', 17, 2203453),
-(3443, 'Domingos Mourão', 17, 2203420),
-(3444, 'Elesbão Veloso', 17, 2203503),
-(3445, 'Eliseu Martins', 17, 2203602),
-(3446, 'Esperantina', 17, 2203701),
-(3447, 'Fartura do Piauí', 17, 2203750),
-(3448, 'Flores do Piauí', 17, 2203800),
-(3449, 'Floresta do Piauí', 17, 2203859),
-(3450, 'Floriano', 17, 2203909),
-(3451, 'Francinópolis', 17, 2204006),
-(3452, 'Francisco Ayres', 17, 2204105),
-(3453, 'Francisco Macedo', 17, 2204154),
-(3454, 'Francisco Santos', 17, 2204204),
-(3455, 'Fronteiras', 17, 2204303),
-(3456, 'Geminiano', 17, 2204352),
-(3457, 'Gilbués', 17, 2204402),
-(3458, 'Guadalupe', 17, 2204501),
-(3459, 'Guaribas', 17, 2204550),
-(3460, 'Hugo Napoleão', 17, 2204600),
-(3461, 'Ilha Grande', 17, 2204659),
-(3462, 'Inhuma', 17, 2204709),
-(3463, 'Ipiranga do Piauí', 17, 2204808),
-(3464, 'Isaías Coelho', 17, 2204907),
-(3465, 'Itainópolis', 17, 2205003),
-(3466, 'Itaueira', 17, 2205102),
-(3467, 'Jacobina do Piauí', 17, 2205151),
-(3468, 'Jaicós', 17, 2205201),
-(3469, 'Jardim do Mulato', 17, 2205250),
-(3470, 'Jatobá do Piauí', 17, 2205276),
-(3471, 'Jerumenha', 17, 2205300),
-(3472, 'João Costa', 17, 2205359),
-(3473, 'Joaquim Pires', 17, 2205409),
-(3474, 'Joca Marques', 17, 2205458),
-(3475, 'José de Freitas', 17, 2205508),
-(3476, 'Juazeiro do Piauí', 17, 2205516),
-(3477, 'Júlio Borges', 17, 2205524),
-(3478, 'Jurema', 17, 2205532),
-(3479, 'Lagoa Alegre', 17, 2205557),
-(3480, 'Lagoa de São Francisco', 17, 2205573),
-(3481, 'Lagoa do Barro do Piauí', 17, 2205565),
-(3482, 'Lagoa do Piauí', 17, 2205581),
-(3483, 'Lagoa do Sítio', 17, 2205599),
-(3484, 'Lagoinha do Piauí', 17, 2205540),
-(3485, 'Landri Sales', 17, 2205607),
-(3486, 'Luís Correia', 17, 2205706),
-(3487, 'Luzilândia', 17, 2205805),
-(3488, 'Madeiro', 17, 2205854),
-(3489, 'Manoel Emídio', 17, 2205904),
-(3490, 'Marcolândia', 17, 2205953),
-(3491, 'Marcos Parente', 17, 2206001),
-(3492, 'Massapê do Piauí', 17, 2206050),
-(3493, 'Matias Olímpio', 17, 2206100),
-(3494, 'Miguel Alves', 17, 2206209),
-(3495, 'Miguel Leão', 17, 2206308),
-(3496, 'Milton Brandão', 17, 2206357),
-(3497, 'Monsenhor Gil', 17, 2206407),
-(3498, 'Monsenhor Hipólito', 17, 2206506),
-(3499, 'Monte Alegre do Piauí', 17, 2206605),
-(3500, 'Morro Cabeça no Tempo', 17, 2206654),
-(3501, 'Morro do Chapéu do Piauí', 17, 2206670),
-(3502, 'Murici dos Portelas', 17, 2206696),
-(3503, 'Nazaré do Piauí', 17, 2206704),
-(3504, 'Nossa Senhora de Nazaré', 17, 2206753),
-(3505, 'Nossa Senhora dos Remédios', 17, 2206803),
-(3506, 'Nova Santa Rita', 17, 2207959),
-(3507, 'Novo Oriente do Piauí', 17, 2206902),
-(3508, 'Novo Santo Antônio', 17, 2206951),
-(3509, 'Oeiras', 17, 2207009),
-(3510, 'Olho d`Água do Piauí', 17, 2207108),
-(3511, 'Padre Marcos', 17, 2207207),
-(3512, 'Paes Landim', 17, 2207306),
-(3513, 'Pajeú do Piauí', 17, 2207355),
-(3514, 'Palmeira do Piauí', 17, 2207405),
-(3515, 'Palmeirais', 17, 2207504),
-(3516, 'Paquetá', 17, 2207553),
-(3517, 'Parnaguá', 17, 2207603),
-(3518, 'Parnaíba', 17, 2207702),
-(3519, 'Passagem Franca do Piauí', 17, 2207751),
-(3520, 'Patos do Piauí', 17, 2207777),
-(3521, 'Pau d`Arco do Piauí', 17, 2207793),
-(3522, 'Paulistana', 17, 2207801),
-(3523, 'Pavussu', 17, 2207850),
-(3524, 'Pedro II', 17, 2207900),
-(3525, 'Pedro Laurentino', 17, 2207934),
-(3526, 'Picos', 17, 2208007),
-(3527, 'Pimenteiras', 17, 2208106),
-(3528, 'Pio IX', 17, 2208205),
-(3529, 'Piracuruca', 17, 2208304),
-(3530, 'Piripiri', 17, 2208403),
-(3531, 'Porto', 17, 2208502),
-(3532, 'Porto Alegre do Piauí', 17, 2208551),
-(3533, 'Prata do Piauí', 17, 2208601),
-(3534, 'Queimada Nova', 17, 2208650),
-(3535, 'Redenção do Gurguéia', 17, 2208700),
-(3536, 'Regeneração', 17, 2208809),
-(3537, 'Riacho Frio', 17, 2208858),
-(3538, 'Ribeira do Piauí', 17, 2208874),
-(3539, 'Ribeiro Gonçalves', 17, 2208908),
-(3540, 'Rio Grande do Piauí', 17, 2209005),
-(3541, 'Santa Cruz do Piauí', 17, 2209104),
-(3542, 'Santa Cruz dos Milagres', 17, 2209153),
-(3543, 'Santa Filomena', 17, 2209203),
-(3544, 'Santa Luz', 17, 2209302),
-(3545, 'Santa Rosa do Piauí', 17, 2209377),
-(3546, 'Santana do Piauí', 17, 2209351),
-(3547, 'Santo Antônio de Lisboa', 17, 2209401),
-(3548, 'Santo Antônio dos Milagres', 17, 2209450),
-(3549, 'Santo Inácio do Piauí', 17, 2209500),
-(3550, 'São Braz do Piauí', 17, 2209559),
-(3551, 'São Félix do Piauí', 17, 2209609),
-(3552, 'São Francisco de Assis do Piauí', 17, 2209658),
-(3553, 'São Francisco do Piauí', 17, 2209708),
-(3554, 'São Gonçalo do Gurguéia', 17, 2209757),
-(3555, 'São Gonçalo do Piauí', 17, 2209807),
-(3556, 'São João da Canabrava', 17, 2209856),
-(3557, 'São João da Fronteira', 17, 2209872),
-(3558, 'São João da Serra', 17, 2209906),
-(3559, 'São João da Varjota', 17, 2209955),
-(3560, 'São João do Arraial', 17, 2209971),
-(3561, 'São João do Piauí', 17, 2210003),
-(3562, 'São José do Divino', 17, 2210052),
-(3563, 'São José do Peixe', 17, 2210102),
-(3564, 'São José do Piauí', 17, 2210201),
-(3565, 'São Julião', 17, 2210300),
-(3566, 'São Lourenço do Piauí', 17, 2210359),
-(3567, 'São Luis do Piauí', 17, 2210375),
-(3568, 'São Miguel da Baixa Grande', 17, 2210383),
-(3569, 'São Miguel do Fidalgo', 17, 2210391),
-(3570, 'São Miguel do Tapuio', 17, 2210409),
-(3571, 'São Pedro do Piauí', 17, 2210508),
-(3572, 'São Raimundo Nonato', 17, 2210607),
-(3573, 'Sebastião Barros', 17, 2210623),
-(3574, 'Sebastião Leal', 17, 2210631),
-(3575, 'Sigefredo Pacheco', 17, 2210656),
-(3576, 'Simões', 17, 2210706),
-(3577, 'Simplício Mendes', 17, 2210805),
-(3578, 'Socorro do Piauí', 17, 2210904),
-(3579, 'Sussuapara', 17, 2210938),
-(3580, 'Tamboril do Piauí', 17, 2210953),
-(3581, 'Tanque do Piauí', 17, 2210979),
-(3582, 'Teresina', 17, 2211001),
-(3583, 'União', 17, 2211100),
-(3584, 'Uruçuí', 17, 2211209),
-(3585, 'Valença do Piauí', 17, 2211308),
-(3586, 'Várzea Branca', 17, 2211357),
-(3587, 'Várzea Grande', 17, 2211407),
-(3588, 'Vera Mendes', 17, 2211506),
-(3589, 'Vila Nova do Piauí', 17, 2211605),
-(3590, 'Wall Ferraz', 17, 2211704),
-(3591, 'Angra dos Reis', 19, 3300100),
-(3592, 'Aperibé', 19, 3300159),
-(3593, 'Araruama', 19, 3300209),
-(3594, 'Areal', 19, 3300225),
-(3595, 'Armação dos Búzios', 19, 3300233),
-(3596, 'Arraial do Cabo', 19, 3300258),
-(3597, 'Barra do Piraí', 19, 3300308),
-(3598, 'Barra Mansa', 19, 3300407),
-(3599, 'Belford Roxo', 19, 3300456),
-(3600, 'Bom Jardim', 19, 3300506),
-(3601, 'Bom Jesus do Itabapoana', 19, 3300605),
-(3602, 'Cabo Frio', 19, 3300704),
-(3603, 'Cachoeiras de Macacu', 19, 3300803),
-(3604, 'Cambuci', 19, 3300902),
-(3605, 'Campos dos Goytacazes', 19, 3301009),
-(3606, 'Cantagalo', 19, 3301108),
-(3607, 'Carapebus', 19, 3300936),
-(3608, 'Cardoso Moreira', 19, 3301157),
-(3609, 'Carmo', 19, 3301207),
-(3610, 'Casimiro de Abreu', 19, 3301306),
-(3611, 'Comendador Levy Gasparian', 19, 3300951),
-(3612, 'Conceição de Macabu', 19, 3301405),
-(3613, 'Cordeiro', 19, 3301504),
-(3614, 'Duas Barras', 19, 3301603),
-(3615, 'Duque de Caxias', 19, 3301702),
-(3616, 'Engenheiro Paulo de Frontin', 19, 3301801),
-(3617, 'Guapimirim', 19, 3301850),
-(3618, 'Iguaba Grande', 19, 3301876),
-(3619, 'Itaboraí', 19, 3301900),
-(3620, 'Itaguaí', 19, 3302007),
-(3621, 'Italva', 19, 3302056),
-(3622, 'Itaocara', 19, 3302106),
-(3623, 'Itaperuna', 19, 3302205),
-(3624, 'Itatiaia', 19, 3302254),
-(3625, 'Japeri', 19, 3302270),
-(3626, 'Laje do Muriaé', 19, 3302304),
-(3627, 'Macaé', 19, 3302403),
-(3628, 'Macuco', 19, 3302452),
-(3629, 'Magé', 19, 3302502),
-(3630, 'Mangaratiba', 19, 3302601),
-(3631, 'Maricá', 19, 3302700),
-(3632, 'Mendes', 19, 3302809),
-(3633, 'Mesquita', 19, 3302858),
-(3634, 'Miguel Pereira', 19, 3302908),
-(3635, 'Miracema', 19, 3303005),
-(3636, 'Natividade', 19, 3303104),
-(3637, 'Nilópolis', 19, 3303203),
-(3638, 'Niterói', 19, 3303302),
-(3639, 'Nova Friburgo', 19, 3303401),
-(3640, 'Nova Iguaçu', 19, 3303500),
-(3641, 'Paracambi', 19, 3303609),
-(3642, 'Paraíba do Sul', 19, 3303708),
-(3643, 'Parati', 19, 3303807),
-(3644, 'Paty do Alferes', 19, 3303856),
-(3645, 'Petrópolis', 19, 3303906),
-(3646, 'Pinheiral', 19, 3303955),
-(3647, 'Piraí', 19, 3304003),
-(3648, 'Porciúncula', 19, 3304102),
-(3649, 'Porto Real', 19, 3304110),
-(3650, 'Quatis', 19, 3304128),
-(3651, 'Queimados', 19, 3304144),
-(3652, 'Quissamã', 19, 3304151),
-(3653, 'Resende', 19, 3304201),
-(3654, 'Rio Bonito', 19, 3304300),
-(3655, 'Rio Claro', 19, 3304409),
-(3656, 'Rio das Flores', 19, 3304508),
-(3657, 'Rio das Ostras', 19, 3304524),
-(3658, 'Rio de Janeiro', 19, 3304557),
-(3659, 'Santa Maria Madalena', 19, 3304607),
-(3660, 'Santo Antônio de Pádua', 19, 3304706),
-(3661, 'São Fidélis', 19, 3304805),
-(3662, 'São Francisco de Itabapoana', 19, 3304755),
-(3663, 'São Gonçalo', 19, 3304904),
-(3664, 'São João da Barra', 19, 3305000),
-(3665, 'São João de Meriti', 19, 3305109),
-(3666, 'São José de Ubá', 19, 3305133),
-(3667, 'São José do Vale do Rio Preto', 19, 3305158),
-(3668, 'São Pedro da Aldeia', 19, 3305208),
-(3669, 'São Sebastião do Alto', 19, 3305307),
-(3670, 'Sapucaia', 19, 3305406),
-(3671, 'Saquarema', 19, 3305505),
-(3672, 'Seropédica', 19, 3305554),
-(3673, 'Silva Jardim', 19, 3305604),
-(3674, 'Sumidouro', 19, 3305703),
-(3675, 'Tanguá', 19, 3305752),
-(3676, 'Teresópolis', 19, 3305802),
-(3677, 'Trajano de Morais', 19, 3305901),
-(3678, 'Três Rios', 19, 3306008),
-(3679, 'Valença', 19, 3306107),
-(3680, 'Varre-Sai', 19, 3306156),
-(3681, 'Vassouras', 19, 3306206),
-(3682, 'Volta Redonda', 19, 3306305),
-(3683, 'Acari', 20, 2400109),
-(3684, 'Açu', 20, 2400208),
-(3685, 'Afonso Bezerra', 20, 2400307),
-(3686, 'Água Nova', 20, 2400406),
-(3687, 'Alexandria', 20, 2400505),
-(3688, 'Almino Afonso', 20, 2400604),
-(3689, 'Alto do Rodrigues', 20, 2400703),
-(3690, 'Jardim de Angicos', 20, 2405504),
-(3691, 'Antônio Martins', 20, 2400901),
-(3692, 'Apodi', 20, 2401008),
-(3693, 'Areia Branca', 20, 2401107),
-(3694, 'Arês', 20, 2401206),
-(3695, 'Augusto Severo', 20, 2401305),
-(3696, 'Baía Formosa', 20, 2401404),
-(3697, 'Baraúna', 20, 2401453),
-(3698, 'Barcelona', 20, 2401503),
-(3699, 'Bento Fernandes', 20, 2401602),
-(3700, 'Bodó', 20, 2401651),
-(3701, 'Bom Jesus', 20, 2401701),
-(3702, 'Brejinho', 20, 2401800),
-(3703, 'Caiçara do Norte', 20, 2401859),
-(3704, 'Caiçara do Rio do Vento', 20, 2401909),
-(3705, 'Caicó', 20, 2402006),
-(3706, 'Campo Redondo', 20, 2402105),
-(3707, 'Canguaretama', 20, 2402204),
-(3708, 'Caraúbas', 20, 2402303),
-(3709, 'Carnaúba dos Dantas', 20, 2402402),
-(3710, 'Carnaubais', 20, 2402501),
-(3711, 'Ceará-Mirim', 20, 2402600),
-(3712, 'Cerro Corá', 20, 2402709),
-(3713, 'Coronel Ezequiel', 20, 2402808),
-(3714, 'Coronel João Pessoa', 20, 2402907),
-(3715, 'Cruzeta', 20, 2403004),
-(3716, 'Currais Novos', 20, 2403103),
-(3717, 'Doutor Severiano', 20, 2403202),
-(3718, 'Encanto', 20, 2403301),
-(3719, 'Equador', 20, 2403400),
-(3720, 'Espírito Santo', 20, 2403509),
-(3721, 'Extremoz', 20, 2403608),
-(3722, 'Felipe Guerra', 20, 2403707),
-(3723, 'Fernando Pedroza', 20, 2403756),
-(3724, 'Florânia', 20, 2403806),
-(3725, 'Francisco Dantas', 20, 2403905),
-(3726, 'Frutuoso Gomes', 20, 2404002),
-(3727, 'Galinhos', 20, 2404101),
-(3728, 'Goianinha', 20, 2404200),
-(3729, 'Governador Dix-Sept Rosado', 20, 2404309),
-(3730, 'Grossos', 20, 2404408),
-(3731, 'Guamaré', 20, 2404507),
-(3732, 'Ielmo Marinho', 20, 2404606),
-(3733, 'Ipanguaçu', 20, 2404705),
-(3734, 'Ipueira', 20, 2404804),
-(3735, 'Itajá', 20, 2404853),
-(3736, 'Itaú', 20, 2404903),
-(3737, 'Jaçanã', 20, 2405009),
-(3738, 'Jandaíra', 20, 2405108),
-(3739, 'Janduís', 20, 2405207),
-(3740, 'Januário Cicco', 20, 2405306),
-(3741, 'Japi', 20, 2405405),
-(3743, 'Jardim de Piranhas', 20, 2405603),
-(3744, 'Jardim do Seridó', 20, 2405702),
-(3745, 'João Câmara', 20, 2405801),
-(3746, 'João Dias', 20, 2405900),
-(3747, 'José da Penha', 20, 2406007),
-(3748, 'Jucurutu', 20, 2406106),
-(3749, 'Jundiá', 20, 2406155),
-(3750, 'Lagoa d`Anta', 20, 2406205),
-(3751, 'Lagoa de Pedras', 20, 2406304),
-(3752, 'Lagoa de Velhos', 20, 2406403),
-(3753, 'Lagoa Nova', 20, 2406502),
-(3754, 'Lagoa Salgada', 20, 2406601),
-(3755, 'Lajes', 20, 2406700),
-(3756, 'Lajes Pintadas', 20, 2406809),
-(3757, 'Lucrécia', 20, 2406908),
-(3758, 'Luís Gomes', 20, 2407005),
-(3759, 'Macaíba', 20, 2407104),
-(3760, 'Macau', 20, 2407203),
-(3761, 'Major Sales', 20, 2407252),
-(3762, 'Marcelino Vieira', 20, 2407302),
-(3763, 'Martins', 20, 2407401),
-(3764, 'Maxaranguape', 20, 2407500),
-(3765, 'Messias Targino', 20, 2407609),
-(3766, 'Montanhas', 20, 2407708),
-(3767, 'Monte Alegre', 20, 2407807),
-(3768, 'Monte das Gameleiras', 20, 2407906),
-(3769, 'Mossoró', 20, 2408003),
-(3770, 'Natal', 20, 2408102),
-(3771, 'Nísia Floresta', 20, 2408201),
-(3772, 'Nova Cruz', 20, 2408300),
-(3773, 'Olho-d`Água do Borges', 20, 2408409),
-(3774, 'Ouro Branco', 20, 2408508),
-(3775, 'Paraná', 20, 2408607),
-(3776, 'Paraú', 20, 2408706),
-(3777, 'Parazinho', 20, 2408805),
-(3778, 'Parelhas', 20, 2408904),
-(3779, 'Parnamirim', 20, 2403251),
-(3780, 'Passa e Fica', 20, 2409100),
-(3781, 'Passagem', 20, 2409209),
-(3782, 'Patu', 20, 2409308),
-(3783, 'Pau dos Ferros', 20, 2409407),
-(3784, 'Pedra Grande', 20, 2409506),
-(3785, 'Pedra Preta', 20, 2409605),
-(3786, 'Pedro Avelino', 20, 2409704),
-(3787, 'Pedro Velho', 20, 2409803),
-(3788, 'Pendências', 20, 2409902),
-(3789, 'Pilões', 20, 2410009),
-(3790, 'Poço Branco', 20, 2410108),
-(3791, 'Portalegre', 20, 2410207),
-(3792, 'Porto do Mangue', 20, 2410256),
-(3793, 'Presidente Juscelino', 20, 2410306),
-(3794, 'Pureza', 20, 2410405),
-(3795, 'Rafael Fernandes', 20, 2410504),
-(3796, 'Rafael Godeiro', 20, 2410603),
-(3797, 'Riacho da Cruz', 20, 2410702),
-(3798, 'Riacho de Santana', 20, 2410801),
-(3799, 'Riachuelo', 20, 2410900),
-(3800, 'Rio do Fogo', 20, 2408953),
-(3801, 'Rodolfo Fernandes', 20, 2411007),
-(3802, 'Ruy Barbosa', 20, 2411106),
-(3803, 'Santa Cruz', 20, 2411205),
-(3804, 'Santa Maria', 20, 2409332),
-(3805, 'Santana do Matos', 20, 2411403),
-(3806, 'Santana do Seridó', 20, 2411429),
-(3807, 'Santo Antônio', 20, 2411502),
-(3808, 'São Bento do Norte', 20, 2411601),
-(3809, 'São Bento do Trairí', 20, 2411700),
-(3810, 'São Fernando', 20, 2411809),
-(3811, 'São Francisco do Oeste', 20, 2411908),
-(3812, 'São Gonçalo do Amarante', 20, 2412005),
-(3813, 'São João do Sabugi', 20, 2412104),
-(3814, 'São José de Mipibu', 20, 2412203),
-(3815, 'São José do Campestre', 20, 2412302),
-(3816, 'São José do Seridó', 20, 2412401),
-(3817, 'São Miguel', 20, 2412500),
-(3818, 'São Miguel do Gostoso', 20, 2412559),
-(3819, 'São Paulo do Potengi', 20, 2412609),
-(3820, 'São Pedro', 20, 2412708),
-(3821, 'São Rafael', 20, 2412807),
-(3822, 'São Tomé', 20, 2412906),
-(3823, 'São Vicente', 20, 2413003),
-(3824, 'Senador Elói de Souza', 20, 2413102),
-(3825, 'Senador Georgino Avelino', 20, 2413201),
-(3826, 'Serra de São Bento', 20, 2413300),
-(3827, 'Serra do Mel', 20, 2413359),
-(3828, 'Serra Negra do Norte', 20, 2413409),
-(3829, 'Serrinha', 20, 2413508),
-(3830, 'Serrinha dos Pintos', 20, 2413557),
-(3831, 'Severiano Melo', 20, 2413607),
-(3832, 'Sítio Novo', 20, 2413706),
-(3833, 'Taboleiro Grande', 20, 2413805),
-(3834, 'Taipu', 20, 2413904),
-(3835, 'Tangará', 20, 2414001),
-(3836, 'Tenente Ananias', 20, 2414100),
-(3837, 'Tenente Laurentino Cruz', 20, 2414159),
-(3838, 'Tibau', 20, 2411056),
-(3839, 'Tibau do Sul', 20, 2414209),
-(3840, 'Timbaúba dos Batistas', 20, 2414308),
-(3841, 'Touros', 20, 2414407),
-(3842, 'Triunfo Potiguar', 20, 2414456),
-(3843, 'Umarizal', 20, 2414506),
-(3844, 'Upanema', 20, 2414605),
-(3845, 'Várzea', 20, 2414704),
-(3846, 'Venha-Ver', 20, 2414753),
-(3847, 'Vera Cruz', 20, 2414803),
-(3848, 'Viçosa', 20, 2414902),
-(3849, 'Vila Flor', 20, 2415008),
-(3850, 'Aceguá', 23, 4300034),
-(3851, 'Água Santa', 23, 4300059),
-(3852, 'Agudo', 23, 4300109),
-(3853, 'Ajuricaba', 23, 4300208),
-(3854, 'Alecrim', 23, 4300307),
-(3855, 'Alegrete', 23, 4300406),
-(3856, 'Alegria', 23, 4300455),
-(3857, 'Almirante Tamandaré do Sul', 23, 4300471),
-(3858, 'Alpestre', 23, 4300505),
-(3859, 'Alto Alegre', 23, 4300554),
-(3860, 'Alto Feliz', 23, 4300570),
-(3861, 'Alvorada', 23, 4300604),
-(3862, 'Amaral Ferrador', 23, 4300638),
-(3863, 'Ametista do Sul', 23, 4300646),
-(3864, 'André da Rocha', 23, 4300661),
-(3865, 'Anta Gorda', 23, 4300703),
-(3866, 'Antônio Prado', 23, 4300802),
-(3867, 'Arambaré', 23, 4300851),
-(3868, 'Araricá', 23, 4300877),
-(3869, 'Aratiba', 23, 4300901),
-(3870, 'Arroio do Meio', 23, 4301008),
-(3871, 'Arroio do Padre', 23, 4301073),
-(3872, 'Arroio do Sal', 23, 4301057),
-(3873, 'Arroio do Tigre', 23, 4301206),
-(3874, 'Arroio dos Ratos', 23, 4301107),
-(3875, 'Arroio Grande', 23, 4301305),
-(3876, 'Arvorezinha', 23, 4301404),
-(3877, 'Augusto Pestana', 23, 4301503),
-(3878, 'Áurea', 23, 4301552),
-(3879, 'Bagé', 23, 4301602),
-(3880, 'Balneário Pinhal', 23, 4301636),
-(3881, 'Barão', 23, 4301651),
-(3882, 'Barão de Cotegipe', 23, 4301701),
-(3883, 'Barão do Triunfo', 23, 4301750),
-(3884, 'Barra do Guarita', 23, 4301859),
-(3885, 'Barra do Quaraí', 23, 4301875),
-(3886, 'Barra do Ribeiro', 23, 4301909),
-(3887, 'Barra do Rio Azul', 23, 4301925),
-(3888, 'Barra Funda', 23, 4301958),
-(3889, 'Barracão', 23, 4301800),
-(3890, 'Barros Cassal', 23, 4302006),
-(3891, 'Benjamin Constant do Sul', 23, 4302055),
-(3892, 'Bento Gonçalves', 23, 4302105),
-(3893, 'Boa Vista das Missões', 23, 4302154),
-(3894, 'Boa Vista do Buricá', 23, 4302204),
-(3895, 'Boa Vista do Cadeado', 23, 4302220),
-(3896, 'Boa Vista do Incra', 23, 4302238),
-(3897, 'Boa Vista do Sul', 23, 4302253),
-(3898, 'Bom Jesus', 23, 4302303),
-(3899, 'Bom Princípio', 23, 4302352),
-(3900, 'Bom Progresso', 23, 4302378),
-(3901, 'Bom Retiro do Sul', 23, 4302402),
-(3902, 'Boqueirão do Leão', 23, 4302451),
-(3903, 'Bossoroca', 23, 4302501),
-(3904, 'Bozano', 23, 4302584),
-(3905, 'Braga', 23, 4302600),
-(3906, 'Brochier', 23, 4302659),
-(3907, 'Butiá', 23, 4302709),
-(3908, 'Caçapava do Sul', 23, 4302808),
-(3909, 'Cacequi', 23, 4302907),
-(3910, 'Cachoeira do Sul', 23, 4303004),
-(3911, 'Cachoeirinha', 23, 4303103),
-(3912, 'Cacique Doble', 23, 4303202),
-(3913, 'Caibaté', 23, 4303301),
-(3914, 'Caiçara', 23, 4303400),
-(3915, 'Camaquã', 23, 4303509),
-(3916, 'Camargo', 23, 4303558),
-(3917, 'Cambará do Sul', 23, 4303608),
-(3918, 'Campestre da Serra', 23, 4303673),
-(3919, 'Campina das Missões', 23, 4303707),
-(3920, 'Campinas do Sul', 23, 4303806),
-(3921, 'Campo Bom', 23, 4303905),
-(3922, 'Campo Novo', 23, 4304002),
-(3923, 'Campos Borges', 23, 4304101),
-(3924, 'Candelária', 23, 4304200),
-(3925, 'Cândido Godói', 23, 4304309),
-(3926, 'Candiota', 23, 4304358),
-(3927, 'Canela', 23, 4304408),
-(3928, 'Canguçu', 23, 4304507),
-(3929, 'Canoas', 23, 4304606),
-(3930, 'Canudos do Vale', 23, 4304614),
-(3931, 'Capão Bonito do Sul', 23, 4304622),
-(3932, 'Capão da Canoa', 23, 4304630),
-(3933, 'Capão do Cipó', 23, 4304655),
-(3934, 'Capão do Leão', 23, 4304663),
-(3935, 'Capela de Santana', 23, 4304689),
-(3936, 'Capitão', 23, 4304697),
-(3937, 'Capivari do Sul', 23, 4304671),
-(3938, 'Caraá', 23, 4304713),
-(3939, 'Carazinho', 23, 4304705),
-(3940, 'Carlos Barbosa', 23, 4304804),
-(3941, 'Carlos Gomes', 23, 4304853),
-(3942, 'Casca', 23, 4304903),
-(3943, 'Caseiros', 23, 4304952),
-(3944, 'Catuípe', 23, 4305009),
-(3945, 'Caxias do Sul', 23, 4305108),
-(3946, 'Centenário', 23, 4305116),
-(3947, 'Cerrito', 23, 4305124),
-(3948, 'Cerro Branco', 23, 4305132),
-(3949, 'Cerro Grande', 23, 4305157),
-(3950, 'Cerro Grande do Sul', 23, 4305173),
-(3951, 'Cerro Largo', 23, 4305207),
-(3952, 'Chapada', 23, 4305306),
-(3953, 'Charqueadas', 23, 4305355),
-(3954, 'Charrua', 23, 4305371),
-(3955, 'Chiapetta', 23, 4305405),
-(3956, 'Chuí', 23, 4305439),
-(3957, 'Chuvisca', 23, 4305447),
-(3958, 'Cidreira', 23, 4305454),
-(3959, 'Ciríaco', 23, 4305504),
-(3960, 'Colinas', 23, 4305587),
-(3961, 'Colorado', 23, 4305603),
-(3962, 'Condor', 23, 4305702),
-(3963, 'Constantina', 23, 4305801),
-(3964, 'Coqueiro Baixo', 23, 4305835),
-(3965, 'Coqueiros do Sul', 23, 4305850),
-(3966, 'Coronel Barros', 23, 4305871),
-(3967, 'Coronel Bicaco', 23, 4305900),
-(3968, 'Coronel Pilar', 23, 4305934),
-(3969, 'Cotiporã', 23, 4305959),
-(3970, 'Coxilha', 23, 4305975),
-(3971, 'Crissiumal', 23, 4306007),
-(3972, 'Cristal', 23, 4306056),
-(3973, 'Cristal do Sul', 23, 4306072),
-(3974, 'Cruz Alta', 23, 4306106),
-(3975, 'Cruzaltense', 23, 4306130),
-(3976, 'Cruzeiro do Sul', 23, 4306205),
-(3977, 'David Canabarro', 23, 4306304),
-(3978, 'Derrubadas', 23, 4306320),
-(3979, 'Dezesseis de Novembro', 23, 4306353),
-(3980, 'Dilermando de Aguiar', 23, 4306379),
-(3981, 'Dois Irmãos', 23, 4306403),
-(3982, 'Dois Irmãos das Missões', 23, 4306429),
-(3983, 'Dois Lajeados', 23, 4306452),
-(3984, 'Dom Feliciano', 23, 4306502),
-(3985, 'Dom Pedrito', 23, 4306601),
-(3986, 'Dom Pedro de Alcântara', 23, 4306551),
-(3987, 'Dona Francisca', 23, 4306700),
-(3988, 'Doutor Maurício Cardoso', 23, 4306734),
-(3989, 'Doutor Ricardo', 23, 4306759),
-(3990, 'Eldorado do Sul', 23, 4306767),
-(3991, 'Encantado', 23, 4306809),
-(3992, 'Encruzilhada do Sul', 23, 4306908),
-(3993, 'Engenho Velho', 23, 4306924),
-(3994, 'Entre Rios do Sul', 23, 4306957),
-(3995, 'Entre-Ijuís', 23, 4306932),
-(3996, 'Erebango', 23, 4306973),
-(3997, 'Erechim', 23, 4307005),
-(3998, 'Ernestina', 23, 4307054),
-(3999, 'Erval Grande', 23, 4307203),
-(4000, 'Erval Seco', 23, 4307302),
-(4001, 'Esmeralda', 23, 4307401),
-(4002, 'Esperança do Sul', 23, 4307450),
-(4003, 'Espumoso', 23, 4307500),
-(4004, 'Estação', 23, 4307559),
-(4005, 'Estância Velha', 23, 4307609),
-(4006, 'Esteio', 23, 4307708),
-(4007, 'Estrela', 23, 4307807),
-(4008, 'Estrela Velha', 23, 4307815),
-(4009, 'Eugênio de Castro', 23, 4307831),
-(4010, 'Fagundes Varela', 23, 4307864),
-(4011, 'Farroupilha', 23, 4307906),
-(4012, 'Faxinal do Soturno', 23, 4308003),
-(4013, 'Faxinalzinho', 23, 4308052),
-(4014, 'Fazenda Vilanova', 23, 4308078),
-(4015, 'Feliz', 23, 4308102),
-(4016, 'Flores da Cunha', 23, 4308201),
-(4017, 'Floriano Peixoto', 23, 4308250),
-(4018, 'Fontoura Xavier', 23, 4308300),
-(4019, 'Formigueiro', 23, 4308409),
-(4020, 'Forquetinha', 23, 4308433),
-(4021, 'Fortaleza dos Valos', 23, 4308458),
-(4022, 'Frederico Westphalen', 23, 4308508),
-(4023, 'Garibaldi', 23, 4308607),
-(4024, 'Garruchos', 23, 4308656),
-(4025, 'Gaurama', 23, 4308706),
-(4026, 'General Câmara', 23, 4308805),
-(4027, 'Gentil', 23, 4308854),
-(4028, 'Getúlio Vargas', 23, 4308904),
-(4029, 'Giruá', 23, 4309001),
-(4030, 'Glorinha', 23, 4309050),
-(4031, 'Gramado', 23, 4309100),
-(4032, 'Gramado dos Loureiros', 23, 4309126),
-(4033, 'Gramado Xavier', 23, 4309159),
-(4034, 'Gravataí', 23, 4309209),
-(4035, 'Guabiju', 23, 4309258),
-(4036, 'Guaíba', 23, 4309308),
-(4037, 'Guaporé', 23, 4309407),
-(4038, 'Guarani das Missões', 23, 4309506),
-(4039, 'Harmonia', 23, 4309555),
-(4040, 'Herval', 23, 4307104),
-(4041, 'Herveiras', 23, 4309571),
-(4042, 'Horizontina', 23, 4309605),
-(4043, 'Hulha Negra', 23, 4309654),
-(4044, 'Humaitá', 23, 4309704),
-(4045, 'Ibarama', 23, 4309753),
-(4046, 'Ibiaçá', 23, 4309803),
-(4047, 'Ibiraiaras', 23, 4309902),
-(4048, 'Ibirapuitã', 23, 4309951),
-(4049, 'Ibirubá', 23, 4310009),
-(4050, 'Igrejinha', 23, 4310108),
-(4051, 'Ijuí', 23, 4310207),
-(4052, 'Ilópolis', 23, 4310306),
-(4053, 'Imbé', 23, 4310330),
-(4054, 'Imigrante', 23, 4310363),
-(4055, 'Independência', 23, 4310405),
-(4056, 'Inhacorá', 23, 4310413),
-(4057, 'Ipê', 23, 4310439),
-(4058, 'Ipiranga do Sul', 23, 4310462),
-(4059, 'Iraí', 23, 4310504),
-(4060, 'Itaara', 23, 4310538),
-(4061, 'Itacurubi', 23, 4310553),
-(4062, 'Itapuca', 23, 4310579),
-(4063, 'Itaqui', 23, 4310603),
-(4064, 'Itati', 23, 4310652),
-(4065, 'Itatiba do Sul', 23, 4310702),
-(4066, 'Ivorá', 23, 4310751),
-(4067, 'Ivoti', 23, 4310801),
-(4068, 'Jaboticaba', 23, 4310850),
-(4069, 'Jacuizinho', 23, 4310876),
-(4070, 'Jacutinga', 23, 4310900),
-(4071, 'Jaguarão', 23, 4311007),
-(4072, 'Jaguari', 23, 4311106),
-(4073, 'Jaquirana', 23, 4311122),
-(4074, 'Jari', 23, 4311130),
-(4075, 'Jóia', 23, 4311155),
-(4076, 'Júlio de Castilhos', 23, 4311205),
-(4077, 'Lagoa Bonita do Sul', 23, 4311239),
-(4078, 'Lagoa dos Três Cantos', 23, 4311270),
-(4079, 'Lagoa Vermelha', 23, 4311304),
-(4080, 'Lagoão', 23, 4311254),
-(4081, 'Lajeado', 23, 4311403),
-(4082, 'Lajeado do Bugre', 23, 4311429),
-(4083, 'Lavras do Sul', 23, 4311502),
-(4084, 'Liberato Salzano', 23, 4311601),
-(4085, 'Lindolfo Collor', 23, 4311627),
-(4086, 'Linha Nova', 23, 4311643),
-(4087, 'Maçambara', 23, 4311718),
-(4088, 'Machadinho', 23, 4311700),
-(4089, 'Mampituba', 23, 4311734),
-(4090, 'Manoel Viana', 23, 4311759),
-(4091, 'Maquiné', 23, 4311775),
-(4092, 'Maratá', 23, 4311791),
-(4093, 'Marau', 23, 4311809),
-(4094, 'Marcelino Ramos', 23, 4311908),
-(4095, 'Mariana Pimentel', 23, 4311981),
-(4096, 'Mariano Moro', 23, 4312005),
-(4097, 'Marques de Souza', 23, 4312054),
-(4098, 'Mata', 23, 4312104),
-(4099, 'Mato Castelhano', 23, 4312138),
-(4100, 'Mato Leitão', 23, 4312153),
-(4101, 'Mato Queimado', 23, 4312179),
-(4102, 'Maximiliano de Almeida', 23, 4312203),
-(4103, 'Minas do Leão', 23, 4312252),
-(4104, 'Miraguaí', 23, 4312302),
-(4105, 'Montauri', 23, 4312351),
-(4106, 'Monte Alegre dos Campos', 23, 4312377),
-(4107, 'Monte Belo do Sul', 23, 4312385),
-(4108, 'Montenegro', 23, 4312401),
-(4109, 'Mormaço', 23, 4312427),
-(4110, 'Morrinhos do Sul', 23, 4312443),
-(4111, 'Morro Redondo', 23, 4312450),
-(4112, 'Morro Reuter', 23, 4312476),
-(4113, 'Mostardas', 23, 4312500),
-(4114, 'Muçum', 23, 4312609),
-(4115, 'Muitos Capões', 23, 4312617),
-(4116, 'Muliterno', 23, 4312625),
-(4117, 'Não-Me-Toque', 23, 4312658),
-(4118, 'Nicolau Vergueiro', 23, 4312674),
-(4119, 'Nonoai', 23, 4312708),
-(4120, 'Nova Alvorada', 23, 4312757),
-(4121, 'Nova Araçá', 23, 4312807),
-(4122, 'Nova Bassano', 23, 4312906),
-(4123, 'Nova Boa Vista', 23, 4312955),
-(4124, 'Nova Bréscia', 23, 4313003),
-(4125, 'Nova Candelária', 23, 4313011),
-(4126, 'Nova Esperança do Sul', 23, 4313037),
-(4127, 'Nova Hartz', 23, 4313060),
-(4128, 'Nova Pádua', 23, 4313086),
-(4129, 'Nova Palma', 23, 4313102),
-(4130, 'Nova Petrópolis', 23, 4313201),
-(4131, 'Nova Prata', 23, 4313300),
-(4132, 'Nova Ramada', 23, 4313334),
-(4133, 'Nova Roma do Sul', 23, 4313359),
-(4134, 'Nova Santa Rita', 23, 4313375),
-(4135, 'Novo Barreiro', 23, 4313490),
-(4136, 'Novo Cabrais', 23, 4313391),
-(4137, 'Novo Hamburgo', 23, 4313409),
-(4138, 'Novo Machado', 23, 4313425),
-(4139, 'Novo Tiradentes', 23, 4313441),
-(4140, 'Novo Xingu', 23, 4313466),
-(4141, 'Osório', 23, 4313508),
-(4142, 'Paim Filho', 23, 4313607),
-(4143, 'Palmares do Sul', 23, 4313656),
-(4144, 'Palmeira das Missões', 23, 4313706),
-(4145, 'Palmitinho', 23, 4313805),
-(4146, 'Panambi', 23, 4313904),
-(4147, 'Pantano Grande', 23, 4313953),
-(4148, 'Paraí', 23, 4314001),
-(4149, 'Paraíso do Sul', 23, 4314027),
-(4150, 'Pareci Novo', 23, 4314035),
-(4151, 'Parobé', 23, 4314050),
-(4152, 'Passa Sete', 23, 4314068),
-(4153, 'Passo do Sobrado', 23, 4314076),
-(4154, 'Passo Fundo', 23, 4314100),
-(4155, 'Paulo Bento', 23, 4314134),
-(4156, 'Paverama', 23, 4314159),
-(4157, 'Pedras Altas', 23, 4314175),
-(4158, 'Pedro Osório', 23, 4314209),
-(4159, 'Pejuçara', 23, 4314308),
-(4160, 'Pelotas', 23, 4314407),
-(4161, 'Picada Café', 23, 4314423),
-(4162, 'Pinhal', 23, 4314456),
-(4163, 'Pinhal da Serra', 23, 4314464),
-(4164, 'Pinhal Grande', 23, 4314472),
-(4165, 'Pinheirinho do Vale', 23, 4314498),
-(4166, 'Pinheiro Machado', 23, 4314506),
-(4167, 'Pirapó', 23, 4314555),
-(4168, 'Piratini', 23, 4314605),
-(4169, 'Planalto', 23, 4314704),
-(4170, 'Poço das Antas', 23, 4314753),
-(4171, 'Pontão', 23, 4314779),
-(4172, 'Ponte Preta', 23, 4314787),
-(4173, 'Portão', 23, 4314803),
-(4174, 'Porto Alegre', 23, 4314902),
-(4175, 'Porto Lucena', 23, 4315008),
-(4176, 'Porto Mauá', 23, 4315057),
-(4177, 'Porto Vera Cruz', 23, 4315073),
-(4178, 'Porto Xavier', 23, 4315107),
-(4179, 'Pouso Novo', 23, 4315131),
-(4180, 'Presidente Lucena', 23, 4315149),
-(4181, 'Progresso', 23, 4315156),
-(4182, 'Protásio Alves', 23, 4315172),
-(4183, 'Putinga', 23, 4315206),
-(4184, 'Quaraí', 23, 4315305),
-(4185, 'Quatro Irmãos', 23, 4315313),
-(4186, 'Quevedos', 23, 4315321),
-(4187, 'Quinze de Novembro', 23, 4315354),
-(4188, 'Redentora', 23, 4315404),
-(4189, 'Relvado', 23, 4315453),
-(4190, 'Restinga Seca', 23, 4315503),
-(4191, 'Rio dos Índios', 23, 4315552),
-(4192, 'Rio Grande', 23, 4315602),
-(4193, 'Rio Pardo', 23, 4315701),
-(4194, 'Riozinho', 23, 4315750),
-(4195, 'Roca Sales', 23, 4315800),
-(4196, 'Rodeio Bonito', 23, 4315909),
-(4197, 'Rolador', 23, 4315958),
-(4198, 'Rolante', 23, 4316006),
-(4199, 'Ronda Alta', 23, 4316105),
-(4200, 'Rondinha', 23, 4316204),
-(4201, 'Roque Gonzales', 23, 4316303),
-(4202, 'Rosário do Sul', 23, 4316402),
-(4203, 'Sagrada Família', 23, 4316428),
-(4204, 'Saldanha Marinho', 23, 4316436),
-(4205, 'Salto do Jacuí', 23, 4316451),
-(4206, 'Salvador das Missões', 23, 4316477),
-(4207, 'Salvador do Sul', 23, 4316501),
-(4208, 'Sananduva', 23, 4316600),
-(4209, 'Santa Bárbara do Sul', 23, 4316709),
-(4210, 'Santa Cecília do Sul', 23, 4316733),
-(4211, 'Santa Clara do Sul', 23, 4316758),
-(4212, 'Santa Cruz do Sul', 23, 4316808),
-(4213, 'Santa Margarida do Sul', 23, 4316972),
-(4214, 'Santa Maria', 23, 4316907),
-(4215, 'Santa Maria do Herval', 23, 4316956),
-(4216, 'Santa Rosa', 23, 4317202),
-(4217, 'Santa Tereza', 23, 4317251),
-(4218, 'Santa Vitória do Palmar', 23, 4317301),
-(4219, 'Santana da Boa Vista', 23, 4317004),
-(4220, 'Santana do Livramento', 23, 4317103),
-(4221, 'Santiago', 23, 4317400),
-(4222, 'Santo Ângelo', 23, 4317509),
-(4223, 'Santo Antônio da Patrulha', 23, 4317608),
-(4224, 'Santo Antônio das Missões', 23, 4317707),
-(4225, 'Santo Antônio do Palma', 23, 4317558),
-(4226, 'Santo Antônio do Planalto', 23, 4317756),
-(4227, 'Santo Augusto', 23, 4317806),
-(4228, 'Santo Cristo', 23, 4317905),
-(4229, 'Santo Expedito do Sul', 23, 4317954),
-(4230, 'São Borja', 23, 4318002),
-(4231, 'São Domingos do Sul', 23, 4318051),
-(4232, 'São Francisco de Assis', 23, 4318101),
-(4233, 'São Francisco de Paula', 23, 4318200),
-(4234, 'São Gabriel', 23, 4318309),
-(4235, 'São Jerônimo', 23, 4318408),
-(4236, 'São João da Urtiga', 23, 4318424),
-(4237, 'São João do Polêsine', 23, 4318432),
-(4238, 'São Jorge', 23, 4318440),
-(4239, 'São José das Missões', 23, 4318457),
-(4240, 'São José do Herval', 23, 4318465),
-(4241, 'São José do Hortêncio', 23, 4318481),
-(4242, 'São José do Inhacorá', 23, 4318499),
-(4243, 'São José do Norte', 23, 4318507),
-(4244, 'São José do Ouro', 23, 4318606),
-(4245, 'São José do Sul', 23, 4318614),
-(4246, 'São José dos Ausentes', 23, 4318622),
-(4247, 'São Leopoldo', 23, 4318705),
-(4248, 'São Lourenço do Sul', 23, 4318804),
-(4249, 'São Luiz Gonzaga', 23, 4318903),
-(4250, 'São Marcos', 23, 4319000),
-(4251, 'São Martinho', 23, 4319109),
-(4252, 'São Martinho da Serra', 23, 4319125),
-(4253, 'São Miguel das Missões', 23, 4319158),
-(4254, 'São Nicolau', 23, 4319208),
-(4255, 'São Paulo das Missões', 23, 4319307),
-(4256, 'São Pedro da Serra', 23, 4319356),
-(4257, 'São Pedro das Missões', 23, 4319364),
-(4258, 'São Pedro do Butiá', 23, 4319372),
-(4259, 'São Pedro do Sul', 23, 4319406),
-(4260, 'São Sebastião do Caí', 23, 4319505),
-(4261, 'São Sepé', 23, 4319604),
-(4262, 'São Valentim', 23, 4319703),
-(4263, 'São Valentim do Sul', 23, 4319711),
-(4264, 'São Valério do Sul', 23, 4319737),
-(4265, 'São Vendelino', 23, 4319752),
-(4266, 'São Vicente do Sul', 23, 4319802),
-(4267, 'Sapiranga', 23, 4319901),
-(4268, 'Sapucaia do Sul', 23, 4320008),
-(4269, 'Sarandi', 23, 4320107),
-(4270, 'Seberi', 23, 4320206),
-(4271, 'Sede Nova', 23, 4320230),
-(4272, 'Segredo', 23, 4320263),
-(4273, 'Selbach', 23, 4320305),
-(4274, 'Senador Salgado Filho', 23, 4320321),
-(4275, 'Sentinela do Sul', 23, 4320354),
-(4276, 'Serafina Corrêa', 23, 4320404),
-(4277, 'Sério', 23, 4320453),
-(4278, 'Sertão', 23, 4320503),
-(4279, 'Sertão Santana', 23, 4320552),
-(4280, 'Sete de Setembro', 23, 4320578),
-(4281, 'Severiano de Almeida', 23, 4320602),
-(4282, 'Silveira Martins', 23, 4320651),
-(4283, 'Sinimbu', 23, 4320677),
-(4284, 'Sobradinho', 23, 4320701),
-(4285, 'Soledade', 23, 4320800),
-(4286, 'Tabaí', 23, 4320859),
-(4287, 'Tapejara', 23, 4320909),
-(4288, 'Tapera', 23, 4321006),
-(4289, 'Tapes', 23, 4321105),
-(4290, 'Taquara', 23, 4321204),
-(4291, 'Taquari', 23, 4321303),
-(4292, 'Taquaruçu do Sul', 23, 4321329),
-(4293, 'Tavares', 23, 4321352),
-(4294, 'Tenente Portela', 23, 4321402),
-(4295, 'Terra de Areia', 23, 4321436),
-(4296, 'Teutônia', 23, 4321451),
-(4297, 'Tio Hugo', 23, 4321469),
-(4298, 'Tiradentes do Sul', 23, 4321477),
-(4299, 'Toropi', 23, 4321493),
-(4300, 'Torres', 23, 4321501),
-(4301, 'Tramandaí', 23, 4321600),
-(4302, 'Travesseiro', 23, 4321626),
-(4303, 'Três Arroios', 23, 4321634),
-(4304, 'Três Cachoeiras', 23, 4321667),
-(4305, 'Três Coroas', 23, 4321709),
-(4306, 'Três de Maio', 23, 4321808),
-(4307, 'Três Forquilhas', 23, 4321832),
-(4308, 'Três Palmeiras', 23, 4321857),
-(4309, 'Três Passos', 23, 4321907),
-(4310, 'Trindade do Sul', 23, 4321956),
-(4311, 'Triunfo', 23, 4322004),
-(4312, 'Tucunduva', 23, 4322103),
-(4313, 'Tunas', 23, 4322152),
-(4314, 'Tupanci do Sul', 23, 4322186),
-(4315, 'Tupanciretã', 23, 4322202),
-(4316, 'Tupandi', 23, 4322251),
-(4317, 'Tuparendi', 23, 4322301),
-(4318, 'Turuçu', 23, 4322327),
-(4319, 'Ubiretama', 23, 4322343),
-(4320, 'União da Serra', 23, 4322350),
-(4321, 'Unistalda', 23, 4322376),
-(4322, 'Uruguaiana', 23, 4322400),
-(4323, 'Vacaria', 23, 4322509),
-(4324, 'Vale do Sol', 23, 4322533),
-(4325, 'Vale Real', 23, 4322541),
-(4326, 'Vale Verde', 23, 4322525),
-(4327, 'Vanini', 23, 4322558),
-(4328, 'Venâncio Aires', 23, 4322608),
-(4329, 'Vera Cruz', 23, 4322707),
-(4330, 'Veranópolis', 23, 4322806),
-(4331, 'Vespasiano Correa', 23, 4322855),
-(4332, 'Viadutos', 23, 4322905),
-(4333, 'Viamão', 23, 4323002),
-(4334, 'Vicente Dutra', 23, 4323101),
-(4335, 'Victor Graeff', 23, 4323200),
-(4336, 'Vila Flores', 23, 4323309),
-(4337, 'Vila Lângaro', 23, 4323358),
-(4338, 'Vila Maria', 23, 4323408),
-(4339, 'Vila Nova do Sul', 23, 4323457),
-(4340, 'Vista Alegre', 23, 4323507),
-(4341, 'Vista Alegre do Prata', 23, 4323606),
-(4342, 'Vista Gaúcha', 23, 4323705),
-(4343, 'Vitória das Missões', 23, 4323754),
-(4344, 'Westfália', 23, 4323770),
-(4345, 'Xangri-lá', 23, 4323804),
-(4346, 'Alta Floresta d`Oeste', 21, 1100015),
-(4347, 'Alto Alegre dos Parecis', 21, 1100379),
-(4348, 'Alto Paraíso', 21, 1100403),
-(4349, 'Alvorada d`Oeste', 21, 1100346),
-(4350, 'Ariquemes', 21, 1100023),
-(4351, 'Buritis', 21, 1100452),
-(4352, 'Cabixi', 21, 1100031),
-(4353, 'Cacaulândia', 21, 1100601),
-(4354, 'Cacoal', 21, 1100049),
-(4355, 'Campo Novo de Rondônia', 21, 1100700),
-(4356, 'Candeias do Jamari', 21, 1100809),
-(4357, 'Castanheiras', 21, 1100908),
-(4358, 'Cerejeiras', 21, 1100056),
-(4359, 'Chupinguaia', 21, 1100924),
-(4360, 'Colorado do Oeste', 21, 1100064),
-(4361, 'Corumbiara', 21, 1100072),
-(4362, 'Costa Marques', 21, 1100080),
-(4363, 'Cujubim', 21, 1100940),
-(4364, 'Espigão d`Oeste', 21, 1100098),
-(4365, 'Governador Jorge Teixeira', 21, 1101005),
-(4366, 'Guajará-Mirim', 21, 1100106),
-(4367, 'Itapuã do Oeste', 21, 1101104),
-(4368, 'Jaru', 21, 1100114),
-(4369, 'Ji-Paraná', 21, 1100122),
-(4370, 'Machadinho d`Oeste', 21, 1100130),
-(4371, 'Ministro Andreazza', 21, 1101203),
-(4372, 'Mirante da Serra', 21, 1101302),
-(4373, 'Monte Negro', 21, 1101401),
-(4374, 'Nova Brasilândia d`Oeste', 21, 1100148),
-(4375, 'Nova Mamoré', 21, 1100338),
-(4376, 'Nova União', 21, 1101435),
-(4377, 'Novo Horizonte do Oeste', 21, 1100502),
-(4378, 'Ouro Preto do Oeste', 21, 1100155),
-(4379, 'Parecis', 21, 1101450),
-(4380, 'Pimenta Bueno', 21, 1100189);
-INSERT INTO `cidade` (`id`, `nome`, `uf`, `ibge`) VALUES
-(4381, 'Pimenteiras do Oeste', 21, 1101468),
-(4382, 'Porto Velho', 21, 1100205),
-(4383, 'Presidente Médici', 21, 1100254),
-(4384, 'Primavera de Rondônia', 21, 1101476),
-(4385, 'Rio Crespo', 21, 1100262),
-(4386, 'Rolim de Moura', 21, 1100288),
-(4387, 'Santa Luzia d`Oeste', 21, 1100296),
-(4388, 'São Felipe d`Oeste', 21, 1101484),
-(4389, 'São Francisco do Guaporé', 21, 1101492),
-(4390, 'São Miguel do Guaporé', 21, 1100320),
-(4391, 'Seringueiras', 21, 1101500),
-(4392, 'Teixeirópolis', 21, 1101559),
-(4393, 'Theobroma', 21, 1101609),
-(4394, 'Urupá', 21, 1101708),
-(4395, 'Vale do Anari', 21, 1101757),
-(4396, 'Vale do Paraíso', 21, 1101807),
-(4397, 'Vilhena', 21, 1100304),
-(4398, 'Alto Alegre', 22, 1400050),
-(4399, 'Amajari', 22, 1400027),
-(4400, 'Boa Vista', 22, 1400100),
-(4401, 'Bonfim', 22, 1400159),
-(4402, 'Cantá', 22, 1400175),
-(4403, 'Caracaraí', 22, 1400209),
-(4404, 'Caroebe', 22, 1400233),
-(4405, 'Iracema', 22, 1400282),
-(4406, 'Mucajaí', 22, 1400308),
-(4407, 'Normandia', 22, 1400407),
-(4408, 'Pacaraima', 22, 1400456),
-(4409, 'Rorainópolis', 22, 1400472),
-(4410, 'São João da Baliza', 22, 1400506),
-(4411, 'São Luiz', 22, 1400605),
-(4412, 'Uiramutã', 22, 1400704),
-(4413, 'Abdon Batista', 24, 4200051),
-(4414, 'Abelardo Luz', 24, 4200101),
-(4415, 'Agrolândia', 24, 4200200),
-(4416, 'Agronômica', 24, 4200309),
-(4417, 'Água Doce', 24, 4200408),
-(4418, 'Águas de Chapecó', 24, 4200507),
-(4419, 'Águas Frias', 24, 4200556),
-(4420, 'Águas Mornas', 24, 4200606),
-(4421, 'Alfredo Wagner', 24, 4200705),
-(4422, 'Alto Bela Vista', 24, 4200754),
-(4423, 'Anchieta', 24, 4200804),
-(4424, 'Angelina', 24, 4200903),
-(4425, 'Anita Garibaldi', 24, 4201000),
-(4426, 'Anitápolis', 24, 4201109),
-(4427, 'Antônio Carlos', 24, 4201208),
-(4428, 'Apiúna', 24, 4201257),
-(4429, 'Arabutã', 24, 4201273),
-(4430, 'Araquari', 24, 4201307),
-(4431, 'Araranguá', 24, 4201406),
-(4432, 'Armazém', 24, 4201505),
-(4433, 'Arroio Trinta', 24, 4201604),
-(4434, 'Arvoredo', 24, 4201653),
-(4435, 'Ascurra', 24, 4201703),
-(4436, 'Atalanta', 24, 4201802),
-(4437, 'Aurora', 24, 4201901),
-(4438, 'Balneário Arroio do Silva', 24, 4201950),
-(4439, 'Balneário Barra do Sul', 24, 4202057),
-(4440, 'Balneário Camboriú', 24, 4202008),
-(4441, 'Balneário Gaivota', 24, 4202073),
-(4442, 'Bandeirante', 24, 4202081),
-(4443, 'Barra Bonita', 24, 4202099),
-(4444, 'Barra Velha', 24, 4202107),
-(4445, 'Bela Vista do Toldo', 24, 4202131),
-(4446, 'Belmonte', 24, 4202156),
-(4447, 'Benedito Novo', 24, 4202206),
-(4448, 'Biguaçu', 24, 4202305),
-(4449, 'Blumenau', 24, 4202404),
-(4450, 'Bocaina do Sul', 24, 4202438),
-(4451, 'Bom Jardim da Serra', 24, 4202503),
-(4452, 'Bom Jesus', 24, 4202537),
-(4453, 'Bom Jesus do Oeste', 24, 4202578),
-(4454, 'Bom Retiro', 24, 4202602),
-(4455, 'Bombinhas', 24, 4202453),
-(4456, 'Botuverá', 24, 4202701),
-(4457, 'Braço do Norte', 24, 4202800),
-(4458, 'Braço do Trombudo', 24, 4202859),
-(4459, 'Brunópolis', 24, 4202875),
-(4460, 'Brusque', 24, 4202909),
-(4461, 'Caçador', 24, 4203006),
-(4462, 'Caibi', 24, 4203105),
-(4463, 'Calmon', 24, 4203154),
-(4464, 'Camboriú', 24, 4203204),
-(4465, 'Campo Alegre', 24, 4203303),
-(4466, 'Campo Belo do Sul', 24, 4203402),
-(4467, 'Campo Erê', 24, 4203501),
-(4468, 'Campos Novos', 24, 4203600),
-(4469, 'Canelinha', 24, 4203709),
-(4470, 'Canoinhas', 24, 4203808),
-(4471, 'Capão Alto', 24, 4203253),
-(4472, 'Capinzal', 24, 4203907),
-(4473, 'Capivari de Baixo', 24, 4203956),
-(4474, 'Catanduvas', 24, 4204004),
-(4475, 'Caxambu do Sul', 24, 4204103),
-(4476, 'Celso Ramos', 24, 4204152),
-(4477, 'Cerro Negro', 24, 4204178),
-(4478, 'Chapadão do Lageado', 24, 4204194),
-(4479, 'Chapecó', 24, 4204202),
-(4480, 'Cocal do Sul', 24, 4204251),
-(4481, 'Concórdia', 24, 4204301),
-(4482, 'Cordilheira Alta', 24, 4204350),
-(4483, 'Coronel Freitas', 24, 4204400),
-(4484, 'Coronel Martins', 24, 4204459),
-(4485, 'Correia Pinto', 24, 4204558),
-(4486, 'Corupá', 24, 4204509),
-(4487, 'Criciúma', 24, 4204608),
-(4488, 'Cunha Porã', 24, 4204707),
-(4489, 'Cunhataí', 24, 4204756),
-(4490, 'Curitibanos', 24, 4204806),
-(4491, 'Descanso', 24, 4204905),
-(4492, 'Dionísio Cerqueira', 24, 4205001),
-(4493, 'Dona Emma', 24, 4205100),
-(4494, 'Doutor Pedrinho', 24, 4205159),
-(4495, 'Entre Rios', 24, 4205175),
-(4496, 'Ermo', 24, 4205191),
-(4497, 'Erval Velho', 24, 4205209),
-(4498, 'Faxinal dos Guedes', 24, 4205308),
-(4499, 'Flor do Sertão', 24, 4205357),
-(4500, 'Florianópolis', 24, 4205407),
-(4501, 'Formosa do Sul', 24, 4205431),
-(4502, 'Forquilhinha', 24, 4205456),
-(4503, 'Fraiburgo', 24, 4205506),
-(4504, 'Frei Rogério', 24, 4205555),
-(4505, 'Galvão', 24, 4205605),
-(4506, 'Garopaba', 24, 4205704),
-(4507, 'Garuva', 24, 4205803),
-(4508, 'Gaspar', 24, 4205902),
-(4509, 'Governador Celso Ramos', 24, 4206009),
-(4510, 'Grão Pará', 24, 4206108),
-(4511, 'Gravatal', 24, 4206207),
-(4512, 'Guabiruba', 24, 4206306),
-(4513, 'Guaraciaba', 24, 4206405),
-(4514, 'Guaramirim', 24, 4206504),
-(4515, 'Guarujá do Sul', 24, 4206603),
-(4516, 'Guatambú', 24, 4206652),
-(4517, 'Herval d`Oeste', 24, 4206702),
-(4518, 'Ibiam', 24, 4206751),
-(4519, 'Ibicaré', 24, 4206801),
-(4520, 'Ibirama', 24, 4206900),
-(4521, 'Içara', 24, 4207007),
-(4522, 'Ilhota', 24, 4207106),
-(4523, 'Imaruí', 24, 4207205),
-(4524, 'Imbituba', 24, 4207304),
-(4525, 'Imbuia', 24, 4207403),
-(4526, 'Indaial', 24, 4207502),
-(4527, 'Iomerê', 24, 4207577),
-(4528, 'Ipira', 24, 4207601),
-(4529, 'Iporã do Oeste', 24, 4207650),
-(4530, 'Ipuaçu', 24, 4207684),
-(4531, 'Ipumirim', 24, 4207700),
-(4532, 'Iraceminha', 24, 4207759),
-(4533, 'Irani', 24, 4207809),
-(4534, 'Irati', 24, 4207858),
-(4535, 'Irineópolis', 24, 4207908),
-(4536, 'Itá', 24, 4208005),
-(4537, 'Itaiópolis', 24, 4208104),
-(4538, 'Itajaí', 24, 4208203),
-(4539, 'Itapema', 24, 4208302),
-(4540, 'Itapiranga', 24, 4208401),
-(4541, 'Itapoá', 24, 4208450),
-(4542, 'Ituporanga', 24, 4208500),
-(4543, 'Jaborá', 24, 4208609),
-(4544, 'Jacinto Machado', 24, 4208708),
-(4545, 'Jaguaruna', 24, 4208807),
-(4546, 'Jaraguá do Sul', 24, 4208906),
-(4547, 'Jardinópolis', 24, 4208955),
-(4548, 'Joaçaba', 24, 4209003),
-(4549, 'Joinville', 24, 4209102),
-(4550, 'José Boiteux', 24, 4209151),
-(4551, 'Jupiá', 24, 4209177),
-(4552, 'Lacerdópolis', 24, 4209201),
-(4553, 'Lages', 24, 4209300),
-(4554, 'Laguna', 24, 4209409),
-(4555, 'Lajeado Grande', 24, 4209458),
-(4556, 'Laurentino', 24, 4209508),
-(4557, 'Lauro Muller', 24, 4209607),
-(4558, 'Lebon Régis', 24, 4209706),
-(4559, 'Leoberto Leal', 24, 4209805),
-(4560, 'Lindóia do Sul', 24, 4209854),
-(4561, 'Lontras', 24, 4209904),
-(4562, 'Luiz Alves', 24, 4210001),
-(4563, 'Luzerna', 24, 4210035),
-(4564, 'Macieira', 24, 4210050),
-(4565, 'Mafra', 24, 4210100),
-(4566, 'Major Gercino', 24, 4210209),
-(4567, 'Major Vieira', 24, 4210308),
-(4568, 'Maracajá', 24, 4210407),
-(4569, 'Maravilha', 24, 4210506),
-(4570, 'Marema', 24, 4210555),
-(4571, 'Massaranduba', 24, 4210605),
-(4572, 'Matos Costa', 24, 4210704),
-(4573, 'Meleiro', 24, 4210803),
-(4574, 'Mirim Doce', 24, 4210852),
-(4575, 'Modelo', 24, 4210902),
-(4576, 'Mondaí', 24, 4211009),
-(4577, 'Monte Carlo', 24, 4211058),
-(4578, 'Monte Castelo', 24, 4211108),
-(4579, 'Morro da Fumaça', 24, 4211207),
-(4580, 'Morro Grande', 24, 4211256),
-(4581, 'Navegantes', 24, 4211306),
-(4582, 'Nova Erechim', 24, 4211405),
-(4583, 'Nova Itaberaba', 24, 4211454),
-(4584, 'Nova Trento', 24, 4211504),
-(4585, 'Nova Veneza', 24, 4211603),
-(4586, 'Novo Horizonte', 24, 4211652),
-(4587, 'Orleans', 24, 4211702),
-(4588, 'Otacílio Costa', 24, 4211751),
-(4589, 'Ouro', 24, 4211801),
-(4590, 'Ouro Verde', 24, 4211850),
-(4591, 'Paial', 24, 4211876),
-(4592, 'Painel', 24, 4211892),
-(4593, 'Palhoça', 24, 4211900),
-(4594, 'Palma Sola', 24, 4212007),
-(4595, 'Palmeira', 24, 4212056),
-(4596, 'Palmitos', 24, 4212106),
-(4597, 'Papanduva', 24, 4212205),
-(4598, 'Paraíso', 24, 4212239),
-(4599, 'Passo de Torres', 24, 4212254),
-(4600, 'Passos Maia', 24, 4212270),
-(4601, 'Paulo Lopes', 24, 4212304),
-(4602, 'Pedras Grandes', 24, 4212403),
-(4603, 'Penha', 24, 4212502),
-(4604, 'Peritiba', 24, 4212601),
-(4605, 'Petrolândia', 24, 4212700),
-(4606, 'Balneário Piçarras', 24, 4212809),
-(4607, 'Pinhalzinho', 24, 4212908),
-(4608, 'Pinheiro Preto', 24, 4213005),
-(4609, 'Piratuba', 24, 4213104),
-(4610, 'Planalto Alegre', 24, 4213153),
-(4611, 'Pomerode', 24, 4213203),
-(4612, 'Ponte Alta', 24, 4213302),
-(4613, 'Ponte Alta do Norte', 24, 4213351),
-(4614, 'Ponte Serrada', 24, 4213401),
-(4615, 'Porto Belo', 24, 4213500),
-(4616, 'Porto União', 24, 4213609),
-(4617, 'Pouso Redondo', 24, 4213708),
-(4618, 'Praia Grande', 24, 4213807),
-(4620, 'Presidente Getúlio', 24, 4214003),
-(4621, 'Presidente Nereu', 24, 4214102),
-(4622, 'Princesa', 24, 4214151),
-(4623, 'Quilombo', 24, 4214201),
-(4624, 'Rancho Queimado', 24, 4214300),
-(4625, 'Rio das Antas', 24, 4214409),
-(4626, 'Rio do Campo', 24, 4214508),
-(4627, 'Rio do Oeste', 24, 4214607),
-(4628, 'Rio do Sul', 24, 4214805),
-(4629, 'Rio dos Cedros', 24, 4214706),
-(4630, 'Rio Fortuna', 24, 4214904),
-(4631, 'Rio Negrinho', 24, 4215000),
-(4632, 'Rio Rufino', 24, 4215059),
-(4633, 'Riqueza', 24, 4215075),
-(4634, 'Rodeio', 24, 4215109),
-(4635, 'Romelândia', 24, 4215208),
-(4636, 'Salete', 24, 4215307),
-(4637, 'Saltinho', 24, 4215356),
-(4638, 'Salto Veloso', 24, 4215406),
-(4639, 'Sangão', 24, 4215455),
-(4640, 'Santa Cecília', 24, 4215505),
-(4641, 'Santa Helena', 24, 4215554),
-(4642, 'Santa Rosa de Lima', 24, 4215604),
-(4643, 'Santa Rosa do Sul', 24, 4215653),
-(4644, 'Santa Terezinha', 24, 4215679),
-(4645, 'Santa Terezinha do Progresso', 24, 4215687),
-(4646, 'Santiago do Sul', 24, 4215695),
-(4647, 'Santo Amaro da Imperatriz', 24, 4215703),
-(4648, 'São Bento do Sul', 24, 4215802),
-(4649, 'São Bernardino', 24, 4215752),
-(4650, 'São Bonifácio', 24, 4215901),
-(4651, 'São Carlos', 24, 4216008),
-(4652, 'São Cristovão do Sul', 24, 4216057),
-(4653, 'São Domingos', 24, 4216107),
-(4654, 'São Francisco do Sul', 24, 4216206),
-(4655, 'São João Batista', 24, 4216305),
-(4656, 'São João do Itaperiú', 24, 4216354),
-(4657, 'São João do Oeste', 24, 4216255),
-(4658, 'São João do Sul', 24, 4216404),
-(4659, 'São Joaquim', 24, 4216503),
-(4660, 'São José', 24, 4216602),
-(4661, 'São José do Cedro', 24, 4216701),
-(4662, 'São José do Cerrito', 24, 4216800),
-(4663, 'São Lourenço do Oeste', 24, 4216909),
-(4664, 'São Ludgero', 24, 4217006),
-(4665, 'São Martinho', 24, 4217105),
-(4666, 'São Miguel da Boa Vista', 24, 4217154),
-(4667, 'São Miguel do Oeste', 24, 4217204),
-(4668, 'São Pedro de Alcântara', 24, 4217253),
-(4669, 'Saudades', 24, 4217303),
-(4670, 'Schroeder', 24, 4217402),
-(4671, 'Seara', 24, 4217501),
-(4672, 'Serra Alta', 24, 4217550),
-(4673, 'Siderópolis', 24, 4217600),
-(4674, 'Sombrio', 24, 4217709),
-(4675, 'Sul Brasil', 24, 4217758),
-(4676, 'Taió', 24, 4217808),
-(4677, 'Tangará', 24, 4217907),
-(4678, 'Tigrinhos', 24, 4217956),
-(4679, 'Tijucas', 24, 4218004),
-(4680, 'Timbé do Sul', 24, 4218103),
-(4681, 'Timbó', 24, 4218202),
-(4682, 'Timbó Grande', 24, 4218251),
-(4683, 'Três Barras', 24, 4218301),
-(4684, 'Treviso', 24, 4218350),
-(4685, 'Treze de Maio', 24, 4218400),
-(4686, 'Treze Tílias', 24, 4218509),
-(4687, 'Trombudo Central', 24, 4218608),
-(4688, 'Tubarão', 24, 4218707),
-(4689, 'Tunápolis', 24, 4218756),
-(4690, 'Turvo', 24, 4218806),
-(4691, 'União do Oeste', 24, 4218855),
-(4692, 'Urubici', 24, 4218905),
-(4693, 'Urupema', 24, 4218954),
-(4694, 'Urussanga', 24, 4219002),
-(4695, 'Vargeão', 24, 4219101),
-(4696, 'Vargem', 24, 4219150),
-(4697, 'Vargem Bonita', 24, 4219176),
-(4698, 'Vidal Ramos', 24, 4219200),
-(4699, 'Videira', 24, 4219309),
-(4700, 'Vitor Meireles', 24, 4219358),
-(4701, 'Witmarsum', 24, 4219408),
-(4702, 'Xanxerê', 24, 4219507),
-(4703, 'Xavantina', 24, 4219606),
-(4704, 'Xaxim', 24, 4219705),
-(4705, 'Zortéa', 24, 4219853),
-(4706, 'Adamantina', 26, 3500105),
-(4707, 'Adolfo', 26, 3500204),
-(4708, 'Aguaí', 26, 3500303),
-(4709, 'Águas da Prata', 26, 3500402),
-(4710, 'Águas de Lindóia', 26, 3500501),
-(4711, 'Águas de Santa Bárbara', 26, 3500550),
-(4712, 'Águas de São Pedro', 26, 3500600),
-(4713, 'Agudos', 26, 3500709),
-(4714, 'Alambari', 26, 3500758),
-(4715, 'Alfredo Marcondes', 26, 3500808),
-(4716, 'Altair', 26, 3500907),
-(4717, 'Altinópolis', 26, 3501004),
-(4718, 'Alto Alegre', 26, 3501103),
-(4719, 'Alumínio', 26, 3501152),
-(4720, 'Álvares Florence', 26, 3501202),
-(4721, 'Álvares Machado', 26, 3501301),
-(4722, 'Álvaro de Carvalho', 26, 3501400),
-(4723, 'Alvinlândia', 26, 3501509),
-(4724, 'Americana', 26, 3501608),
-(4725, 'Américo Brasiliense', 26, 3501707),
-(4726, 'Américo de Campos', 26, 3501806),
-(4727, 'Amparo', 26, 3501905),
-(4728, 'Analândia', 26, 3502002),
-(4729, 'Andradina', 26, 3502101),
-(4730, 'Angatuba', 26, 3502200),
-(4731, 'Anhembi', 26, 3502309),
-(4732, 'Anhumas', 26, 3502408),
-(4733, 'Aparecida', 26, 3502507),
-(4734, 'Aparecida d`Oeste', 26, 3502606),
-(4735, 'Apiaí', 26, 3502705),
-(4736, 'Araçariguama', 26, 3502754),
-(4737, 'Araçatuba', 26, 3502804),
-(4738, 'Araçoiaba da Serra', 26, 3502903),
-(4739, 'Aramina', 26, 3503000),
-(4740, 'Arandu', 26, 3503109),
-(4741, 'Arapeí', 26, 3503158),
-(4742, 'Araraquara', 26, 3503208),
-(4743, 'Araras', 26, 3503307),
-(4744, 'Arco-Íris', 26, 3503356),
-(4745, 'Arealva', 26, 3503406),
-(4746, 'Areias', 26, 3503505),
-(4747, 'Areiópolis', 26, 3503604),
-(4748, 'Ariranha', 26, 3503703),
-(4749, 'Artur Nogueira', 26, 3503802),
-(4750, 'Arujá', 26, 3503901),
-(4751, 'Aspásia', 26, 3503950),
-(4752, 'Assis', 26, 3504008),
-(4753, 'Atibaia', 26, 3504107),
-(4754, 'Auriflama', 26, 3504206),
-(4755, 'Avaí', 26, 3504305),
-(4756, 'Avanhandava', 26, 3504404),
-(4757, 'Avaré', 26, 3504503),
-(4758, 'Bady Bassitt', 26, 3504602),
-(4759, 'Balbinos', 26, 3504701),
-(4760, 'Bálsamo', 26, 3504800),
-(4761, 'Bananal', 26, 3504909),
-(4762, 'Barão de Antonina', 26, 3505005),
-(4763, 'Barbosa', 26, 3505104),
-(4764, 'Bariri', 26, 3505203),
-(4765, 'Barra Bonita', 26, 3505302),
-(4766, 'Barra do Chapéu', 26, 3505351),
-(4767, 'Barra do Turvo', 26, 3505401),
-(4768, 'Barretos', 26, 3505500),
-(4769, 'Barrinha', 26, 3505609),
-(4770, 'Barueri', 26, 3505708),
-(4771, 'Bastos', 26, 3505807),
-(4772, 'Batatais', 26, 3505906),
-(4773, 'Bauru', 26, 3506003),
-(4774, 'Bebedouro', 26, 3506102),
-(4775, 'Bento de Abreu', 26, 3506201),
-(4776, 'Bernardino de Campos', 26, 3506300),
-(4777, 'Bertioga', 26, 3506359),
-(4778, 'Bilac', 26, 3506409),
-(4779, 'Birigui', 26, 3506508),
-(4780, 'Biritiba-Mirim', 26, 3506607),
-(4781, 'Boa Esperança do Sul', 26, 3506706),
-(4782, 'Bocaina', 26, 3506805),
-(4783, 'Bofete', 26, 3506904),
-(4784, 'Boituva', 26, 3507001),
-(4785, 'Bom Jesus dos Perdões', 26, 3507100),
-(4786, 'Bom Sucesso de Itararé', 26, 3507159),
-(4787, 'Borá', 26, 3507209),
-(4788, 'Boracéia', 26, 3507308),
-(4789, 'Borborema', 26, 3507407),
-(4790, 'Borebi', 26, 3507456),
-(4791, 'Botucatu', 26, 3507506),
-(4792, 'Bragança Paulista', 26, 3507605),
-(4793, 'Braúna', 26, 3507704),
-(4794, 'Brejo Alegre', 26, 3507753),
-(4795, 'Brodowski', 26, 3507803),
-(4796, 'Brotas', 26, 3507902),
-(4797, 'Buri', 26, 3508009),
-(4798, 'Buritama', 26, 3508108),
-(4799, 'Buritizal', 26, 3508207),
-(4800, 'Cabrália Paulista', 26, 3508306),
-(4801, 'Cabreúva', 26, 3508405),
-(4802, 'Caçapava', 26, 3508504),
-(4803, 'Cachoeira Paulista', 26, 3508603),
-(4804, 'Caconde', 26, 3508702),
-(4805, 'Cafelândia', 26, 3508801),
-(4806, 'Caiabu', 26, 3508900),
-(4807, 'Caieiras', 26, 3509007),
-(4808, 'Caiuá', 26, 3509106),
-(4809, 'Cajamar', 26, 3509205),
-(4810, 'Cajati', 26, 3509254),
-(4811, 'Cajobi', 26, 3509304),
-(4812, 'Cajuru', 26, 3509403),
-(4813, 'Campina do Monte Alegre', 26, 3509452),
-(4814, 'Campinas', 26, 3509502),
-(4815, 'Campo Limpo Paulista', 26, 3509601),
-(4816, 'Campos do Jordão', 26, 3509700),
-(4817, 'Campos Novos Paulista', 26, 3509809),
-(4818, 'Cananéia', 26, 3509908),
-(4819, 'Canas', 26, 3509957),
-(4820, 'Cândido Mota', 26, 3510005),
-(4821, 'Cândido Rodrigues', 26, 3510104),
-(4822, 'Canitar', 26, 3510153),
-(4823, 'Capão Bonito', 26, 3510203),
-(4824, 'Capela do Alto', 26, 3510302),
-(4825, 'Capivari', 26, 3510401),
-(4826, 'Caraguatatuba', 26, 3510500),
-(4827, 'Carapicuíba', 26, 3510609),
-(4828, 'Cardoso', 26, 3510708),
-(4829, 'Casa Branca', 26, 3510807),
-(4830, 'Cássia dos Coqueiros', 26, 3510906),
-(4831, 'Castilho', 26, 3511003),
-(4832, 'Catanduva', 26, 3511102),
-(4833, 'Catiguá', 26, 3511201),
-(4834, 'Cedral', 26, 3511300),
-(4835, 'Cerqueira César', 26, 3511409),
-(4836, 'Cerquilho', 26, 3511508),
-(4837, 'Cesário Lange', 26, 3511607),
-(4838, 'Charqueada', 26, 3511706),
-(4839, 'Chavantes', 26, 3557204),
-(4840, 'Clementina', 26, 3511904),
-(4841, 'Colina', 26, 3512001),
-(4842, 'Colômbia', 26, 3512100),
-(4843, 'Conchal', 26, 3512209),
-(4844, 'Conchas', 26, 3512308),
-(4845, 'Cordeirópolis', 26, 3512407),
-(4846, 'Coroados', 26, 3512506),
-(4847, 'Coronel Macedo', 26, 3512605),
-(4848, 'Corumbataí', 26, 3512704),
-(4849, 'Cosmópolis', 26, 3512803),
-(4850, 'Cosmorama', 26, 3512902),
-(4851, 'Cotia', 26, 3513009),
-(4852, 'Cravinhos', 26, 3513108),
-(4853, 'Cristais Paulista', 26, 3513207),
-(4854, 'Cruzália', 26, 3513306),
-(4855, 'Cruzeiro', 26, 3513405),
-(4856, 'Cubatão', 26, 3513504),
-(4857, 'Cunha', 26, 3513603),
-(4858, 'Descalvado', 26, 3513702),
-(4859, 'Diadema', 26, 3513801),
-(4860, 'Dirce Reis', 26, 3513850),
-(4861, 'Divinolândia', 26, 3513900),
-(4862, 'Dobrada', 26, 3514007),
-(4863, 'Dois Córregos', 26, 3514106),
-(4864, 'Dolcinópolis', 26, 3514205),
-(4865, 'Dourado', 26, 3514304),
-(4866, 'Dracena', 26, 3514403),
-(4867, 'Duartina', 26, 3514502),
-(4868, 'Dumont', 26, 3514601),
-(4869, 'Echaporã', 26, 3514700),
-(4870, 'Eldorado', 26, 3514809),
-(4871, 'Elias Fausto', 26, 3514908),
-(4872, 'Elisiário', 26, 3514924),
-(4873, 'Embaúba', 26, 3514957),
-(4874, 'Embu', 26, 3515004),
-(4875, 'Embu-Guaçu', 26, 3515103),
-(4876, 'Emilianópolis', 26, 3515129),
-(4877, 'Engenheiro Coelho', 26, 3515152),
-(4878, 'Espírito Santo do Pinhal', 26, 3515186),
-(4879, 'Espírito Santo do Turvo', 26, 3515194),
-(4880, 'Estiva Gerbi', 26, 3557303),
-(4881, 'Estrela d`Oeste', 26, 3515202),
-(4882, 'Estrela do Norte', 26, 3515301),
-(4883, 'Euclides da Cunha Paulista', 26, 3515350),
-(4884, 'Fartura', 26, 3515400),
-(4885, 'Fernando Prestes', 26, 3515608),
-(4886, 'Fernandópolis', 26, 3515509),
-(4887, 'Fernão', 26, 3515657),
-(4888, 'Ferraz de Vasconcelos', 26, 3515707),
-(4889, 'Flora Rica', 26, 3515806),
-(4890, 'Floreal', 26, 3515905),
-(4891, 'Flórida Paulista', 26, 3516002),
-(4892, 'Florínia', 26, 3516101),
-(4893, 'Franca', 26, 3516200),
-(4894, 'Francisco Morato', 26, 3516309),
-(4895, 'Franco da Rocha', 26, 3516408),
-(4896, 'Gabriel Monteiro', 26, 3516507),
-(4897, 'Gália', 26, 3516606),
-(4898, 'Garça', 26, 3516705),
-(4899, 'Gastão Vidigal', 26, 3516804),
-(4900, 'Gavião Peixoto', 26, 3516853),
-(4901, 'General Salgado', 26, 3516903),
-(4902, 'Getulina', 26, 3517000),
-(4903, 'Glicério', 26, 3517109),
-(4904, 'Guaiçara', 26, 3517208),
-(4905, 'Guaimbê', 26, 3517307),
-(4906, 'Guaíra', 26, 3517406),
-(4907, 'Guapiaçu', 26, 3517505),
-(4908, 'Guapiara', 26, 3517604),
-(4909, 'Guará', 26, 3517703),
-(4910, 'Guaraçaí', 26, 3517802),
-(4911, 'Guaraci', 26, 3517901),
-(4912, 'Guarani d`Oeste', 26, 3518008),
-(4913, 'Guarantã', 26, 3518107),
-(4914, 'Guararapes', 26, 3518206),
-(4915, 'Guararema', 26, 3518305),
-(4916, 'Guaratinguetá', 26, 3518404),
-(4917, 'Guareí', 26, 3518503),
-(4918, 'Guariba', 26, 3518602),
-(4919, 'Guarujá', 26, 3518701),
-(4920, 'Guarulhos', 26, 3518800),
-(4921, 'Guatapará', 26, 3518859),
-(4922, 'Guzolândia', 26, 3518909),
-(4923, 'Herculândia', 26, 3519006),
-(4924, 'Holambra', 26, 3519055),
-(4925, 'Hortolândia', 26, 3519071),
-(4926, 'Iacanga', 26, 3519105),
-(4927, 'Iacri', 26, 3519204),
-(4928, 'Iaras', 26, 3519253),
-(4929, 'Ibaté', 26, 3519303),
-(4930, 'Ibirá', 26, 3519402),
-(4931, 'Ibirarema', 26, 3519501),
-(4932, 'Ibitinga', 26, 3519600),
-(4933, 'Ibiúna', 26, 3519709),
-(4934, 'Icém', 26, 3519808),
-(4935, 'Iepê', 26, 3519907),
-(4936, 'Igaraçu do Tietê', 26, 3520004),
-(4937, 'Igarapava', 26, 3520103),
-(4938, 'Igaratá', 26, 3520202),
-(4939, 'Iguape', 26, 3520301),
-(4940, 'Ilha Comprida', 26, 3520426),
-(4941, 'Ilha Solteira', 26, 3520442),
-(4942, 'Ilhabela', 26, 3520400),
-(4943, 'Indaiatuba', 26, 3520509),
-(4944, 'Indiana', 26, 3520608),
-(4945, 'Indiaporã', 26, 3520707),
-(4946, 'Inúbia Paulista', 26, 3520806),
-(4947, 'Ipaussu', 26, 3520905),
-(4948, 'Iperó', 26, 3521002),
-(4949, 'Ipeúna', 26, 3521101),
-(4950, 'Ipiguá', 26, 3521150),
-(4951, 'Iporanga', 26, 3521200),
-(4952, 'Ipuã', 26, 3521309),
-(4953, 'Iracemápolis', 26, 3521408),
-(4954, 'Irapuã', 26, 3521507),
-(4955, 'Irapuru', 26, 3521606),
-(4956, 'Itaberá', 26, 3521705),
-(4957, 'Itaí', 26, 3521804),
-(4958, 'Itajobi', 26, 3521903),
-(4959, 'Itaju', 26, 3522000),
-(4960, 'Itanhaém', 26, 3522109),
-(4961, 'Itaóca', 26, 3522158),
-(4962, 'Itapecerica da Serra', 26, 3522208),
-(4963, 'Itapetininga', 26, 3522307),
-(4964, 'Itapeva', 26, 3522406),
-(4965, 'Itapevi', 26, 3522505),
-(4966, 'Itapira', 26, 3522604),
-(4967, 'Itapirapuã Paulista', 26, 3522653),
-(4968, 'Itápolis', 26, 3522703),
-(4969, 'Itaporanga', 26, 3522802),
-(4970, 'Itapuí', 26, 3522901),
-(4971, 'Itapura', 26, 3523008),
-(4972, 'Itaquaquecetuba', 26, 3523107),
-(4973, 'Itararé', 26, 3523206),
-(4974, 'Itariri', 26, 3523305),
-(4975, 'Itatiba', 26, 3523404),
-(4976, 'Itatinga', 26, 3523503),
-(4977, 'Itirapina', 26, 3523602),
-(4978, 'Itirapuã', 26, 3523701),
-(4979, 'Itobi', 26, 3523800),
-(4980, 'Itu', 26, 3523909),
-(4981, 'Itupeva', 26, 3524006),
-(4982, 'Ituverava', 26, 3524105),
-(4983, 'Jaborandi', 26, 3524204),
-(4984, 'Jaboticabal', 26, 3524303),
-(4985, 'Jacareí', 26, 3524402),
-(4986, 'Jaci', 26, 3524501),
-(4987, 'Jacupiranga', 26, 3524600),
-(4988, 'Jaguariúna', 26, 3524709),
-(4989, 'Jales', 26, 3524808),
-(4990, 'Jambeiro', 26, 3524907),
-(4991, 'Jandira', 26, 3525003),
-(4992, 'Jardinópolis', 26, 3525102),
-(4993, 'Jarinu', 26, 3525201),
-(4994, 'Jaú', 26, 3525300),
-(4995, 'Jeriquara', 26, 3525409),
-(4996, 'Joanópolis', 26, 3525508),
-(4997, 'João Ramalho', 26, 3525607),
-(4998, 'José Bonifácio', 26, 3525706),
-(4999, 'Júlio Mesquita', 26, 3525805),
-(5000, 'Jumirim', 26, 3525854),
-(5001, 'Jundiaí', 26, 3525904),
-(5002, 'Junqueirópolis', 26, 3526001),
-(5003, 'Juquiá', 26, 3526100),
-(5004, 'Juquitiba', 26, 3526209),
-(5005, 'Lagoinha', 26, 3526308),
-(5006, 'Laranjal Paulista', 26, 3526407),
-(5007, 'Lavínia', 26, 3526506),
-(5008, 'Lavrinhas', 26, 3526605),
-(5009, 'Leme', 26, 3526704),
-(5010, 'Lençóis Paulista', 26, 3526803),
-(5011, 'Limeira', 26, 3526902),
-(5012, 'Lindóia', 26, 3527009),
-(5013, 'Lins', 26, 3527108),
-(5014, 'Lorena', 26, 3527207),
-(5015, 'Lourdes', 26, 3527256),
-(5016, 'Louveira', 26, 3527306),
-(5017, 'Lucélia', 26, 3527405),
-(5018, 'Lucianópolis', 26, 3527504),
-(5019, 'Luís Antônio', 26, 3527603),
-(5020, 'Luiziânia', 26, 3527702),
-(5021, 'Lupércio', 26, 3527801),
-(5022, 'Lutécia', 26, 3527900),
-(5023, 'Macatuba', 26, 3528007),
-(5024, 'Macaubal', 26, 3528106),
-(5025, 'Macedônia', 26, 3528205),
-(5026, 'Magda', 26, 3528304),
-(5027, 'Mairinque', 26, 3528403),
-(5028, 'Mairiporã', 26, 3528502),
-(5029, 'Manduri', 26, 3528601),
-(5030, 'Marabá Paulista', 26, 3528700),
-(5031, 'Maracaí', 26, 3528809),
-(5032, 'Marapoama', 26, 3528858),
-(5033, 'Mariápolis', 26, 3528908),
-(5034, 'Marília', 26, 3529005),
-(5035, 'Marinópolis', 26, 3529104),
-(5036, 'Martinópolis', 26, 3529203),
-(5037, 'Matão', 26, 3529302),
-(5038, 'Mauá', 26, 3529401),
-(5039, 'Mendonça', 26, 3529500),
-(5040, 'Meridiano', 26, 3529609),
-(5041, 'Mesópolis', 26, 3529658),
-(5042, 'Miguelópolis', 26, 3529708),
-(5043, 'Mineiros do Tietê', 26, 3529807),
-(5044, 'Mira Estrela', 26, 3530003),
-(5045, 'Miracatu', 26, 3529906),
-(5046, 'Mirandópolis', 26, 3530102),
-(5047, 'Mirante do Paranapanema', 26, 3530201),
-(5048, 'Mirassol', 26, 3530300),
-(5049, 'Mirassolândia', 26, 3530409),
-(5050, 'Mococa', 26, 3530508),
-(5051, 'Mogi das Cruzes', 26, 3530607),
-(5052, 'Mogi Guaçu', 26, 3530706),
-(5053, 'Mogi Mirim', 26, 3530805),
-(5054, 'Mombuca', 26, 3530904),
-(5055, 'Monções', 26, 3531001),
-(5056, 'Mongaguá', 26, 3531100),
-(5057, 'Monte Alegre do Sul', 26, 3531209),
-(5058, 'Monte Alto', 26, 3531308),
-(5059, 'Monte Aprazível', 26, 3531407),
-(5060, 'Monte Azul Paulista', 26, 3531506),
-(5061, 'Monte Castelo', 26, 3531605),
-(5062, 'Monte Mor', 26, 3531803),
-(5063, 'Monteiro Lobato', 26, 3531704),
-(5064, 'Morro Agudo', 26, 3531902),
-(5065, 'Morungaba', 26, 3532009),
-(5066, 'Motuca', 26, 3532058),
-(5067, 'Murutinga do Sul', 26, 3532108),
-(5068, 'Nantes', 26, 3532157),
-(5069, 'Narandiba', 26, 3532207),
-(5070, 'Natividade da Serra', 26, 3532306),
-(5071, 'Nazaré Paulista', 26, 3532405),
-(5072, 'Neves Paulista', 26, 3532504),
-(5073, 'Nhandeara', 26, 3532603),
-(5074, 'Nipoã', 26, 3532702),
-(5075, 'Nova Aliança', 26, 3532801),
-(5076, 'Nova Campina', 26, 3532827),
-(5077, 'Nova Canaã Paulista', 26, 3532843),
-(5078, 'Nova Castilho', 26, 3532868),
-(5079, 'Nova Europa', 26, 3532900),
-(5080, 'Nova Granada', 26, 3533007),
-(5081, 'Nova Guataporanga', 26, 3533106),
-(5082, 'Nova Independência', 26, 3533205),
-(5083, 'Nova Luzitânia', 26, 3533304),
-(5084, 'Nova Odessa', 26, 3533403),
-(5085, 'Novais', 26, 3533254),
-(5086, 'Novo Horizonte', 26, 3533502),
-(5087, 'Nuporanga', 26, 3533601),
-(5088, 'Ocauçu', 26, 3533700),
-(5089, 'Óleo', 26, 3533809),
-(5090, 'Olímpia', 26, 3533908),
-(5091, 'Onda Verde', 26, 3534005),
-(5092, 'Oriente', 26, 3534104),
-(5093, 'Orindiúva', 26, 3534203),
-(5094, 'Orlândia', 26, 3534302),
-(5095, 'Osasco', 26, 3534401),
-(5096, 'Oscar Bressane', 26, 3534500),
-(5097, 'Osvaldo Cruz', 26, 3534609),
-(5098, 'Ourinhos', 26, 3534708),
-(5099, 'Ouro Verde', 26, 3534807),
-(5100, 'Ouroeste', 26, 3534757),
-(5101, 'Pacaembu', 26, 3534906),
-(5102, 'Palestina', 26, 3535002),
-(5103, 'Palmares Paulista', 26, 3535101),
-(5104, 'Palmeira d`Oeste', 26, 3535200),
-(5105, 'Palmital', 26, 3535309),
-(5106, 'Panorama', 26, 3535408),
-(5107, 'Paraguaçu Paulista', 26, 3535507),
-(5108, 'Paraibuna', 26, 3535606),
-(5109, 'Paraíso', 26, 3535705),
-(5110, 'Paranapanema', 26, 3535804),
-(5111, 'Paranapuã', 26, 3535903),
-(5112, 'Parapuã', 26, 3536000),
-(5113, 'Pardinho', 26, 3536109),
-(5114, 'Pariquera-Açu', 26, 3536208),
-(5115, 'Parisi', 26, 3536257),
-(5116, 'Patrocínio Paulista', 26, 3536307),
-(5117, 'Paulicéia', 26, 3536406),
-(5118, 'Paulínia', 26, 3536505),
-(5119, 'Paulistânia', 26, 3536570),
-(5120, 'Paulo de Faria', 26, 3536604),
-(5121, 'Pederneiras', 26, 3536703),
-(5122, 'Pedra Bela', 26, 3536802),
-(5123, 'Pedranópolis', 26, 3536901),
-(5124, 'Pedregulho', 26, 3537008),
-(5125, 'Pedreira', 26, 3537107),
-(5126, 'Pedrinhas Paulista', 26, 3537156),
-(5127, 'Pedro de Toledo', 26, 3537206),
-(5128, 'Penápolis', 26, 3537305),
-(5129, 'Pereira Barreto', 26, 3537404),
-(5130, 'Pereiras', 26, 3537503),
-(5131, 'Peruíbe', 26, 3537602),
-(5132, 'Piacatu', 26, 3537701),
-(5133, 'Piedade', 26, 3537800),
-(5134, 'Pilar do Sul', 26, 3537909),
-(5135, 'Pindamonhangaba', 26, 3538006),
-(5136, 'Pindorama', 26, 3538105),
-(5137, 'Pinhalzinho', 26, 3538204),
-(5138, 'Piquerobi', 26, 3538303),
-(5139, 'Piquete', 26, 3538501),
-(5140, 'Piracaia', 26, 3538600),
-(5141, 'Piracicaba', 26, 3538709),
-(5142, 'Piraju', 26, 3538808),
-(5143, 'Pirajuí', 26, 3538907),
-(5144, 'Pirangi', 26, 3539004),
-(5145, 'Pirapora do Bom Jesus', 26, 3539103),
-(5146, 'Pirapozinho', 26, 3539202),
-(5147, 'Pirassununga', 26, 3539301),
-(5148, 'Piratininga', 26, 3539400),
-(5149, 'Pitangueiras', 26, 3539509),
-(5150, 'Planalto', 26, 3539608),
-(5151, 'Platina', 26, 3539707),
-(5152, 'Poá', 26, 3539806),
-(5153, 'Poloni', 26, 3539905),
-(5154, 'Pompéia', 26, 3540002),
-(5155, 'Pongaí', 26, 3540101),
-(5156, 'Pontal', 26, 3540200),
-(5157, 'Pontalinda', 26, 3540259),
-(5158, 'Pontes Gestal', 26, 3540309),
-(5159, 'Populina', 26, 3540408),
-(5160, 'Porangaba', 26, 3540507),
-(5161, 'Porto Feliz', 26, 3540606),
-(5162, 'Porto Ferreira', 26, 3540705),
-(5163, 'Potim', 26, 3540754),
-(5164, 'Potirendaba', 26, 3540804),
-(5165, 'Pracinha', 26, 3540853),
-(5166, 'Pradópolis', 26, 3540903),
-(5167, 'Praia Grande', 26, 3541000),
-(5168, 'Pratânia', 26, 3541059),
-(5169, 'Presidente Alves', 26, 3541109),
-(5170, 'Presidente Bernardes', 26, 3541208),
-(5171, 'Presidente Epitácio', 26, 3541307),
-(5172, 'Presidente Prudente', 26, 3541406),
-(5173, 'Presidente Venceslau', 26, 3541505),
-(5174, 'Promissão', 26, 3541604),
-(5175, 'Quadra', 26, 3541653),
-(5176, 'Quatá', 26, 3541703),
-(5177, 'Queiroz', 26, 3541802),
-(5178, 'Queluz', 26, 3541901),
-(5179, 'Quintana', 26, 3542008),
-(5180, 'Rafard', 26, 3542107),
-(5181, 'Rancharia', 26, 3542206),
-(5182, 'Redenção da Serra', 26, 3542305),
-(5183, 'Regente Feijó', 26, 3542404),
-(5184, 'Reginópolis', 26, 3542503),
-(5185, 'Registro', 26, 3542602),
-(5186, 'Restinga', 26, 3542701),
-(5187, 'Ribeira', 26, 3542800),
-(5188, 'Ribeirão Bonito', 26, 3542909),
-(5189, 'Ribeirão Branco', 26, 3543006),
-(5190, 'Ribeirão Corrente', 26, 3543105),
-(5191, 'Ribeirão do Sul', 26, 3543204),
-(5192, 'Ribeirão dos Índios', 26, 3543238),
-(5193, 'Ribeirão Grande', 26, 3543253),
-(5194, 'Ribeirão Pires', 26, 3543303),
-(5195, 'Ribeirão Preto', 26, 3543402),
-(5196, 'Rifaina', 26, 3543600),
-(5197, 'Rincão', 26, 3543709),
-(5198, 'Rinópolis', 26, 3543808),
-(5199, 'Rio Claro', 26, 3543907),
-(5200, 'Rio das Pedras', 26, 3544004),
-(5201, 'Rio Grande da Serra', 26, 3544103),
-(5202, 'Riolândia', 26, 3544202),
-(5203, 'Riversul', 26, 3543501),
-(5204, 'Rosana', 26, 3544251),
-(5205, 'Roseira', 26, 3544301),
-(5206, 'Rubiácea', 26, 3544400),
-(5207, 'Rubinéia', 26, 3544509),
-(5208, 'Sabino', 26, 3544608),
-(5209, 'Sagres', 26, 3544707),
-(5210, 'Sales', 26, 3544806),
-(5211, 'Sales Oliveira', 26, 3544905),
-(5212, 'Salesópolis', 26, 3545001),
-(5213, 'Salmourão', 26, 3545100),
-(5214, 'Saltinho', 26, 3545159),
-(5215, 'Salto', 26, 3545209),
-(5216, 'Salto de Pirapora', 26, 3545308),
-(5217, 'Salto Grande', 26, 3545407),
-(5218, 'Sandovalina', 26, 3545506),
-(5219, 'Santa Adélia', 26, 3545605),
-(5220, 'Santa Albertina', 26, 3545704),
-(5221, 'Santa Bárbara d`Oeste', 26, 3545803),
-(5222, 'Santa Branca', 26, 3546009),
-(5223, 'Santa Clara d`Oeste', 26, 3546108),
-(5224, 'Santa Cruz da Conceição', 26, 3546207),
-(5225, 'Santa Cruz da Esperança', 26, 3546256),
-(5226, 'Santa Cruz das Palmeiras', 26, 3546306),
-(5227, 'Santa Cruz do Rio Pardo', 26, 3546405),
-(5228, 'Santa Ernestina', 26, 3546504),
-(5229, 'Santa Fé do Sul', 26, 3546603),
-(5230, 'Santa Gertrudes', 26, 3546702),
-(5231, 'Santa Isabel', 26, 3546801),
-(5232, 'Santa Lúcia', 26, 3546900),
-(5233, 'Santa Maria da Serra', 26, 3547007),
-(5234, 'Santa Mercedes', 26, 3547106),
-(5235, 'Santa Rita d`Oeste', 26, 3547403),
-(5236, 'Santa Rita do Passa Quatro', 26, 3547502),
-(5237, 'Santa Rosa de Viterbo', 26, 3547601),
-(5238, 'Santa Salete', 26, 3547650),
-(5239, 'Santana da Ponte Pensa', 26, 3547205),
-(5240, 'Santana de Parnaíba', 26, 3547304),
-(5241, 'Santo Anastácio', 26, 3547700),
-(5242, 'Santo André', 26, 3547809),
-(5243, 'Santo Antônio da Alegria', 26, 3547908),
-(5244, 'Santo Antônio de Posse', 26, 3548005),
-(5245, 'Santo Antônio do Aracanguá', 26, 3548054),
-(5246, 'Santo Antônio do Jardim', 26, 3548104),
-(5247, 'Santo Antônio do Pinhal', 26, 3548203),
-(5248, 'Santo Expedito', 26, 3548302),
-(5249, 'Santópolis do Aguapeí', 26, 3548401),
-(5250, 'Santos', 26, 3548500),
-(5251, 'São Bento do Sapucaí', 26, 3548609),
-(5252, 'São Bernardo do Campo', 26, 3548708),
-(5253, 'São Caetano do Sul', 26, 3548807),
-(5254, 'São Carlos', 26, 3548906),
-(5255, 'São Francisco', 26, 3549003),
-(5256, 'São João da Boa Vista', 26, 3549102),
-(5257, 'São João das Duas Pontes', 26, 3549201),
-(5258, 'São João de Iracema', 26, 3549250),
-(5259, 'São João do Pau d`Alho', 26, 3549300),
-(5260, 'São Joaquim da Barra', 26, 3549409),
-(5261, 'São José da Bela Vista', 26, 3549508),
-(5262, 'São José do Barreiro', 26, 3549607),
-(5263, 'São José do Rio Pardo', 26, 3549706),
-(5264, 'São José do Rio Preto', 26, 3549805),
-(5265, 'São José dos Campos', 26, 3549904),
-(5266, 'São Lourenço da Serra', 26, 3549953),
-(5267, 'São Luís do Paraitinga', 26, 3550001),
-(5268, 'São Manuel', 26, 3550100),
-(5269, 'São Miguel Arcanjo', 26, 3550209),
-(5270, 'São Paulo', 26, 3550308),
-(5271, 'São Pedro', 26, 3550407),
-(5272, 'São Pedro do Turvo', 26, 3550506),
-(5273, 'São Roque', 26, 3550605),
-(5274, 'São Sebastião', 26, 3550704),
-(5275, 'São Sebastião da Grama', 26, 3550803),
-(5276, 'São Simão', 26, 3550902),
-(5277, 'São Vicente', 26, 3551009),
-(5278, 'Sarapuí', 26, 3551108),
-(5279, 'Sarutaiá', 26, 3551207),
-(5280, 'Sebastianópolis do Sul', 26, 3551306),
-(5281, 'Serra Azul', 26, 3551405),
-(5282, 'Serra Negra', 26, 3551603),
-(5283, 'Serrana', 26, 3551504),
-(5284, 'Sertãozinho', 26, 3551702),
-(5285, 'Sete Barras', 26, 3551801),
-(5286, 'Severínia', 26, 3551900),
-(5287, 'Silveiras', 26, 3552007),
-(5288, 'Socorro', 26, 3552106),
-(5289, 'Sorocaba', 26, 3552205),
-(5290, 'Sud Mennucci', 26, 3552304),
-(5291, 'Sumaré', 26, 3552403),
-(5292, 'Suzanápolis', 26, 3552551),
-(5293, 'Suzano', 26, 3552502),
-(5294, 'Tabapuã', 26, 3552601),
-(5295, 'Tabatinga', 26, 3552700),
-(5296, 'Taboão da Serra', 26, 3552809),
-(5297, 'Taciba', 26, 3552908),
-(5298, 'Taguaí', 26, 3553005),
-(5299, 'Taiaçu', 26, 3553104),
-(5300, 'Taiúva', 26, 3553203),
-(5301, 'Tambaú', 26, 3553302),
-(5302, 'Tanabi', 26, 3553401),
-(5303, 'Tapiraí', 26, 3553500),
-(5304, 'Tapiratiba', 26, 3553609),
-(5305, 'Taquaral', 26, 3553658),
-(5306, 'Taquaritinga', 26, 3553708),
-(5307, 'Taquarituba', 26, 3553807),
-(5308, 'Taquarivaí', 26, 3553856),
-(5309, 'Tarabai', 26, 3553906),
-(5310, 'Tarumã', 26, 3553955),
-(5311, 'Tatuí', 26, 3554003),
-(5312, 'Taubaté', 26, 3554102),
-(5313, 'Tejupá', 26, 3554201),
-(5314, 'Teodoro Sampaio', 26, 3554300),
-(5315, 'Terra Roxa', 26, 3554409),
-(5316, 'Tietê', 26, 3554508),
-(5317, 'Timburi', 26, 3554607),
-(5318, 'Torre de Pedra', 26, 3554656),
-(5319, 'Torrinha', 26, 3554706),
-(5320, 'Trabiju', 26, 3554755),
-(5321, 'Tremembé', 26, 3554805),
-(5322, 'Três Fronteiras', 26, 3554904),
-(5323, 'Tuiuti', 26, 3554953),
-(5324, 'Tupã', 26, 3555000),
-(5325, 'Tupi Paulista', 26, 3555109),
-(5326, 'Turiúba', 26, 3555208),
-(5327, 'Turmalina', 26, 3555307),
-(5328, 'Ubarana', 26, 3555356),
-(5329, 'Ubatuba', 26, 3555406),
-(5330, 'Ubirajara', 26, 3555505),
-(5331, 'Uchoa', 26, 3555604),
-(5332, 'União Paulista', 26, 3555703),
-(5333, 'Urânia', 26, 3555802),
-(5334, 'Uru', 26, 3555901),
-(5335, 'Urupês', 26, 3556008),
-(5336, 'Valentim Gentil', 26, 3556107),
-(5337, 'Valinhos', 26, 3556206),
-(5338, 'Valparaíso', 26, 3556305),
-(5339, 'Vargem', 26, 3556354),
-(5340, 'Vargem Grande do Sul', 26, 3556404),
-(5341, 'Vargem Grande Paulista', 26, 3556453),
-(5342, 'Várzea Paulista', 26, 3556503),
-(5343, 'Vera Cruz', 26, 3556602),
-(5344, 'Vinhedo', 26, 3556701),
-(5345, 'Viradouro', 26, 3556800),
-(5346, 'Vista Alegre do Alto', 26, 3556909),
-(5347, 'Vitória Brasil', 26, 3556958),
-(5348, 'Votorantim', 26, 3557006),
-(5349, 'Votuporanga', 26, 3557105),
-(5350, 'Zacarias', 26, 3557154),
-(5351, 'Amparo de São Francisco', 25, 2800100),
-(5352, 'Aquidabã', 25, 2800209),
-(5353, 'Aracaju', 25, 2800308),
-(5354, 'Arauá', 25, 2800407),
-(5355, 'Areia Branca', 25, 2800506),
-(5356, 'Barra dos Coqueiros', 25, 2800605),
-(5357, 'Boquim', 25, 2800670),
-(5358, 'Brejo Grande', 25, 2800704),
-(5359, 'Campo do Brito', 25, 2801009),
-(5360, 'Canhoba', 25, 2801108),
-(5361, 'Canindé de São Francisco', 25, 2801207),
-(5362, 'Capela', 25, 2801306),
-(5363, 'Carira', 25, 2801405),
-(5364, 'Carmópolis', 25, 2801504),
-(5365, 'Cedro de São João', 25, 2801603),
-(5366, 'Cristinápolis', 25, 2801702),
-(5367, 'Cumbe', 25, 2801900),
-(5368, 'Divina Pastora', 25, 2802007),
-(5369, 'Estância', 25, 2802106),
-(5370, 'Feira Nova', 25, 2802205),
-(5371, 'Frei Paulo', 25, 2802304),
-(5372, 'Gararu', 25, 2802403),
-(5373, 'General Maynard', 25, 2802502),
-(5374, 'Gracho Cardoso', 25, 2802601),
-(5375, 'Ilha das Flores', 25, 2802700),
-(5376, 'Indiaroba', 25, 2802809),
-(5377, 'Itabaiana', 25, 2802908),
-(5378, 'Itabaianinha', 25, 2803005),
-(5379, 'Itabi', 25, 2803104),
-(5380, 'Itaporanga d`Ajuda', 25, 2803203),
-(5381, 'Japaratuba', 25, 2803302),
-(5382, 'Japoatã', 25, 2803401),
-(5383, 'Lagarto', 25, 2803500),
-(5384, 'Laranjeiras', 25, 2803609),
-(5385, 'Macambira', 25, 2803708),
-(5386, 'Malhada dos Bois', 25, 2803807),
-(5387, 'Malhador', 25, 2803906),
-(5388, 'Maruim', 25, 2804003),
-(5389, 'Moita Bonita', 25, 2804102),
-(5390, 'Monte Alegre de Sergipe', 25, 2804201),
-(5391, 'Muribeca', 25, 2804300),
-(5392, 'Neópolis', 25, 2804409),
-(5393, 'Nossa Senhora Aparecida', 25, 2804458),
-(5394, 'Nossa Senhora da Glória', 25, 2804508),
-(5395, 'Nossa Senhora das Dores', 25, 2804607),
-(5396, 'Nossa Senhora de Lourdes', 25, 2804706),
-(5397, 'Nossa Senhora do Socorro', 25, 2804805),
-(5398, 'Pacatuba', 25, 2804904),
-(5399, 'Pedra Mole', 25, 2805000),
-(5400, 'Pedrinhas', 25, 2805109),
-(5401, 'Pinhão', 25, 2805208),
-(5402, 'Pirambu', 25, 2805307),
-(5403, 'Poço Redondo', 25, 2805406),
-(5404, 'Poço Verde', 25, 2805505),
-(5405, 'Porto da Folha', 25, 2805604),
-(5406, 'Propriá', 25, 2805703),
-(5407, 'Riachão do Dantas', 25, 2805802),
-(5408, 'Riachuelo', 25, 2805901),
-(5409, 'Ribeirópolis', 25, 2806008),
-(5410, 'Rosário do Catete', 25, 2806107),
-(5411, 'Salgado', 25, 2806206),
-(5412, 'Santa Luzia do Itanhy', 25, 2806305),
-(5413, 'Santa Rosa de Lima', 25, 2806503),
-(5414, 'Santana do São Francisco', 25, 2806404),
-(5415, 'Santo Amaro das Brotas', 25, 2806602),
-(5416, 'São Cristóvão', 25, 2806701),
-(5417, 'São Domingos', 25, 2806800),
-(5418, 'São Francisco', 25, 2806909),
-(5419, 'São Miguel do Aleixo', 25, 2807006),
-(5420, 'Simão Dias', 25, 2807105),
-(5421, 'Siriri', 25, 2807204),
-(5422, 'Telha', 25, 2807303),
-(5423, 'Tobias Barreto', 25, 2807402),
-(5424, 'Tomar do Geru', 25, 2807501),
-(5425, 'Umbaúba', 25, 2807600),
-(5426, 'Abreulândia', 27, 1700251),
-(5427, 'Aguiarnópolis', 27, 1700301),
-(5428, 'Aliança do Tocantins', 27, 1700350),
-(5429, 'Almas', 27, 1700400),
-(5430, 'Alvorada', 27, 1700707),
-(5431, 'Ananás', 27, 1701002),
-(5432, 'Angico', 27, 1701051),
-(5433, 'Aparecida do Rio Negro', 27, 1701101),
-(5434, 'Aragominas', 27, 1701309),
-(5435, 'Araguacema', 27, 1701903),
-(5436, 'Araguaçu', 27, 1702000),
-(5437, 'Araguaína', 27, 1702109),
-(5438, 'Araguanã', 27, 1702158),
-(5439, 'Araguatins', 27, 1702208),
-(5440, 'Arapoema', 27, 1702307),
-(5441, 'Arraias', 27, 1702406),
-(5442, 'Augustinópolis', 27, 1702554),
-(5443, 'Aurora do Tocantins', 27, 1702703),
-(5444, 'Axixá do Tocantins', 27, 1702901),
-(5445, 'Babaçulândia', 27, 1703008),
-(5446, 'Bandeirantes do Tocantins', 27, 1703057),
-(5447, 'Barra do Ouro', 27, 1703073),
-(5448, 'Barrolândia', 27, 1703107),
-(5449, 'Bernardo Sayão', 27, 1703206),
-(5450, 'Bom Jesus do Tocantins', 27, 1703305),
-(5451, 'Brasilândia do Tocantins', 27, 1703602),
-(5452, 'Brejinho de Nazaré', 27, 1703701),
-(5453, 'Buriti do Tocantins', 27, 1703800),
-(5454, 'Cachoeirinha', 27, 1703826),
-(5455, 'Campos Lindos', 27, 1703842),
-(5456, 'Cariri do Tocantins', 27, 1703867),
-(5457, 'Carmolândia', 27, 1703883),
-(5458, 'Carrasco Bonito', 27, 1703891),
-(5459, 'Caseara', 27, 1703909),
-(5460, 'Centenário', 27, 1704105),
-(5461, 'Chapada da Natividade', 27, 1705102),
-(5462, 'Chapada de Areia', 27, 1704600),
-(5463, 'Colinas do Tocantins', 27, 1705508),
-(5464, 'Colméia', 27, 1716703),
-(5465, 'Combinado', 27, 1705557),
-(5466, 'Conceição do Tocantins', 27, 1705607),
-(5467, 'Couto de Magalhães', 27, 1706001),
-(5468, 'Cristalândia', 27, 1706100),
-(5469, 'Crixás do Tocantins', 27, 1706258),
-(5470, 'Darcinópolis', 27, 1706506),
-(5471, 'Dianópolis', 27, 1707009),
-(5472, 'Divinópolis do Tocantins', 27, 1707108),
-(5473, 'Dois Irmãos do Tocantins', 27, 1707207),
-(5474, 'Dueré', 27, 1707306),
-(5475, 'Esperantina', 27, 1707405),
-(5476, 'Fátima', 27, 1707553),
-(5477, 'Figueirópolis', 27, 1707652),
-(5478, 'Filadélfia', 27, 1707702),
-(5479, 'Formoso do Araguaia', 27, 1708205),
-(5480, 'Fortaleza do Tabocão', 27, 1708254),
-(5481, 'Goianorte', 27, 1708304),
-(5482, 'Goiatins', 27, 1709005),
-(5483, 'Guaraí', 27, 1709302),
-(5484, 'Gurupi', 27, 1709500),
-(5485, 'Ipueiras', 27, 1709807),
-(5486, 'Itacajá', 27, 1710508),
-(5487, 'Itaguatins', 27, 1710706),
-(5488, 'Itapiratins', 27, 1710904),
-(5489, 'Itaporã do Tocantins', 27, 1711100),
-(5490, 'Jaú do Tocantins', 27, 1711506),
-(5491, 'Juarina', 27, 1711803),
-(5492, 'Lagoa da Confusão', 27, 1711902),
-(5493, 'Lagoa do Tocantins', 27, 1711951),
-(5494, 'Lajeado', 27, 1712009),
-(5495, 'Lavandeira', 27, 1712157),
-(5496, 'Lizarda', 27, 1712405),
-(5497, 'Luzinópolis', 27, 1712454),
-(5498, 'Marianópolis do Tocantins', 27, 1712504),
-(5499, 'Mateiros', 27, 1712702),
-(5500, 'Maurilândia do Tocantins', 27, 1712801),
-(5501, 'Miracema do Tocantins', 27, 1713205),
-(5502, 'Miranorte', 27, 1713304),
-(5503, 'Monte do Carmo', 27, 1713601),
-(5504, 'Monte Santo do Tocantins', 27, 1713700),
-(5505, 'Muricilândia', 27, 1713957),
-(5506, 'Natividade', 27, 1714203),
-(5507, 'Nazaré', 27, 1714302),
-(5508, 'Nova Olinda', 27, 1714880),
-(5509, 'Nova Rosalândia', 27, 1715002),
-(5510, 'Novo Acordo', 27, 1715101),
-(5511, 'Novo Alegre', 27, 1715150),
-(5512, 'Novo Jardim', 27, 1715259),
-(5513, 'Oliveira de Fátima', 27, 1715507),
-(5514, 'Palmas', 27, 1721000),
-(5515, 'Palmeirante', 27, 1715705),
-(5516, 'Palmeiras do Tocantins', 27, 1713809),
-(5517, 'Palmeirópolis', 27, 1715754),
-(5518, 'Paraíso do Tocantins', 27, 1716109),
-(5519, 'Paranã', 27, 1716208),
-(5520, 'Pau d`Arco', 27, 1716307),
-(5521, 'Pedro Afonso', 27, 1716505),
-(5522, 'Peixe', 27, 1716604),
-(5523, 'Pequizeiro', 27, 1716653),
-(5524, 'Pindorama do Tocantins', 27, 1717008),
-(5525, 'Piraquê', 27, 1717206),
-(5526, 'Pium', 27, 1717503),
-(5527, 'Ponte Alta do Bom Jesus', 27, 1717800),
-(5528, 'Ponte Alta do Tocantins', 27, 1717909),
-(5529, 'Porto Alegre do Tocantins', 27, 1718006),
-(5530, 'Porto Nacional', 27, 1718204),
-(5531, 'Praia Norte', 27, 1718303),
-(5532, 'Presidente Kennedy', 27, 1718402),
-(5533, 'Pugmil', 27, 1718451),
-(5534, 'Recursolândia', 27, 1718501),
-(5535, 'Riachinho', 27, 1718550),
-(5536, 'Rio da Conceição', 27, 1718659),
-(5537, 'Rio dos Bois', 27, 1718709),
-(5538, 'Rio Sono', 27, 1718758),
-(5539, 'Sampaio', 27, 1718808),
-(5540, 'Sandolândia', 27, 1718840),
-(5541, 'Santa Fé do Araguaia', 27, 1718865),
-(5542, 'Santa Maria do Tocantins', 27, 1718881),
-(5543, 'Santa Rita do Tocantins', 27, 1718899),
-(5544, 'Santa Rosa do Tocantins', 27, 1718907),
-(5545, 'Santa Tereza do Tocantins', 27, 1719004),
-(5546, 'Santa Terezinha do Tocantins', 27, 1720002),
-(5547, 'São Bento do Tocantins', 27, 1720101),
-(5548, 'São Félix do Tocantins', 27, 1720150),
-(5549, 'São Miguel do Tocantins', 27, 1720200),
-(5550, 'São Salvador do Tocantins', 27, 1720259),
-(5551, 'São Sebastião do Tocantins', 27, 1720309),
-(5552, 'São Valério da Natividade', 27, 1720499),
-(5553, 'Silvanópolis', 27, 1720655),
-(5554, 'Sítio Novo do Tocantins', 27, 1720804),
-(5555, 'Sucupira', 27, 1720853),
-(5556, 'Taguatinga', 27, 1720903),
-(5557, 'Taipas do Tocantins', 27, 1720937),
-(5558, 'Talismã', 27, 1720978),
-(5559, 'Tocantínia', 27, 1721109),
-(5560, 'Tocantinópolis', 27, 1721208),
-(5561, 'Tupirama', 27, 1721257),
-(5562, 'Tupiratins', 27, 1721307),
-(5563, 'Wanderlândia', 27, 1722081),
-(5564, 'Xambioá', 27, 1722107),
-(5575, 'Gama', 7, 5300108),
-(5576, 'Taguatinga', 7, 5300108),
-(5577, 'Brazlândia', 7, 5300108),
-(5578, 'Sobradinho', 7, 5300108),
-(5579, 'Planaltina', 7, 5300108),
-(5580, 'Paranoá', 7, 5300108),
-(5581, 'Núcleo Bandeirante', 7, 5300108),
-(5582, 'Ceilândia', 7, 5300108),
-(5583, 'Guará', 7, 5300108),
-(5584, 'Cruzeiro', 7, 5300108),
-(5585, 'Samambaia', 7, 5300108),
-(5586, 'Santa Maria', 7, 5300108),
-(5587, 'São Sebastião', 7, 5300108),
-(5589, 'Lago Sul', 7, 5300108),
-(5590, 'Riacho Fundo', 7, 5300108),
-(5591, 'Lago Norte', 7, 5300108),
-(5592, 'Candangolândia', 7, 5300108),
-(5593, 'Águas Claras', 7, 5300108),
-(5594, 'Riacho Fundo II', 7, 5300108),
-(5595, 'Sudoeste/Octogonal', 7, 5300108),
-(5596, 'Varjão', 7, 5300108),
-(5597, 'Park Way', 7, 5300108),
-(5598, 'SCIA', 7, 5300108),
-(5599, 'Sobradinho II', 7, 5300108),
-(5601, 'Itapoã', 7, 5300108),
-(5602, 'SIA', 7, 5300108),
-(5603, 'Vicente Pires', 7, 5300108),
-(5604, 'Fercal', 7, 5300108),
-(5574, 'Recanto das Emas', 7, 5300108),
-(5600, 'Jardim Botânico', 7, 5300108),
-(5605, 'Nazária', 17, 2206720),
-(5606, 'Paraíso das Águas', 12, 5006275),
-(5607, 'Pinto Bandeira', 23, 4314548),
-(5608, 'Balneário Rincão', 24, 4220000),
-(5609, 'Pescaria Brava', 24, 4212650),
-(5610, 'Exterior', 99, 9999999);
-
---
--- Indexes for table "cidade"
---
-
-ALTER TABLE `cidade`
-  ADD PRIMARY KEY (`id`);
+Insert into cidade (codigo_cidade, nome, uf) values ('1100015','Alta Floresta D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100023','Ariquemes', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100031','Cabixi', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100049','Cacoal', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100056','Cerejeiras', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100064','Colorado do Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100072','Corumbiara', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100080','Costa Marques', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100098','Espigão D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100106','Guajará-Mirim', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100114','Jaru', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100122','Ji-Paraná', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100130','Machadinho D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100148','Nova Brasilândia D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100155','Ouro Preto do Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100189','Pimenta Bueno', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100205','Porto Velho', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100254','Presidente Médici', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100262','Rio Crespo', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100288','Rolim de Moura', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100296','Santa Luzia D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100304','Vilhena', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100320','São Miguel do Guaporé', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100338','Nova Mamoré', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100346','Alvorada D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100379','Alto Alegre dos Parecis', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100403','Alto Paraíso', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100452','Buritis', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100502','Novo Horizonte do Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100601','Cacaulândia', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100700','Campo Novo de Rondônia', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100809','Candeias do Jamari', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100908','Castanheiras', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100924','Chupinguaia', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1100940','Cujubim', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101005','Governador Jorge Teixeira', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101104','Itapuã do Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101203','Ministro Andreazza', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101302','Mirante da Serra', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101401','Monte Negro', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101435','Nova União', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101450','Parecis', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101468','Pimenteiras do Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101476','Primavera de Rondônia', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101484','São Felipe D''Oeste', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101492','São Francisco do Guaporé', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101500','Seringueiras', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101559','Teixeirópolis', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101609','Theobroma', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101708','Urupá', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101757','Vale do Anari', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1101807','Vale do Paraíso', 'RO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200013','Acrelândia', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200054','Assis Brasil', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200104','Brasiléia', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200138','Bujari', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200179','Capixaba', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200203','Cruzeiro do Sul', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200252','Epitaciolândia', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200302','Feijó', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200328','Jordão', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200336','Mâncio Lima', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200344','Manoel Urbano', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200351','Marechal Thaumaturgo', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200385','Plácido de Castro', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200393','Porto Walter', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200401','Rio Branco', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200427','Rodrigues Alves', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200435','Santa Rosa do Purus', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200450','Senador Guiomard', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200500','Sena Madureira', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200609','Tarauacá', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200708','Xapuri', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1200807','Porto Acre', 'AC');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300029','Alvarães', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300060','Amaturá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300086','Anamã', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300102','Anori', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300144','Apuí', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300201','Atalaia do Norte', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300300','Autazes', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300409','Barcelos', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300508','Barreirinha', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300607','Benjamin Constant', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300631','Beruri', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300680','Boa Vista do Ramos', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300706','Boca do Acre', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300805','Borba', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300839','Caapiranga', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1300904','Canutama', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301001','Carauari', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301100','Careiro', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301159','Careiro da Várzea', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301209','Coari', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301308','Codajás', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301407','Eirunepé', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301506','Envira', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301605','Fonte Boa', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301654','Guajará', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301704','Humaitá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301803','Ipixuna', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301852','Iranduba', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301902','Itacoatiara', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1301951','Itamarati', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302009','Itapiranga', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302108','Japurá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302207','Juruá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302306','Jutaí', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302405','Lábrea', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302504','Manacapuru', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302553','Manaquiri', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302603','Manaus', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302702','Manicoré', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302801','Maraã', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1302900','Maués', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303007','Nhamundá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303106','Nova Olinda do Norte', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303205','Novo Airão', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303304','Novo Aripuanã', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303403','Parintins', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303502','Pauini', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303536','Presidente Figueiredo', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303569','Rio Preto da Eva', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303601','Santa Isabel do Rio Negro', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303700','Santo Antônio do Içá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303809','São Gabriel da Cachoeira', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303908','São Paulo de Olivença', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1303957','São Sebastião do Uatumã', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304005','Silves', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304062','Tabatinga', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304104','Tapauá', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304203','Tefé', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304237','Tonantins', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304260','Uarini', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304302','Urucará', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1304401','Urucurituba', 'AM');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400027','Amajari', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400050','Alto Alegre', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400100','Boa Vista', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400159','Bonfim', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400175','Cantá', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400209','Caracaraí', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400233','Caroebe', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400282','Iracema', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400308','Mucajaí', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400407','Normandia', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400456','Pacaraima', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400472','Rorainópolis', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400506','São João da Baliza', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400605','São Luiz', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1400704','Uiramutã', 'RR');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500107','Abaetetuba', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500131','Abel Figueiredo', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500206','Acará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500305','Afuá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500347','Água Azul do Norte', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500404','Alenquer', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500503','Almeirim', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500602','Altamira', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500701','Anajás', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500800','Ananindeua', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500859','Anapu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500909','Augusto Corrêa', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1500958','Aurora do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501006','Aveiro', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501105','Bagre', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501204','Baião', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501253','Bannach', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501303','Barcarena', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501402','Belém', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501451','Belterra', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501501','Benevides', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501576','Bom Jesus do Tocantins', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501600','Bonito', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501709','Bragança', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501725','Brasil Novo', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501758','Brejo Grande do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501782','Breu Branco', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501808','Breves', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501907','Bujaru', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1501956','Cachoeira do Piriá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502004','Cachoeira do Arari', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502103','Cametá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502152','Canaã dos Carajás', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502202','Capanema', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502301','Capitão Poço', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502400','Castanhal', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502509','Chaves', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502608','Colares', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502707','Conceição do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502756','Concórdia do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502764','Cumaru do Norte', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502772','Curionópolis', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502806','Curralinho', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502855','Curuá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502905','Curuçá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502939','Dom Eliseu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1502954','Eldorado dos Carajás', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503002','Faro', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503044','Floresta do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503077','Garrafão do Norte', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503093','Goianésia do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503101','Gurupá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503200','Igarapé-Açu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503309','Igarapé-Miri', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503408','Inhangapi', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503457','Ipixuna do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503507','Irituia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503606','Itaituba', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503705','Itupiranga', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503754','Jacareacanga', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503804','Jacundá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1503903','Juruti', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504000','Limoeiro do Ajuru', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504059','Mãe do Rio', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504109','Magalhães Barata', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504208','Marabá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504307','Maracanã', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504406','Marapanim', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504422','Marituba', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504455','Medicilândia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504505','Melgaço', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504604','Mocajuba', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504703','Moju', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504752','Mojuí dos Campos', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504802','Monte Alegre', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504901','Muaná', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504950','Nova Esperança do Piriá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1504976','Nova Ipixuna', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505007','Nova Timboteua', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505031','Novo Progresso', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505064','Novo Repartimento', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505106','Óbidos', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505205','Oeiras do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505304','Oriximiná', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505403','Ourém', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505437','Ourilândia do Norte', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505486','Pacajá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505494','Palestina do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505502','Paragominas', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505536','Parauapebas', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505551','Pau D''Arco', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505601','Peixe-Boi', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505635','Piçarra', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505650','Placas', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505700','Ponta de Pedras', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505809','Portel', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1505908','Porto de Moz', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506005','Prainha', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506104','Primavera', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506112','Quatipuru', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506138','Redenção', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506161','Rio Maria', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506187','Rondon do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506195','Rurópolis', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506203','Salinópolis', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506302','Salvaterra', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506351','Santa Bárbara do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506401','Santa Cruz do Arari', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506500','Santa Isabel do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506559','Santa Luzia do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506583','Santa Maria das Barreiras', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506609','Santa Maria do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506708','Santana do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506807','Santarém', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1506906','Santarém Novo', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507003','Santo Antônio do Tauá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507102','São Caetano de Odivelas', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507151','São Domingos do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507201','São Domingos do Capim', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507300','São Félix do Xingu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507409','São Francisco do Pará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507458','São Geraldo do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507466','São João da Ponta', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507474','São João de Pirabas', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507508','São João do Araguaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507607','São Miguel do Guamá', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507706','São Sebastião da Boa Vista', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507755','Sapucaia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507805','Senador José Porfírio', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507904','Soure', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507953','Tailândia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507961','Terra Alta', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1507979','Terra Santa', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508001','Tomé-Açu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508035','Tracuateua', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508050','Trairão', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508084','Tucumã', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508100','Tucuruí', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508126','Ulianópolis', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508159','Uruará', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508209','Vigia', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508308','Viseu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508357','Vitória do Xingu', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1508407','Xinguara', 'PA');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600055','Serra do Navio', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600105','Amapá', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600154','Pedra Branca do Amapari', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600204','Calçoene', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600212','Cutias', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600238','Ferreira Gomes', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600253','Itaubal', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600279','Laranjal do Jari', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600303','Macapá', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600402','Mazagão', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600501','Oiapoque', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600535','Porto Grande', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600550','Pracuúba', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600600','Santana', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600709','Tartarugalzinho', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1600808','Vitória do Jari', 'AP');
+Insert into cidade (codigo_cidade, nome, uf) values ('1700251','Abreulândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1700301','Aguiarnópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1700350','Aliança do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1700400','Almas', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1700707','Alvorada', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1701002','Ananás', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1701051','Angico', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1701101','Aparecida do Rio Negro', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1701309','Aragominas', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1701903','Araguacema', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702000','Araguaçu', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702109','Araguaína', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702158','Araguanã', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702208','Araguatins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702307','Arapoema', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702406','Arraias', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702554','Augustinópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702703','Aurora do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1702901','Axixá do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703008','Babaçulândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703057','Bandeirantes do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703073','Barra do Ouro', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703107','Barrolândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703206','Bernardo Sayão', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703305','Bom Jesus do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703602','Brasilândia do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703701','Brejinho de Nazaré', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703800','Buriti do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703826','Cachoeirinha', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703842','Campos Lindos', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703867','Cariri do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703883','Carmolândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703891','Carrasco Bonito', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1703909','Caseara', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1704105','Centenário', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1704600','Chapada de Areia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1705102','Chapada da Natividade', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1705508','Colinas do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1705557','Combinado', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1705607','Conceição do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1706001','Couto Magalhães', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1706100','Cristalândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1706258','Crixás do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1706506','Darcinópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707009','Dianópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707108','Divinópolis do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707207','Dois Irmãos do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707306','Dueré', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707405','Esperantina', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707553','Fátima', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707652','Figueirópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1707702','Filadélfia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1708205','Formoso do Araguaia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1708254','Fortaleza do Tabocão', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1708304','Goianorte', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1709005','Goiatins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1709302','Guaraí', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1709500','Gurupi', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1709807','Ipueiras', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1710508','Itacajá', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1710706','Itaguatins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1710904','Itapiratins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1711100','Itaporã do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1711506','Jaú do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1711803','Juarina', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1711902','Lagoa da Confusão', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1711951','Lagoa do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712009','Lajeado', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712157','Lavandeira', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712405','Lizarda', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712454','Luzinópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712504','Marianópolis do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712702','Mateiros', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1712801','Maurilândia do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1713205','Miracema do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1713304','Miranorte', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1713601','Monte do Carmo', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1713700','Monte Santo do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1713809','Palmeiras do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1713957','Muricilândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1714203','Natividade', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1714302','Nazaré', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1714880','Nova Olinda', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715002','Nova Rosalândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715101','Novo Acordo', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715150','Novo Alegre', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715259','Novo Jardim', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715507','Oliveira de Fátima', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715705','Palmeirante', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1715754','Palmeirópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716109','Paraíso do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716208','Paranã', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716307','Pau D''Arco', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716505','Pedro Afonso', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716604','Peixe', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716653','Pequizeiro', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1716703','Colméia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1717008','Pindorama do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1717206','Piraquê', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1717503','Pium', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1717800','Ponte Alta do Bom Jesus', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1717909','Ponte Alta do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718006','Porto Alegre do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718204','Porto Nacional', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718303','Praia Norte', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718402','Presidente Kennedy', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718451','Pugmil', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718501','Recursolândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718550','Riachinho', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718659','Rio da Conceição', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718709','Rio dos Bois', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718758','Rio Sono', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718808','Sampaio', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718840','Sandolândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718865','Santa Fé do Araguaia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718881','Santa Maria do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718899','Santa Rita do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1718907','Santa Rosa do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1719004','Santa Tereza do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720002','Santa Terezinha do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720101','São Bento do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720150','São Félix do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720200','São Miguel do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720259','São Salvador do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720309','São Sebastião do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720499','São Valério', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720655','Silvanópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720804','Sítio Novo do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720853','Sucupira', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720903','Taguatinga', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720937','Taipas do Tocantins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1720978','Talismã', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1721000','Palmas', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1721109','Tocantínia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1721208','Tocantinópolis', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1721257','Tupirama', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1721307','Tupiratins', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1722081','Wanderlândia', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('1722107','Xambioá', 'TO');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100055','Açailândia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100105','Afonso Cunha', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100154','Água Doce do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100204','Alcântara', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100303','Aldeias Altas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100402','Altamira do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100436','Alto Alegre do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100477','Alto Alegre do Pindaré', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100501','Alto Parnaíba', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100550','Amapá do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100600','Amarante do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100709','Anajatuba', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100808','Anapurus', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100832','Apicum-Açu', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100873','Araguanã', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100907','Araioses', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2100956','Arame', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101004','Arari', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101103','Axixá', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101202','Bacabal', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101251','Bacabeira', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101301','Bacuri', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101350','Bacurituba', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101400','Balsas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101509','Barão de Grajaú', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101608','Barra do Corda', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101707','Barreirinhas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101731','Belágua', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101772','Bela Vista do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101806','Benedito Leite', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101905','Bequimão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101939','Bernardo do Mearim', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2101970','Boa Vista do Gurupi', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102002','Bom Jardim', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102036','Bom Jesus das Selvas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102077','Bom Lugar', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102101','Brejo', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102150','Brejo de Areia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102200','Buriti', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102309','Buriti Bravo', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102325','Buriticupu', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102358','Buritirana', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102374','Cachoeira Grande', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102408','Cajapió', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102507','Cajari', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102556','Campestre do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102606','Cândido Mendes', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102705','Cantanhede', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102754','Capinzal do Norte', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102804','Carolina', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2102903','Carutapera', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103000','Caxias', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103109','Cedral', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103125','Central do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103158','Centro do Guilherme', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103174','Centro Novo do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103208','Chapadinha', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103257','Cidelândia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103307','Codó', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103406','Coelho Neto', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103505','Colinas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103554','Conceição do Lago-Açu', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103604','Coroatá', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103703','Cururupu', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103752','Davinópolis', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103802','Dom Pedro', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2103901','Duque Bacelar', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104008','Esperantinópolis', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104057','Estreito', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104073','Feira Nova do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104081','Fernando Falcão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104099','Formosa da Serra Negra', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104107','Fortaleza dos Nogueiras', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104206','Fortuna', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104305','Godofredo Viana', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104404','Gonçalves Dias', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104503','Governador Archer', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104552','Governador Edison Lobão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104602','Governador Eugênio Barros', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104628','Governador Luiz Rocha', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104651','Governador Newton Bello', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104677','Governador Nunes Freire', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104701','Graça Aranha', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104800','Grajaú', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2104909','Guimarães', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105005','Humberto de Campos', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105104','Icatu', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105153','Igarapé do Meio', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105203','Igarapé Grande', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105302','Imperatriz', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105351','Itaipava do Grajaú', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105401','Itapecuru Mirim', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105427','Itinga do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105450','Jatobá', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105476','Jenipapo dos Vieiras', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105500','João Lisboa', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105609','Joselândia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105658','Junco do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105708','Lago da Pedra', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105807','Lago do Junco', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105906','Lago Verde', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105922','Lagoa do Mato', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105948','Lago dos Rodrigues', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105963','Lagoa Grande do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2105989','Lajeado Novo', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106003','Lima Campos', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106102','Loreto', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106201','Luís Domingues', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106300','Magalhães de Almeida', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106326','Maracaçumé', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106359','Marajá do Sena', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106375','Maranhãozinho', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106409','Mata Roma', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106508','Matinha', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106607','Matões', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106631','Matões do Norte', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106672','Milagres do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106706','Mirador', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106755','Miranda do Norte', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106805','Mirinzal', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2106904','Monção', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107001','Montes Altos', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107100','Morros', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107209','Nina Rodrigues', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107258','Nova Colinas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107308','Nova Iorque', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107357','Nova Olinda do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107407','Olho D''Água das Cunhãs', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107456','Olinda Nova do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107506','Paço do Lumiar', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107605','Palmeirândia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107704','Paraibano', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107803','Parnarama', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2107902','Passagem Franca', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108009','Pastos Bons', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108058','Paulino Neves', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108108','Paulo Ramos', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108207','Pedreiras', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108256','Pedro do Rosário', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108306','Penalva', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108405','Peri Mirim', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108454','Peritoró', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108504','Pindaré-Mirim', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108603','Pinheiro', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108702','Pio XII', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108801','Pirapemas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2108900','Poção de Pedras', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109007','Porto Franco', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109056','Porto Rico do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109106','Presidente Dutra', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109205','Presidente Juscelino', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109239','Presidente Médici', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109270','Presidente Sarney', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109304','Presidente Vargas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109403','Primeira Cruz', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109452','Raposa', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109502','Riachão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109551','Ribamar Fiquene', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109601','Rosário', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109700','Sambaíba', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109759','Santa Filomena do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109809','Santa Helena', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2109908','Santa Inês', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110005','Santa Luzia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110039','Santa Luzia do Paruá', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110104','Santa Quitéria do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110203','Santa Rita', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110237','Santana do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110278','Santo Amaro do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110302','Santo Antônio dos Lopes', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110401','São Benedito do Rio Preto', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110500','São Bento', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110609','São Bernardo', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110658','São Domingos do Azeitão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110708','São Domingos do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110807','São Félix de Balsas', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110856','São Francisco do Brejão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2110906','São Francisco do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111003','São João Batista', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111029','São João do Carú', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111052','São João do Paraíso', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111078','São João do Soter', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111102','São João dos Patos', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111201','São José de Ribamar', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111250','São José dos Basílios', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111300','São Luís', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111409','São Luís Gonzaga do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111508','São Mateus do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111532','São Pedro da Água Branca', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111573','São Pedro dos Crentes', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111607','São Raimundo das Mangabeiras', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111631','São Raimundo do Doca Bezerra', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111672','São Roberto', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111706','São Vicente Ferrer', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111722','Satubinha', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111748','Senador Alexandre Costa', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111763','Senador La Rocque', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111789','Serrano do Maranhão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111805','Sítio Novo', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111904','Sucupira do Norte', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2111953','Sucupira do Riachão', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112001','Tasso Fragoso', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112100','Timbiras', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112209','Timon', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112233','Trizidela do Vale', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112274','Tufilândia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112308','Tuntum', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112407','Turiaçu', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112456','Turilândia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112506','Tutóia', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112605','Urbano Santos', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112704','Vargem Grande', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112803','Viana', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112852','Vila Nova dos Martírios', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2112902','Vitória do Mearim', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2113009','Vitorino Freire', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2114007','Zé Doca', 'MA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200053','Acauã', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200103','Agricolândia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200202','Água Branca', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200251','Alagoinha do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200277','Alegrete do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200301','Alto Longá', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200400','Altos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200459','Alvorada do Gurguéia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200509','Amarante', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200608','Angical do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200707','Anísio de Abreu', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200806','Antônio Almeida', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200905','Aroazes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2200954','Aroeiras do Itaim', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201002','Arraial', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201051','Assunção do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201101','Avelino Lopes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201150','Baixa Grande do Ribeiro', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201176','Barra D''Alcântara', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201200','Barras', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201309','Barreiras do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201408','Barro Duro', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201507','Batalha', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201556','Bela Vista do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201572','Belém do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201606','Beneditinos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201705','Bertolínia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201739','Betânia do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201770','Boa Hora', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201804','Bocaina', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201903','Bom Jesus', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201919','Bom Princípio do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201929','Bonfim do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201945','Boqueirão do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201960','Brasileira', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2201988','Brejo do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202000','Buriti dos Lopes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202026','Buriti dos Montes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202059','Cabeceiras do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202075','Cajazeiras do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202083','Cajueiro da Praia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202091','Caldeirão Grande do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202109','Campinas do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202117','Campo Alegre do Fidalgo', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202133','Campo Grande do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202174','Campo Largo do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202208','Campo Maior', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202251','Canavieira', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202307','Canto do Buriti', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202406','Capitão de Campos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202455','Capitão Gervásio Oliveira', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202505','Caracol', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202539','Caraúbas do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202554','Caridade do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202604','Castelo do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202653','Caxingó', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202703','Cocal', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202711','Cocal de Telha', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202729','Cocal dos Alves', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202737','Coivaras', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202752','Colônia do Gurguéia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202778','Colônia do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202802','Conceição do Canindé', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202851','Coronel José Dias', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2202901','Corrente', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203008','Cristalândia do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203107','Cristino Castro', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203206','Curimatá', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203230','Currais', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203255','Curralinhos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203271','Curral Novo do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203305','Demerval Lobão', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203354','Dirceu Arcoverde', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203404','Dom Expedito Lopes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203420','Domingos Mourão', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203453','Dom Inocêncio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203503','Elesbão Veloso', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203602','Eliseu Martins', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203701','Esperantina', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203750','Fartura do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203800','Flores do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203859','Floresta do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2203909','Floriano', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204006','Francinópolis', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204105','Francisco Ayres', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204154','Francisco Macedo', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204204','Francisco Santos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204303','Fronteiras', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204352','Geminiano', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204402','Gilbués', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204501','Guadalupe', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204550','Guaribas', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204600','Hugo Napoleão', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204659','Ilha Grande', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204709','Inhuma', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204808','Ipiranga do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2204907','Isaías Coelho', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205003','Itainópolis', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205102','Itaueira', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205151','Jacobina do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205201','Jaicós', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205250','Jardim do Mulato', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205276','Jatobá do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205300','Jerumenha', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205359','João Costa', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205409','Joaquim Pires', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205458','Joca Marques', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205508','José de Freitas', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205516','Juazeiro do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205524','Júlio Borges', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205532','Jurema', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205540','Lagoinha do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205557','Lagoa Alegre', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205565','Lagoa do Barro do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205573','Lagoa de São Francisco', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205581','Lagoa do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205599','Lagoa do Sítio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205607','Landri Sales', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205706','Luís Correia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205805','Luzilândia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205854','Madeiro', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205904','Manoel Emídio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2205953','Marcolândia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206001','Marcos Parente', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206050','Massapê do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206100','Matias Olímpio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206209','Miguel Alves', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206308','Miguel Leão', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206357','Milton Brandão', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206407','Monsenhor Gil', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206506','Monsenhor Hipólito', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206605','Monte Alegre do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206654','Morro Cabeça no Tempo', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206670','Morro do Chapéu do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206696','Murici dos Portelas', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206704','Nazaré do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206720','Nazária', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206753','Nossa Senhora de Nazaré', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206803','Nossa Senhora dos Remédios', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206902','Novo Oriente do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2206951','Novo Santo Antônio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207009','Oeiras', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207108','Olho D''Água do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207207','Padre Marcos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207306','Paes Landim', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207355','Pajeú do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207405','Palmeira do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207504','Palmeirais', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207553','Paquetá', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207603','Parnaguá', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207702','Parnaíba', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207751','Passagem Franca do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207777','Patos do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207793','Pau D''Arco do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207801','Paulistana', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207850','Pavussu', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207900','Pedro II', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207934','Pedro Laurentino', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2207959','Nova Santa Rita', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208007','Picos', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208106','Pimenteiras', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208205','Pio IX', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208304','Piracuruca', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208403','Piripiri', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208502','Porto', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208551','Porto Alegre do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208601','Prata do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208650','Queimada Nova', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208700','Redenção do Gurguéia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208809','Regeneração', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208858','Riacho Frio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208874','Ribeira do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2208908','Ribeiro Gonçalves', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209005','Rio Grande do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209104','Santa Cruz do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209153','Santa Cruz dos Milagres', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209203','Santa Filomena', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209302','Santa Luz', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209351','Santana do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209377','Santa Rosa do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209401','Santo Antônio de Lisboa', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209450','Santo Antônio dos Milagres', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209500','Santo Inácio do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209559','São Braz do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209609','São Félix do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209658','São Francisco de Assis do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209708','São Francisco do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209757','São Gonçalo do Gurguéia', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209807','São Gonçalo do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209856','São João da Canabrava', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209872','São João da Fronteira', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209906','São João da Serra', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209955','São João da Varjota', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2209971','São João do Arraial', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210003','São João do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210052','São José do Divino', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210102','São José do Peixe', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210201','São José do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210300','São Julião', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210359','São Lourenço do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210375','São Luis do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210383','São Miguel da Baixa Grande', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210391','São Miguel do Fidalgo', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210409','São Miguel do Tapuio', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210508','São Pedro do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210607','São Raimundo Nonato', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210623','Sebastião Barros', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210631','Sebastião Leal', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210656','Sigefredo Pacheco', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210706','Simões', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210805','Simplício Mendes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210904','Socorro do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210938','Sussuapara', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210953','Tamboril do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2210979','Tanque do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211001','Teresina', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211100','União', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211209','Uruçuí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211308','Valença do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211357','Várzea Branca', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211407','Várzea Grande', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211506','Vera Mendes', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211605','Vila Nova do Piauí', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2211704','Wall Ferraz', 'PI');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300101','Abaiara', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300150','Acarape', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300200','Acaraú', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300309','Acopiara', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300408','Aiuaba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300507','Alcântaras', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300606','Altaneira', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300705','Alto Santo', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300754','Amontada', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300804','Antonina do Norte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2300903','Apuiarés', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301000','Aquiraz', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301109','Aracati', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301208','Aracoiaba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301257','Ararendá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301307','Araripe', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301406','Aratuba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301505','Arneiroz', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301604','Assaré', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301703','Aurora', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301802','Baixio', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301851','Banabuiú', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301901','Barbalha', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2301950','Barreira', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302008','Barro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302057','Barroquinha', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302107','Baturité', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302206','Beberibe', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302305','Bela Cruz', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302404','Boa Viagem', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302503','Brejo Santo', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302602','Camocim', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302701','Campos Sales', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302800','Canindé', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2302909','Capistrano', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303006','Caridade', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303105','Cariré', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303204','Caririaçu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303303','Cariús', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303402','Carnaubal', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303501','Cascavel', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303600','Catarina', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303659','Catunda', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303709','Caucaia', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303808','Cedro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303907','Chaval', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303931','Choró', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2303956','Chorozinho', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304004','Coreaú', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304103','Crateús', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304202','Crato', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304236','Croatá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304251','Cruz', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304269','Deputado Irapuan Pinheiro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304277','Ererê', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304285','Eusébio', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304301','Farias Brito', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304350','Forquilha', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304400','Fortaleza', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304459','Fortim', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304509','Frecheirinha', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304608','General Sampaio', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304657','Graça', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304707','Granja', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304806','Granjeiro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304905','Groaíras', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2304954','Guaiúba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305001','Guaraciaba do Norte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305100','Guaramiranga', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305209','Hidrolândia', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305233','Horizonte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305266','Ibaretama', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305308','Ibiapina', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305332','Ibicuitinga', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305357','Icapuí', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305407','Icó', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305506','Iguatu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305605','Independência', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305654','Ipaporanga', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305704','Ipaumirim', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305803','Ipu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2305902','Ipueiras', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306009','Iracema', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306108','Irauçuba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306207','Itaiçaba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306256','Itaitinga', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306306','Itapagé', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306405','Itapipoca', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306504','Itapiúna', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306553','Itarema', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306603','Itatira', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306702','Jaguaretama', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306801','Jaguaribara', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2306900','Jaguaribe', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307007','Jaguaruana', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307106','Jardim', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307205','Jati', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307254','Jijoca de Jericoacoara', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307304','Juazeiro do Norte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307403','Jucás', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307502','Lavras da Mangabeira', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307601','Limoeiro do Norte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307635','Madalena', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307650','Maracanaú', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307700','Maranguape', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307809','Marco', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2307908','Martinópole', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308005','Massapê', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308104','Mauriti', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308203','Meruoca', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308302','Milagres', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308351','Milhã', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308377','Miraíma', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308401','Missão Velha', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308500','Mombaça', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308609','Monsenhor Tabosa', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308708','Morada Nova', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308807','Moraújo', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2308906','Morrinhos', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309003','Mucambo', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309102','Mulungu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309201','Nova Olinda', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309300','Nova Russas', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309409','Novo Oriente', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309458','Ocara', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309508','Orós', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309607','Pacajus', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309706','Pacatuba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309805','Pacoti', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2309904','Pacujá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310001','Palhano', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310100','Palmácia', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310209','Paracuru', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310258','Paraipaba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310308','Parambu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310407','Paramoti', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310506','Pedra Branca', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310605','Penaforte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310704','Pentecoste', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310803','Pereiro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310852','Pindoretama', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310902','Piquet Carneiro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2310951','Pires Ferreira', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311009','Poranga', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311108','Porteiras', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311207','Potengi', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311231','Potiretama', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311264','Quiterianópolis', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311306','Quixadá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311355','Quixelô', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311405','Quixeramobim', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311504','Quixeré', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311603','Redenção', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311702','Reriutaba', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311801','Russas', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311900','Saboeiro', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2311959','Salitre', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312007','Santana do Acaraú', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312106','Santana do Cariri', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312205','Santa Quitéria', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312304','São Benedito', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312403','São Gonçalo do Amarante', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312502','São João do Jaguaribe', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312601','São Luís do Curu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312700','Senador Pompeu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312809','Senador Sá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2312908','Sobral', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313005','Solonópole', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313104','Tabuleiro do Norte', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313203','Tamboril', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313252','Tarrafas', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313302','Tauá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313351','Tejuçuoca', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313401','Tianguá', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313500','Trairi', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313559','Tururu', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313609','Ubajara', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313708','Umari', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313757','Umirim', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313807','Uruburetama', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313906','Uruoca', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2313955','Varjota', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2314003','Várzea Alegre', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2314102','Viçosa do Ceará', 'CE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400109','Acari', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400208','Açu', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400307','Afonso Bezerra', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400406','Água Nova', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400505','Alexandria', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400604','Almino Afonso', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400703','Alto do Rodrigues', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400802','Angicos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2400901','Antônio Martins', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401008','Apodi', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401107','Areia Branca', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401206','Arês', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401305','Augusto Severo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401404','Baía Formosa', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401453','Baraúna', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401503','Barcelona', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401602','Bento Fernandes', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401651','Bodó', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401701','Bom Jesus', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401800','Brejinho', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401859','Caiçara do Norte', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2401909','Caiçara do Rio do Vento', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402006','Caicó', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402105','Campo Redondo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402204','Canguaretama', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402303','Caraúbas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402402','Carnaúba dos Dantas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402501','Carnaubais', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402600','Ceará-Mirim', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402709','Cerro Corá', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402808','Coronel Ezequiel', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2402907','Coronel João Pessoa', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403004','Cruzeta', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403103','Currais Novos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403202','Doutor Severiano', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403251','Parnamirim', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403301','Encanto', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403400','Equador', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403509','Espírito Santo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403608','Extremoz', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403707','Felipe Guerra', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403756','Fernando Pedroza', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403806','Florânia', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2403905','Francisco Dantas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404002','Frutuoso Gomes', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404101','Galinhos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404200','Goianinha', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404309','Governador Dix-Sept Rosado', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404408','Grossos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404507','Guamaré', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404606','Ielmo Marinho', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404705','Ipanguaçu', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404804','Ipueira', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404853','Itajá', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2404903','Itaú', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405009','Jaçanã', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405108','Jandaíra', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405207','Janduís', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405306','Januário Cicco', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405405','Japi', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405504','Jardim de Angicos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405603','Jardim de Piranhas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405702','Jardim do Seridó', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405801','João Câmara', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2405900','João Dias', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406007','José da Penha', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406106','Jucurutu', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406155','Jundiá', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406205','Lagoa D''Anta', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406304','Lagoa de Pedras', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406403','Lagoa de Velhos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406502','Lagoa Nova', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406601','Lagoa Salgada', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406700','Lajes', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406809','Lajes Pintadas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2406908','Lucrécia', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407005','Luís Gomes', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407104','Macaíba', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407203','Macau', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407252','Major Sales', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407302','Marcelino Vieira', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407401','Martins', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407500','Maxaranguape', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407609','Messias Targino', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407708','Montanhas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407807','Monte Alegre', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2407906','Monte das Gameleiras', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408003','Mossoró', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408102','Natal', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408201','Nísia Floresta', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408300','Nova Cruz', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408409','Olho-D''Água do Borges', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408508','Ouro Branco', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408607','Paraná', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408706','Paraú', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408805','Parazinho', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408904','Parelhas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2408953','Rio do Fogo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409100','Passa e Fica', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409209','Passagem', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409308','Patu', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409332','Santa Maria', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409407','Pau dos Ferros', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409506','Pedra Grande', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409605','Pedra Preta', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409704','Pedro Avelino', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409803','Pedro Velho', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2409902','Pendências', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410009','Pilões', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410108','Poço Branco', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410207','Portalegre', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410256','Porto do Mangue', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410306','Presidente Juscelino', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410405','Pureza', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410504','Rafael Fernandes', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410603','Rafael Godeiro', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410702','Riacho da Cruz', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410801','Riacho de Santana', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2410900','Riachuelo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411007','Rodolfo Fernandes', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411056','Tibau', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411106','Ruy Barbosa', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411205','Santa Cruz', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411403','Santana do Matos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411429','Santana do Seridó', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411502','Santo Antônio', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411601','São Bento do Norte', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411700','São Bento do Trairí', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411809','São Fernando', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2411908','São Francisco do Oeste', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412005','São Gonçalo do Amarante', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412104','São João do Sabugi', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412203','São José de Mipibu', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412302','São José do Campestre', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412401','São José do Seridó', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412500','São Miguel', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412559','São Miguel do Gostoso', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412609','São Paulo do Potengi', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412708','São Pedro', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412807','São Rafael', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2412906','São Tomé', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413003','São Vicente', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413102','Senador Elói de Souza', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413201','Senador Georgino Avelino', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413300','Serra de São Bento', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413359','Serra do Mel', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413409','Serra Negra do Norte', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413508','Serrinha', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413557','Serrinha dos Pintos', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413607','Severiano Melo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413706','Sítio Novo', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413805','Taboleiro Grande', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2413904','Taipu', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414001','Tangará', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414100','Tenente Ananias', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414159','Tenente Laurentino Cruz', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414209','Tibau do Sul', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414308','Timbaúba dos Batistas', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414407','Touros', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414456','Triunfo Potiguar', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414506','Umarizal', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414605','Upanema', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414704','Várzea', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414753','Venha-Ver', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414803','Vera Cruz', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2414902','Viçosa', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2415008','Vila Flor', 'RN');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500106','Água Branca', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500205','Aguiar', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500304','Alagoa Grande', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500403','Alagoa Nova', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500502','Alagoinha', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500536','Alcantil', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500577','Algodão de Jandaíra', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500601','Alhandra', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500700','São João do Rio do Peixe', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500734','Amparo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500775','Aparecida', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500809','Araçagi', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2500908','Arara', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501005','Araruna', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501104','Areia', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501153','Areia de Baraúnas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501203','Areial', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501302','Aroeiras', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501351','Assunção', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501401','Baía da Traição', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501500','Bananeiras', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501534','Baraúna', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501575','Barra de Santana', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501609','Barra de Santa Rosa', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501708','Barra de São Miguel', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501807','Bayeux', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2501906','Belém', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502003','Belém do Brejo do Cruz', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502052','Bernardino Batista', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502102','Boa Ventura', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502151','Boa Vista', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502201','Bom Jesus', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502300','Bom Sucesso', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502409','Bonito de Santa Fé', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502508','Boqueirão', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502607','Igaracy', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502706','Borborema', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502805','Brejo do Cruz', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2502904','Brejo dos Santos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503001','Caaporã', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503100','Cabaceiras', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503209','Cabedelo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503308','Cachoeira dos Índios', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503407','Cacimba de Areia', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503506','Cacimba de Dentro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503555','Cacimbas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503605','Caiçara', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503704','Cajazeiras', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503753','Cajazeirinhas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503803','Caldas Brandão', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2503902','Camalaú', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504009','Campina Grande', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504033','Capim', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504074','Caraúbas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504108','Carrapateira', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504157','Casserengue', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504207','Catingueira', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504306','Catolé do Rocha', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504355','Caturité', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504405','Conceição', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504504','Condado', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504603','Conde', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504702','Congo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504801','Coremas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504850','Coxixola', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2504900','Cruz do Espírito Santo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505006','Cubati', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505105','Cuité', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505204','Cuitegi', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505238','Cuité de Mamanguape', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505279','Curral de Cima', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505303','Curral Velho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505352','Damião', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505402','Desterro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505501','Vista Serrana', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505600','Diamante', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505709','Dona Inês', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505808','Duas Estradas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2505907','Emas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506004','Esperança', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506103','Fagundes', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506202','Frei Martinho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506251','Gado Bravo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506301','Guarabira', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506400','Gurinhém', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506509','Gurjão', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506608','Ibiara', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506707','Imaculada', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506806','Ingá', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2506905','Itabaiana', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507002','Itaporanga', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507101','Itapororoca', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507200','Itatuba', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507309','Jacaraú', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507408','Jericó', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507507','João Pessoa', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507606','Juarez Távora', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507705','Juazeirinho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507804','Junco do Seridó', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2507903','Juripiranga', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508000','Juru', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508109','Lagoa', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508208','Lagoa de Dentro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508307','Lagoa Seca', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508406','Lastro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508505','Livramento', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508554','Logradouro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508604','Lucena', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508703','Mãe D''Água', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508802','Malta', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2508901','Mamanguape', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509008','Manaíra', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509057','Marcação', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509107','Mari', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509156','Marizópolis', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509206','Massaranduba', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509305','Mataraca', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509339','Matinhas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509370','Mato Grosso', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509396','Maturéia', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509404','Mogeiro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509503','Montadas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509602','Monte Horebe', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509701','Monteiro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509800','Mulungu', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2509909','Natuba', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510006','Nazarezinho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510105','Nova Floresta', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510204','Nova Olinda', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510303','Nova Palmeira', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510402','Olho D''Água', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510501','Olivedos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510600','Ouro Velho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510659','Parari', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510709','Passagem', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510808','Patos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2510907','Paulista', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511004','Pedra Branca', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511103','Pedra Lavrada', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511202','Pedras de Fogo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511301','Piancó', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511400','Picuí', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511509','Pilar', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511608','Pilões', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511707','Pilõezinhos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511806','Pirpirituba', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2511905','Pitimbu', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512002','Pocinhos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512036','Poço Dantas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512077','Poço de José de Moura', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512101','Pombal', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512200','Prata', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512309','Princesa Isabel', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512408','Puxinanã', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512507','Queimadas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512606','Quixabá', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512705','Remígio', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512721','Pedro Régis', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512747','Riachão', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512754','Riachão do Bacamarte', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512762','Riachão do Poço', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512788','Riacho de Santo Antônio', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512804','Riacho dos Cavalos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2512903','Rio Tinto', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513000','Salgadinho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513109','Salgado de São Félix', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513158','Santa Cecília', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513208','Santa Cruz', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513307','Santa Helena', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513356','Santa Inês', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513406','Santa Luzia', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513505','Santana de Mangueira', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513604','Santana dos Garrotes', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513653','Joca Claudino', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513703','Santa Rita', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513802','Santa Teresinha', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513851','Santo André', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513901','São Bento', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513927','São Bentinho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513943','São Domingos do Cariri', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513968','São Domingos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2513984','São Francisco', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514008','São João do Cariri', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514107','São João do Tigre', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514206','São José da Lagoa Tapada', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514305','São José de Caiana', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514404','São José de Espinharas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514453','São José dos Ramos', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514503','São José de Piranhas', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514552','São José de Princesa', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514602','São José do Bonfim', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514651','São José do Brejo do Cruz', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514701','São José do Sabugi', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514800','São José dos Cordeiros', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2514909','São Mamede', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515005','São Miguel de Taipu', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515104','São Sebastião de Lagoa de Roça', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515203','São Sebastião do Umbuzeiro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515302','Sapé', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515401','São Vicente do Seridó', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515500','Serra Branca', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515609','Serra da Raiz', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515708','Serra Grande', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515807','Serra Redonda', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515906','Serraria', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515930','Sertãozinho', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2515971','Sobrado', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516003','Solânea', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516102','Soledade', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516151','Sossêgo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516201','Sousa', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516300','Sumé', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516409','Tacima', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516508','Taperoá', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516607','Tavares', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516706','Teixeira', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516755','Tenório', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516805','Triunfo', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2516904','Uiraúna', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2517001','Umbuzeiro', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2517100','Várzea', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2517209','Vieirópolis', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2517407','Zabelê', 'PB');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600054','Abreu e Lima', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600104','Afogados da Ingazeira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600203','Afrânio', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600302','Agrestina', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600401','Água Preta', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600500','Águas Belas', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600609','Alagoinha', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600708','Aliança', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600807','Altinho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2600906','Amaraji', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601003','Angelim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601052','Araçoiaba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601102','Araripina', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601201','Arcoverde', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601300','Barra de Guabiraba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601409','Barreiros', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601508','Belém de Maria', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601607','Belém do São Francisco', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601706','Belo Jardim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601805','Betânia', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2601904','Bezerros', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602001','Bodocó', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602100','Bom Conselho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602209','Bom Jardim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602308','Bonito', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602407','Brejão', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602506','Brejinho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602605','Brejo da Madre de Deus', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602704','Buenos Aires', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602803','Buíque', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2602902','Cabo de Santo Agostinho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603009','Cabrobó', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603108','Cachoeirinha', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603207','Caetés', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603306','Calçado', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603405','Calumbi', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603454','Camaragibe', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603504','Camocim de São Félix', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603603','Camutanga', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603702','Canhotinho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603801','Capoeiras', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603900','Carnaíba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2603926','Carnaubeira da Penha', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604007','Carpina', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604106','Caruaru', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604155','Casinhas', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604205','Catende', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604304','Cedro', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604403','Chã de Alegria', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604502','Chã Grande', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604601','Condado', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604700','Correntes', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604809','Cortês', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2604908','Cumaru', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605004','Cupira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605103','Custódia', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605152','Dormentes', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605202','Escada', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605301','Exu', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605400','Feira Nova', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605459','Fernando de Noronha', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605509','Ferreiros', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605608','Flores', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605707','Floresta', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605806','Frei Miguelinho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2605905','Gameleira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606002','Garanhuns', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606101','Glória do Goitá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606200','Goiana', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606309','Granito', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606408','Gravatá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606507','Iati', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606606','Ibimirim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606705','Ibirajuba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606804','Igarassu', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2606903','Iguaraci', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607000','Inajá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607109','Ingazeira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607208','Ipojuca', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607307','Ipubi', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607406','Itacuruba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607505','Itaíba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607604','Ilha de Itamaracá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607653','Itambé', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607703','Itapetim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607752','Itapissuma', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607802','Itaquitinga', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607901','Jaboatão dos Guararapes', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2607950','Jaqueira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608008','Jataúba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608057','Jatobá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608107','João Alfredo', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608206','Joaquim Nabuco', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608255','Jucati', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608305','Jupi', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608404','Jurema', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608453','Lagoa do Carro', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608503','Lagoa de Itaenga', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608602','Lagoa do Ouro', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608701','Lagoa dos Gatos', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608750','Lagoa Grande', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608800','Lajedo', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2608909','Limoeiro', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609006','Macaparana', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609105','Machados', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609154','Manari', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609204','Maraial', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609303','Mirandiba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609402','Moreno', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609501','Nazaré da Mata', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609600','Olinda', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609709','Orobó', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609808','Orocó', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2609907','Ouricuri', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610004','Palmares', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610103','Palmeirina', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610202','Panelas', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610301','Paranatama', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610400','Parnamirim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610509','Passira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610608','Paudalho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610707','Paulista', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610806','Pedra', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2610905','Pesqueira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611002','Petrolândia', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611101','Petrolina', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611200','Poção', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611309','Pombos', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611408','Primavera', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611507','Quipapá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611533','Quixaba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611606','Recife', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611705','Riacho das Almas', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611804','Ribeirão', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2611903','Rio Formoso', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612000','Sairé', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612109','Salgadinho', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612208','Salgueiro', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612307','Saloá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612406','Sanharó', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612455','Santa Cruz', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612471','Santa Cruz da Baixa Verde', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612505','Santa Cruz do Capibaribe', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612554','Santa Filomena', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612604','Santa Maria da Boa Vista', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612703','Santa Maria do Cambucá', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612802','Santa Terezinha', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2612901','São Benedito do Sul', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613008','São Bento do Una', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613107','São Caitano', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613206','São João', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613305','São Joaquim do Monte', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613404','São José da Coroa Grande', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613503','São José do Belmonte', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613602','São José do Egito', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613701','São Lourenço da Mata', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613800','São Vicente Ferrer', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2613909','Serra Talhada', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614006','Serrita', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614105','Sertânia', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614204','Sirinhaém', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614303','Moreilândia', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614402','Solidão', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614501','Surubim', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614600','Tabira', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614709','Tacaimbó', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614808','Tacaratu', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2614857','Tamandaré', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615003','Taquaritinga do Norte', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615102','Terezinha', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615201','Terra Nova', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615300','Timbaúba', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615409','Toritama', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615508','Tracunhaém', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615607','Trindade', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615706','Triunfo', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615805','Tupanatinga', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2615904','Tuparetama', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616001','Venturosa', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616100','Verdejante', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616183','Vertente do Lério', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616209','Vertentes', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616308','Vicência', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616407','Vitória de Santo Antão', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2616506','Xexéu', 'PE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700102','Água Branca', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700201','Anadia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700300','Arapiraca', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700409','Atalaia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700508','Barra de Santo Antônio', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700607','Barra de São Miguel', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700706','Batalha', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700805','Belém', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2700904','Belo Monte', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701001','Boca da Mata', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701100','Branquinha', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701209','Cacimbinhas', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701308','Cajueiro', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701357','Campestre', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701407','Campo Alegre', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701506','Campo Grande', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701605','Canapi', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701704','Capela', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701803','Carneiros', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2701902','Chã Preta', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702009','Coité do Nóia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702108','Colônia Leopoldina', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702207','Coqueiro Seco', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702306','Coruripe', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702355','Craíbas', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702405','Delmiro Gouveia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702504','Dois Riachos', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702553','Estrela de Alagoas', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702603','Feira Grande', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702702','Feliz Deserto', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702801','Flexeiras', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2702900','Girau do Ponciano', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703007','Ibateguara', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703106','Igaci', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703205','Igreja Nova', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703304','Inhapi', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703403','Jacaré dos Homens', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703502','Jacuípe', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703601','Japaratinga', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703700','Jaramataia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703759','Jequiá da Praia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703809','Joaquim Gomes', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2703908','Jundiá', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704005','Junqueiro', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704104','Lagoa da Canoa', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704203','Limoeiro de Anadia', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704302','Maceió', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704401','Major Isidoro', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704500','Maragogi', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704609','Maravilha', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704708','Marechal Deodoro', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704807','Maribondo', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2704906','Mar Vermelho', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705002','Mata Grande', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705101','Matriz de Camaragibe', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705200','Messias', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705309','Minador do Negrão', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705408','Monteirópolis', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705507','Murici', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705606','Novo Lino', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705705','Olho D''Água das Flores', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705804','Olho D''Água do Casado', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2705903','Olho D''Água Grande', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706000','Olivença', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706109','Ouro Branco', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706208','Palestina', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706307','Palmeira dos Índios', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706406','Pão de Açúcar', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706422','Pariconha', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706448','Paripueira', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706505','Passo de Camaragibe', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706604','Paulo Jacinto', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706703','Penedo', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706802','Piaçabuçu', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2706901','Pilar', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707008','Pindoba', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707107','Piranhas', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707206','Poço das Trincheiras', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707305','Porto Calvo', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707404','Porto de Pedras', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707503','Porto Real do Colégio', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707602','Quebrangulo', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707701','Rio Largo', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707800','Roteiro', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2707909','Santa Luzia do Norte', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708006','Santana do Ipanema', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708105','Santana do Mundaú', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708204','São Brás', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708303','São José da Laje', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708402','São José da Tapera', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708501','São Luís do Quitunde', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708600','São Miguel dos Campos', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708709','São Miguel dos Milagres', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708808','São Sebastião', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708907','Satuba', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2708956','Senador Rui Palmeira', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2709004','Tanque D''Arca', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2709103','Taquarana', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2709152','Teotônio Vilela', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2709202','Traipu', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2709301','União dos Palmares', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2709400','Viçosa', 'AL');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800100','Amparo de São Francisco', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800209','Aquidabã', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800308','Aracaju', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800407','Arauá', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800506','Areia Branca', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800605','Barra dos Coqueiros', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800670','Boquim', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2800704','Brejo Grande', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801009','Campo do Brito', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801108','Canhoba', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801207','Canindé de São Francisco', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801306','Capela', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801405','Carira', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801504','Carmópolis', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801603','Cedro de São João', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801702','Cristinápolis', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2801900','Cumbe', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802007','Divina Pastora', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802106','Estância', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802205','Feira Nova', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802304','Frei Paulo', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802403','Gararu', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802502','General Maynard', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802601','Gracho Cardoso', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802700','Ilha das Flores', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802809','Indiaroba', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2802908','Itabaiana', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803005','Itabaianinha', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803104','Itabi', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803203','Itaporanga D''Ajuda', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803302','Japaratuba', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803401','Japoatã', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803500','Lagarto', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803609','Laranjeiras', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803708','Macambira', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803807','Malhada dos Bois', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2803906','Malhador', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804003','Maruim', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804102','Moita Bonita', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804201','Monte Alegre de Sergipe', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804300','Muribeca', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804409','Neópolis', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804458','Nossa Senhora Aparecida', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804508','Nossa Senhora da Glória', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804607','Nossa Senhora das Dores', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804706','Nossa Senhora de Lourdes', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804805','Nossa Senhora do Socorro', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2804904','Pacatuba', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805000','Pedra Mole', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805109','Pedrinhas', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805208','Pinhão', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805307','Pirambu', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805406','Poço Redondo', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805505','Poço Verde', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805604','Porto da Folha', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805703','Propriá', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805802','Riachão do Dantas', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2805901','Riachuelo', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806008','Ribeirópolis', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806107','Rosário do Catete', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806206','Salgado', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806305','Santa Luzia do Itanhy', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806404','Santana do São Francisco', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806503','Santa Rosa de Lima', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806602','Santo Amaro das Brotas', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806701','São Cristóvão', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806800','São Domingos', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2806909','São Francisco', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807006','São Miguel do Aleixo', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807105','Simão Dias', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807204','Siriri', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807303','Telha', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807402','Tobias Barreto', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807501','Tomar do Geru', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2807600','Umbaúba', 'SE');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900108','Abaíra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900207','Abaré', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900306','Acajutiba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900355','Adustina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900405','Água Fria', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900504','Érico Cardoso', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900603','Aiquara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900702','Alagoinhas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900801','Alcobaça', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2900900','Almadina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901007','Amargosa', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901106','Amélia Rodrigues', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901155','América Dourada', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901205','Anagé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901304','Andaraí', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901353','Andorinha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901403','Angical', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901502','Anguera', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901601','Antas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901700','Antônio Cardoso', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901809','Antônio Gonçalves', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901908','Aporá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2901957','Apuarema', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902005','Aracatu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902054','Araças', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902104','Araci', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902203','Aramari', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902252','Arataca', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902302','Aratuípe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902401','Aurelino Leal', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902500','Baianópolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902609','Baixa Grande', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902658','Banzaê', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902708','Barra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902807','Barra da Estiva', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2902906','Barra do Choça', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903003','Barra do Mendes', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903102','Barra do Rocha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903201','Barreiras', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903235','Barro Alto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903276','Barrocas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903300','Barro Preto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903409','Belmonte', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903508','Belo Campo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903607','Biritinga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903706','Boa Nova', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903805','Boa Vista do Tupim', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903904','Bom Jesus da Lapa', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2903953','Bom Jesus da Serra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904001','Boninal', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904050','Bonito', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904100','Boquira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904209','Botuporã', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904308','Brejões', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904407','Brejolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904506','Brotas de Macaúbas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904605','Brumado', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904704','Buerarema', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904753','Buritirama', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904803','Caatiba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904852','Cabaceiras do Paraguaçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2904902','Cachoeira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905008','Caculé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905107','Caém', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905156','Caetanos', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905206','Caetité', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905305','Cafarnaum', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905404','Cairu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905503','Caldeirão Grande', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905602','Camacan', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905701','Camaçari', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905800','Camamu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2905909','Campo Alegre de Lourdes', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906006','Campo Formoso', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906105','Canápolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906204','Canarana', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906303','Canavieiras', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906402','Candeal', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906501','Candeias', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906600','Candiba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906709','Cândido Sales', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906808','Cansanção', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906824','Canudos', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906857','Capela do Alto Alegre', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906873','Capim Grosso', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906899','Caraíbas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2906907','Caravelas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907004','Cardeal da Silva', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907103','Carinhanha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907202','Casa Nova', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907301','Castro Alves', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907400','Catolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907509','Catu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907558','Caturama', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907608','Central', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907707','Chorrochó', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907806','Cícero Dantas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2907905','Cipó', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908002','Coaraci', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908101','Cocos', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908200','Conceição da Feira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908309','Conceição do Almeida', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908408','Conceição do Coité', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908507','Conceição do Jacuípe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908606','Conde', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908705','Condeúba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908804','Contendas do Sincorá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2908903','Coração de Maria', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909000','Cordeiros', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909109','Coribe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909208','Coronel João Sá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909307','Correntina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909406','Cotegipe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909505','Cravolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909604','Crisópolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909703','Cristópolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909802','Cruz das Almas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2909901','Curaçá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910008','Dário Meira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910057','Dias D''Ávila', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910107','Dom Basílio', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910206','Dom Macedo Costa', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910305','Elísio Medrado', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910404','Encruzilhada', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910503','Entre Rios', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910602','Esplanada', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910701','Euclides da Cunha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910727','Eunápolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910750','Fátima', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910776','Feira da Mata', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910800','Feira de Santana', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910859','Filadélfia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2910909','Firmino Alves', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911006','Floresta Azul', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911105','Formosa do Rio Preto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911204','Gandu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911253','Gavião', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911303','Gentio do Ouro', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911402','Glória', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911501','Gongogi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911600','Governador Mangabeira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911659','Guajeru', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911709','Guanambi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911808','Guaratinga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911857','Heliópolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2911907','Iaçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912004','Ibiassucê', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912103','Ibicaraí', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912202','Ibicoara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912301','Ibicuí', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912400','Ibipeba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912509','Ibipitanga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912608','Ibiquera', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912707','Ibirapitanga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912806','Ibirapuã', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2912905','Ibirataia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913002','Ibitiara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913101','Ibititá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913200','Ibotirama', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913309','Ichu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913408','Igaporã', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913457','Igrapiúna', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913507','Iguaí', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913606','Ilhéus', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913705','Inhambupe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913804','Ipecaetá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2913903','Ipiaú', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914000','Ipirá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914109','Ipupiara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914208','Irajuba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914307','Iramaia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914406','Iraquara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914505','Irará', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914604','Irecê', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914653','Itabela', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914703','Itaberaba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914802','Itabuna', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2914901','Itacaré', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915007','Itaeté', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915106','Itagi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915205','Itagibá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915304','Itagimirim', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915353','Itaguaçu da Bahia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915403','Itaju do Colônia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915502','Itajuípe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915601','Itamaraju', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915700','Itamari', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915809','Itambé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2915908','Itanagra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916005','Itanhém', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916104','Itaparica', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916203','Itapé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916302','Itapebi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916401','Itapetinga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916500','Itapicuru', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916609','Itapitanga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916708','Itaquara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916807','Itarantim', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916856','Itatim', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2916906','Itiruçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917003','Itiúba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917102','Itororó', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917201','Ituaçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917300','Ituberá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917334','Iuiú', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917359','Jaborandi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917409','Jacaraci', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917508','Jacobina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917607','Jaguaquara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917706','Jaguarari', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917805','Jaguaripe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2917904','Jandaíra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918001','Jequié', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918100','Jeremoabo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918209','Jiquiriçá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918308','Jitaúna', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918357','João Dourado', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918407','Juazeiro', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918456','Jucuruçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918506','Jussara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918555','Jussari', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918605','Jussiape', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918704','Lafaiete Coutinho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918753','Lagoa Real', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918803','Laje', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2918902','Lajedão', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919009','Lajedinho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919058','Lajedo do Tabocal', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919108','Lamarão', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919157','Lapão', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919207','Lauro de Freitas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919306','Lençóis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919405','Licínio de Almeida', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919504','Livramento de Nossa Senhora', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919553','Luís Eduardo Magalhães', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919603','Macajuba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919702','Macarani', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919801','Macaúbas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919900','Macururé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919926','Madre de Deus', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2919959','Maetinga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920007','Maiquinique', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920106','Mairi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920205','Malhada', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920304','Malhada de Pedras', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920403','Manoel Vitorino', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920452','Mansidão', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920502','Maracás', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920601','Maragogipe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920700','Maraú', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920809','Marcionílio Souza', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2920908','Mascote', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921005','Mata de São João', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921054','Matina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921104','Medeiros Neto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921203','Miguel Calmon', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921302','Milagres', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921401','Mirangaba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921450','Mirante', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921500','Monte Santo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921609','Morpará', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921708','Morro do Chapéu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921807','Mortugaba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2921906','Mucugê', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922003','Mucuri', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922052','Mulungu do Morro', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922102','Mundo Novo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922201','Muniz Ferreira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922250','Muquém de São Francisco', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922300','Muritiba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922409','Mutuípe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922508','Nazaré', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922607','Nilo Peçanha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922656','Nordestina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922706','Nova Canaã', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922730','Nova Fátima', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922755','Nova Ibiá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922805','Nova Itarana', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922854','Nova Redenção', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2922904','Nova Soure', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923001','Nova Viçosa', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923035','Novo Horizonte', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923050','Novo Triunfo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923100','Olindina', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923209','Oliveira dos Brejinhos', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923308','Ouriçangas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923357','Ourolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923407','Palmas de Monte Alto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923506','Palmeiras', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923605','Paramirim', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923704','Paratinga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923803','Paripiranga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2923902','Pau Brasil', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924009','Paulo Afonso', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924058','Pé de Serra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924108','Pedrão', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924207','Pedro Alexandre', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924306','Piatã', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924405','Pilão Arcado', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924504','Pindaí', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924603','Pindobaçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924652','Pintadas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924678','Piraí do Norte', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924702','Piripá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924801','Piritiba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2924900','Planaltino', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925006','Planalto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925105','Poções', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925204','Pojuca', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925253','Ponto Novo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925303','Porto Seguro', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925402','Potiraguá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925501','Prado', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925600','Presidente Dutra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925709','Presidente Jânio Quadros', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925758','Presidente Tancredo Neves', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925808','Queimadas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925907','Quijingue', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925931','Quixabeira', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2925956','Rafael Jambeiro', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926004','Remanso', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926103','Retirolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926202','Riachão das Neves', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926301','Riachão do Jacuípe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926400','Riacho de Santana', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926509','Ribeira do Amparo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926608','Ribeira do Pombal', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926657','Ribeirão do Largo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926707','Rio de Contas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926806','Rio do Antônio', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2926905','Rio do Pires', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927002','Rio Real', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927101','Rodelas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927200','Ruy Barbosa', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927309','Salinas da Margarida', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927408','Salvador', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927507','Santa Bárbara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927606','Santa Brígida', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927705','Santa Cruz Cabrália', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927804','Santa Cruz da Vitória', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2927903','Santa Inês', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928000','Santaluz', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928059','Santa Luzia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928109','Santa Maria da Vitória', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928208','Santana', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928307','Santanópolis', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928406','Santa Rita de Cássia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928505','Santa Teresinha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928604','Santo Amaro', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928703','Santo Antônio de Jesus', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928802','Santo Estêvão', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928901','São Desidério', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2928950','São Domingos', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929008','São Félix', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929057','São Félix do Coribe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929107','São Felipe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929206','São Francisco do Conde', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929255','São Gabriel', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929305','São Gonçalo dos Campos', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929354','São José da Vitória', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929370','São José do Jacuípe', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929404','São Miguel das Matas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929503','São Sebastião do Passé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929602','Sapeaçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929701','Sátiro Dias', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929750','Saubara', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929800','Saúde', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2929909','Seabra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930006','Sebastião Laranjeiras', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930105','Senhor do Bonfim', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930154','Serra do Ramalho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930204','Sento Sé', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930303','Serra Dourada', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930402','Serra Preta', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930501','Serrinha', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930600','Serrolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930709','Simões Filho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930758','Sítio do Mato', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930766','Sítio do Quinto', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930774','Sobradinho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930808','Souto Soares', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2930907','Tabocas do Brejo Velho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931004','Tanhaçu', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931053','Tanque Novo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931103','Tanquinho', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931202','Taperoá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931301','Tapiramutá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931350','Teixeira de Freitas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931400','Teodoro Sampaio', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931509','Teofilândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931608','Teolândia', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931707','Terra Nova', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931806','Tremedal', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2931905','Tucano', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932002','Uauá', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932101','Ubaíra', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932200','Ubaitaba', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932309','Ubatã', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932408','Uibaí', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932457','Umburanas', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932507','Una', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932606','Urandi', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932705','Uruçuca', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932804','Utinga', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2932903','Valença', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933000','Valente', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933059','Várzea da Roça', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933109','Várzea do Poço', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933158','Várzea Nova', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933174','Varzedo', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933208','Vera Cruz', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933257','Vereda', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933307','Vitória da Conquista', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933406','Wagner', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933455','Wanderley', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933505','Wenceslau Guimarães', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('2933604','Xique-Xique', 'BA');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100104','Abadia dos Dourados', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100203','Abaeté', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100302','Abre Campo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100401','Acaiaca', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100500','Açucena', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100609','Água Boa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100708','Água Comprida', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100807','Aguanil', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3100906','Águas Formosas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101003','Águas Vermelhas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101102','Aimorés', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101201','Aiuruoca', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101300','Alagoa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101409','Albertina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101508','Além Paraíba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101607','Alfenas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101631','Alfredo Vasconcelos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101706','Almenara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101805','Alpercata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3101904','Alpinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102001','Alterosa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102050','Alto Caparaó', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102100','Alto Rio Doce', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102209','Alvarenga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102308','Alvinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102407','Alvorada de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102506','Amparo do Serra', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102605','Andradas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102704','Cachoeira de Pajeú', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102803','Andrelândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102852','Angelândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3102902','Antônio Carlos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103009','Antônio Dias', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103108','Antônio Prado de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103207','Araçaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103306','Aracitaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103405','Araçuaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103504','Araguari', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103603','Arantina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103702','Araponga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103751','Araporã', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103801','Arapuá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3103900','Araújos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104007','Araxá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104106','Arceburgo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104205','Arcos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104304','Areado', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104403','Argirita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104452','Aricanduva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104502','Arinos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104601','Astolfo Dutra', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104700','Ataléia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104809','Augusto de Lima', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3104908','Baependi', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105004','Baldim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105103','Bambuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105202','Bandeira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105301','Bandeira do Sul', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105400','Barão de Cocais', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105509','Barão de Monte Alto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105608','Barbacena', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105707','Barra Longa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3105905','Barroso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106002','Bela Vista de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106101','Belmiro Braga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106200','Belo Horizonte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106309','Belo Oriente', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106408','Belo Vale', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106507','Berilo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106606','Bertópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106655','Berizal', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106705','Betim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106804','Bias Fortes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3106903','Bicas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107000','Biquinhas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107109','Boa Esperança', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107208','Bocaina de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107307','Bocaiúva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107406','Bom Despacho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107505','Bom Jardim de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107604','Bom Jesus da Penha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107703','Bom Jesus do Amparo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107802','Bom Jesus do Galho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3107901','Bom Repouso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108008','Bom Sucesso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108107','Bonfim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108206','Bonfinópolis de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108255','Bonito de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108305','Borda da Mata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108404','Botelhos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108503','Botumirim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108552','Brasilândia de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108602','Brasília de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108701','Brás Pires', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108800','Braúnas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3108909','Brazópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109006','Brumadinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109105','Bueno Brandão', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109204','Buenópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109253','Bugre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109303','Buritis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109402','Buritizeiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109451','Cabeceira Grande', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109501','Cabo Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109600','Cachoeira da Prata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109709','Cachoeira de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109808','Cachoeira Dourada', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3109907','Caetanópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110004','Caeté', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110103','Caiana', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110202','Cajuri', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110301','Caldas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110400','Camacho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110509','Camanducaia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110608','Cambuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110707','Cambuquira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110806','Campanário', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3110905','Campanha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111002','Campestre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111101','Campina Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111150','Campo Azul', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111200','Campo Belo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111309','Campo do Meio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111408','Campo Florido', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111507','Campos Altos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111606','Campos Gerais', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111705','Canaã', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111804','Canápolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3111903','Cana Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112000','Candeias', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112059','Cantagalo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112109','Caparaó', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112208','Capela Nova', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112307','Capelinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112406','Capetinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112505','Capim Branco', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112604','Capinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112653','Capitão Andrade', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112703','Capitão Enéas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112802','Capitólio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3112901','Caputira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113008','Caraí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113107','Caranaíba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113206','Carandaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113305','Carangola', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113404','Caratinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113503','Carbonita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113602','Careaçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113701','Carlos Chagas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113800','Carmésia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3113909','Carmo da Cachoeira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114006','Carmo da Mata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114105','Carmo de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114204','Carmo do Cajuru', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114303','Carmo do Paranaíba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114402','Carmo do Rio Claro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114501','Carmópolis de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114550','Carneirinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114600','Carrancas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114709','Carvalhópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114808','Carvalhos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3114907','Casa Grande', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115003','Cascalho Rico', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115102','Cássia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115201','Conceição da Barra de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115300','Cataguases', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115359','Catas Altas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115409','Catas Altas da Noruega', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115458','Catuji', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115474','Catuti', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115508','Caxambu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115607','Cedro do Abaeté', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115706','Central de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115805','Centralina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3115904','Chácara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116001','Chalé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116100','Chapada do Norte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116159','Chapada Gaúcha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116209','Chiador', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116308','Cipotânea', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116407','Claraval', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116506','Claro dos Poções', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116605','Cláudio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116704','Coimbra', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116803','Coluna', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3116902','Comendador Gomes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117009','Comercinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117108','Conceição da Aparecida', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117207','Conceição das Pedras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117306','Conceição das Alagoas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117405','Conceição de Ipanema', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117504','Conceição do Mato Dentro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117603','Conceição do Pará', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117702','Conceição do Rio Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117801','Conceição dos Ouros', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117836','Cônego Marinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117876','Confins', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3117900','Congonhal', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118007','Congonhas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118106','Congonhas do Norte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118205','Conquista', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118304','Conselheiro Lafaiete', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118403','Conselheiro Pena', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118502','Consolação', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118601','Contagem', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118700','Coqueiral', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118809','Coração de Jesus', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3118908','Cordisburgo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119005','Cordislândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119104','Corinto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119203','Coroaci', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119302','Coromandel', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119401','Coronel Fabriciano', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119500','Coronel Murta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119609','Coronel Pacheco', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119708','Coronel Xavier Chaves', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119807','Córrego Danta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119906','Córrego do Bom Jesus', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3119955','Córrego Fundo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120003','Córrego Novo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120102','Couto de Magalhães de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120151','Crisólita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120201','Cristais', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120300','Cristália', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120409','Cristiano Otoni', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120508','Cristina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120607','Crucilândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120706','Cruzeiro da Fortaleza', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120805','Cruzília', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120839','Cuparaque', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120870','Curral de Dentro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3120904','Curvelo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121001','Datas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121100','Delfim Moreira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121209','Delfinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121258','Delta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121308','Descoberto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121407','Desterro de Entre Rios', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121506','Desterro do Melo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121605','Diamantina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121704','Diogo de Vasconcelos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121803','Dionísio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3121902','Divinésia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122009','Divino', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122108','Divino das Laranjeiras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122207','Divinolândia de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122306','Divinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122355','Divisa Alegre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122405','Divisa Nova', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122454','Divisópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122470','Dom Bosco', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122504','Dom Cavati', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122603','Dom Joaquim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122702','Dom Silvério', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122801','Dom Viçoso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3122900','Dona Eusébia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123007','Dores de Campos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123106','Dores de Guanhães', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123205','Dores do Indaiá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123304','Dores do Turvo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123403','Doresópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123502','Douradoquara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123528','Durandé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123601','Elói Mendes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123700','Engenheiro Caldas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123809','Engenheiro Navarro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123858','Entre Folhas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3123908','Entre Rios de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124005','Ervália', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124104','Esmeraldas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124203','Espera Feliz', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124302','Espinosa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124401','Espírito Santo do Dourado', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124500','Estiva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124609','Estrela Dalva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124708','Estrela do Indaiá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124807','Estrela do Sul', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3124906','Eugenópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125002','Ewbank da Câmara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125101','Extrema', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125200','Fama', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125309','Faria Lemos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125408','Felício dos Santos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125507','São Gonçalo do Rio Preto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125606','Felisburgo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125705','Felixlândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125804','Fernandes Tourinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125903','Ferros', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3125952','Fervedouro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126000','Florestal', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126109','Formiga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126208','Formoso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126307','Fortaleza de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126406','Fortuna de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126505','Francisco Badaró', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126604','Francisco Dumont', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126703','Francisco Sá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126752','Franciscópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126802','Frei Gaspar', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126901','Frei Inocêncio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3126950','Frei Lagonegro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127008','Fronteira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127057','Fronteira dos Vales', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127073','Fruta de Leite', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127107','Frutal', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127206','Funilândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127305','Galiléia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127339','Gameleiras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127354','Glaucilândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127370','Goiabeira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127388','Goianá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127404','Gonçalves', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127503','Gonzaga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127602','Gouveia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127701','Governador Valadares', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127800','Grão Mogol', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3127909','Grupiara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128006','Guanhães', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128105','Guapé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128204','Guaraciaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128253','Guaraciama', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128303','Guaranésia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128402','Guarani', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128501','Guarará', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128600','Guarda-Mor', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128709','Guaxupé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128808','Guidoval', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3128907','Guimarânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129004','Guiricema', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129103','Gurinhatã', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129202','Heliodora', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129301','Iapu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129400','Ibertioga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129509','Ibiá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129608','Ibiaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129657','Ibiracatu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129707','Ibiraci', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129806','Ibirité', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3129905','Ibitiúra de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130002','Ibituruna', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130051','Icaraí de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130101','Igarapé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130200','Igaratinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130309','Iguatama', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130408','Ijaci', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130507','Ilicínea', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130556','Imbé de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130606','Inconfidentes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130655','Indaiabira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130705','Indianópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130804','Ingaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3130903','Inhapim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131000','Inhaúma', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131109','Inimutaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131158','Ipaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131208','Ipanema', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131307','Ipatinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131406','Ipiaçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131505','Ipuiúna', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131604','Iraí de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131703','Itabira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131802','Itabirinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3131901','Itabirito', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132008','Itacambira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132107','Itacarambi', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132206','Itaguara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132305','Itaipé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132404','Itajubá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132503','Itamarandiba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132602','Itamarati de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132701','Itambacuri', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132800','Itambé do Mato Dentro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3132909','Itamogi', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133006','Itamonte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133105','Itanhandu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133204','Itanhomi', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133303','Itaobim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133402','Itapagipe', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133501','Itapecerica', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133600','Itapeva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133709','Itatiaiuçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133758','Itaú de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133808','Itaúna', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3133907','Itaverava', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134004','Itinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134103','Itueta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134202','Ituiutaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134301','Itumirim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134400','Iturama', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134509','Itutinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134608','Jaboticatubas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134707','Jacinto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134806','Jacuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3134905','Jacutinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135001','Jaguaraçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135050','Jaíba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135076','Jampruca', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135100','Janaúba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135209','Januária', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135308','Japaraíba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135357','Japonvar', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135407','Jeceaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135456','Jenipapo de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135506','Jequeri', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135605','Jequitaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135704','Jequitibá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135803','Jequitinhonha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3135902','Jesuânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136009','Joaíma', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136108','Joanésia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136207','João Monlevade', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136306','João Pinheiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136405','Joaquim Felício', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136504','Jordânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136520','José Gonçalves de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136553','José Raydan', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136579','Josenópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136603','Nova União', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136652','Juatuba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136702','Juiz de Fora', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136801','Juramento', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136900','Juruaia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3136959','Juvenília', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137007','Ladainha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137106','Lagamar', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137205','Lagoa da Prata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137304','Lagoa dos Patos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137403','Lagoa Dourada', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137502','Lagoa Formosa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137536','Lagoa Grande', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137601','Lagoa Santa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137700','Lajinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137809','Lambari', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3137908','Lamim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138005','Laranjal', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138104','Lassance', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138203','Lavras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138302','Leandro Ferreira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138351','Leme do Prado', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138401','Leopoldina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138500','Liberdade', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138609','Lima Duarte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138625','Limeira do Oeste', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138658','Lontra', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138674','Luisburgo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138682','Luislândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138708','Luminárias', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138807','Luz', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3138906','Machacalis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139003','Machado', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139102','Madre de Deus de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139201','Malacacheta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139250','Mamonas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139300','Manga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139409','Manhuaçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139508','Manhumirim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139607','Mantena', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139706','Maravilhas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139805','Mar de Espanha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3139904','Maria da Fé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140001','Mariana', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140100','Marilac', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140159','Mário Campos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140209','Maripá de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140308','Marliéria', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140407','Marmelópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140506','Martinho Campos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140530','Martins Soares', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140555','Mata Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140605','Materlândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140704','Mateus Leme', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140803','Matias Barbosa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140852','Matias Cardoso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3140902','Matipó', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141009','Mato Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141108','Matozinhos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141207','Matutina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141306','Medeiros', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141405','Medina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141504','Mendes Pimentel', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141603','Mercês', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141702','Mesquita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141801','Minas Novas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3141900','Minduri', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142007','Mirabela', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142106','Miradouro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142205','Miraí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142254','Miravânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142304','Moeda', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142403','Moema', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142502','Monjolos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142601','Monsenhor Paulo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142700','Montalvânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142809','Monte Alegre de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3142908','Monte Azul', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143005','Monte Belo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143104','Monte Carmelo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143153','Monte Formoso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143203','Monte Santo de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143302','Montes Claros', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143401','Monte Sião', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143450','Montezuma', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143500','Morada Nova de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143609','Morro da Garça', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143708','Morro do Pilar', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143807','Munhoz', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3143906','Muriaé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144003','Mutum', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144102','Muzambinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144201','Nacip Raydan', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144300','Nanuque', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144359','Naque', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144375','Natalândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144409','Natércia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144508','Nazareno', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144607','Nepomuceno', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144656','Ninheira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144672','Nova Belém', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144706','Nova Era', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144805','Nova Lima', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3144904','Nova Módica', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145000','Nova Ponte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145059','Nova Porteirinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145109','Nova Resende', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145208','Nova Serrana', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145307','Novo Cruzeiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145356','Novo Oriente de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145372','Novorizonte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145406','Olaria', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145455','Olhos-D''Água', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145505','Olímpio Noronha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145604','Oliveira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145703','Oliveira Fortes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145802','Onça de Pitangui', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145851','Oratórios', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145877','Orizânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3145901','Ouro Branco', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146008','Ouro Fino', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146107','Ouro Preto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146206','Ouro Verde de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146255','Padre Carvalho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146305','Padre Paraíso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146404','Paineiras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146503','Pains', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146552','Pai Pedro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146602','Paiva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146701','Palma', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146750','Palmópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3146909','Papagaios', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147006','Paracatu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147105','Pará de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147204','Paraguaçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147303','Paraisópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147402','Paraopeba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147501','Passabém', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147600','Passa Quatro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147709','Passa Tempo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147808','Passa-Vinte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147907','Passos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3147956','Patis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148004','Patos de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148103','Patrocínio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148202','Patrocínio do Muriaé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148301','Paula Cândido', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148400','Paulistas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148509','Pavão', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148608','Peçanha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148707','Pedra Azul', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148756','Pedra Bonita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148806','Pedra do Anta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3148905','Pedra do Indaiá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149002','Pedra Dourada', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149101','Pedralva', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149150','Pedras de Maria da Cruz', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149200','Pedrinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149309','Pedro Leopoldo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149408','Pedro Teixeira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149507','Pequeri', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149606','Pequi', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149705','Perdigão', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149804','Perdizes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149903','Perdões', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3149952','Periquito', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150000','Pescador', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150109','Piau', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150158','Piedade de Caratinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150208','Piedade de Ponte Nova', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150307','Piedade do Rio Grande', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150406','Piedade dos Gerais', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150505','Pimenta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150539','Pingo-D''Água', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150570','Pintópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150604','Piracema', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150703','Pirajuba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150802','Piranga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3150901','Piranguçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151008','Piranguinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151107','Pirapetinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151206','Pirapora', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151305','Piraúba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151404','Pitangui', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151503','Piumhi', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151602','Planura', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151701','Poço Fundo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151800','Poços de Caldas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3151909','Pocrane', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152006','Pompéu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152105','Ponte Nova', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152131','Ponto Chique', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152170','Ponto dos Volantes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152204','Porteirinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152303','Porto Firme', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152402','Poté', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152501','Pouso Alegre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152600','Pouso Alto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152709','Prados', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152808','Prata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3152907','Pratápolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153004','Pratinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153103','Presidente Bernardes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153202','Presidente Juscelino', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153301','Presidente Kubitschek', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153400','Presidente Olegário', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153509','Alto Jequitibá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153608','Prudente de Morais', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153707','Quartel Geral', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153806','Queluzito', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3153905','Raposos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154002','Raul Soares', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154101','Recreio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154150','Reduto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154200','Resende Costa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154309','Resplendor', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154408','Ressaquinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154457','Riachinho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154507','Riacho dos Machados', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154606','Ribeirão das Neves', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154705','Ribeirão Vermelho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154804','Rio Acima', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3154903','Rio Casca', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155009','Rio Doce', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155108','Rio do Prado', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155207','Rio Espera', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155306','Rio Manso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155405','Rio Novo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155504','Rio Paranaíba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155603','Rio Pardo de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155702','Rio Piracicaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155801','Rio Pomba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3155900','Rio Preto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156007','Rio Vermelho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156106','Ritápolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156205','Rochedo de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156304','Rodeiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156403','Romaria', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156452','Rosário da Limeira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156502','Rubelita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156601','Rubim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156700','Sabará', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156809','Sabinópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3156908','Sacramento', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157005','Salinas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157104','Salto da Divisa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157203','Santa Bárbara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157252','Santa Bárbara do Leste', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157278','Santa Bárbara do Monte Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157302','Santa Bárbara do Tugúrio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157336','Santa Cruz de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157377','Santa Cruz de Salinas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157401','Santa Cruz do Escalvado', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157500','Santa Efigênia de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157609','Santa Fé de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157658','Santa Helena de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157708','Santa Juliana', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157807','Santa Luzia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3157906','Santa Margarida', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158003','Santa Maria de Itabira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158102','Santa Maria do Salto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158201','Santa Maria do Suaçuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158300','Santana da Vargem', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158409','Santana de Cataguases', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158508','Santana de Pirapama', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158607','Santana do Deserto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158706','Santana do Garambéu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158805','Santana do Jacaré', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158904','Santana do Manhuaçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3158953','Santana do Paraíso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159001','Santana do Riacho', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159100','Santana dos Montes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159209','Santa Rita de Caldas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159308','Santa Rita de Jacutinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159357','Santa Rita de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159407','Santa Rita de Ibitipoca', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159506','Santa Rita do Itueto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159605','Santa Rita do Sapucaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159704','Santa Rosa da Serra', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159803','Santa Vitória', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3159902','Santo Antônio do Amparo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160009','Santo Antônio do Aventureiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160108','Santo Antônio do Grama', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160207','Santo Antônio do Itambé', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160306','Santo Antônio do Jacinto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160405','Santo Antônio do Monte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160454','Santo Antônio do Retiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160504','Santo Antônio do Rio Abaixo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160603','Santo Hipólito', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160702','Santos Dumont', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160801','São Bento Abade', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160900','São Brás do Suaçuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3160959','São Domingos das Dores', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161007','São Domingos do Prata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161056','São Félix de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161106','São Francisco', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161205','São Francisco de Paula', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161304','São Francisco de Sales', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161403','São Francisco do Glória', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161502','São Geraldo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161601','São Geraldo da Piedade', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161650','São Geraldo do Baixio', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161700','São Gonçalo do Abaeté', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161809','São Gonçalo do Pará', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3161908','São Gonçalo do Rio Abaixo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162005','São Gonçalo do Sapucaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162104','São Gotardo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162203','São João Batista do Glória', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162252','São João da Lagoa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162302','São João da Mata', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162401','São João da Ponte', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162450','São João das Missões', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162500','São João del Rei', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162559','São João do Manhuaçu', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162575','São João do Manteninha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162609','São João do Oriente', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162658','São João do Pacuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162708','São João do Paraíso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162807','São João Evangelista', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162906','São João Nepomuceno', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162922','São Joaquim de Bicas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162948','São José da Barra', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3162955','São José da Lapa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163003','São José da Safira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163102','São José da Varginha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163201','São José do Alegre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163300','São José do Divino', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163409','São José do Goiabal', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163508','São José do Jacuri', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163607','São José do Mantimento', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163706','São Lourenço', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163805','São Miguel do Anta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3163904','São Pedro da União', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164001','São Pedro dos Ferros', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164100','São Pedro do Suaçuí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164209','São Romão', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164308','São Roque de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164407','São Sebastião da Bela Vista', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164431','São Sebastião da Vargem Alegre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164472','São Sebastião do Anta', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164506','São Sebastião do Maranhão', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164605','São Sebastião do Oeste', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164704','São Sebastião do Paraíso', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164803','São Sebastião do Rio Preto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3164902','São Sebastião do Rio Verde', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165008','São Tiago', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165107','São Tomás de Aquino', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165206','São Thomé das Letras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165305','São Vicente de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165404','Sapucaí-Mirim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165503','Sardoá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165537','Sarzedo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165552','Setubinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165560','Sem-Peixe', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165578','Senador Amaral', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165602','Senador Cortes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165701','Senador Firmino', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165800','Senador José Bento', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3165909','Senador Modestino Gonçalves', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166006','Senhora de Oliveira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166105','Senhora do Porto', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166204','Senhora dos Remédios', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166303','Sericita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166402','Seritinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166501','Serra Azul de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166600','Serra da Saudade', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166709','Serra dos Aimorés', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166808','Serra do Salitre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166907','Serrania', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3166956','Serranópolis de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167004','Serranos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167103','Serro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167202','Sete Lagoas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167301','Silveirânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167400','Silvianópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167509','Simão Pereira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167608','Simonésia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167707','Sobrália', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167806','Soledade de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3167905','Tabuleiro', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168002','Taiobeiras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168051','Taparuba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168101','Tapira', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168200','Tapiraí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168309','Taquaraçu de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168408','Tarumirim', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168507','Teixeiras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168606','Teófilo Otoni', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168705','Timóteo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168804','Tiradentes', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3168903','Tiros', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169000','Tocantins', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169059','Tocos do Moji', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169109','Toledo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169208','Tombos', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169307','Três Corações', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169356','Três Marias', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169406','Três Pontas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169505','Tumiritinga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169604','Tupaciguara', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169703','Turmalina', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169802','Turvolândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3169901','Ubá', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170008','Ubaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170057','Ubaporanga', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170107','Uberaba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170206','Uberlândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170305','Umburatiba', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170404','Unaí', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170438','União de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170479','Uruana de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170503','Urucânia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170529','Urucuia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170578','Vargem Alegre', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170602','Vargem Bonita', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170651','Vargem Grande do Rio Pardo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170701','Varginha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170750','Varjão de Minas', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170800','Várzea da Palma', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3170909','Varzelândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171006','Vazante', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171030','Verdelândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171071','Veredinha', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171105','Veríssimo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171154','Vermelho Novo', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171204','Vespasiano', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171303','Viçosa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171402','Vieiras', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171501','Mathias Lobato', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171600','Virgem da Lapa', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171709','Virgínia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171808','Virginópolis', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3171907','Virgolândia', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3172004','Visconde do Rio Branco', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3172103','Volta Grande', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3172202','Wenceslau Braz', 'MG');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200102','Afonso Cláudio', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200136','Águia Branca', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200169','Água Doce do Norte', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200201','Alegre', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200300','Alfredo Chaves', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200359','Alto Rio Novo', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200409','Anchieta', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200508','Apiacá', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200607','Aracruz', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200706','Atilio Vivacqua', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200805','Baixo Guandu', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3200904','Barra de São Francisco', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201001','Boa Esperança', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201100','Bom Jesus do Norte', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201159','Brejetuba', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201209','Cachoeiro de Itapemirim', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201308','Cariacica', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201407','Castelo', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201506','Colatina', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201605','Conceição da Barra', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201704','Conceição do Castelo', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201803','Divino de São Lourenço', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3201902','Domingos Martins', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202009','Dores do Rio Preto', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202108','Ecoporanga', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202207','Fundão', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202256','Governador Lindenberg', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202306','Guaçuí', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202405','Guarapari', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202454','Ibatiba', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202504','Ibiraçu', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202553','Ibitirama', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202603','Iconha', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202652','Irupi', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202702','Itaguaçu', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202801','Itapemirim', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3202900','Itarana', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203007','Iúna', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203056','Jaguaré', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203106','Jerônimo Monteiro', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203130','João Neiva', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203163','Laranja da Terra', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203205','Linhares', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203304','Mantenópolis', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203320','Marataízes', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203346','Marechal Floriano', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203353','Marilândia', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203403','Mimoso do Sul', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203502','Montanha', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203601','Mucurici', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203700','Muniz Freire', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203809','Muqui', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3203908','Nova Venécia', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204005','Pancas', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204054','Pedro Canário', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204104','Pinheiros', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204203','Piúma', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204252','Ponto Belo', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204302','Presidente Kennedy', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204351','Rio Bananal', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204401','Rio Novo do Sul', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204500','Santa Leopoldina', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204559','Santa Maria de Jetibá', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204609','Santa Teresa', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204658','São Domingos do Norte', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204708','São Gabriel da Palha', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204807','São José do Calçado', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204906','São Mateus', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3204955','São Roque do Canaã', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205002','Serra', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205010','Sooretama', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205036','Vargem Alta', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205069','Venda Nova do Imigrante', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205101','Viana', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205150','Vila Pavão', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205176','Vila Valério', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205200','Vila Velha', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3205309','Vitória', 'ES');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300100','Angra dos Reis', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300159','Aperibé', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300209','Araruama', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300225','Areal', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300233','Armação dos Búzios', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300258','Arraial do Cabo', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300308','Barra do Piraí', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300407','Barra Mansa', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300456','Belford Roxo', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300506','Bom Jardim', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300605','Bom Jesus do Itabapoana', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300704','Cabo Frio', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300803','Cachoeiras de Macacu', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300902','Cambuci', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300936','Carapebus', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3300951','Comendador Levy Gasparian', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301009','Campos dos Goytacazes', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301108','Cantagalo', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301157','Cardoso Moreira', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301207','Carmo', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301306','Casimiro de Abreu', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301405','Conceição de Macabu', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301504','Cordeiro', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301603','Duas Barras', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301702','Duque de Caxias', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301801','Engenheiro Paulo de Frontin', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301850','Guapimirim', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301876','Iguaba Grande', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3301900','Itaboraí', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302007','Itaguaí', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302056','Italva', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302106','Itaocara', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302205','Itaperuna', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302254','Itatiaia', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302270','Japeri', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302304','Laje do Muriaé', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302403','Macaé', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302452','Macuco', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302502','Magé', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302601','Mangaratiba', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302700','Maricá', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302809','Mendes', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302858','Mesquita', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3302908','Miguel Pereira', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303005','Miracema', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303104','Natividade', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303203','Nilópolis', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303302','Niterói', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303401','Nova Friburgo', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303500','Nova Iguaçu', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303609','Paracambi', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303708','Paraíba do Sul', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303807','Paraty', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303856','Paty do Alferes', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303906','Petrópolis', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3303955','Pinheiral', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304003','Piraí', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304102','Porciúncula', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304110','Porto Real', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304128','Quatis', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304144','Queimados', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304151','Quissamã', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304201','Resende', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304300','Rio Bonito', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304409','Rio Claro', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304508','Rio das Flores', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304524','Rio das Ostras', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304557','Rio de Janeiro', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304607','Santa Maria Madalena', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304706','Santo Antônio de Pádua', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304755','São Francisco de Itabapoana', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304805','São Fidélis', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3304904','São Gonçalo', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305000','São João da Barra', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305109','São João de Meriti', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305133','São José de Ubá', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305158','São José do Vale do Rio Preto', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305208','São Pedro da Aldeia', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305307','São Sebastião do Alto', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305406','Sapucaia', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305505','Saquarema', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305554','Seropédica', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305604','Silva Jardim', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305703','Sumidouro', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305752','Tanguá', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305802','Teresópolis', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3305901','Trajano de Moraes', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3306008','Três Rios', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3306107','Valença', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3306156','Varre-Sai', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3306206','Vassouras', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3306305','Volta Redonda', 'RJ');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500105','Adamantina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500204','Adolfo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500303','Aguaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500402','Águas da Prata', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500501','Águas de Lindóia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500550','Águas de Santa Bárbara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500600','Águas de São Pedro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500709','Agudos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500758','Alambari', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500808','Alfredo Marcondes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3500907','Altair', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501004','Altinópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501103','Alto Alegre', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501152','Alumínio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501202','Álvares Florence', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501301','Álvares Machado', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501400','Álvaro de Carvalho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501509','Alvinlândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501608','Americana', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501707','Américo Brasiliense', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501806','Américo de Campos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3501905','Amparo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502002','Analândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502101','Andradina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502200','Angatuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502309','Anhembi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502408','Anhumas', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502507','Aparecida', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502606','Aparecida D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502705','Apiaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502754','Araçariguama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502804','Araçatuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3502903','Araçoiaba da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503000','Aramina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503109','Arandu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503158','Arapeí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503208','Araraquara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503307','Araras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503356','Arco-Íris', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503406','Arealva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503505','Areias', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503604','Areiópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503703','Ariranha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503802','Artur Nogueira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503901','Arujá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3503950','Aspásia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504008','Assis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504107','Atibaia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504206','Auriflama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504305','Avaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504404','Avanhandava', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504503','Avaré', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504602','Bady Bassitt', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504701','Balbinos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504800','Bálsamo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3504909','Bananal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505005','Barão de Antonina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505104','Barbosa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505203','Bariri', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505302','Barra Bonita', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505351','Barra do Chapéu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505401','Barra do Turvo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505500','Barretos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505609','Barrinha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505708','Barueri', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505807','Bastos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3505906','Batatais', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506003','Bauru', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506102','Bebedouro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506201','Bento de Abreu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506300','Bernardino de Campos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506359','Bertioga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506409','Bilac', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506508','Birigui', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506607','Biritiba-Mirim', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506706','Boa Esperança do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506805','Bocaina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3506904','Bofete', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507001','Boituva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507100','Bom Jesus dos Perdões', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507159','Bom Sucesso de Itararé', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507209','Borá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507308','Boracéia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507407','Borborema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507456','Borebi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507506','Botucatu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507605','Bragança Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507704','Braúna', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507753','Brejo Alegre', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507803','Brodowski', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3507902','Brotas', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508009','Buri', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508108','Buritama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508207','Buritizal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508306','Cabrália Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508405','Cabreúva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508504','Caçapava', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508603','Cachoeira Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508702','Caconde', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508801','Cafelândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3508900','Caiabu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509007','Caieiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509106','Caiuá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509205','Cajamar', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509254','Cajati', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509304','Cajobi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509403','Cajuru', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509452','Campina do Monte Alegre', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509502','Campinas', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509601','Campo Limpo Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509700','Campos do Jordão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509809','Campos Novos Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509908','Cananéia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3509957','Canas', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510005','Cândido Mota', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510104','Cândido Rodrigues', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510153','Canitar', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510203','Capão Bonito', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510302','Capela do Alto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510401','Capivari', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510500','Caraguatatuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510609','Carapicuíba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510708','Cardoso', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510807','Casa Branca', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3510906','Cássia dos Coqueiros', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511003','Castilho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511102','Catanduva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511201','Catiguá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511300','Cedral', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511409','Cerqueira César', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511508','Cerquilho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511607','Cesário Lange', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511706','Charqueada', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3511904','Clementina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512001','Colina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512100','Colômbia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512209','Conchal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512308','Conchas', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512407','Cordeirópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512506','Coroados', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512605','Coronel Macedo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512704','Corumbataí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512803','Cosmópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3512902','Cosmorama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513009','Cotia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513108','Cravinhos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513207','Cristais Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513306','Cruzália', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513405','Cruzeiro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513504','Cubatão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513603','Cunha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513702','Descalvado', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513801','Diadema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513850','Dirce Reis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3513900','Divinolândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514007','Dobrada', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514106','Dois Córregos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514205','Dolcinópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514304','Dourado', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514403','Dracena', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514502','Duartina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514601','Dumont', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514700','Echaporã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514809','Eldorado', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514908','Elias Fausto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514924','Elisiário', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3514957','Embaúba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515004','Embu das Artes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515103','Embu-Guaçu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515129','Emilianópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515152','Engenheiro Coelho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515186','Espírito Santo do Pinhal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515194','Espírito Santo do Turvo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515202','Estrela D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515301','Estrela do Norte', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515350','Euclides da Cunha Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515400','Fartura', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515509','Fernandópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515608','Fernando Prestes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515657','Fernão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515707','Ferraz de Vasconcelos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515806','Flora Rica', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3515905','Floreal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516002','Flórida Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516101','Florínia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516200','Franca', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516309','Francisco Morato', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516408','Franco da Rocha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516507','Gabriel Monteiro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516606','Gália', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516705','Garça', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516804','Gastão Vidigal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516853','Gavião Peixoto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3516903','General Salgado', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517000','Getulina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517109','Glicério', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517208','Guaiçara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517307','Guaimbê', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517406','Guaíra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517505','Guapiaçu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517604','Guapiara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517703','Guará', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517802','Guaraçaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3517901','Guaraci', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518008','Guarani D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518107','Guarantã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518206','Guararapes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518305','Guararema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518404','Guaratinguetá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518503','Guareí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518602','Guariba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518701','Guarujá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518800','Guarulhos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518859','Guatapará', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3518909','Guzolândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519006','Herculândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519055','Holambra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519071','Hortolândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519105','Iacanga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519204','Iacri', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519253','Iaras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519303','Ibaté', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519402','Ibirá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519501','Ibirarema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519600','Ibitinga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519709','Ibiúna', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519808','Icém', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3519907','Iepê', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520004','Igaraçu do Tietê', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520103','Igarapava', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520202','Igaratá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520301','Iguape', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520400','Ilhabela', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520426','Ilha Comprida', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520442','Ilha Solteira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520509','Indaiatuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520608','Indiana', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520707','Indiaporã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520806','Inúbia Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3520905','Ipaussu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521002','Iperó', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521101','Ipeúna', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521150','Ipiguá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521200','Iporanga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521309','Ipuã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521408','Iracemápolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521507','Irapuã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521606','Irapuru', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521705','Itaberá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521804','Itaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3521903','Itajobi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522000','Itaju', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522109','Itanhaém', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522158','Itaóca', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522208','Itapecerica da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522307','Itapetininga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522406','Itapeva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522505','Itapevi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522604','Itapira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522653','Itapirapuã Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522703','Itápolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522802','Itaporanga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3522901','Itapuí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523008','Itapura', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523107','Itaquaquecetuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523206','Itararé', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523305','Itariri', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523404','Itatiba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523503','Itatinga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523602','Itirapina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523701','Itirapuã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523800','Itobi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3523909','Itu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524006','Itupeva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524105','Ituverava', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524204','Jaborandi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524303','Jaboticabal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524402','Jacareí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524501','Jaci', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524600','Jacupiranga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524709','Jaguariúna', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524808','Jales', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3524907','Jambeiro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525003','Jandira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525102','Jardinópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525201','Jarinu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525300','Jaú', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525409','Jeriquara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525508','Joanópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525607','João Ramalho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525706','José Bonifácio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525805','Júlio Mesquita', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525854','Jumirim', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3525904','Jundiaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526001','Junqueirópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526100','Juquiá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526209','Juquitiba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526308','Lagoinha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526407','Laranjal Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526506','Lavínia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526605','Lavrinhas', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526704','Leme', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526803','Lençóis Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3526902','Limeira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527009','Lindóia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527108','Lins', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527207','Lorena', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527256','Lourdes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527306','Louveira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527405','Lucélia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527504','Lucianópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527603','Luís Antônio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527702','Luiziânia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527801','Lupércio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3527900','Lutécia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528007','Macatuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528106','Macaubal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528205','Macedônia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528304','Magda', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528403','Mairinque', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528502','Mairiporã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528601','Manduri', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528700','Marabá Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528809','Maracaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528858','Marapoama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3528908','Mariápolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529005','Marília', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529104','Marinópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529203','Martinópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529302','Matão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529401','Mauá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529500','Mendonça', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529609','Meridiano', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529658','Mesópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529708','Miguelópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529807','Mineiros do Tietê', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3529906','Miracatu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530003','Mira Estrela', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530102','Mirandópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530201','Mirante do Paranapanema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530300','Mirassol', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530409','Mirassolândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530508','Mococa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530607','Mogi das Cruzes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530706','Mogi Guaçu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530805','Moji Mirim', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3530904','Mombuca', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531001','Monções', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531100','Mongaguá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531209','Monte Alegre do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531308','Monte Alto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531407','Monte Aprazível', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531506','Monte Azul Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531605','Monte Castelo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531704','Monteiro Lobato', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531803','Monte Mor', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3531902','Morro Agudo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532009','Morungaba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532058','Motuca', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532108','Murutinga do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532157','Nantes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532207','Narandiba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532306','Natividade da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532405','Nazaré Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532504','Neves Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532603','Nhandeara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532702','Nipoã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532801','Nova Aliança', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532827','Nova Campina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532843','Nova Canaã Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532868','Nova Castilho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3532900','Nova Europa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533007','Nova Granada', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533106','Nova Guataporanga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533205','Nova Independência', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533254','Novais', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533304','Nova Luzitânia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533403','Nova Odessa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533502','Novo Horizonte', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533601','Nuporanga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533700','Ocauçu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533809','Óleo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3533908','Olímpia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534005','Onda Verde', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534104','Oriente', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534203','Orindiúva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534302','Orlândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534401','Osasco', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534500','Oscar Bressane', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534609','Osvaldo Cruz', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534708','Ourinhos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534757','Ouroeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534807','Ouro Verde', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3534906','Pacaembu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535002','Palestina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535101','Palmares Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535200','Palmeira D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535309','Palmital', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535408','Panorama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535507','Paraguaçu Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535606','Paraibuna', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535705','Paraíso', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535804','Paranapanema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3535903','Paranapuã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536000','Parapuã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536109','Pardinho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536208','Pariquera-Açu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536257','Parisi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536307','Patrocínio Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536406','Paulicéia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536505','Paulínia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536570','Paulistânia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536604','Paulo de Faria', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536703','Pederneiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536802','Pedra Bela', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3536901','Pedranópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537008','Pedregulho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537107','Pedreira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537156','Pedrinhas Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537206','Pedro de Toledo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537305','Penápolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537404','Pereira Barreto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537503','Pereiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537602','Peruíbe', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537701','Piacatu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537800','Piedade', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3537909','Pilar do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538006','Pindamonhangaba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538105','Pindorama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538204','Pinhalzinho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538303','Piquerobi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538501','Piquete', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538600','Piracaia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538709','Piracicaba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538808','Piraju', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3538907','Pirajuí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539004','Pirangi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539103','Pirapora do Bom Jesus', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539202','Pirapozinho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539301','Pirassununga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539400','Piratininga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539509','Pitangueiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539608','Planalto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539707','Platina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539806','Poá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3539905','Poloni', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540002','Pompéia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540101','Pongaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540200','Pontal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540259','Pontalinda', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540309','Pontes Gestal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540408','Populina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540507','Porangaba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540606','Porto Feliz', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540705','Porto Ferreira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540754','Potim', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540804','Potirendaba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540853','Pracinha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3540903','Pradópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541000','Praia Grande', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541059','Pratânia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541109','Presidente Alves', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541208','Presidente Bernardes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541307','Presidente Epitácio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541406','Presidente Prudente', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541505','Presidente Venceslau', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541604','Promissão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541653','Quadra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541703','Quatá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541802','Queiroz', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3541901','Queluz', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542008','Quintana', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542107','Rafard', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542206','Rancharia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542305','Redenção da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542404','Regente Feijó', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542503','Reginópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542602','Registro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542701','Restinga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542800','Ribeira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3542909','Ribeirão Bonito', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543006','Ribeirão Branco', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543105','Ribeirão Corrente', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543204','Ribeirão do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543238','Ribeirão dos Índios', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543253','Ribeirão Grande', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543303','Ribeirão Pires', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543402','Ribeirão Preto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543501','Riversul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543600','Rifaina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543709','Rincão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543808','Rinópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3543907','Rio Claro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544004','Rio das Pedras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544103','Rio Grande da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544202','Riolândia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544251','Rosana', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544301','Roseira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544400','Rubiácea', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544509','Rubinéia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544608','Sabino', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544707','Sagres', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544806','Sales', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3544905','Sales Oliveira', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545001','Salesópolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545100','Salmourão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545159','Saltinho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545209','Salto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545308','Salto de Pirapora', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545407','Salto Grande', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545506','Sandovalina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545605','Santa Adélia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545704','Santa Albertina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3545803','Santa Bárbara D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546009','Santa Branca', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546108','Santa Clara D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546207','Santa Cruz da Conceição', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546256','Santa Cruz da Esperança', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546306','Santa Cruz das Palmeiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546405','Santa Cruz do Rio Pardo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546504','Santa Ernestina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546603','Santa Fé do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546702','Santa Gertrudes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546801','Santa Isabel', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3546900','Santa Lúcia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547007','Santa Maria da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547106','Santa Mercedes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547205','Santana da Ponte Pensa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547304','Santana de Parnaíba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547403','Santa Rita D''Oeste', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547502','Santa Rita do Passa Quatro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547601','Santa Rosa de Viterbo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547650','Santa Salete', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547700','Santo Anastácio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547809','Santo André', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3547908','Santo Antônio da Alegria', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548005','Santo Antônio de Posse', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548054','Santo Antônio do Aracanguá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548104','Santo Antônio do Jardim', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548203','Santo Antônio do Pinhal', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548302','Santo Expedito', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548401','Santópolis do Aguapeí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548500','Santos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548609','São Bento do Sapucaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548708','São Bernardo do Campo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548807','São Caetano do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3548906','São Carlos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549003','São Francisco', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549102','São João da Boa Vista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549201','São João das Duas Pontes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549250','São João de Iracema', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549300','São João do Pau D''Alho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549409','São Joaquim da Barra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549508','São José da Bela Vista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549607','São José do Barreiro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549706','São José do Rio Pardo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549805','São José do Rio Preto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549904','São José dos Campos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3549953','São Lourenço da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550001','São Luís do Paraitinga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550100','São Manuel', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550209','São Miguel Arcanjo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550308','São Paulo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550407','São Pedro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550506','São Pedro do Turvo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550605','São Roque', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550704','São Sebastião', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550803','São Sebastião da Grama', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3550902','São Simão', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551009','São Vicente', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551108','Sarapuí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551207','Sarutaiá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551306','Sebastianópolis do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551405','Serra Azul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551504','Serrana', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551603','Serra Negra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551702','Sertãozinho', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551801','Sete Barras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3551900','Severínia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552007','Silveiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552106','Socorro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552205','Sorocaba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552304','Sud Mennucci', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552403','Sumaré', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552502','Suzano', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552551','Suzanápolis', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552601','Tabapuã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552700','Tabatinga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552809','Taboão da Serra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3552908','Taciba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553005','Taguaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553104','Taiaçu', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553203','Taiúva', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553302','Tambaú', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553401','Tanabi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553500','Tapiraí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553609','Tapiratiba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553658','Taquaral', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553708','Taquaritinga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553807','Taquarituba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553856','Taquarivaí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553906','Tarabai', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3553955','Tarumã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554003','Tatuí', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554102','Taubaté', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554201','Tejupá', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554300','Teodoro Sampaio', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554409','Terra Roxa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554508','Tietê', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554607','Timburi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554656','Torre de Pedra', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554706','Torrinha', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554755','Trabiju', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554805','Tremembé', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554904','Três Fronteiras', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3554953','Tuiuti', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555000','Tupã', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555109','Tupi Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555208','Turiúba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555307','Turmalina', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555356','Ubarana', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555406','Ubatuba', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555505','Ubirajara', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555604','Uchoa', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555703','União Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555802','Urânia', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3555901','Uru', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556008','Urupês', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556107','Valentim Gentil', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556206','Valinhos', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556305','Valparaíso', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556354','Vargem', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556404','Vargem Grande do Sul', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556453','Vargem Grande Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556503','Várzea Paulista', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556602','Vera Cruz', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556701','Vinhedo', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556800','Viradouro', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556909','Vista Alegre do Alto', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3556958','Vitória Brasil', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3557006','Votorantim', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3557105','Votuporanga', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3557154','Zacarias', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3557204','Chavantes', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('3557303','Estiva Gerbi', 'SP');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100103','Abatiá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100202','Adrianópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100301','Agudos do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100400','Almirante Tamandaré', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100459','Altamira do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100509','Altônia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100608','Alto Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100707','Alto Piquiri', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100806','Alvorada do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4100905','Amaporã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101002','Ampére', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101051','Anahy', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101101','Andirá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101150','Ângulo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101200','Antonina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101309','Antônio Olinto', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101408','Apucarana', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101507','Arapongas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101606','Arapoti', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101655','Arapuã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101705','Araruna', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101804','Araucária', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101853','Ariranha do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4101903','Assaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102000','Assis Chateaubriand', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102109','Astorga', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102208','Atalaia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102307','Balsa Nova', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102406','Bandeirantes', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102505','Barbosa Ferraz', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102604','Barracão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102703','Barra do Jacaré', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102752','Bela Vista da Caroba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102802','Bela Vista do Paraíso', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4102901','Bituruna', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103008','Boa Esperança', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103024','Boa Esperança do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103040','Boa Ventura de São Roque', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103057','Boa Vista da Aparecida', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103107','Bocaiúva do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103156','Bom Jesus do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103206','Bom Sucesso', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103222','Bom Sucesso do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103305','Borrazópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103354','Braganey', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103370','Brasilândia do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103404','Cafeara', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103453','Cafelândia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103479','Cafezal do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103503','Califórnia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103602','Cambará', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103701','Cambé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103800','Cambira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103909','Campina da Lagoa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4103958','Campina do Simão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104006','Campina Grande do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104055','Campo Bonito', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104105','Campo do Tenente', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104204','Campo Largo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104253','Campo Magro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104303','Campo Mourão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104402','Cândido de Abreu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104428','Candói', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104451','Cantagalo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104501','Capanema', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104600','Capitão Leônidas Marques', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104659','Carambeí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104709','Carlópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104808','Cascavel', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4104907','Castro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105003','Catanduvas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105102','Centenário do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105201','Cerro Azul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105300','Céu Azul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105409','Chopinzinho', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105508','Cianorte', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105607','Cidade Gaúcha', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105706','Clevelândia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105805','Colombo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4105904','Colorado', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106001','Congonhinhas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106100','Conselheiro Mairinck', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106209','Contenda', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106308','Corbélia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106407','Cornélio Procópio', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106456','Coronel Domingos Soares', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106506','Coronel Vivida', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106555','Corumbataí do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106571','Cruzeiro do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106605','Cruzeiro do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106704','Cruzeiro do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106803','Cruz Machado', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106852','Cruzmaltina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4106902','Curitiba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107009','Curiúva', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107108','Diamante do Norte', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107124','Diamante do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107157','Diamante D''Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107207','Dois Vizinhos', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107256','Douradina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107306','Doutor Camargo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107405','Enéas Marques', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107504','Engenheiro Beltrão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107520','Esperança Nova', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107538','Entre Rios do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107546','Espigão Alto do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107553','Farol', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107603','Faxinal', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107652','Fazenda Rio Grande', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107702','Fênix', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107736','Fernandes Pinheiro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107751','Figueira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107801','Floraí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107850','Flor da Serra do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4107900','Floresta', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108007','Florestópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108106','Flórida', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108205','Formosa do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108304','Foz do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108320','Francisco Alves', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108403','Francisco Beltrão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108452','Foz do Jordão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108502','General Carneiro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108551','Godoy Moreira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108601','Goioerê', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108650','Goioxim', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108700','Grandes Rios', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108809','Guaíra', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108908','Guairaçá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4108957','Guamiranga', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109005','Guapirama', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109104','Guaporema', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109203','Guaraci', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109302','Guaraniaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109401','Guarapuava', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109500','Guaraqueçaba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109609','Guaratuba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109658','Honório Serpa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109708','Ibaiti', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109757','Ibema', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109807','Ibiporã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4109906','Icaraíma', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110003','Iguaraçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110052','Iguatu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110078','Imbaú', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110102','Imbituva', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110201','Inácio Martins', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110300','Inajá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110409','Indianópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110508','Ipiranga', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110607','Iporã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110656','Iracema do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110706','Irati', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110805','Iretama', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110904','Itaguajé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4110953','Itaipulândia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111001','Itambaracá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111100','Itambé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111209','Itapejara D''Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111258','Itaperuçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111308','Itaúna do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111407','Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111506','Ivaiporã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111555','Ivaté', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111605','Ivatuba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111704','Jaboti', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111803','Jacarezinho', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4111902','Jaguapitã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112009','Jaguariaíva', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112108','Jandaia do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112207','Janiópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112306','Japira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112405','Japurá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112504','Jardim Alegre', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112603','Jardim Olinda', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112702','Jataizinho', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112751','Jesuítas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112801','Joaquim Távora', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112900','Jundiaí do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4112959','Juranda', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113007','Jussara', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113106','Kaloré', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113205','Lapa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113254','Laranjal', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113304','Laranjeiras do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113403','Leópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113429','Lidianópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113452','Lindoeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113502','Loanda', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113601','Lobato', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113700','Londrina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113734','Luiziana', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113759','Lunardelli', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113809','Lupionópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4113908','Mallet', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114005','Mamborê', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114104','Mandaguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114203','Mandaguari', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114302','Mandirituba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114351','Manfrinópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114401','Mangueirinha', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114500','Manoel Ribas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114609','Marechal Cândido Rondon', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114708','Maria Helena', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114807','Marialva', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4114906','Marilândia do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115002','Marilena', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115101','Mariluz', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115200','Maringá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115309','Mariópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115358','Maripá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115408','Marmeleiro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115457','Marquinho', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115507','Marumbi', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115606','Matelândia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115705','Matinhos', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115739','Mato Rico', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115754','Mauá da Serra', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115804','Medianeira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115853','Mercedes', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4115903','Mirador', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116000','Miraselva', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116059','Missal', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116109','Moreira Sales', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116208','Morretes', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116307','Munhoz de Melo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116406','Nossa Senhora das Graças', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116505','Nova Aliança do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116604','Nova América da Colina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116703','Nova Aurora', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116802','Nova Cantu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116901','Nova Esperança', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4116950','Nova Esperança do Sudoeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117008','Nova Fátima', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117057','Nova Laranjeiras', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117107','Nova Londrina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117206','Nova Olímpia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117214','Nova Santa Bárbara', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117222','Nova Santa Rosa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117255','Nova Prata do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117271','Nova Tebas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117297','Novo Itacolomi', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117305','Ortigueira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117404','Ourizona', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117453','Ouro Verde do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117503','Paiçandu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117602','Palmas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117701','Palmeira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117800','Palmital', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4117909','Palotina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118006','Paraíso do Norte', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118105','Paranacity', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118204','Paranaguá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118303','Paranapoema', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118402','Paranavaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118451','Pato Bragado', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118501','Pato Branco', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118600','Paula Freitas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118709','Paulo Frontin', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118808','Peabiru', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118857','Perobal', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4118907','Pérola', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119004','Pérola D''Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119103','Piên', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119152','Pinhais', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119202','Pinhalão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119251','Pinhal de São Bento', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119301','Pinhão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119400','Piraí do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119509','Piraquara', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119608','Pitanga', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119657','Pitangueiras', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119707','Planaltina do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119806','Planalto', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119905','Ponta Grossa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4119954','Pontal do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120002','Porecatu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120101','Porto Amazonas', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120150','Porto Barreiro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120200','Porto Rico', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120309','Porto Vitória', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120333','Prado Ferreira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120358','Pranchita', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120408','Presidente Castelo Branco', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120507','Primeiro de Maio', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120606','Prudentópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120655','Quarto Centenário', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120705','Quatiguá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120804','Quatro Barras', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120853','Quatro Pontes', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4120903','Quedas do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121000','Querência do Norte', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121109','Quinta do Sol', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121208','Quitandinha', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121257','Ramilândia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121307','Rancho Alegre', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121356','Rancho Alegre D''Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121406','Realeza', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121505','Rebouças', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121604','Renascença', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121703','Reserva', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121752','Reserva do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121802','Ribeirão Claro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4121901','Ribeirão do Pinhal', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122008','Rio Azul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122107','Rio Bom', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122156','Rio Bonito do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122172','Rio Branco do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122206','Rio Branco do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122305','Rio Negro', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122404','Rolândia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122503','Roncador', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122602','Rondon', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122651','Rosário do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122701','Sabáudia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122800','Salgado Filho', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4122909','Salto do Itararé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123006','Salto do Lontra', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123105','Santa Amélia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123204','Santa Cecília do Pavão', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123303','Santa Cruz de Monte Castelo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123402','Santa Fé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123501','Santa Helena', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123600','Santa Inês', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123709','Santa Isabel do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123808','Santa Izabel do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123824','Santa Lúcia', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123857','Santa Maria do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123907','Santa Mariana', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4123956','Santa Mônica', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124004','Santana do Itararé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124020','Santa Tereza do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124053','Santa Terezinha de Itaipu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124103','Santo Antônio da Platina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124202','Santo Antônio do Caiuá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124301','Santo Antônio do Paraíso', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124400','Santo Antônio do Sudoeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124509','Santo Inácio', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124608','São Carlos do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124707','São Jerônimo da Serra', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124806','São João', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4124905','São João do Caiuá', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125001','São João do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125100','São João do Triunfo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125209','São Jorge D''Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125308','São Jorge do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125357','São Jorge do Patrocínio', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125407','São José da Boa Vista', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125456','São José das Palmeiras', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125506','São José dos Pinhais', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125555','São Manoel do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125605','São Mateus do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125704','São Miguel do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125753','São Pedro do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125803','São Pedro do Ivaí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4125902','São Pedro do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126009','São Sebastião da Amoreira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126108','São Tomé', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126207','Sapopema', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126256','Sarandi', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126272','Saudade do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126306','Sengés', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126355','Serranópolis do Iguaçu', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126405','Sertaneja', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126504','Sertanópolis', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126603','Siqueira Campos', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126652','Sulina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126678','Tamarana', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126702','Tamboara', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126801','Tapejara', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4126900','Tapira', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127007','Teixeira Soares', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127106','Telêmaco Borba', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127205','Terra Boa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127304','Terra Rica', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127403','Terra Roxa', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127502','Tibagi', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127601','Tijucas do Sul', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127700','Toledo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127809','Tomazina', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127858','Três Barras do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127882','Tunas do Paraná', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127908','Tuneiras do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127957','Tupãssi', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4127965','Turvo', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128005','Ubiratã', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128104','Umuarama', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128203','União da Vitória', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128302','Uniflor', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128401','Uraí', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128500','Wenceslau Braz', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128534','Ventania', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128559','Vera Cruz do Oeste', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128609','Verê', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128625','Alto Paraíso', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128633','Doutor Ulysses', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128658','Virmond', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128708','Vitorino', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4128807','Xambrê', 'PR');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200051','Abdon Batista', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200101','Abelardo Luz', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200200','Agrolândia', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200309','Agronômica', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200408','Água Doce', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200507','Águas de Chapecó', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200556','Águas Frias', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200606','Águas Mornas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200705','Alfredo Wagner', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200754','Alto Bela Vista', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200804','Anchieta', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4200903','Angelina', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201000','Anita Garibaldi', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201109','Anitápolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201208','Antônio Carlos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201257','Apiúna', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201273','Arabutã', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201307','Araquari', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201406','Araranguá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201505','Armazém', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201604','Arroio Trinta', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201653','Arvoredo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201703','Ascurra', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201802','Atalanta', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201901','Aurora', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4201950','Balneário Arroio do Silva', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202008','Balneário Camboriú', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202057','Balneário Barra do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202073','Balneário Gaivota', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202081','Bandeirante', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202099','Barra Bonita', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202107','Barra Velha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202131','Bela Vista do Toldo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202156','Belmonte', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202206','Benedito Novo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202305','Biguaçu', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202404','Blumenau', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202438','Bocaina do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202453','Bombinhas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202503','Bom Jardim da Serra', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202537','Bom Jesus', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202578','Bom Jesus do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202602','Bom Retiro', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202701','Botuverá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202800','Braço do Norte', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202859','Braço do Trombudo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202875','Brunópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4202909','Brusque', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203006','Caçador', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203105','Caibi', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203154','Calmon', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203204','Camboriú', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203253','Capão Alto', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203303','Campo Alegre', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203402','Campo Belo do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203501','Campo Erê', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203600','Campos Novos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203709','Canelinha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203808','Canoinhas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203907','Capinzal', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4203956','Capivari de Baixo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204004','Catanduvas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204103','Caxambu do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204152','Celso Ramos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204178','Cerro Negro', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204194','Chapadão do Lageado', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204202','Chapecó', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204251','Cocal do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204301','Concórdia', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204350','Cordilheira Alta', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204400','Coronel Freitas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204459','Coronel Martins', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204509','Corupá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204558','Correia Pinto', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204608','Criciúma', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204707','Cunha Porã', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204756','Cunhataí', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204806','Curitibanos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4204905','Descanso', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205001','Dionísio Cerqueira', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205100','Dona Emma', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205159','Doutor Pedrinho', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205175','Entre Rios', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205191','Ermo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205209','Erval Velho', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205308','Faxinal dos Guedes', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205357','Flor do Sertão', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205407','Florianópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205431','Formosa do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205456','Forquilhinha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205506','Fraiburgo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205555','Frei Rogério', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205605','Galvão', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205704','Garopaba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205803','Garuva', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4205902','Gaspar', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206009','Governador Celso Ramos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206108','Grão Pará', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206207','Gravatal', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206306','Guabiruba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206405','Guaraciaba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206504','Guaramirim', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206603','Guarujá do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206652','Guatambú', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206702','Herval D''Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206751','Ibiam', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206801','Ibicaré', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4206900','Ibirama', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207007','Içara', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207106','Ilhota', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207205','Imaruí', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207304','Imbituba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207403','Imbuia', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207502','Indaial', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207577','Iomerê', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207601','Ipira', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207650','Iporã do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207684','Ipuaçu', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207700','Ipumirim', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207759','Iraceminha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207809','Irani', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207858','Irati', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4207908','Irineópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208005','Itá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208104','Itaiópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208203','Itajaí', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208302','Itapema', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208401','Itapiranga', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208450','Itapoá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208500','Ituporanga', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208609','Jaborá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208708','Jacinto Machado', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208807','Jaguaruna', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208906','Jaraguá do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4208955','Jardinópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209003','Joaçaba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209102','Joinville', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209151','José Boiteux', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209177','Jupiá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209201','Lacerdópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209300','Lages', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209409','Laguna', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209458','Lajeado Grande', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209508','Laurentino', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209607','Lauro Muller', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209706','Lebon Régis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209805','Leoberto Leal', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209854','Lindóia do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4209904','Lontras', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210001','Luiz Alves', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210035','Luzerna', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210050','Macieira', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210100','Mafra', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210209','Major Gercino', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210308','Major Vieira', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210407','Maracajá', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210506','Maravilha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210555','Marema', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210605','Massaranduba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210704','Matos Costa', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210803','Meleiro', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210852','Mirim Doce', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4210902','Modelo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211009','Mondaí', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211058','Monte Carlo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211108','Monte Castelo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211207','Morro da Fumaça', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211256','Morro Grande', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211306','Navegantes', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211405','Nova Erechim', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211454','Nova Itaberaba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211504','Nova Trento', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211603','Nova Veneza', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211652','Novo Horizonte', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211702','Orleans', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211751','Otacílio Costa', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211801','Ouro', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211850','Ouro Verde', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211876','Paial', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211892','Painel', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4211900','Palhoça', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212007','Palma Sola', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212056','Palmeira', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212106','Palmitos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212205','Papanduva', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212239','Paraíso', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212254','Passo de Torres', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212270','Passos Maia', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212304','Paulo Lopes', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212403','Pedras Grandes', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212502','Penha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212601','Peritiba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212650','Pescaria Brava', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212700','Petrolândia', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212809','Balneário Piçarras', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4212908','Pinhalzinho', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213005','Pinheiro Preto', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213104','Piratuba', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213153','Planalto Alegre', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213203','Pomerode', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213302','Ponte Alta', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213351','Ponte Alta do Norte', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213401','Ponte Serrada', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213500','Porto Belo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213609','Porto União', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213708','Pouso Redondo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213807','Praia Grande', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4213906','Presidente Castello Branco', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214003','Presidente Getúlio', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214102','Presidente Nereu', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214151','Princesa', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214201','Quilombo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214300','Rancho Queimado', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214409','Rio das Antas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214508','Rio do Campo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214607','Rio do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214706','Rio dos Cedros', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214805','Rio do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4214904','Rio Fortuna', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215000','Rio Negrinho', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215059','Rio Rufino', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215075','Riqueza', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215109','Rodeio', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215208','Romelândia', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215307','Salete', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215356','Saltinho', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215406','Salto Veloso', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215455','Sangão', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215505','Santa Cecília', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215554','Santa Helena', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215604','Santa Rosa de Lima', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215653','Santa Rosa do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215679','Santa Terezinha', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215687','Santa Terezinha do Progresso', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215695','Santiago do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215703','Santo Amaro da Imperatriz', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215752','São Bernardino', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215802','São Bento do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4215901','São Bonifácio', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216008','São Carlos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216057','São Cristovão do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216107','São Domingos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216206','São Francisco do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216255','São João do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216305','São João Batista', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216354','São João do Itaperiú', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216404','São João do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216503','São Joaquim', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216602','São José', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216701','São José do Cedro', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216800','São José do Cerrito', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4216909','São Lourenço do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217006','São Ludgero', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217105','São Martinho', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217154','São Miguel da Boa Vista', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217204','São Miguel do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217253','São Pedro de Alcântara', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217303','Saudades', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217402','Schroeder', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217501','Seara', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217550','Serra Alta', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217600','Siderópolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217709','Sombrio', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217758','Sul Brasil', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217808','Taió', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217907','Tangará', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4217956','Tigrinhos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218004','Tijucas', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218103','Timbé do Sul', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218202','Timbó', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218251','Timbó Grande', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218301','Três Barras', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218350','Treviso', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218400','Treze de Maio', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218509','Treze Tílias', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218608','Trombudo Central', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218707','Tubarão', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218756','Tunápolis', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218806','Turvo', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218855','União do Oeste', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218905','Urubici', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4218954','Urupema', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219002','Urussanga', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219101','Vargeão', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219150','Vargem', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219176','Vargem Bonita', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219200','Vidal Ramos', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219309','Videira', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219358','Vitor Meireles', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219408','Witmarsum', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219507','Xanxerê', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219606','Xavantina', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219705','Xaxim', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4219853','Zortéa', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4220000','Balneário Rincão', 'SC');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300034','Aceguá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300059','Água Santa', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300109','Agudo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300208','Ajuricaba', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300307','Alecrim', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300406','Alegrete', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300455','Alegria', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300471','Almirante Tamandaré do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300505','Alpestre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300554','Alto Alegre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300570','Alto Feliz', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300604','Alvorada', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300638','Amaral Ferrador', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300646','Ametista do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300661','André da Rocha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300703','Anta Gorda', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300802','Antônio Prado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300851','Arambaré', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300877','Araricá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4300901','Aratiba', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301008','Arroio do Meio', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301057','Arroio do Sal', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301073','Arroio do Padre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301107','Arroio dos Ratos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301206','Arroio do Tigre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301305','Arroio Grande', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301404','Arvorezinha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301503','Augusto Pestana', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301552','Áurea', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301602','Bagé', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301636','Balneário Pinhal', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301651','Barão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301701','Barão de Cotegipe', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301750','Barão do Triunfo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301800','Barracão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301859','Barra do Guarita', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301875','Barra do Quaraí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301909','Barra do Ribeiro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301925','Barra do Rio Azul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4301958','Barra Funda', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302006','Barros Cassal', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302055','Benjamin Constant do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302105','Bento Gonçalves', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302154','Boa Vista das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302204','Boa Vista do Buricá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302220','Boa Vista do Cadeado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302238','Boa Vista do Incra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302253','Boa Vista do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302303','Bom Jesus', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302352','Bom Princípio', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302378','Bom Progresso', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302402','Bom Retiro do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302451','Boqueirão do Leão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302501','Bossoroca', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302584','Bozano', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302600','Braga', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302659','Brochier', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302709','Butiá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302808','Caçapava do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4302907','Cacequi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303004','Cachoeira do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303103','Cachoeirinha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303202','Cacique Doble', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303301','Caibaté', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303400','Caiçara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303509','Camaquã', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303558','Camargo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303608','Cambará do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303673','Campestre da Serra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303707','Campina das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303806','Campinas do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4303905','Campo Bom', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304002','Campo Novo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304101','Campos Borges', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304200','Candelária', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304309','Cândido Godói', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304358','Candiota', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304408','Canela', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304507','Canguçu', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304606','Canoas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304614','Canudos do Vale', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304622','Capão Bonito do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304630','Capão da Canoa', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304655','Capão do Cipó', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304663','Capão do Leão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304671','Capivari do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304689','Capela de Santana', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304697','Capitão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304705','Carazinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304713','Caraá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304804','Carlos Barbosa', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304853','Carlos Gomes', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304903','Casca', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4304952','Caseiros', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305009','Catuípe', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305108','Caxias do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305116','Centenário', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305124','Cerrito', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305132','Cerro Branco', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305157','Cerro Grande', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305173','Cerro Grande do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305207','Cerro Largo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305306','Chapada', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305355','Charqueadas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305371','Charrua', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305405','Chiapetta', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305439','Chuí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305447','Chuvisca', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305454','Cidreira', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305504','Ciríaco', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305587','Colinas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305603','Colorado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305702','Condor', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305801','Constantina', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305835','Coqueiro Baixo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305850','Coqueiros do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305871','Coronel Barros', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305900','Coronel Bicaco', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305934','Coronel Pilar', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305959','Cotiporã', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4305975','Coxilha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306007','Crissiumal', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306056','Cristal', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306072','Cristal do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306106','Cruz Alta', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306130','Cruzaltense', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306205','Cruzeiro do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306304','David Canabarro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306320','Derrubadas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306353','Dezesseis de Novembro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306379','Dilermando de Aguiar', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306403','Dois Irmãos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306429','Dois Irmãos das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306452','Dois Lajeados', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306502','Dom Feliciano', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306551','Dom Pedro de Alcântara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306601','Dom Pedrito', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306700','Dona Francisca', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306734','Doutor Maurício Cardoso', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306759','Doutor Ricardo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306767','Eldorado do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306809','Encantado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306908','Encruzilhada do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306924','Engenho Velho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306932','Entre-Ijuís', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306957','Entre Rios do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4306973','Erebango', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307005','Erechim', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307054','Ernestina', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307104','Herval', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307203','Erval Grande', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307302','Erval Seco', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307401','Esmeralda', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307450','Esperança do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307500','Espumoso', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307559','Estação', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307609','Estância Velha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307708','Esteio', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307807','Estrela', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307815','Estrela Velha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307831','Eugênio de Castro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307864','Fagundes Varela', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4307906','Farroupilha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308003','Faxinal do Soturno', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308052','Faxinalzinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308078','Fazenda Vilanova', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308102','Feliz', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308201','Flores da Cunha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308250','Floriano Peixoto', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308300','Fontoura Xavier', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308409','Formigueiro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308433','Forquetinha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308458','Fortaleza dos Valos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308508','Frederico Westphalen', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308607','Garibaldi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308656','Garruchos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308706','Gaurama', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308805','General Câmara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308854','Gentil', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4308904','Getúlio Vargas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309001','Giruá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309050','Glorinha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309100','Gramado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309126','Gramado dos Loureiros', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309159','Gramado Xavier', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309209','Gravataí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309258','Guabiju', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309308','Guaíba', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309407','Guaporé', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309506','Guarani das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309555','Harmonia', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309571','Herveiras', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309605','Horizontina', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309654','Hulha Negra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309704','Humaitá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309753','Ibarama', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309803','Ibiaçá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309902','Ibiraiaras', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4309951','Ibirapuitã', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310009','Ibirubá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310108','Igrejinha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310207','Ijuí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310306','Ilópolis', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310330','Imbé', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310363','Imigrante', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310405','Independência', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310413','Inhacorá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310439','Ipê', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310462','Ipiranga do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310504','Iraí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310538','Itaara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310553','Itacurubi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310579','Itapuca', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310603','Itaqui', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310652','Itati', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310702','Itatiba do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310751','Ivorá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310801','Ivoti', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310850','Jaboticaba', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310876','Jacuizinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4310900','Jacutinga', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311007','Jaguarão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311106','Jaguari', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311122','Jaquirana', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311130','Jari', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311155','Jóia', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311205','Júlio de Castilhos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311239','Lagoa Bonita do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311254','Lagoão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311270','Lagoa dos Três Cantos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311304','Lagoa Vermelha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311403','Lajeado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311429','Lajeado do Bugre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311502','Lavras do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311601','Liberato Salzano', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311627','Lindolfo Collor', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311643','Linha Nova', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311700','Machadinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311718','Maçambará', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311734','Mampituba', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311759','Manoel Viana', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311775','Maquiné', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311791','Maratá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311809','Marau', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311908','Marcelino Ramos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4311981','Mariana Pimentel', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312005','Mariano Moro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312054','Marques de Souza', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312104','Mata', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312138','Mato Castelhano', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312153','Mato Leitão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312179','Mato Queimado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312203','Maximiliano de Almeida', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312252','Minas do Leão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312302','Miraguaí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312351','Montauri', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312377','Monte Alegre dos Campos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312385','Monte Belo do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312401','Montenegro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312427','Mormaço', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312443','Morrinhos do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312450','Morro Redondo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312476','Morro Reuter', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312500','Mostardas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312609','Muçum', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312617','Muitos Capões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312625','Muliterno', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312658','Não-Me-Toque', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312674','Nicolau Vergueiro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312708','Nonoai', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312757','Nova Alvorada', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312807','Nova Araçá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312906','Nova Bassano', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4312955','Nova Boa Vista', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313003','Nova Bréscia', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313011','Nova Candelária', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313037','Nova Esperança do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313060','Nova Hartz', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313086','Nova Pádua', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313102','Nova Palma', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313201','Nova Petrópolis', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313300','Nova Prata', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313334','Nova Ramada', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313359','Nova Roma do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313375','Nova Santa Rita', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313391','Novo Cabrais', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313409','Novo Hamburgo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313425','Novo Machado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313441','Novo Tiradentes', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313466','Novo Xingu', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313490','Novo Barreiro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313508','Osório', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313607','Paim Filho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313656','Palmares do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313706','Palmeira das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313805','Palmitinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313904','Panambi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4313953','Pantano Grande', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314001','Paraí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314027','Paraíso do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314035','Pareci Novo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314050','Parobé', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314068','Passa Sete', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314076','Passo do Sobrado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314100','Passo Fundo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314134','Paulo Bento', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314159','Paverama', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314175','Pedras Altas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314209','Pedro Osório', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314308','Pejuçara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314407','Pelotas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314423','Picada Café', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314456','Pinhal', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314464','Pinhal da Serra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314472','Pinhal Grande', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314498','Pinheirinho do Vale', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314506','Pinheiro Machado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314548','Pinto Bandeira', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314555','Pirapó', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314605','Piratini', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314704','Planalto', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314753','Poço das Antas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314779','Pontão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314787','Ponte Preta', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314803','Portão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4314902','Porto Alegre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315008','Porto Lucena', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315057','Porto Mauá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315073','Porto Vera Cruz', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315107','Porto Xavier', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315131','Pouso Novo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315149','Presidente Lucena', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315156','Progresso', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315172','Protásio Alves', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315206','Putinga', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315305','Quaraí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315313','Quatro Irmãos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315321','Quevedos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315354','Quinze de Novembro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315404','Redentora', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315453','Relvado', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315503','Restinga Seca', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315552','Rio dos Índios', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315602','Rio Grande', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315701','Rio Pardo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315750','Riozinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315800','Roca Sales', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315909','Rodeio Bonito', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4315958','Rolador', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316006','Rolante', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316105','Ronda Alta', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316204','Rondinha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316303','Roque Gonzales', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316402','Rosário do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316428','Sagrada Família', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316436','Saldanha Marinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316451','Salto do Jacuí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316477','Salvador das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316501','Salvador do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316600','Sananduva', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316709','Santa Bárbara do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316733','Santa Cecília do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316758','Santa Clara do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316808','Santa Cruz do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316907','Santa Maria', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316956','Santa Maria do Herval', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4316972','Santa Margarida do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317004','Santana da Boa Vista', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317103','Sant''Ana do Livramento', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317202','Santa Rosa', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317251','Santa Tereza', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317301','Santa Vitória do Palmar', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317400','Santiago', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317509','Santo Ângelo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317558','Santo Antônio do Palma', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317608','Santo Antônio da Patrulha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317707','Santo Antônio das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317756','Santo Antônio do Planalto', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317806','Santo Augusto', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317905','Santo Cristo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4317954','Santo Expedito do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318002','São Borja', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318051','São Domingos do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318101','São Francisco de Assis', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318200','São Francisco de Paula', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318309','São Gabriel', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318408','São Jerônimo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318424','São João da Urtiga', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318432','São João do Polêsine', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318440','São Jorge', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318457','São José das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318465','São José do Herval', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318481','São José do Hortêncio', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318499','São José do Inhacorá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318507','São José do Norte', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318606','São José do Ouro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318614','São José do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318622','São José dos Ausentes', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318705','São Leopoldo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318804','São Lourenço do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4318903','São Luiz Gonzaga', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319000','São Marcos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319109','São Martinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319125','São Martinho da Serra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319158','São Miguel das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319208','São Nicolau', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319307','São Paulo das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319356','São Pedro da Serra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319364','São Pedro das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319372','São Pedro do Butiá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319406','São Pedro do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319505','São Sebastião do Caí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319604','São Sepé', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319703','São Valentim', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319711','São Valentim do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319737','São Valério do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319752','São Vendelino', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319802','São Vicente do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4319901','Sapiranga', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320008','Sapucaia do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320107','Sarandi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320206','Seberi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320230','Sede Nova', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320263','Segredo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320305','Selbach', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320321','Senador Salgado Filho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320354','Sentinela do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320404','Serafina Corrêa', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320453','Sério', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320503','Sertão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320552','Sertão Santana', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320578','Sete de Setembro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320602','Severiano de Almeida', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320651','Silveira Martins', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320677','Sinimbu', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320701','Sobradinho', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320800','Soledade', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320859','Tabaí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4320909','Tapejara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321006','Tapera', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321105','Tapes', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321204','Taquara', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321303','Taquari', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321329','Taquaruçu do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321352','Tavares', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321402','Tenente Portela', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321436','Terra de Areia', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321451','Teutônia', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321469','Tio Hugo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321477','Tiradentes do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321493','Toropi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321501','Torres', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321600','Tramandaí', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321626','Travesseiro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321634','Três Arroios', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321667','Três Cachoeiras', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321709','Três Coroas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321808','Três de Maio', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321832','Três Forquilhas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321857','Três Palmeiras', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321907','Três Passos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4321956','Trindade do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322004','Triunfo', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322103','Tucunduva', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322152','Tunas', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322186','Tupanci do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322202','Tupanciretã', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322251','Tupandi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322301','Tuparendi', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322327','Turuçu', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322343','Ubiretama', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322350','União da Serra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322376','Unistalda', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322400','Uruguaiana', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322509','Vacaria', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322525','Vale Verde', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322533','Vale do Sol', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322541','Vale Real', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322558','Vanini', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322608','Venâncio Aires', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322707','Vera Cruz', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322806','Veranópolis', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322855','Vespasiano Correa', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4322905','Viadutos', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323002','Viamão', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323101','Vicente Dutra', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323200','Victor Graeff', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323309','Vila Flores', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323358','Vila Lângaro', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323408','Vila Maria', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323457','Vila Nova do Sul', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323507','Vista Alegre', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323606','Vista Alegre do Prata', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323705','Vista Gaúcha', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323754','Vitória das Missões', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323770','Westfalia', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('4323804','Xangri-lá', 'RS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000203','Água Clara', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000252','Alcinópolis', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000609','Amambai', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000708','Anastácio', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000807','Anaurilândia', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000856','Angélica', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5000906','Antônio João', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5001003','Aparecida do Taboado', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5001102','Aquidauana', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5001243','Aral Moreira', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5001508','Bandeirantes', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5001904','Bataguassu', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002001','Batayporã', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002100','Bela Vista', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002159','Bodoquena', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002209','Bonito', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002308','Brasilândia', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002407','Caarapó', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002605','Camapuã', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002704','Campo Grande', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002803','Caracol', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002902','Cassilândia', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5002951','Chapadão do Sul', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003108','Corguinho', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003157','Coronel Sapucaia', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003207','Corumbá', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003256','Costa Rica', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003306','Coxim', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003454','Deodápolis', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003488','Dois Irmãos do Buriti', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003504','Douradina', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003702','Dourados', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003751','Eldorado', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003801','Fátima do Sul', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5003900','Figueirão', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004007','Glória de Dourados', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004106','Guia Lopes da Laguna', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004304','Iguatemi', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004403','Inocência', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004502','Itaporã', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004601','Itaquiraí', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004700','Ivinhema', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004809','Japorã', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5004908','Jaraguari', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005004','Jardim', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005103','Jateí', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005152','Juti', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005202','Ladário', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005251','Laguna Carapã', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005400','Maracaju', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005608','Miranda', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005681','Mundo Novo', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005707','Naviraí', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5005806','Nioaque', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006002','Nova Alvorada do Sul', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006200','Nova Andradina', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006259','Novo Horizonte do Sul', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006275','Paraíso das Águas', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006309','Paranaíba', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006358','Paranhos', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006408','Pedro Gomes', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006606','Ponta Porã', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5006903','Porto Murtinho', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007109','Ribas do Rio Pardo', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007208','Rio Brilhante', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007307','Rio Negro', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007406','Rio Verde de Mato Grosso', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007505','Rochedo', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007554','Santa Rita do Pardo', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007695','São Gabriel do Oeste', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007703','Sete Quedas', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007802','Selvíria', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007901','Sidrolândia', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007935','Sonora', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007950','Tacuru', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5007976','Taquarussu', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5008008','Terenos', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5008305','Três Lagoas', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5008404','Vicentina', 'MS');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100102','Acorizal', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100201','Água Boa', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100250','Alta Floresta', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100300','Alto Araguaia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100359','Alto Boa Vista', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100409','Alto Garças', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100508','Alto Paraguai', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100607','Alto Taquari', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5100805','Apiacás', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101001','Araguaiana', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101209','Araguainha', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101258','Araputanga', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101308','Arenápolis', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101407','Aripuanã', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101605','Barão de Melgaço', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101704','Barra do Bugres', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101803','Barra do Garças', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101852','Bom Jesus do Araguaia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5101902','Brasnorte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102504','Cáceres', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102603','Campinápolis', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102637','Campo Novo do Parecis', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102678','Campo Verde', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102686','Campos de Júlio', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102694','Canabrava do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102702','Canarana', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102793','Carlinda', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5102850','Castanheira', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103007','Chapada dos Guimarães', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103056','Cláudia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103106','Cocalinho', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103205','Colíder', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103254','Colniza', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103304','Comodoro', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103353','Confresa', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103361','Conquista D''Oeste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103379','Cotriguaçu', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103403','Cuiabá', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103437','Curvelândia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103452','Denise', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103502','Diamantino', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103601','Dom Aquino', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103700','Feliz Natal', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103809','Figueirópolis D''Oeste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103858','Gaúcha do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103908','General Carneiro', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5103957','Glória D''Oeste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104104','Guarantã do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104203','Guiratinga', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104500','Indiavaí', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104526','Ipiranga do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104542','Itanhangá', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104559','Itaúba', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104609','Itiquira', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104807','Jaciara', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5104906','Jangada', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105002','Jauru', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105101','Juara', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105150','Juína', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105176','Juruena', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105200','Juscimeira', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105234','Lambari D''Oeste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105259','Lucas do Rio Verde', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105309','Luciara', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105507','Vila Bela da Santíssima Trindade', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105580','Marcelândia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105606','Matupá', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105622','Mirassol D''Oeste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5105903','Nobres', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106000','Nortelândia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106109','Nossa Senhora do Livramento', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106158','Nova Bandeirantes', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106174','Nova Nazaré', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106182','Nova Lacerda', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106190','Nova Santa Helena', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106208','Nova Brasilândia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106216','Nova Canaã do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106224','Nova Mutum', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106232','Nova Olímpia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106240','Nova Ubiratã', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106257','Nova Xavantina', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106265','Novo Mundo', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106273','Novo Horizonte do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106281','Novo São Joaquim', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106299','Paranaíta', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106307','Paranatinga', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106315','Novo Santo Antônio', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106372','Pedra Preta', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106422','Peixoto de Azevedo', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106455','Planalto da Serra', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106505','Poconé', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106653','Pontal do Araguaia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106703','Ponte Branca', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106752','Pontes e Lacerda', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106778','Porto Alegre do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106802','Porto dos Gaúchos', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106828','Porto Esperidião', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5106851','Porto Estrela', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107008','Poxoréo', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107040','Primavera do Leste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107065','Querência', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107107','São José dos Quatro Marcos', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107156','Reserva do Cabaçal', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107180','Ribeirão Cascalheira', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107198','Ribeirãozinho', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107206','Rio Branco', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107248','Santa Carmem', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107263','Santo Afonso', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107297','São José do Povo', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107305','São José do Rio Claro', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107354','São José do Xingu', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107404','São Pedro da Cipa', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107578','Rondolândia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107602','Rondonópolis', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107701','Rosário Oeste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107743','Santa Cruz do Xingu', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107750','Salto do Céu', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107768','Santa Rita do Trivelato', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107776','Santa Terezinha', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107792','Santo Antônio do Leste', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107800','Santo Antônio do Leverger', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107859','São Félix do Araguaia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107875','Sapezal', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107883','Serra Nova Dourada', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107909','Sinop', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107925','Sorriso', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107941','Tabaporã', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5107958','Tangará da Serra', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108006','Tapurah', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108055','Terra Nova do Norte', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108105','Tesouro', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108204','Torixoréu', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108303','União do Sul', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108352','Vale de São Domingos', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108402','Várzea Grande', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108501','Vera', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108600','Vila Rica', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108808','Nova Guarita', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108857','Nova Marilândia', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108907','Nova Maringá', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5108956','Nova Monte Verde', 'MT');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200050','Abadia de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200100','Abadiânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200134','Acreúna', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200159','Adelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200175','Água Fria de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200209','Água Limpa', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200258','Águas Lindas de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200308','Alexânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200506','Aloândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200555','Alto Horizonte', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200605','Alto Paraíso de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200803','Alvorada do Norte', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200829','Amaralina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200852','Americano do Brasil', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5200902','Amorinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201108','Anápolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201207','Anhanguera', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201306','Anicuns', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201405','Aparecida de Goiânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201454','Aparecida do Rio Doce', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201504','Aporé', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201603','Araçu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201702','Aragarças', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5201801','Aragoiânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5202155','Araguapaz', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5202353','Arenópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5202502','Aruanã', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5202601','Aurilândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5202809','Avelinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203104','Baliza', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203203','Barro Alto', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203302','Bela Vista de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203401','Bom Jardim de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203500','Bom Jesus de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203559','Bonfinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203575','Bonópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203609','Brazabrantes', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203807','Britânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203906','Buriti Alegre', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203939','Buriti de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5203962','Buritinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204003','Cabeceiras', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204102','Cachoeira Alta', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204201','Cachoeira de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204250','Cachoeira Dourada', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204300','Caçu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204409','Caiapônia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204508','Caldas Novas', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204557','Caldazinha', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204607','Campestre de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204656','Campinaçu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204706','Campinorte', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204805','Campo Alegre de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204854','Campo Limpo de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204904','Campos Belos', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5204953','Campos Verdes', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205000','Carmo do Rio Verde', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205059','Castelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205109','Catalão', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205208','Caturaí', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205307','Cavalcante', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205406','Ceres', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205455','Cezarina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205471','Chapadão do Céu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205497','Cidade Ocidental', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205513','Cocalzinho de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205521','Colinas do Sul', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205703','Córrego do Ouro', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205802','Corumbá de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5205901','Corumbaíba', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206206','Cristalina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206305','Cristianópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206404','Crixás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206503','Cromínia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206602','Cumari', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206701','Damianópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206800','Damolândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5206909','Davinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207105','Diorama', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207253','Doverlândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207352','Edealina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207402','Edéia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207501','Estrela do Norte', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207535','Faina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207600','Fazenda Nova', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207808','Firminópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5207907','Flores de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208004','Formosa', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208103','Formoso', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208152','Gameleira de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208301','Divinópolis de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208400','Goianápolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208509','Goiandira', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208608','Goianésia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208707','Goiânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208806','Goianira', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5208905','Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209101','Goiatuba', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209150','Gouvelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209200','Guapó', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209291','Guaraíta', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209408','Guarani de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209457','Guarinos', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209606','Heitoraí', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209705','Hidrolândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209804','Hidrolina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209903','Iaciara', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209937','Inaciolândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5209952','Indiara', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210000','Inhumas', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210109','Ipameri', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210158','Ipiranga de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210208','Iporá', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210307','Israelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210406','Itaberaí', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210562','Itaguari', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210604','Itaguaru', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210802','Itajá', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5210901','Itapaci', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211008','Itapirapuã', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211206','Itapuranga', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211305','Itarumã', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211404','Itauçu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211503','Itumbiara', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211602','Ivolândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211701','Jandaia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211800','Jaraguá', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5211909','Jataí', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212006','Jaupaci', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212055','Jesúpolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212105','Joviânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212204','Jussara', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212253','Lagoa Santa', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212303','Leopoldo de Bulhões', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212501','Luziânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212600','Mairipotaba', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212709','Mambaí', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212808','Mara Rosa', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212907','Marzagão', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5212956','Matrinchã', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213004','Maurilândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213053','Mimoso de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213087','Minaçu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213103','Mineiros', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213400','Moiporá', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213509','Monte Alegre de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213707','Montes Claros de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213756','Montividiu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213772','Montividiu do Norte', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213806','Morrinhos', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213855','Morro Agudo de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5213905','Mossâmedes', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214002','Mozarlândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214051','Mundo Novo', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214101','Mutunópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214408','Nazário', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214507','Nerópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214606','Niquelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214705','Nova América', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214804','Nova Aurora', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214838','Nova Crixás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214861','Nova Glória', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214879','Nova Iguaçu de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5214903','Nova Roma', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215009','Nova Veneza', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215207','Novo Brasil', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215231','Novo Gama', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215256','Novo Planalto', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215306','Orizona', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215405','Ouro Verde de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215504','Ouvidor', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215603','Padre Bernardo', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215652','Palestina de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215702','Palmeiras de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215801','Palmelo', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5215900','Palminópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5216007','Panamá', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5216304','Paranaiguara', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5216403','Paraúna', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5216452','Perolândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5216809','Petrolina de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5216908','Pilar de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5217104','Piracanjuba', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5217203','Piranhas', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5217302','Pirenópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5217401','Pires do Rio', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5217609','Planaltina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5217708','Pontalina', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218003','Porangatu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218052','Porteirão', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218102','Portelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218300','Posse', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218391','Professor Jamil', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218508','Quirinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218607','Rialma', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218706','Rianápolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218789','Rio Quente', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218805','Rio Verde', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5218904','Rubiataba', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219001','Sanclerlândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219100','Santa Bárbara de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219209','Santa Cruz de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219258','Santa Fé de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219308','Santa Helena de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219357','Santa Isabel', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219407','Santa Rita do Araguaia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219456','Santa Rita do Novo Destino', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219506','Santa Rosa de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219605','Santa Tereza de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219704','Santa Terezinha de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219712','Santo Antônio da Barra', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219738','Santo Antônio de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219753','Santo Antônio do Descoberto', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219803','São Domingos', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5219902','São Francisco de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220009','São João D''Aliança', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220058','São João da Paraúna', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220108','São Luís de Montes Belos', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220157','São Luíz do Norte', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220207','São Miguel do Araguaia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220264','São Miguel do Passa Quatro', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220280','São Patrício', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220405','São Simão', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220454','Senador Canedo', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220504','Serranópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220603','Silvânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220686','Simolândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5220702','Sítio D''Abadia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221007','Taquaral de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221080','Teresina de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221197','Terezópolis de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221304','Três Ranchos', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221403','Trindade', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221452','Trombas', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221502','Turvânia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221551','Turvelândia', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221577','Uirapuru', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221601','Uruaçu', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221700','Uruana', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221809','Urutaí', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221858','Valparaíso de Goiás', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5221908','Varjão', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5222005','Vianópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5222054','Vicentinópolis', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5222203','Vila Boa', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5222302','Vila Propício', 'GO');
+Insert into cidade (codigo_cidade, nome, uf) values ('5300108','Brasília', 'DF');
