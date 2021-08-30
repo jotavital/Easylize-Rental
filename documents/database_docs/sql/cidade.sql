@@ -1,6 +1,6 @@
 -- Create Table --
 
-CREATE TABLE cidade (
+CREATE TABLE IF NOT EXISTS cidade (
   id 	 INT 		  NOT NULL AUTO_INCREMENT,
   codigo_cidade INT		  NOT NULL,
   nome 	 VARCHAR(255) NOT NULL,
