@@ -1,6 +1,6 @@
 -- Create Table --
 
-CREATE TABLE IF NOT EXISTS estado (
+CREATE TABLE estado (
     id       INT          NOT NULL AUTO_INCREMENT,
     codigo_uf INT          NOT NULL,
     nome     VARCHAR (50) NOT NULL,
