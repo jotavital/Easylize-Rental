@@ -5650,6 +5650,7 @@ ode_modules...')
 [stacktrace]
 #0 {main}
 "} 
+<<<<<<< HEAD
 [2021-09-08 20:09:20] local.ERROR: A CreateInitialDatabase class already exists. {"exception":"[object] (InvalidArgumentException(code: 0): A CreateInitialDatabase class already exists. at D:\\OneDrive\\Faculdade\\6 sem\\eng software 2\\Easylize-Rental\\system\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\MigrationCreator.php:102)
 [stacktrace]
 #0 D:\\OneDrive\\Faculdade\\6 sem\\eng software 2\\Easylize-Rental\\system\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\MigrationCreator.php(59): Illuminate\\Database\\Migrations\\MigrationCreator->ensureMigrationDoesntAlreadyExist('create_initial_...', 'D:\\\\OneDrive\\\\Fac...')
@@ -6411,3 +6412,5 @@ ode_modules...')
 #35 /usr/share/nginx/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
 #36 {main}
 "} 
+=======
+>>>>>>> parent of e2ef683... little update
