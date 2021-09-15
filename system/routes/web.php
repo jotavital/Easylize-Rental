@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmpresaController;
 
 Route::get('/', [UserController::class, 'login']);
-
 Route::get('/login', [UserController::class, 'login']);
-
-Route::get('/register', [UserController::class, 'register']);
+Route::get('/register', [EmpresaController::class, 'register']);
+Route::post('/empresa/register', [EmpresaController::class, 'store']);

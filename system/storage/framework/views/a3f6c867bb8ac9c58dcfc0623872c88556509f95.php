@@ -6,9 +6,9 @@
 
 <div class="container col-md-12 d-flex justify-content-center">
     <div class="col-md-5 d-flex justify-content-center flex-column">
-        <h1 class="d-flex justify-content-center">Cadastro</h1>
+        <h1 class="d-flex justify-content-center">Cadastre sua empresa</h1>
 
-        <form action="#" method="post">
+        <form action="/empresa" method="post">
             <div class="mb-2 form-outline">
               <input type="text" id="usuario" class="form-control"/>
               <label class="form-label" for="usuario">Nome da empresa</label>
