@@ -13,9 +13,9 @@ class AddLoginFieldEmpresa extends Migration
      */
     public function up()
     {
-        // Schema::table('empresa', function (Blueprint $table) {
-        //     $table->string('login', 50)->after('tipo_telefone');
-        // });
+        Schema::table('empresa', function (Blueprint $table) {
+            $table->string('login', 50)->after('tipo_telefone');
+        });
     }
 
     /**

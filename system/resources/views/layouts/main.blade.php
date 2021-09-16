@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 
     <title>Easylize Rental - @yield('title')</title>
 </head>

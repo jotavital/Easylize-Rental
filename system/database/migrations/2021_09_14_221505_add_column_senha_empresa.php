@@ -13,9 +13,9 @@ class AddColumnSenhaEmpresa extends Migration
      */
     public function up()
     {
-        // Schema::table('empresa', function (Blueprint $table) {
-        //     $table->string('senha', 50)->after('login');
-        // });
+        Schema::table('empresa', function (Blueprint $table) {
+            $table->string('senha', 50)->after('login');
+        });
     }
 
     /**

@@ -14,8 +14,8 @@ class Initdb extends Migration
      */
     public function up()
     {
-        // $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
-        // DB::unprepared($sql);
+        $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
+        DB::unprepared($sql);
     }
 
     /**
