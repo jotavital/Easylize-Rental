@@ -6,7 +6,7 @@
 
 <div class="container col-md-12 d-flex justify-content-center">
     <div class="col-md-5 d-flex justify-content-center flex-column">
-        <h1 class="mb-4 d-flex justify-content-center">Login - nomeEmpresa</h1>
+        <h1 class="mb-4 d-flex justify-content-center">Login - Easylize Rental</h1>
 
         <form action="#" method="post">
             <div class="mb-3 form-outline">
