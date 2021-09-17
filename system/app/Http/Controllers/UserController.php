@@ -18,16 +18,18 @@ class UserController extends Controller
 
     public function auth(Request $request)
     {
-        DB::statement("CREATE DATABASE IF NOT EXISTS {$request->usuario}");
+        $database_name = $request->usuario;
+
+        DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name}");
 
         $new_connection = 'tenant';
 
+        DB::purge('mysql');
         config(["database.connections.$new_connection" => [
-            // fill with dynamic data:
             "driver" => "mysql",
             "host" => "127.0.0.1",
             "port" => "3308",
-            "database" => "admin",
+            "database" => "$database_name",
             "username" => "root",
             "password" => "",
             "charset" => "utf8",
@@ -37,6 +39,6 @@ class UserController extends Controller
             "engine" => null
         ]]);
 
-        Artisan::call('migrate', ['--database' => $new_connection]); //adicionar o path das migrations de tenants
+        Artisan::call('migrate', ['--database' => $new_connection]);
     }
 }
