@@ -30,7 +30,7 @@ class UserController extends Controller
 
 
         //so fazer isso se logar
-        $database_name = $request->usuarios;
+        $database_name = $request->usuario;
 
         DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name}");
 
