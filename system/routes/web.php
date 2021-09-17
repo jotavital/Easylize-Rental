@@ -18,4 +18,4 @@ use App\Http\Controllers\EmpresaController;
 
 Route::get('/', [UserController::class, 'login']);
 Route::get('/login', [UserController::class, 'login']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/auth', [UserController::class, 'auth']);
