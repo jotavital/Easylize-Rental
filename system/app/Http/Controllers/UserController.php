@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Company;
 
 class UserController extends Controller
 {
@@ -18,6 +20,16 @@ class UserController extends Controller
 
     public function auth(Request $request)
     {
+        $user = Company::where('usuario', $request->usuario)->get()->first();
+        
+        if(Hash::check($request->senha, $user->senha)){
+            echo "logado";
+        }else{
+            echo "loho nao tiu";
+        }
+
+
+        //so fazer isso se logar
         $database_name = $request->usuario;
 
         DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name}");
@@ -38,6 +50,8 @@ class UserController extends Controller
             "strict" => true,
             "engine" => null
         ]]);
+
+        DB::setDefaultConnection($new_connection);
 
         Artisan::call('migrate', ['--database' => $new_connection]);
     }
