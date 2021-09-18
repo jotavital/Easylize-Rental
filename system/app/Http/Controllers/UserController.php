@@ -21,38 +21,33 @@ class UserController extends Controller
     public function auth(Request $request)
     {
         $user = Company::where('usuario', $request->usuario)->get()->first();
+
+        $database_name = $request->usuario;
         
         if(Hash::check($request->senha, $user->senha)){
-            echo "logado";
-        }else{
-            echo "loho nao tiu";
+            DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name}");
+
+            $new_connection = 'tenant';
+
+            DB::purge('mysql');
+            config(["database.connections.$new_connection" => [
+                "driver" => "mysql",
+                "host" => "127.0.0.1",
+                "port" => "3308",
+                "database" => "$database_name",
+                "username" => "root",
+                "password" => "",
+                "charset" => "utf8",
+                "collation" => "utf8_unicode_ci",
+                "prefix" => "",
+                "strict" => true,
+                "engine" => null
+            ]]);
+    
+            DB::setDefaultConnection($new_connection);
+    
+            Artisan::call('migrate', ['--database' => $new_connection]);
         }
 
-
-        //so fazer isso se logar
-        $database_name = $request->usuario;
-
-        DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name}");
-
-        $new_connection = 'tenant';
-
-        DB::purge('mysql');
-        config(["database.connections.$new_connection" => [
-            "driver" => "mysql",
-            "host" => "127.0.0.1",
-            "port" => "3308",
-            "database" => "$database_name",
-            "username" => "root",
-            "password" => "",
-            "charset" => "utf8",
-            "collation" => "utf8_unicode_ci",
-            "prefix" => "",
-            "strict" => true,
-            "engine" => null
-        ]]);
-
-        DB::setDefaultConnection($new_connection);
-
-        Artisan::call('migrate', ['--database' => $new_connection]);
     }
 }
