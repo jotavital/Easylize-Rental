@@ -20,6 +20,7 @@ class CompaniesSeeder extends Seeder
             'id' => Uuid::uuid(),
             'usuario' => "rentalcar",
             'senha' => Hash::make("123456"),
+            'email' => "rentalcar@gmail.com",
             'banco_empresa' => "rentalcar"
         ]);
     }

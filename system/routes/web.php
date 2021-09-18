@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\UsuarioController;
 
-Route::get('/', [UserController::class, 'login']);
-Route::get('/login', [UserController::class, 'login']);
-Route::post('/auth', [UserController::class, 'auth']);
+Route::get('/', [CompanyController::class, 'login']);
+
+Route::get('/login', function () {
+    if(session()->has('email')){
+        return redirect('/dashboard');
+    }
+});
+
+Route::get('/dashboard', [UsuarioController::class, 'dashboard']);
+
+Route::post('/auth', [CompanyController::class, 'auth']);

@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
 
 class Initdb extends Migration
 {
@@ -15,6 +16,12 @@ class Initdb extends Migration
     public function up()
     {
         $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
+
+        $defaultConnection = DB::getDefaultConnection();
+        $databaseName = Config::get('database.connections.' . $defaultConnection . '.database');
+
+        $sql = str_replace("easylize_rental", $databaseName, $sql);
+        
         DB::unprepared($sql);
     }
 

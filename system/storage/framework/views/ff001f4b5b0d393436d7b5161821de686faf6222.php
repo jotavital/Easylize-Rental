@@ -11,11 +11,11 @@
     <form action="/auth" method="POST">
       <?php echo csrf_field(); ?>
       <div class="mb-3 form-outline">
-        <input type="text" id="usuario" name="usuario" class="form-control" />
-        <label class="form-label" for="usuario">Usuário</label>
+        <input type="email" id="email" name="email" class="form-control" required />
+        <label class="form-label" for="email">E-mail</label>
       </div>
       <div class="mb-4 form-outline">
-        <input type="password" id="senha" name="senha" class="form-control" />
+        <input type="password" id="senha" name="senha" class="form-control" required />
         <label class="form-label" for="senha">Senha</label>
       </div>
       <!-- <div class="mb-3 d-flex justify-content-center">
