@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Company;
+use App\Models\System\Company;
 
 class CompanyController extends Controller
 {
