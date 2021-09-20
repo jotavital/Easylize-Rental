@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +17,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UsuarioController;
 
-Route::get('/', [CompanyController::class, 'login']);
+Route::get('/', [AuthController::class, 'showLogin']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
+Route::post('/login/do', [AuthController::class, 'login'])->name('login');
 
-Route::get('/login', function () {
-    if(session()->has('email')){
-        return redirect('/dashboard');
-    }
-});
-
-Route::get('/dashboard', [UsuarioController::class, 'dashboard']);
-
-Route::post('/auth', [CompanyController::class, 'auth']);
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');

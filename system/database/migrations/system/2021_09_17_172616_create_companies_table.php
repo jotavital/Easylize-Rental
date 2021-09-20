@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('usuario', 50)->unique();
-            $table->string('senha', 255)->unique();
+            $table->string('password', 255)->unique();
             $table->string('banco_empresa', 50)->unique();
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ class AddEmailFieldCompanies extends Migration
     public function up()
     {
         Schema::table('companies', function(Blueprint $table){
-            $table->string('email')->after('senha');
+            $table->string('email')->after('password');
         });
     }
 
