@@ -18,7 +18,13 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UsuarioController;
 
 Route::get('/', [AuthController::class, 'showLogin']);
-Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
-Route::post('/login/do', [AuthController::class, 'login'])->name('login');
 
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('company/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('company/login/do', [AuthController::class, 'login'])->name('login.do');
+Route::post('company/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('admin/login', [AuthController::class, 'showUserLogin'])->name('admin.login');
+Route::post('admin/login/do', [AuthController::class, 'userLogin'])->name('admin.login.do');
+
+Route::get('admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:webcompany');

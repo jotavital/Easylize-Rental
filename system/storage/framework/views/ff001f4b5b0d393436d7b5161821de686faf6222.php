@@ -8,7 +8,7 @@
     <div class="col-md-5 d-flex justify-content-center flex-column">
         <h1 class="mb-4 d-flex justify-content-center">Login - Easylize Rental</h1>
 
-        <form action="/login/do" class="form-floating" method="POST">
+        <form action="<?php echo e(route('login.do')); ?>" class="form-floating" method="POST">
             <?php echo csrf_field(); ?>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>

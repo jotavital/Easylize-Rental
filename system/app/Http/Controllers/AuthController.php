@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\System\Company;
+use Dotenv\Dotenv;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
+
     public function showLogin()
     {
         return view('login');
@@ -17,6 +21,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $dotenv = Dotenv::createImmutable(base_path());
+        $dotenv->load();
 
         $credentials = [
             'email' => $request->email,
@@ -45,13 +51,32 @@ class AuthController extends Controller
                 "strict" => true,
                 "engine" => null
             ]]);
-
-            DB::setDefaultConnection($new_connection);
-
+            
             Artisan::call('migrate', ['--database' => $new_connection, '--path' => 'database/migrations/tenant']);
-            return redirect()->route('dashboard');
+            Session::push('email', $company->email);
+
+            return redirect()->route('admin.login');
         } else {
-            return redirect()->route('showLogin')->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
+            return redirect()->route('login')->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
+        }
+    }
+
+    public function showUserLogin(){
+        return view('admin.login-admin');
+    }
+
+    public function userLogin(Request $request){
+        
+    }
+
+    public function dashboard(){
+        return view('admin.dashboard');
+    }
+
+    public function logout(Request $request){
+        if($request->option == "yes"){
+            Auth::guard('webcompany')->logout();
+            return redirect()->route('login');
         }
     }
 }

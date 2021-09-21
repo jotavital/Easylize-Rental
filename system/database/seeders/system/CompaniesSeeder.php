@@ -21,6 +21,7 @@ class CompaniesSeeder extends Seeder
             'usuario' => "rentalcar",
             'password' => Hash::make("123456"),
             'email' => "rentalcar@gmail.com",
+            'nome_empresa' => "Rental Car Locações",
             'banco_empresa' => "rentalcar"
         ]);
     }
