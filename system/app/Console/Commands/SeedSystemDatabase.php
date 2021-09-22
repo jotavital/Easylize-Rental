@@ -38,6 +38,6 @@ class SeedSystemDatabase extends Command
      */
     public function handle()
     {
-        Artisan::call("db:seed");
+        Artisan::call("db:seed --database=mysql");
     }
 }

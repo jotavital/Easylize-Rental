@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 
 class MigrateSystemDatabase extends Command
 {
@@ -38,6 +39,6 @@ class MigrateSystemDatabase extends Command
      */
     public function handle()
     {
-        Artisan::call("migrate --path=database/migrations/system");
+        Artisan::call("migrate --database=mysql --path=database/migrations/system");
     }
 }

@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title', 'Login'); ?>
+<?php $__env->startSection('title', 'Nome_empresa - Login'); ?>
 
 <?php $__env->startSection('content'); ?>
 
@@ -9,6 +9,9 @@
 use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+
+print_r("Database connected =>" . Config::get('database.connections.' . DB::getDefaultConnection() . '.database'));
+echo("<br><br> Default connection name => " . DB::getDefaultConnection());
 
 ?>
 

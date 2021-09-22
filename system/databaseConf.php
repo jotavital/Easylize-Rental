@@ -1,5 +1,11 @@
 <?php
 
+/*
+
+! THIS FILE IS GONNA BE USED TO SET THE TENANT DATABASE CONNECTIONS ON-THE-FLY
+
+*/
+
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(base_path());
@@ -8,10 +14,10 @@ $dotenv->load();
 return [
     'driver' => 'mysql',
     'url' => env('DATABASE_URL'),
-    'host' => env('DB_HOST', '127.0.0.1'),
-    'port' => env('DB_PORT', '3306'),
-    'database' => env('rentalcar', 'rentalcar'),
-    'username' => env('DB_USERNAME', 'forge'),
+    'host' => env('DB_HOST', 'DB_HOST'),
+    'port' => env('DB_PORT', 'DB_PORT'),
+    'database' => env('DB_DATABASE', 'DB_DATABASE'),
+    'username' => env('DB_USERNAME', 'DB_USERNAME'),
     'password' => env('DB_PASSWORD', ''),
     'unix_socket' => env('DB_SOCKET', ''),
     'charset' => 'utf8mb4',
