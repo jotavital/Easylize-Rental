@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Dotenv\Dotenv;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $dotenv = Dotenv::createImmutable(base_path());
+        $dotenv->load();
+        
+        DB::setDefaultConnection('mysql');
         Artisan::call("database:createSystemDb");
         Artisan::call("database:migrateSystemDatabase");
         Artisan::call("database:seedSystemDb");

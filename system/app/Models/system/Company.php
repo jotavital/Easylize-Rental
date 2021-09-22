@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Company extends Authenticatable
 {
+    protected $connection = 'mysql';
     public $table = "companies";
     use HasFactory;
 

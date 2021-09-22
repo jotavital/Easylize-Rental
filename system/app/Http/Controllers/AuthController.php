@@ -24,12 +24,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $actual_connection = DB::getDefaultConnection();
+        $old_connection = 'mysql';
         $new_connection = 'tenant';
         $old_database = Config::get('database.connections.tenant.database');
-
-        $dotenv = Dotenv::createImmutable(base_path());
-        $dotenv->load();
 
         $credentials = [
             'email' => $request->email,
@@ -37,18 +34,17 @@ class AuthController extends Controller
         ];
 
         if (Auth::guard('webcompany')->attempt($credentials)) {
-            // ! ainda está pegando o banco de dados rentalCar e nao o do system!!
             $company = Company::where('email', $request->email)->get()->first();
 
             $database_name = $company->banco_empresa;
             DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name} DEFAULT CHARACTER SET utf8");
 
-            MyHelpers::setDefaultDabaseConnection($actual_connection, $new_connection, $old_database, $database_name);
+            MyHelpers::setDefaultDabaseConnection($old_connection, $new_connection, $old_database, $database_name); // change tenant database configuration
 
-            // ! error running the migrations in wrong table!! tenta criar um comando pra migrar
-            // Artisan::call('migrate', ['--database' => 'tenant', '--path' => 'database/migrations/tenant']);
+            Artisan::call('migrate', ['--database' => 'tenant', '--path' => 'database/migrations/tenant']); // migrate tenant database
 
             Session::push('email', $company->email);
+            Session::push('nome_empresa', $company->nome_empresa);
 
             return redirect()->route('admin.login');
         } else {
@@ -63,6 +59,7 @@ class AuthController extends Controller
 
     public function userLogin(Request $request)
     {
+        
     }
 
     public function dashboard()
@@ -74,6 +71,7 @@ class AuthController extends Controller
     {
         if ($request->option == "yes") {
             Auth::guard('webcompany')->logout();
+            Session::flush();
             return redirect()->route('login');
         }
     }

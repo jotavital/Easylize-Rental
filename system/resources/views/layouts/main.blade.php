@@ -1,3 +1,7 @@
+<?php
+
+use Illuminate\Support\Facades\Session;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
-    <title>@yield('title')</title>
+
+    @if(session('nome_empresa'))
+    <title>{{ session('nome_empresa')[0] }} - @yield('title')</title>
+    @else
+    <title>Easylize Rental - @yield('title')</title>
+    @endif
 </head>
 
 <body>

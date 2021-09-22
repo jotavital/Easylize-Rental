@@ -10,5 +10,5 @@ use App\Models\System\Company;
 
 class CompanyController extends Controller
 {
-    
+
 }

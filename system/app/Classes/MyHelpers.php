@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use Illuminate\Support\Facades\Artisan;
+
 class MyHelpers{
 
     public static function setDefaultDabaseConnection($actual_connection, $new_connection, $old_database, $new_database){
@@ -11,7 +13,6 @@ class MyHelpers{
         $newDatabase = "'database' => '$new_database',";
 
         $cachedConfigPath = base_path() . "/bootstrap/cache/config.php";
-        
         $cachedConfigFileText = file_get_contents($cachedConfigPath, FILE_TEXT);
         $newCachedConfigFileText = str_replace($oldConnection, $newConnection, $cachedConfigFileText);
         file_put_contents($cachedConfigPath, $newCachedConfigFileText);
