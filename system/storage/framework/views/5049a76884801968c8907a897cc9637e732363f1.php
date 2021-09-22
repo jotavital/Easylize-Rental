@@ -23,8 +23,8 @@ $companyData = Company::where('email', Session::get('email'))->get()->first();
             <form action="<?php echo e(route('admin.login.do')); ?>" class="col-md-6 form-floating" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
-                    <label for="email">E-mail</label>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
+                    <label for="login">E-mail</label>
                 </div>
                 <div class="form-floating mb-4">
                     <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>

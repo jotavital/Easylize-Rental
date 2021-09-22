@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Database\Seeders\System\SystemDatabaseSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -38,6 +39,9 @@ class SeedSystemDatabase extends Command
      */
     public function handle()
     {
-        Artisan::call("db:seed --database=mysql");
+        Artisan::call('db:seed', [
+            '--class' => SystemDatabaseSeeder::class,
+            '--database' => 'mysql'
+        ]);
     }
 }

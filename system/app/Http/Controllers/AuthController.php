@@ -26,7 +26,7 @@ class AuthController extends Controller
     {
         $old_connection = 'mysql';
         $new_connection = 'tenant';
-        $old_database = Config::get('database.connections.tenant.database');
+        $old_database = 'mysql';
 
         $credentials = [
             'email' => $request->email,
@@ -41,7 +41,8 @@ class AuthController extends Controller
 
             MyHelpers::setDefaultDabaseConnection($old_connection, $new_connection, $old_database, $database_name); // change tenant database configuration
 
-            Artisan::call('migrate', ['--database' => 'tenant', '--path' => 'database/migrations/tenant']); // migrate tenant database
+            Artisan::call("database:migrateTenantDatabase"); // migrate tenant database
+            Artisan::call('database:seedTenantDb');
 
             Session::push('email', $company->email);
             Session::push('nome_empresa', $company->nome_empresa);
@@ -59,7 +60,16 @@ class AuthController extends Controller
 
     public function userLogin(Request $request)
     {
-        
+        $credentials = [
+            'username' => $request->login,
+            'password' => $request->senha
+        ];
+
+        if(Auth::attempt($credentials)){
+            dd('logado!!!!');
+        }else{
+            dd($credentials);
+        }
     }
 
     public function dashboard()

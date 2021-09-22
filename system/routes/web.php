@@ -21,10 +21,11 @@ Route::get('/', [AuthController::class, 'showLogin']);
 
 Route::get('company/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('company/login/do', [AuthController::class, 'login'])->name('login.do');
-Route::post('company/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('company/logout', [AuthController::class, 'logout'])->name('logout.view')->middleware('auth:webcompany');
+Route::post('company/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:webcompany');
 
 
-Route::get('admin/login', [AuthController::class, 'showUserLogin'])->name('admin.login');
+Route::get('admin/login', [AuthController::class, 'showUserLogin'])->name('admin.login')->middleware('auth:webcompany');
 Route::post('admin/login/do', [AuthController::class, 'userLogin'])->name('admin.login.do');
 
 Route::get('admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:webcompany');

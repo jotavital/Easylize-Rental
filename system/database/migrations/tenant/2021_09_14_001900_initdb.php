@@ -17,8 +17,7 @@ class Initdb extends Migration
     {
         $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
 
-        $defaultConnection = DB::getDefaultConnection();
-        $databaseName = Config::get('database.connections.' . $defaultConnection . '.database');
+        $databaseName = Config::get('database.connections.tenant.database');
 
         $sql = str_replace("easylize_rental", $databaseName, $sql);
         

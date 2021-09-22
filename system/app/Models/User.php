@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+    protected $connection = 'tenant';
     public $table = "usuario";
     public $timestamps = false;
 
