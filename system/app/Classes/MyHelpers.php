@@ -8,28 +8,20 @@ use Illuminate\Support\Facades\Redirect;
 class MyHelpers
 {
 
-    public static function setDefaultDabaseConnection($actual_connection, $new_connection, $old_database, $new_database)
+    public static function setDefaultDabaseConnection($new_database) // ! set default database for the TENANTS !
     {
+        $configFilePath = base_path() . "/databaseConf.php";
+        $databaseFilePath = base_path() . "config/database.php";
 
-        $cachedConfigPath = base_path() . "/bootstrap/cache/config.php";
+        $oldDatabase = "'database' => env('DB_DATABASE', 'DB_DATABASE'),";
+        $newDatabase = "'database' => env('$new_database', '$new_database'),";
 
-        if (file_exists($cachedConfigPath) == false) {
-            Artisan::call('optimize');
+        // ! set the default database in tenants config
+        $configFileText = file_get_contents($configFilePath, FILE_TEXT);
+        $newConfigFileText = str_replace($oldDatabase, $newDatabase, $configFileText);
+        file_put_contents($configFilePath, $newConfigFileText);
 
-            $oldConnection = "'default' => '$actual_connection',";
-            $newConnection = "'default' => '$new_connection',";
-            $oldDatabase = "'database' => '$old_database',";
-            $newDatabase = "'database' => '$new_database',";
-
-            $cachedConfigFileText = file_get_contents($cachedConfigPath, FILE_TEXT);
-            $newCachedConfigFileText = str_replace($oldConnection, $newConnection, $cachedConfigFileText);
-            file_put_contents($cachedConfigPath, $newCachedConfigFileText);
-
-            $cachedConfigFileText = file_get_contents($cachedConfigPath, FILE_TEXT);
-            $newCachedConfigFileText = str_replace($oldDatabase, $newDatabase, $cachedConfigFileText);
-            file_put_contents($cachedConfigPath, $newCachedConfigFileText);
-
-            return Redirect::refresh();
-        }
+        Artisan::call('optimize');
+        // return Redirect::refresh();
     }
 }

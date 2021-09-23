@@ -27,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
         $dotenv = Dotenv::createImmutable(base_path());
         $dotenv->load();
         

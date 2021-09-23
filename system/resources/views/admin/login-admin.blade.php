@@ -1,12 +1,3 @@
-<?php
-
-use App\Models\System\Company;
-use Illuminate\Support\Facades\Session;
-
-$companyData = Company::where('email', Session::get('email'))->get()->first();
-
-?>
-
 @extends('layouts.main')
 
 @section('title', 'Login')
@@ -17,7 +8,7 @@ $companyData = Company::where('email', Session::get('email'))->get()->first();
 <div class="container col-md-12 d-flex justify-content-center">
     <div class="col-md-8 d-flex justify-content-center flex-column">
 
-        <h1 class="mb-4 d-flex justify-content-center">Login - {{ $companyData->nome_empresa }}</h1>
+        <h1 class="mb-4 d-flex justify-content-center">Login - {{ $nome_empresa }} </h1>
 
         <div class="col-md-12 d-flex justify-content-center">
             <form action="{{ route('admin.login.do') }}" class="col-md-6 form-floating" method="POST">

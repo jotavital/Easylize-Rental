@@ -24,9 +24,6 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $old_connection = 'mysql';
-        $new_connection = 'tenant';
-        $old_database = 'mysql';
 
         $credentials = [
             'email' => $request->email,
@@ -34,28 +31,28 @@ class AuthController extends Controller
         ];
 
         if (Auth::guard('webcompany')->attempt($credentials)) {
+
             $company = Company::where('email', $request->email)->get()->first();
+
+            $_SESSION['nome_empresa'] = $company->nome_empresa;
 
             $database_name = $company->banco_empresa;
             DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name} DEFAULT CHARACTER SET utf8");
 
-            MyHelpers::setDefaultDabaseConnection($old_connection, $new_connection, $old_database, $database_name); // change tenant database configuration
+            MyHelpers::setDefaultDabaseConnection($database_name); // !change tenant database configuration
 
-            Artisan::call("database:migrateTenantDatabase"); // migrate tenant database
+            Artisan::call("database:migrateTenantDatabase");
             Artisan::call('database:seedTenantDb');
 
-            Session::push('email', $company->email);
-            Session::push('nome_empresa', $company->nome_empresa);
-
-            return redirect()->route('admin.login');
+            return redirect()->route('admin.login', ['nome_empresa' => $company->nome_empresa]);
         } else {
             return redirect()->route('login')->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
         }
     }
 
-    public function showUserLogin()
+    public function showUserLogin($nome_empresa)
     {
-        return view('admin.login-admin');
+        return view('admin.login-admin', ['nome_empresa' => $nome_empresa]);
     }
 
     public function userLogin(Request $request)
@@ -65,10 +62,10 @@ class AuthController extends Controller
             'password' => $request->senha
         ];
 
-        if(Auth::attempt($credentials)){
-            dd('logado!!!!');
-        }else{
-            dd($credentials);
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->back()->with('message', "Não foi possível realizar o login, verifique as credenciais!");
         }
     }
 
@@ -81,7 +78,7 @@ class AuthController extends Controller
     {
         if ($request->option == "yes") {
             Auth::guard('webcompany')->logout();
-            Session::flush();
+            $request->session()->flush();
             return redirect()->route('login');
         }
     }
