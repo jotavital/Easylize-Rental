@@ -46,7 +46,7 @@ class AuthController extends Controller
 
             return redirect()->route('admin.login', ['nome_empresa' => $company->nome_empresa]);
         } else {
-            return redirect()->route('login')->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
+            return redirect()->back()->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
         }
     }
 
@@ -65,7 +65,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->back()->with('message', "Não foi possível realizar o login, verifique as credenciais!");
+            return redirect()->back()->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
         }
     }
 

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="<?php echo e(route('logout')); ?>" method="POST">
+    <form action="<?php echo e(route('logout.do')); ?>" method="POST">
         <?php echo csrf_field(); ?>
         <input type="text" name="option" value="yes">
         <button type="submit">logout</button>

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="{{ route('logout') }}" method="POST">
+    <form action="{{ route('logout.do') }}" method="POST">
         @csrf
         <input type="text" name="option" value="yes">
         <button type="submit">logout</button>
