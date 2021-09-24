@@ -19,6 +19,7 @@ class AuthController extends Controller
 
     public function showLogin()
     {
+        MyHelpers::restoreDefaults();
         return view('login');
     }
 

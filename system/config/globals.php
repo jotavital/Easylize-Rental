@@ -2,7 +2,7 @@
 
 return [
     'company_data' => [
-        'nome_empresa' => 'Rental Car Locações'
+        'nome_empresa' => 'Easylize Rental'
     ],
 ]
 
