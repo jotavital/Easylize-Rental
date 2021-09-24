@@ -39,6 +39,7 @@ class AuthController extends Controller
             $database_name = $company->banco_empresa;
             DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name} DEFAULT CHARACTER SET utf8");
 
+            MyHelpers::setCompanyDataGlobals('nome_empresa', 'Easylize Rental', 'nome_empresa', $company->nome_empresa);
             MyHelpers::setDefaultDabaseConnection($database_name); // !change tenant database configuration
 
             Artisan::call("database:migrateTenantDatabase");
@@ -76,10 +77,11 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        if ($request->option == "yes") {
-            Auth::guard('webcompany')->logout();
-            $request->session()->flush();
-            return redirect()->route('login');
-        }
+        Auth::guard('webcompany')->logout();
+        $request->session()->flush();
+        
+        MyHelpers::restoreDefaults();
+
+        return redirect()->route('login');
     }
 }

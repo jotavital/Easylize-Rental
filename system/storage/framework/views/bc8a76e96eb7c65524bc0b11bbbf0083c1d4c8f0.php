@@ -1,7 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Session;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,16 +10,14 @@ use Illuminate\Support\Facades\Session;
     <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
     <link rel="shortcut icon" href="<?php echo e(asset('img/favicon.png')); ?>" type="image/x-icon">
 
-    <?php if(session('nome_empresa')): ?>
-    <title><?php echo e(session('nome_empresa')[0]); ?> - <?php echo $__env->yieldContent('title'); ?></title>
-    <?php else: ?>
-    <title>Easylize Rental - <?php echo $__env->yieldContent('title'); ?></title>
-    <?php endif; ?>
+    <title><?php echo e(config('globals.company_data.nome_empresa')); ?> - <?php echo $__env->yieldContent('title'); ?></title>
 </head>
 
 <body>
 
-    <?php echo $__env->yieldContent('content'); ?>
+    <div class="container">
+        <?php echo $__env->yieldContent('content'); ?>
+    </div>
 
     <footer>
         <small style="float:right;">

@@ -1,7 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Session;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,16 +10,14 @@ use Illuminate\Support\Facades\Session;
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
 
-    @if(session('nome_empresa'))
-    <title>{{ session('nome_empresa')[0] }} - @yield('title')</title>
-    @else
-    <title>Easylize Rental - @yield('title')</title>
-    @endif
+    <title>{{ config('globals.company_data.nome_empresa') }} - @yield('title')</title>
 </head>
 
 <body>
 
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
 
     <footer>
         <small style="float:right;">
