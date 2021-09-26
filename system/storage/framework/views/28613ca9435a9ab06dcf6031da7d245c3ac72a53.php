@@ -12,7 +12,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <form action="<?php echo e(route('logout.do')); ?>" method="POST">
+                            <form action="<?php echo e(route('admin.logout.do', ['tenant' => $_COOKIE['tenant_name']])); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
                                 <button class="btn btn-danger btn-sm" type="submit">Logout</button>
                             </form>

@@ -4,22 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Classes\MyHelpers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\System\Company;
-use Dotenv\Dotenv;
-use Illuminate\Foundation\Console\OptimizeCommand;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
+use App\Models\Tenant;
 
 class AuthController extends Controller
 {
 
     public function showLogin()
     {
-        MyHelpers::restoreDefaults();
+
         return view('login');
     }
 
@@ -32,29 +27,23 @@ class AuthController extends Controller
         ];
 
         if (Auth::guard('webcompany')->attempt($credentials)) {
-
             $company = Company::where('email', $request->email)->get()->first();
 
-            $_SESSION['nome_empresa'] = $company->nome_empresa;
-
             $database_name = $company->banco_empresa;
-            DB::statement("CREATE DATABASE IF NOT EXISTS {$database_name} DEFAULT CHARACTER SET utf8");
 
-            MyHelpers::setCompanyDataGlobals('nome_empresa', 'Easylize Rental', 'nome_empresa', $company->nome_empresa);
-            MyHelpers::setDefaultDabaseConnection($database_name); // !change tenant database configuration
+            Tenant::updateOrCreate(['id' => $database_name]);
 
-            Artisan::call("database:migrateTenantDatabase");
-            Artisan::call('database:seedTenantDb');
-
-            return redirect()->route('admin.login', ['nome_empresa' => $company->nome_empresa]);
+            setcookie('tenant_name', $database_name, time() + 60 * 60 * 24 * 30, '/');
+            setcookie('nome_empresa', $company->nome_empresa, time() + 60 * 60 * 24 * 30, '/');
+            return redirect()->route('admin.login', ['tenant' => $database_name]);
         } else {
             return redirect()->back()->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
         }
     }
 
-    public function showUserLogin($nome_empresa)
+    public function showUserLogin()
     {
-        return view('admin.login-admin', ['nome_empresa' => $nome_empresa]);
+        return view('admin.login-admin');
     }
 
     public function userLogin(Request $request)
@@ -65,10 +54,9 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('admin.dashboard');
-        } else {
-            return redirect()->back()->with('message', "Não foi possível realizar o login! Verifique as credenciais e tente novamente.");
+            return redirect()->route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name']]);
         }
+        return redirect()->route('admin.login', ['tenant' => $_COOKIE['tenant_name'], 'message' => "Não foi possível realizar o login! Verifique as credenciais e tente novamente."]);
     }
 
     public function dashboard()
@@ -76,12 +64,11 @@ class AuthController extends Controller
         return view('admin.dashboard');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::guard('webcompany')->logout();
-        $request->session()->flush();
-        
-        MyHelpers::restoreDefaults();
+
+        MyHelpers::deleteAllCookies();
 
         return redirect()->route('login');
     }

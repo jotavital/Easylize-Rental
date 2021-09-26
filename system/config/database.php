@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'tenant'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
             ]) : [],
         ], //? endOfMysqlConfig
 
-        'tenant' => include(base_path() . "/databaseConf.php"),
+        // 'tenant' => include(base_path() . "/databaseConf.php"),
 
         'pgsql' => [
             'driver' => 'pgsql',

@@ -12,7 +12,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <form action="{{ route('logout.do') }}" method="POST">
+                            <form action="{{ route('admin.logout.do', ['tenant' => $_COOKIE['tenant_name']]) }}" method="POST">
                                 @csrf
                                 <button class="btn btn-danger btn-sm" type="submit">Logout</button>
                             </form>

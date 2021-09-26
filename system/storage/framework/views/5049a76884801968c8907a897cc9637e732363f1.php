@@ -7,26 +7,26 @@
 <div class="container col-md-12 d-flex justify-content-center">
     <div class="col-md-8 d-flex justify-content-center flex-column">
 
-        <h1 class="mb-4 d-flex justify-content-center">Login - <?php echo e($nome_empresa); ?> </h1>
+        <h1 class="mb-4 d-flex justify-content-center">Login - <?php echo e(isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental"); ?> </h1>
 
         <div class="col-md-12 d-flex justify-content-center">
-            <form action="<?php echo e(route('admin.login.do')); ?>" class="col-md-6 form-floating" method="POST">
+            <form action="<?php echo e(route('admin.login.do', ['tenant' => 'rentalcar'])); ?>" class="col-md-6 form-floating" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
-                    <label for="login">E-mail</label>
+                    <label for="login">Usuário</label>
                 </div>
                 <div class="form-floating mb-4">
                     <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
                     <label for="senha">Senha</label>
                 </div>
 
-                <?php if(session('message')): ?>
+                <?php if(isset($_GET['message'])): ?>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <div>
                         <small>
                             <p class="p-0 m-0" style="text-align:center;">
-                                <?php echo e(session('message')); ?>
+                                <?php echo e($_GET['message']); ?>
 
                             </p>
                         </small>

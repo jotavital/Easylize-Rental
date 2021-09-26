@@ -12,6 +12,7 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "stancl/tenancy": "^3.4",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {

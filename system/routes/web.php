@@ -17,16 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UsuarioController;
 
-Route::get('/', [AuthController::class, 'showLogin'])->middleware('auth:webcompany')->middleware('auth:web');
+Route::get('/', [AuthController::class, 'showLogin'])->middleware('auth:web');
 
 Route::get('company/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('company/login/do', [AuthController::class, 'login'])->name('login.do');
-Route::get('admin/login/{nome_empresa}', [AuthController::class, 'showUserLogin'])->name('admin.login')->middleware('auth:webcompany');
-Route::post('admin/login/do', [AuthController::class, 'userLogin'])->name('admin.login.do');
-
-Route::get('company/logout', [AuthController::class, 'logout'])->name('logout.view')->middleware('auth:webcompany');
-Route::post('company/logout/do', [AuthController::class, 'logout'])->name('logout.do')->middleware('auth:webcompany');
-Route::get('admin/logout', [AuthController::class, 'logout'])->name('admin.logout.view')->middleware('auth:webcompany');
-Route::post('admin/logout/do', [AuthController::class, 'logout'])->name('admin.logout.do')->middleware('auth:webcompany');
-
-Route::get('admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:webcompany')->middleware('auth:web');
