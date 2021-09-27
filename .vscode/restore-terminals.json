@@ -1,0 +1,30 @@
+{
+    "artificialDelayMilliseconds": 300,
+    "keepExistingTerminalsOpen": false,
+    "runOnStartup": true,
+    "terminals": [
+        {
+            "splitTerminals": [
+                {
+                    "name": "serve",
+                    "commands": [
+                        "cd system/",
+                        "composer update -vvv && php artisan optimize",
+                        "php artisan serve"
+                    ]
+                }
+            ]
+        },
+        {
+            "splitTerminals": [
+                {
+                    "name": "cmd",
+                    "commands": [
+                        "cd system/",
+                        "start http://localhost:8000"
+                    ]
+                }
+            ]
+        }
+    ]
+}

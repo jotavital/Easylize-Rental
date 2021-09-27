@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UsuarioController;
 
-Route::get('/', [AuthController::class, 'showLogin'])->middleware('auth:web');
+Route::get('/', [AuthController::class, 'showLogin']);
 
 Route::get('company/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('company/login/do', [AuthController::class, 'login'])->name('login.do');

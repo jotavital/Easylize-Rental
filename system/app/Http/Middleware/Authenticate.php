@@ -20,8 +20,6 @@ class Authenticate extends Middleware
 
             if (Auth::guard('webcompany')->check()) {
                 return route('admin.login', ['tenant' => $_COOKIE['tenant_name']]);
-            }else if(Auth::guard('web')->check()){
-                return route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name']]);
             }
             
             return route('login');
