@@ -10,7 +10,7 @@
         <h1 class="mb-4 d-flex justify-content-center">Login - {{ isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} </h1>
 
         <div class="col-md-12 d-flex justify-content-center">
-            <form action="{{ route('admin.login.do', ['tenant' => 'rentalcar']) }}" class="col-md-6 form-floating" method="POST">
+            <form action="{{ route('admin.login.do', ['tenant' => $_COOKIE['tenant_name']]) }}" class="col-md-6 form-floating" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
@@ -21,12 +21,12 @@
                     <label for="senha">Senha</label>
                 </div>
 
-                @if(isset($_GET['message']))
+                @if(session('message'))
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <div>
                         <small>
                             <p class="p-0 m-0" style="text-align:center;">
-                                {{$_GET['message']}}
+                                {{ session('message') }}
                             </p>
                         </small>
                     </div>

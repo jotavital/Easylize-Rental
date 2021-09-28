@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\UserAuthController;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
-use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
-use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +23,23 @@ use Stancl\Tenancy\Middleware\InitializeTenancyByPath;
 
 Route::group([
     'prefix' => '/{tenant}',
-    'middleware' => [InitializeTenancyByPath::class],
+    'middleware' => [InitializeTenancyByPath::class, 'web'],
 ], function () {
 
-    Route::get('/admin/login', [AuthController::class, 'showUserLogin'])->name('admin.login');
-    Route::post('/admin/login/do', [AuthController::class, 'userLogin'])->name('admin.login.do');
-    Route::get('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout.view');
-    Route::post('/admin/logout/do', [AuthController::class, 'logout'])->name('admin.logout.do');
+    Route::group([
+        'middleware' => "isLogged"
+    ], function () {
+        // ! login routes
+        Route::get('/', function () {
+            return redirect()->route('admin.login', ['tenant' => $_COOKIE['tenant_name']]);
+        });
+        Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
+        Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');
+    });
 
-    Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
+    // ! logout routes
+    Route::get('/admin/logout', [UserAuthController::class, 'logout'])->name('admin.logout.view');
+    Route::post('/admin/logout/do', [UserAuthController::class, 'logout'])->name('admin.logout.do');
+
+    Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:web');
 });

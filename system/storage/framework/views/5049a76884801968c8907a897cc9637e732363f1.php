@@ -10,7 +10,7 @@
         <h1 class="mb-4 d-flex justify-content-center">Login - <?php echo e(isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental"); ?> </h1>
 
         <div class="col-md-12 d-flex justify-content-center">
-            <form action="<?php echo e(route('admin.login.do', ['tenant' => 'rentalcar'])); ?>" class="col-md-6 form-floating" method="POST">
+            <form action="<?php echo e(route('admin.login.do', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="col-md-6 form-floating" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
@@ -21,12 +21,12 @@
                     <label for="senha">Senha</label>
                 </div>
 
-                <?php if(isset($_GET['message'])): ?>
+                <?php if(session('message')): ?>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <div>
                         <small>
                             <p class="p-0 m-0" style="text-align:center;">
-                                <?php echo e($_GET['message']); ?>
+                                <?php echo e(session('message')); ?>
 
                             </p>
                         </small>

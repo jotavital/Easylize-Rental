@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\UserController;
 
-Route::get('/', [AuthController::class, 'showLogin']);
-
-Route::get('company/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('company/login/do', [AuthController::class, 'login'])->name('login.do');
+Route::get('/', [UserController::class, 'showRegister'])->name('showRegister');

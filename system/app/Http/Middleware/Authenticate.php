@@ -17,12 +17,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-
-            if (Auth::guard('webcompany')->check()) {
-                return route('admin.login', ['tenant' => $_COOKIE['tenant_name']]);
-            }
-            
-            return route('login');
+            return route('admin.login', ['tenant' => $_COOKIE['tenant_name']]);
         }
     }
 }
