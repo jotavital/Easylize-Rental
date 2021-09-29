@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\System\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
 
-    public static function verifyUsername(Request $request)
+    public static function getAllCompanies()
     {
-        if ($request->usuario == "default") {
-            echo json_encode("True request!");
-        }else{
-            echo json_encode("False request!");
-        }
+        echo json_encode(Company::all());
     }
 }

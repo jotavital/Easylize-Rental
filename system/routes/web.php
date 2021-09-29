@@ -22,4 +22,4 @@ Route::get('/', [EmpresaController::class, 'showRegister'])->name('showRegister'
 
 
 // ! verify data routes
-Route::post('/verifyUsername', [CompanyController::class, 'verifyUsername'])->name('verifyUsername');
+Route::post('/getAllCompanies', [CompanyController::class, 'getAllCompanies'])->name('getAllCompanies');
