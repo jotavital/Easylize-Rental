@@ -5,16 +5,18 @@ class VerifyCompanyUsername {
     }
 
     usernameExists(companies, usuarioInputValue) {
-
         var result;
 
-        companies.forEach(element => {
+        for (let i = 0; i < companies.length; i++) {
+            const element = companies[i];
+
             if (element['usuario'] == usuarioInputValue) {
                 result = true;
+                break;
             } else {
                 result = false;
             }
-        })
+        }
 
         return result;
     }

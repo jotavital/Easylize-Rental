@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCompletarCadastroFieldToEmpresa extends Migration
+class RemoveEmailFieldCompany extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCompletarCadastroFieldToEmpresa extends Migration
      */
     public function up()
     {
-        Schema::table('empresa', function (Blueprint $table) {
-            $table->tinyInteger('completar_cadastro')->after('tipo_telefone');
+        Schema::table('companies', function(Blueprint $table){
+            $table->dropColumn('email');
         });
     }
 
@@ -25,8 +25,6 @@ class AddCompletarCadastroFieldToEmpresa extends Migration
      */
     public function down()
     {
-        Schema::table('empresa', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

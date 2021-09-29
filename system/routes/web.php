@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\CompanyController;
 
-Route::get('/', [EmpresaController::class, 'showRegister'])->name('showRegister');
+Route::get('/', function(){
+    return redirect()->route('showRegister');
+});
+Route::get('/register', [CompanyController::class, 'showRegister'])->name('showRegister');
+Route::post('/register/do', [CompanyController::class, 'register'])->name('register.do');
 
 
 // ! verify data routes

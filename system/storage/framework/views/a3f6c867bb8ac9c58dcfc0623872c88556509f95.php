@@ -16,7 +16,7 @@
         <h1 class="mb-4 d-flex justify-content-center text-center">Cadastro</h1>
 
         <div class="col-md-12 d-flex justify-content-center">
-            <form action="" id="registerForm" class="col-md-6 form-floating needs-validation" method="POST" novalidate>
+            <form action="<?php echo e(route('register.do')); ?>" id="registerForm" class="col-md-6 form-floating needs-validation" method="POST" novalidate>
                 <?php echo csrf_field(); ?>
                 <div class="mb-3">
                     <label for="usuario" class="form-label">Usuário</label>
@@ -41,12 +41,23 @@
                     </div>
                 </div>
 
-                <?php if(session('message')): ?>
+                <?php if(session('error')): ?>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <div>
                         <small>
                             <p class="p-0 m-0" style="text-align:center;">
                                 <?php echo e(session('message')); ?>
+
+                            </p>
+                        </small>
+                    </div>
+                </div>
+                <?php elseif(session('success')): ?>
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <div>
+                        <small>
+                            <p class="p-0 m-0" style="text-align:center;">
+                                <?php echo e(session('success')); ?>
 
                             </p>
                         </small>
@@ -97,6 +108,7 @@
             var userNameExists = verifyUsernameObj.usernameExists(companies, usuarioInputValue);
 
             invalidFeedbackUsernameDiv.innerHTML = '';
+            usuarioInput.classList.remove('is-valid');
             if (usernameTooShort) {
                 usuarioInput.classList.add('is-invalid');
                 invalidFeedbackUsernameDiv.appendChild(invalidFeedbackUsernameTooShort);
@@ -118,9 +130,9 @@
 
         senhaInput.onblur = function() {
 
-            console.log($(senhaInput).val().length);
             invalidFeedbackSenhaDiv.innerHTML = '';
             if ($(senhaInput).val().length < passwordMinLenght) {
+                senhaInput.classList.remove('is-valid');
                 senhaInput.classList.add('is-invalid');
                 invalidFeedbackSenhaDiv.appendChild(invalidFeedbackSenhaTooShort);
             } else {
