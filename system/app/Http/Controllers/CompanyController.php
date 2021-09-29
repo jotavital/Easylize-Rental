@@ -6,6 +6,7 @@ use App\Models\System\Company;
 use App\Models\Tenant;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
@@ -37,12 +38,17 @@ class CompanyController extends Controller
 
             $tenant->id = $request->usuario;
 
-            if($tenant->save()){
-                return redirect()->back()->with('success', 'Cadastro realizado com sucesso! Acesse sua dashboard utilizando easylizerental.com/' . $request->usuario);
-            }else{
-                return redirect()->back()->with('error', 'Erro ao realizar o cadastro, tente novamente.');    
-            }
+            if ($tenant->save()) {
 
+                $newTenant = DB::table('tenants')->select('data')->where('id', '=', $request->usuario)->get()->first();
+                $tenantDbName = json_decode($newTenant->data)->tenancy_db_name;
+
+                if (UserController::insertFirstUser($request, $tenantDbName)) {
+                    return redirect()->back()->with('success', 'Cadastro realizado com sucesso! Acesse sua dashboard em easylizerental.com/' . $request->usuario);
+                }
+            } else {
+                return redirect()->back()->with('error', 'Erro ao realizar o cadastro, tente novamente.');
+            }
         } else {
             return redirect()->back()->with('error', 'Erro ao realizar o cadastro, tente novamente.');
         }

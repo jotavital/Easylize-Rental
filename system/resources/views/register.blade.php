@@ -32,6 +32,7 @@
                     <div class="invalid-feedback" id="invalid-senha">
 
                     </div>
+                    <small class="d-flex">Seu primeiro login será realizado com os dados acima</small>
                 </div>
                 <div class="mb-3">
                     <label for="nome_empresa" class="form-label">Nome da empresa</label>

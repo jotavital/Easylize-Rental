@@ -18,10 +18,10 @@ class CompaniesSeeder extends Seeder
     {
         DB::table('companies')->insertOrIgnore([
             'id' => Uuid::uuid(),
-            'usuario' => "rentalcar",
-            'password' => Hash::make("123456"),
-            'nome_empresa' => "Rental Car Locações",
-            'banco_empresa' => "rentalcar"
+            'usuario' => "default",
+            'password' => Hash::make("12345678"),
+            'nome_empresa' => "Default Car Locações",
+            'banco_empresa' => "default"
         ]);
     }
 }

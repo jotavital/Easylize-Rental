@@ -1,3 +1,9 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +17,7 @@
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('/js/app.js') }}">
 
-    <title>{{ isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
+    <title>{{ isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'showRegister' ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
 </head>
 
 <body>
