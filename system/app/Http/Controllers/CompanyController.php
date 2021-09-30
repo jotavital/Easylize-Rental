@@ -43,7 +43,7 @@ class CompanyController extends Controller
                 $newTenant = DB::table('tenants')->select('data')->where('id', '=', $request->usuario)->get()->first();
                 $tenantDbName = json_decode($newTenant->data)->tenancy_db_name;
 
-                if (UserController::insertFirstUser($request, $tenantDbName)) {
+                if (UserController::insertFirstUser($request, $tenantDbName) && EmpresaController::insertFirstEmpresa($request, $tenantDbName)) {
                     return redirect()->back()->with('success', 'Cadastro realizado com sucesso! Acesse sua dashboard em easylizerental.com/' . $request->usuario);
                 }
             } else {

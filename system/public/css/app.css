@@ -6133,3 +6133,10 @@ form{
 .container{
     height: 95vh;
 }
+
+#sidebar{
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    transition: 0.4s;
+}

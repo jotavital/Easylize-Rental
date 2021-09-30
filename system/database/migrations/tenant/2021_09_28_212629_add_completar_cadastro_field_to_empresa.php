@@ -14,7 +14,7 @@ class AddCompletarCadastroFieldToEmpresa extends Migration
     public function up()
     {
         Schema::table('empresa', function (Blueprint $table) {
-            $table->tinyInteger('completar_cadastro')->after('tipo_telefone');
+            $table->integer('completar_cadastro')->after('tipo_telefone');
         });
     }
 

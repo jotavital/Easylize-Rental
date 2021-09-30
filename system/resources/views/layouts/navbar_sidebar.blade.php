@@ -1,23 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Easylize Rental</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Opções
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <form action="{{ route('admin.logout.do', ['tenant' => $_COOKIE['tenant_name']]) }}" method="POST">
-                                @csrf
-                                <button class="btn btn-danger btn-sm" type="submit">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
+<nav class="navbar navbar-expand d-flex flex-column align-items-start bg-primary navbar-dark" id="sidebar">
+    <div class="container-fluid d-flex flex-column">
+        <a class="navbar-brand" href="#"><h3>Easylize Rental</h3></a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav d-flex flex-column">
+                <li>
+                    <form class="m-0 p-0" action="{{ route('admin.logout.do', ['tenant' => $_COOKIE['tenant_name']]) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger btn-sm" type="submit">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>
