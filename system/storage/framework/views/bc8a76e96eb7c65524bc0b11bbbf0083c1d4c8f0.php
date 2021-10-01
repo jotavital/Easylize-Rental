@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(base_path());
+$dotenv->load();
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +33,6 @@
     </div>
 
     <footer>
-        <small style="float:right;">
-            <p>Powered by Easylize Rental team - 2021. Todos os direitos reservados©</p>
-        </small>
         
         <script src="/js/bootstrap.bundle.min.js" ></script>
         <script src="/js/adminlte.min.js"></script>
