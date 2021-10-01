@@ -12,11 +12,15 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+mix.js('vendor/almasaeed2010/adminlte/dist/js/adminlte.min.js', 'public/js')
+mix.js('node_modules/jquery/dist/jquery.min.js', 'public/js')
+mix.js('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', 'public/js')
 
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ])
+mix.postCss('resources/css/app.css', 'public/css')
+mix.postCss('vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css', 'public/css')
+mix.postCss('node_modules/@fortawesome/fontawesome-free/css/all.min.css', 'public/css/fontawesome')
+mix.postCss('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css')
 
-    .sass('resources/sass/app.scss', 'public/css');
+mix.sass('resources/sass/app.scss', 'public/css')
 
-mix.browserSync('127.0.0.1:8000');
+// mix.browserSync('127.0.0.1:8000');

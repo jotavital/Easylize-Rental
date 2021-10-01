@@ -78,6 +78,7 @@
 
 <script src="js/verify_company_username.js"></script>
 <script>
+
     window.onload = function() {
 
         var usuarioInput = document.getElementById('usuario');

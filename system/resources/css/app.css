@@ -7,7 +7,15 @@ form{
 }
 
 .container{
+    margin: 0;
+    padding: 0;
     height: 95vh;
+    width: 100vw - 250px;
+}
+
+.sidebarDiv{
+    width: 250px;
+    height: 100%;
 }
 
 #sidebar{
