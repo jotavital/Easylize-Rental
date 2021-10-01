@@ -12,7 +12,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" data-enable-remember="true" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
 
@@ -62,11 +62,11 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar nav-collapse-hide-child">
 
                 <!-- SidebarSearch Form -->
                 <div class="mt-3 form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
+                    <div class="input-group" data-widget="sidebar-search" data-not-found-text="Nada encontrado.">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Pesquisar" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
@@ -78,8 +78,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item menu-open">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-animation-speed="500" data-accordion="false">
+                        <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>
@@ -104,7 +104,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-cog"></i>
+                                <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Ajustes
                                 </p>
@@ -117,6 +117,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -167,6 +168,27 @@
                         </div>
                         <!-- /.col-md-6 -->
                         <div class="col-lg-6">
+                            <div class="info-box bg-success">
+                                <span class="info-box-icon"><i class="far fa-flag"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Bookmarks</span>
+                                    <span class="info-box-number">410</span>
+                                </div>
+                            </div>
+
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>150</h3>
+                                    <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="m-0">Featured</h5>
@@ -180,8 +202,18 @@
                             </div>
 
                             <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div class="col-9">
+                                        <h5 class="m-0">Featured</h5>
+                                    </div>
+                                    <div class="card-tools">
+                                        <!-- This will cause the card to maximize when clicked -->
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                                        <!-- This will cause the card to collapse when clicked -->
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        <!-- This will cause the card to be removed when clicked -->
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Special title treatment</h6>
@@ -209,7 +241,7 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="text-right">
-                <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital">Easylize Rental Team</a>.</strong> All rights reserved.
+                <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital" target="_blank">Easylize Rental Team</a>.</strong> All rights reserved.
             </div>
             <!-- Default to the left -->
         </footer>

@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-
-use Dotenv\Dotenv;
-
-$dotenv = Dotenv::createImmutable(base_path());
-$dotenv->load();
-
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
