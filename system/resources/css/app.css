@@ -6,21 +6,10 @@ form{
     padding:10px;
 }
 
-.container{
-    margin: 0;
-    padding: 0;
+.wrapper{
     height: 95vh;
-    width: 100vw - 250px;
 }
 
-.sidebarDiv{
-    width: 250px;
+.container{
     height: 100%;
-}
-
-#sidebar{
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    transition: 0.4s;
 }

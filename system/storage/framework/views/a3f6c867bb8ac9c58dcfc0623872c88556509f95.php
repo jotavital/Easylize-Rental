@@ -10,67 +10,64 @@
     }
 </style>
 
-<div class="container col-md-12 d-flex justify-content-center">
-    <div class="col-md-8 d-flex justify-content-center flex-column">
+<div class="container col-12 d-flex justify-content-center align-items-center">
 
-        <h1 class="mb-4 d-flex justify-content-center text-center">Cadastro</h1>
+    <div class="formDiv col-sm-5 col-lg-3">
+        <h1 class="mb-4 text-center">Cadastro</h1>
+        <form action="<?php echo e(route('register.do')); ?>" id="registerForm" class="needs-validation" method="POST" novalidate>
+            <?php echo csrf_field(); ?>
+            <div class="mb-3">
+                <label for="usuario" class="form-label">Usuário</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nome de usuário da empresa" required>
+                <div class="invalid-feedback" id="invalid-usuario">
 
-        <div class="col-md-12 d-flex justify-content-center">
-            <form action="<?php echo e(route('register.do')); ?>" id="registerForm" class="col-md-6 form-floating needs-validation" method="POST" novalidate>
-                <?php echo csrf_field(); ?>
-                <div class="mb-3">
-                    <label for="usuario" class="form-label">Usuário</label>
-                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nome de usuário da empresa" required>
-                    <div class="invalid-feedback" id="invalid-usuario">
-
-                    </div>
-                    <small class="d-flex">Sua equipe usará este nome para acessar sua empresa. Ex.: easylizerental.com/nome_usuario </small>
                 </div>
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha de acesso" required>
-                    <div class="invalid-feedback" id="invalid-senha">
+                <small class="d-flex">Sua equipe usará este nome para acessar sua empresa. Ex.: easylizerental.com/nome_usuario </small>
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha de acesso" required>
+                <div class="invalid-feedback" id="invalid-senha">
 
-                    </div>
-                    <small class="d-flex">Seu primeiro login será realizado com os dados acima</small>
                 </div>
-                <div class="mb-3">
-                    <label for="nome_empresa" class="form-label">Nome da empresa</label>
-                    <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" placeholder="Nome da empresa" required>
-                    <div class="invalid-feedback" id="invalid-senha">
-                        Preencha este campo.
-                    </div>
+                <small class="d-flex">Seu primeiro login será realizado com os dados acima</small>
+            </div>
+            <div class="mb-3">
+                <label for="nome_empresa" class="form-label">Nome da empresa</label>
+                <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" placeholder="Nome da empresa" required>
+                <div class="invalid-feedback" id="invalid-senha">
+                    Preencha este campo.
                 </div>
+            </div>
 
-                <?php if(session('error')): ?>
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <div>
-                        <small>
-                            <p class="p-0 m-0" style="text-align:center;">
-                                <?php echo e(session('message')); ?>
+            <?php if(session('error')): ?>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div>
+                    <small>
+                        <p class="p-0 m-0" style="text-align:center;">
+                            <?php echo e(session('message')); ?>
 
-                            </p>
-                        </small>
-                    </div>
+                        </p>
+                    </small>
                 </div>
-                <?php elseif(session('success')): ?>
-                <div class="alert alert-success d-flex align-items-center" role="alert">
-                    <div>
-                        <small>
-                            <p class="p-0 m-0" style="text-align:center;">
-                                <?php echo e(session('success')); ?>
+            </div>
+            <?php elseif(session('success')): ?>
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>
+                    <small>
+                        <p class="p-0 m-0" style="text-align:center;">
+                            <?php echo e(session('success')); ?>
 
-                            </p>
-                        </small>
-                    </div>
+                        </p>
+                    </small>
                 </div>
-                <?php endif; ?>
+            </div>
+            <?php endif; ?>
 
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="mt-3 btn btn-success btn-rounded">Cadastrar</button>
-                </div>
-            </form>
-        </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="mt-3 btn btn-success btn-rounded">Cadastrar</button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -78,9 +75,7 @@
 
 <script src="js/verify_company_username.js"></script>
 <script>
-
     window.onload = function() {
-
         var usuarioInput = document.getElementById('usuario');
         var senhaInput = document.getElementById('senha');
         var usuarioInputValue;

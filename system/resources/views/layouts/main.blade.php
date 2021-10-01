@@ -6,19 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- //!! nao achou  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> -->
-    <link rel="stylesheet" href="/css/app.css">
-    <!-- <link rel="stylesheet" href="{{ mix('/js/app.js') }}"> -->
     <link rel="stylesheet" href="/js/app.js">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="/css/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">
 
     <title>{{ isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'showRegister' ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="wrapper">
         @yield('content')
     </div>
 
@@ -27,9 +28,8 @@
             <p>Powered by Easylize Rental team - 2021. Todos os direitos reservados©</p>
         </small>
         
-        <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js" ></script>
-
+        <script src="/js/adminlte.min.js"></script>
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
