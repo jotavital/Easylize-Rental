@@ -3,6 +3,7 @@
     "/js/adminlte.min.js": "/js/adminlte.min.js",
     "/js/jquery.min.js": "/js/jquery.min.js",
     "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js",
+    "/js/create_slim_selects.js": "/js/create_slim_selects.js",
     "/css/app.css": "/css/app.css",
     "/css/bootstrap.min.css": "/css/bootstrap.min.css",
     "/css/fontawesome/all.min.css": "/css/fontawesome/all.min.css",

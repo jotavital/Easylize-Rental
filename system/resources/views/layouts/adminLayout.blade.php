@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/css/fontawesome/all.min.css">
     <link rel="stylesheet" href="/css/adminlte.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css" rel="stylesheet">
 
     <title>{{ isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'showRegister' ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
 </head>
@@ -69,7 +71,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href=" {{ route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name'] ]) }} " class="brand-link">
                 <img src="/img/default_profile_picture.png" alt="Company Profile Picture" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">{{ $_COOKIE['nome_empresa'] }}</span>
             </a>
@@ -92,8 +94,8 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-animation-speed="500" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item @yield('frota-menu-open')">
+                            <a href="#" class="nav-link @yield('frota-menu-active')">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>
                                     Frota
@@ -102,14 +104,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculo.add.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('veiculo.add.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('novo-veiculo-menu-active')">
+                                        <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('veiculo.list.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('todos-veiculos-menu-active')">
+                                        <i class="fas fa-list-alt nav-icon"></i>
                                         <p>Todos os veículos</p>
                                     </a>
                                 </li>
@@ -154,7 +156,8 @@
         <div class="text-right">
             <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital" target="_blank">Easylize Rental Team</a>.</strong> All rights reserved.
         </div>
-
+        
+        <script src="/js/create_slim_selects.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
         <script>

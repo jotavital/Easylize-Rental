@@ -46,5 +46,6 @@ Route::group([
 
     // ! vehicle routes
     Route::get('/veiculos/add', [VeiculoController::class, 'showAddVeiculo'])->name('veiculo.add.show');
+    Route::get('/veiculos/list', [VeiculoController::class, 'showListVeiculos'])->name('veiculo.list.show');
 
 });

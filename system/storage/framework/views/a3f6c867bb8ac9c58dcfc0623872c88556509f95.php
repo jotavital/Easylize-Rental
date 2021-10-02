@@ -4,12 +4,6 @@
 
 <?php $__env->startSection('content'); ?>
 
-<style>
-    small {
-        font-size: .8em;
-    }
-</style>
-
 <div class="container col-12 d-flex justify-content-center align-items-center">
 
     <div class="formDiv col-sm-5 col-lg-3">
@@ -22,7 +16,9 @@
                 <div class="invalid-feedback" id="invalid-usuario">
 
                 </div>
-                <small class="d-flex">Sua equipe usará este nome para acessar sua empresa. Ex.: easylizerental.com/nome_usuario </small>
+                <small class="form-text text-muted">
+                    Sua equipe usará este nome para acessar sua empresa. Ex.: easylizerental.com/nome_usuario
+                </small>
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
@@ -30,7 +26,9 @@
                 <div class="invalid-feedback" id="invalid-senha">
 
                 </div>
-                <small class="d-flex">Seu primeiro login será realizado com os dados acima</small>
+                <small class="form-text text-muted">
+                    Seu primeiro login será realizado com os dados acima
+                </small>
             </div>
             <div class="mb-3">
                 <label for="nome_empresa" class="form-label">Nome da empresa</label>
