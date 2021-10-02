@@ -102,7 +102,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
+                                    <a href="<?php echo e(route('veiculo.add.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>
@@ -129,9 +129,24 @@
         </aside>
 
         <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0"><?php echo $__env->yieldContent('contentTitle'); ?></h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="<?php echo e(route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name']])); ?>">Dashboard</a></li>
+                                <li class="breadcrumb-item active"><?php echo $__env->yieldContent('contentTitle'); ?></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php echo $__env->yieldContent('content'); ?>
         </div>
-        
+
     </div>
 
     <footer class="main-footer">

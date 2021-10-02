@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\VeiculoController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,8 @@ Route::group([
     Route::post('/admin/logout/do', [UserAuthController::class, 'logout'])->name('admin.logout.do');
 
     Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:web');
+
+    // ! vehicle routes
+    Route::get('/veiculos/add', [VeiculoController::class, 'showAddVeiculo'])->name('veiculo.add.show');
+
 });

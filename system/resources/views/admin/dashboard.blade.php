@@ -4,21 +4,7 @@
 
 @section('content')
 
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Dashboard</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name']]) }}">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
+@section('contentTitle', 'Painel')
 
 <!-- Main content -->
 <div class="content">
