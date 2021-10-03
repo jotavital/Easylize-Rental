@@ -121,6 +121,12 @@
                                         <p>Marcas</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('modelos.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('modelos-veiculos-menu-active')">
+                                        <i class="fas fa-car-side nav-icon"></i>
+                                        <p>Modelos</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -193,6 +199,7 @@
                     })
             })();
         </script>
+
     </footer>
 
 </body>

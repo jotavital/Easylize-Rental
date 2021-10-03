@@ -33,19 +33,19 @@
                 <div class="form-group col-sm-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect">
-                        <option value="value 1">Value 1</option>
+                        <option data-placeholder="true"></option>
                     </select>
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="modeloSelect">Modelo <span class="text-danger">*</span></label>
                     <select id="modeloSelect">
-                        <option value="value 1">Value 1</option>
+                        <option data-placeholder="true"></option>
                     </select>
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect">
-                        <option value="value 1">Value 1</option>
+                        <option data-placeholder="true"></option>
                     </select>
                 </div>
             </div>
@@ -79,10 +79,31 @@
                 "_token": "<?php echo e(csrf_token()); ?>"
             },
             dataType: "json",
-            success: function(response) {
-                marcas = response;
+            success: function(marcas) {
+
+                marcas.forEach(element => {
+                    $('#marcaSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
+                });
+
             }
         });
+
+        $.ajax({
+            url: "<?php echo e(route('modelos.all.get', ['tenant' => $_COOKIE['tenant_name']])); ?>",
+            type: "post",
+            data: {
+                "_token": "<?php echo e(csrf_token()); ?>"
+            },
+            dataType: "json",
+            success: function(modelos) {
+
+                modelos.forEach(element => {
+                    $('#modeloSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
+                });
+
+            }
+        });
+
     }
 </script>
 <?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/veiculo/addVeiculo.blade.php ENDPATH**/ ?>

@@ -19,7 +19,7 @@
                 <div>
                     <small>
                         <p class="p-0 m-0" style="text-align:center;">
-                            <?php echo e(session('message')); ?>
+                            <?php echo e(session('error')); ?>
 
                         </p>
                     </small>

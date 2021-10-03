@@ -33,19 +33,19 @@
                 <div class="form-group col-sm-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect">
-                        <option value="value 1">Value 1</option>
+                        <option data-placeholder="true"></option>
                     </select>
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="modeloSelect">Modelo <span class="text-danger">*</span></label>
                     <select id="modeloSelect">
-                        <option value="value 1">Value 1</option>
+                        <option data-placeholder="true"></option>
                     </select>
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect">
-                        <option value="value 1">Value 1</option>
+                        <option data-placeholder="true"></option>
                     </select>
                 </div>
             </div>
@@ -79,9 +79,30 @@
                 "_token": "{{ csrf_token() }}"
             },
             dataType: "json",
-            success: function(response) {
-                marcas = response;
+            success: function(marcas) {
+
+                marcas.forEach(element => {
+                    $('#marcaSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
+                });
+
             }
         });
+
+        $.ajax({
+            url: "{{ route('modelos.all.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+            type: "post",
+            data: {
+                "_token": "{{ csrf_token() }}"
+            },
+            dataType: "json",
+            success: function(modelos) {
+
+                modelos.forEach(element => {
+                    $('#modeloSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
+                });
+
+            }
+        });
+
     }
 </script>

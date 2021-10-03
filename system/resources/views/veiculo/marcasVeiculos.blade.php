@@ -19,7 +19,7 @@
                 <div>
                     <small>
                         <p class="p-0 m-0" style="text-align:center;">
-                            {{ session('message') }}
+                            {{ session('error') }}
                         </p>
                     </small>
                 </div>

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
+use App\Http\Controllers\ModeloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,15 @@ Route::group([
     // ! vehicle routes
     Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculo.create.show');
     Route::get('/veiculos/all', [VeiculoController::class, 'showAllVeiculos'])->name('veiculo.all.show');
+
+    // ! marcas routes
     Route::get('/marcas', [MarcaController::class, 'showAllMarcas'])->name('marcas.show');
     Route::post('/marcas/store', [MarcaController::class, 'storeMarca'])->name('marcas.store');
     Route::post('/marcas/getAll', [MarcaController::class, 'getAllMarcas'])->name('marcas.all.get');
+
+    // ! modelos routes
+    Route::get('/modelos', [ModeloController::class, 'showAllModelos'])->name('modelos.show');
+    Route::post('/modelos/store', [ModeloController::class, 'storeModelo'])->name('modelos.store');
+    Route::post('/modelos/getAll', [ModeloController::class, 'getAllModelos'])->name('modelos.all.get');
 
 });

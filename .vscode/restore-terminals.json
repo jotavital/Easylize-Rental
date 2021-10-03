@@ -9,7 +9,7 @@
                     "name": "serve",
                     "commands": [
                         "cd system/",
-                        "composer update -vvv && php artisan optimize",
+                        "php artisan optimize",
                         "php artisan serve"
                     ]
                 }
@@ -21,7 +21,8 @@
                     "name": "cmd",
                     "commands": [
                         "cd system/",
-                        "start http://localhost:8000"
+                        "npm run watch",
+                        "start http://localhost:3000"
                     ]
                 }
             ]
