@@ -71,7 +71,8 @@
 
 <?php $__env->stopSection(); ?>
 
-<script src="js/verify_company_username.js"></script>
+<?php $__env->startSection('script'); ?>
+
 <script>
     window.onload = function() {
         var usuarioInput = document.getElementById('usuario');
@@ -85,7 +86,7 @@
         var invalidFeedbackSenhaTooShort = document.createTextNode('A senha é muito curta. Mínimo 8 caracteres.');
         var companies;
         const passwordMinLenght = 8;
-        var verifyUsernameObj = new VerifyCompanyUsername();
+        var VerifyCompanyUsernameObj = new VerifyCompanyUsername();
 
         $.ajax({
             url: "/getAllCompanies",
@@ -99,8 +100,8 @@
         });
 
         function verifyUsername(usuarioInputValue) {
-            var usernameTooShort = verifyUsernameObj.usernameTooShort(usuarioInput);
-            var userNameExists = verifyUsernameObj.usernameExists(companies, usuarioInputValue);
+            var usernameTooShort = VerifyCompanyUsernameObj.usernameTooShort(usuarioInput);
+            var userNameExists = VerifyCompanyUsernameObj.usernameExists(companies, usuarioInputValue);
 
             invalidFeedbackUsernameDiv.innerHTML = '';
             usuarioInput.classList.remove('is-valid');
@@ -138,4 +139,6 @@
 
     }
 </script>
+
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/register.blade.php ENDPATH**/ ?>

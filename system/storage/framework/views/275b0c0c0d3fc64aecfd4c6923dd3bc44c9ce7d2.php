@@ -169,7 +169,6 @@
             <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital" target="_blank">Easylize Rental Team</a>.</strong> All rights reserved.
         </div>
         
-        <script src="/js/create_slim_selects.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
         <script>
@@ -200,6 +199,7 @@
             })();
         </script>
 
+        <?php echo $__env->yieldContent('script'); ?>
     </footer>
 
 </body>

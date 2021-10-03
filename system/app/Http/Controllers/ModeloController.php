@@ -27,8 +27,15 @@ class ModeloController extends Controller
         }
     }
 
-    public function getAllMarcas()
+    public function getAllModelos()
     {
         echo json_encode(Modelo::all());
+    }
+
+    public function getModelosByMarca(Request $request)
+    {
+
+        echo json_encode(Modelo::all()->where('fk_marca', $request->idMarca));
+        // echo json_encode(Modelo::all());
     }
 }

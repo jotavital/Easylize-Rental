@@ -24,9 +24,11 @@
     </div>
 
     <footer>
-        
-        <script src="/js/bootstrap.bundle.min.js" ></script>
+        <script src="js/classes/verifyCompanyUsername.js"></script>
+
+        <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
+        
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -54,6 +56,8 @@
                     })
             })();
         </script>
+
+        @yield('script')
     </footer>
 
 </body>

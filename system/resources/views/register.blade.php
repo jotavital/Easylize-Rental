@@ -69,7 +69,8 @@
 
 @endsection
 
-<script src="js/verify_company_username.js"></script>
+@section('script')
+
 <script>
     window.onload = function() {
         var usuarioInput = document.getElementById('usuario');
@@ -83,7 +84,7 @@
         var invalidFeedbackSenhaTooShort = document.createTextNode('A senha é muito curta. Mínimo 8 caracteres.');
         var companies;
         const passwordMinLenght = 8;
-        var verifyUsernameObj = new VerifyCompanyUsername();
+        var VerifyCompanyUsernameObj = new VerifyCompanyUsername();
 
         $.ajax({
             url: "/getAllCompanies",
@@ -97,8 +98,8 @@
         });
 
         function verifyUsername(usuarioInputValue) {
-            var usernameTooShort = verifyUsernameObj.usernameTooShort(usuarioInput);
-            var userNameExists = verifyUsernameObj.usernameExists(companies, usuarioInputValue);
+            var usernameTooShort = VerifyCompanyUsernameObj.usernameTooShort(usuarioInput);
+            var userNameExists = VerifyCompanyUsernameObj.usernameExists(companies, usuarioInputValue);
 
             invalidFeedbackUsernameDiv.innerHTML = '';
             usuarioInput.classList.remove('is-valid');
@@ -136,3 +137,5 @@
 
     }
 </script>
+
+@endsection

@@ -57,5 +57,6 @@ Route::group([
     Route::get('/modelos', [ModeloController::class, 'showAllModelos'])->name('modelos.show');
     Route::post('/modelos/store', [ModeloController::class, 'storeModelo'])->name('modelos.store');
     Route::post('/modelos/getAll', [ModeloController::class, 'getAllModelos'])->name('modelos.all.get');
+    Route::post('/modelos/getModelosByMarca', [ModeloController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
 
 });
