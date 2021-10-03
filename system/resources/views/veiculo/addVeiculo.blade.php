@@ -14,6 +14,7 @@
     <div class="container-fluid">
 
         <form action="  " method="POST" class="col-12" enctype='multipart/form-data'>
+            @csrf
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">
                     <label for="placaInput">Placa <span class="text-danger">*</span></label>
@@ -68,3 +69,19 @@
 </div>
 
 @endsection
+
+<script>
+    window.onload = function() {
+        $.ajax({
+            url: "{{ route('marcas.all.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+            type: "post",
+            data: {
+                "_token": "{{ csrf_token() }}"
+            },
+            dataType: "json",
+            success: function(response) {
+                marcas = response;
+            }
+        });
+    }
+</script>

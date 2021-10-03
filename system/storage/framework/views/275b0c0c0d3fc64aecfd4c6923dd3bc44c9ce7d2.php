@@ -104,7 +104,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('veiculo.store.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
+                                    <a href="<?php echo e(route('veiculo.create.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>

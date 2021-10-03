@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class VeiculoController extends Controller
 {
     
-    public function showAddVeiculo(){
+    public function showCreateVeiculo(){
         return view('veiculo/addVeiculo');
     }
 

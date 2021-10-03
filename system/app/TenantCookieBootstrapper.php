@@ -14,10 +14,11 @@ class TenantCookieBootstrapper implements TenancyBootstrapper
 
             if(!isset($_COOKIE['tenant_name'])){
                 echo "<script> location.reload(); </script>";
+            }else{
+                $company = Company::where('banco_empresa', $_COOKIE['tenant_name'])->get()->first();
+                setcookie('nome_empresa', $company->nome_empresa, time() + 60 * 60 * 24 * 30, '/');
             }
             
-            $company = Company::where('banco_empresa', $_COOKIE['tenant_name'])->get()->first();
-            setcookie('nome_empresa', $company->nome_empresa, time() + 60 * 60 * 24 * 30, '/');
         }
 
     }

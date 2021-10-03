@@ -104,7 +104,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculo.store.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('novo-veiculo-menu-active')">
+                                    <a href="{{ route('veiculo.create.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('novo-veiculo-menu-active')">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>

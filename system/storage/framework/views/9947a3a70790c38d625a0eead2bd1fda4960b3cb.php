@@ -14,6 +14,7 @@
     <div class="container-fluid">
 
         <form action="  " method="POST" class="col-12" enctype='multipart/form-data'>
+            <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">
                     <label for="placaInput">Placa <span class="text-danger">*</span></label>
@@ -68,4 +69,20 @@
 </div>
 
 <?php $__env->stopSection(); ?>
+
+<script>
+    window.onload = function() {
+        $.ajax({
+            url: "<?php echo e(route('marcas.all.get', ['tenant' => $_COOKIE['tenant_name']])); ?>",
+            type: "post",
+            data: {
+                "_token": "<?php echo e(csrf_token()); ?>"
+            },
+            dataType: "json",
+            success: function(response) {
+                marcas = response;
+            }
+        });
+    }
+</script>
 <?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/veiculo/addVeiculo.blade.php ENDPATH**/ ?>

@@ -44,9 +44,10 @@ Route::group([
     Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:web');
 
     // ! vehicle routes
-    Route::get('/veiculos/store', [VeiculoController::class, 'showAddVeiculo'])->name('veiculo.store.show');
-    Route::get('/veiculos/all', [VeiculoController::class, 'showListVeiculos'])->name('veiculo.all.show');
-    Route::get('/marcas', [MarcaController::class, 'showMarcasVeiculos'])->name('marcas.show');
-    Route::post('/marcas/store', [MarcaController::class, 'storeMarcasVeiculos'])->name('marcas.store');
+    Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculo.create.show');
+    Route::get('/veiculos/all', [VeiculoController::class, 'showAllVeiculos'])->name('veiculo.all.show');
+    Route::get('/marcas', [MarcaController::class, 'showAllMarcas'])->name('marcas.show');
+    Route::post('/marcas/store', [MarcaController::class, 'storeMarca'])->name('marcas.store');
+    Route::post('/marcas/getAll', [MarcaController::class, 'getAllMarcas'])->name('marcas.all.get');
 
 });
