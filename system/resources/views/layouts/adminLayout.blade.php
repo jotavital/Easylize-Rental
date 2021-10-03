@@ -104,15 +104,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculo.add.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('novo-veiculo-menu-active')">
+                                    <a href="{{ route('veiculo.store.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('novo-veiculo-menu-active')">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculo.list.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('todos-veiculos-menu-active')">
+                                    <a href="{{ route('veiculo.all.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('todos-veiculos-menu-active')">
                                         <i class="fas fa-list-alt nav-icon"></i>
                                         <p>Todos os veículos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('marcas.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('marcas-veiculos-menu-active')">
+                                        <i class="fas fa-sitemap nav-icon"></i>
+                                        <p>Marcas</p>
                                     </a>
                                 </li>
                             </ul>

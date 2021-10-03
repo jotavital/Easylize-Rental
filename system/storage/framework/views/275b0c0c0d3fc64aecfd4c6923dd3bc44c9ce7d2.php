@@ -104,15 +104,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('veiculo.add.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
+                                    <a href="<?php echo e(route('veiculo.store.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('veiculo.list.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('todos-veiculos-menu-active'); ?>">
+                                    <a href="<?php echo e(route('veiculo.all.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('todos-veiculos-menu-active'); ?>">
                                         <i class="fas fa-list-alt nav-icon"></i>
                                         <p>Todos os veículos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo e(route('marcas.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('marcas-veiculos-menu-active'); ?>">
+                                        <i class="fas fa-sitemap nav-icon"></i>
+                                        <p>Marcas</p>
                                     </a>
                                 </li>
                             </ul>

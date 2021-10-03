@@ -3,9 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +44,9 @@ Route::group([
     Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:web');
 
     // ! vehicle routes
-    Route::get('/veiculos/add', [VeiculoController::class, 'showAddVeiculo'])->name('veiculo.add.show');
-    Route::get('/veiculos/list', [VeiculoController::class, 'showListVeiculos'])->name('veiculo.list.show');
+    Route::get('/veiculos/store', [VeiculoController::class, 'showAddVeiculo'])->name('veiculo.store.show');
+    Route::get('/veiculos/all', [VeiculoController::class, 'showListVeiculos'])->name('veiculo.all.show');
+    Route::get('/marcas', [MarcaController::class, 'showMarcasVeiculos'])->name('marcas.show');
+    Route::post('/marcas/store', [MarcaController::class, 'storeMarcasVeiculos'])->name('marcas.store');
 
 });
