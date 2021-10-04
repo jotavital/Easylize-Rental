@@ -17,6 +17,11 @@ form{
 }
 
 .invalid-select{
-    border: #dc3545 solid 1px; 
+    border: rgb(220, 53, 69) solid 1px; 
+    border-radius: 4px;
+}
+
+.valid-select{
+    border: rgb(40, 167, 69) solid 1px; 
     border-radius: 4px;
 }

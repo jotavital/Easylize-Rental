@@ -169,7 +169,7 @@
         <div class="text-right">
             <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital" target="_blank">Easylize Rental Team</a>.</strong> All rights reserved.
         </div>
-        
+
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -179,12 +179,14 @@
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
 
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            var selects = document.querySelectorAll('.validate-select');
+
+            // ! Example starter JavaScript for disabling form submissions if there are invalid fields
             (function() {
                 'use strict'
 
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation')
+                var forms = document.querySelectorAll('.needs-validation');
 
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms)
@@ -193,12 +195,28 @@
                             if (!form.checkValidity()) {
                                 event.preventDefault()
                                 event.stopPropagation()
+
+                                selects.forEach(select => {
+                                    select.classList.remove("valid-select");
+                                    select.classList.add("invalid-select");
+                                });
+
                             }
 
                             form.classList.add('was-validated')
                         }, false)
                     })
+
             })();
+
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    if (!select.classList.contains('is-invalid')) {
+                        select.classList.remove("invalid-select");
+                        select.classList.add("valid-select");
+                    }
+                })
+            });
         </script>
 
         <?php echo $__env->yieldContent('script'); ?>

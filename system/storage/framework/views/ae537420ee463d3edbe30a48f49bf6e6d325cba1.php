@@ -39,16 +39,19 @@
             <?php endif; ?>
         </div>
 
-        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12 needs-validation" novalidate>
+        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12 needs-validation" id="formAddModelo" novalidate>
             <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="nomeModeloInput">Nome do modelo <span class="text-danger">*</span></label>
                     <input type="text" class="form-control form-control-sm" name="nomeModeloInput" id="nomeModeloInput" placeholder="Modelo" required>
+                    <div class="invalid-feedback">
+                        Campo obrigatório
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
-                    <select id="anoModeloSelect" name="anoModeloSelect" required>
+                    <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
 
                         <?php
@@ -62,19 +65,27 @@
                         ?>
 
                     </select>
-      
+                    <div class="invalid-feedback">
+                        Campo obrigatório
+                    </div>
                 </div>
             </div>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
                     <input type="number" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
+                    <div class="invalid-feedback">
+                        Campo obrigatório
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
-                    <select id="marcaSelect" name="marcaSelect" required>
+                    <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
                     </select>
+                    <div class="invalid-feedback">
+                        Campo obrigatório
+                    </div>
                 </div>
             </div>
             <div class="form-row col-12 d-flex justify-content-center">
@@ -86,7 +97,7 @@
                 </div>
             </div>
             <div class="col-sm-12 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success mt-3 col-sm-2">Cadastrar</button>
+                <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Cadastrar</button>
             </div>
         </form>
 

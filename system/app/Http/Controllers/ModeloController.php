@@ -36,6 +36,5 @@ class ModeloController extends Controller
     {
 
         echo json_encode(Modelo::all()->where('fk_marca', $request->idMarca));
-        // echo json_encode(Modelo::all());
     }
 }
