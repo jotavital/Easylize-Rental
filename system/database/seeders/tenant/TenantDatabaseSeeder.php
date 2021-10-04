@@ -14,6 +14,10 @@ class TenantDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsuarioSeeder::class);
+        $this->call([
+            UsuarioSeeder::class,
+            TipoCategoriaSeeder::class,
+            CategoriaVeiculoSeeder::class
+        ]);
     }
 }

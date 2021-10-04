@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Tenant\TenantDatabaseSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 
@@ -14,6 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(CompaniesSeeder::class);
+        $this->call(TenantDatabaseSeeder::class);
     }
 }

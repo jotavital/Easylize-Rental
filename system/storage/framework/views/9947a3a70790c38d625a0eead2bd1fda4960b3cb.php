@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
-                    <select id="categoriaVeiculoSelect">
+                    <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect">
                         <option data-placeholder="true"></option>
                     </select>
                 </div>
@@ -52,7 +52,7 @@
             <div class="form-row col-md-12 d-flex justify-content-center">
                 <div class="input-group mb-3 col-md-6">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="fotoInput" accept="image/*">
+                        <input type="file" class="custom-file-input" id="fotoInput" name="fotoInput" accept="image/*">
                         <label class="custom-file-label" for="fotoInput" aria-describedby="fotoInput">Foto (miniatura)</label>
                     </div>
                     <div class="input-group-append">
@@ -74,7 +74,7 @@
 
 <script>
     var selectPlaceholder = "Selecione";
-    
+
     var marcaSelect = new SlimSelect({
         select: '#marcaSelect',
         placeholder: selectPlaceholder,
@@ -117,9 +117,11 @@
             }
         });
 
-        
+
         $("#marcaSelect").on('change', function() {
+
             if (marcaSelect.selected() != '') {
+                $('#modeloSelect').empty();
                 modeloSelect.enable();
 
                 $.ajax({
@@ -131,19 +133,20 @@
                     },
                     dataType: "json",
                     success: function(modelos) {
-                        
-                        if(modelos != null){
+
+                        if (modelos.length != 0) {
                             console.log(modelos);
-                            modelos.forEach(element => {
-                                $('#modeloSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
-                            });
-                        }else{
-                            console.log("null");
+
+                            for (var i in modelos) {
+                                $('#modeloSelect').append('<option value="' + modelos[i].id + '">' + modelos[i].nome + '</option>');
+                            }
+
                         }
-        
+
                     }
                 });
             } else {
+                $('#modeloSelect').empty();
                 modeloSelect.disable();
             }
         });
