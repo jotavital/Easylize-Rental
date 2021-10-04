@@ -49,17 +49,6 @@
                     </select>
                 </div>
             </div>
-            <div class="form-row col-md-12 d-flex justify-content-center">
-                <div class="input-group mb-3 col-md-6">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="fotoInput" name="fotoInput" accept="image/*">
-                        <label class="custom-file-label" for="fotoInput" aria-describedby="fotoInput">Foto (miniatura)</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="fotoInput">Enviar</span>
-                    </div>
-                </div>
-            </div>
             <div class="col-sm-12 d-flex justify-content-center">
                 <button type="button" class="btn btn-success mt-3 col-sm-2">Pronto</button>
             </div>

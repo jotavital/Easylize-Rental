@@ -15,3 +15,8 @@ form{
 .sidebar{
     height: 100%;
 }
+
+.invalid-select{
+    border: #dc3545 solid 1px; 
+    border-radius: 4px;
+}

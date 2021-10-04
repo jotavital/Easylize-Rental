@@ -39,18 +39,50 @@
             <?php endif; ?>
         </div>
 
-        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12">
+        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12 needs-validation" novalidate>
             <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
-                <div class="form-group col-sm-4">
+                <div class="form-group col-md-4">
                     <label for="nomeModeloInput">Nome do modelo <span class="text-danger">*</span></label>
                     <input type="text" class="form-control form-control-sm" name="nomeModeloInput" id="nomeModeloInput" placeholder="Modelo" required>
                 </div>
-                <div class="form-group col-sm-3">
+                <div class="form-group col-md-4">
+                    <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
+                    <select id="anoModeloSelect" name="anoModeloSelect" required>
+                        <option data-placeholder="true"></option>
+
+                        <?php
+                        foreach (range(date('Y') + 3, 1900) as $year) {
+                        ?>
+
+                            <option value="<?= $year ?>"><?= $year ?></option>
+
+                        <?php
+                        }
+                        ?>
+
+                    </select>
+      
+                </div>
+            </div>
+            <div class="form-row col-12 d-flex justify-content-center">
+                <div class="form-group col-md-4">
+                    <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
+                </div>
+                <div class="form-group col-md-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
-                    <select id="marcaSelect" name="marcaSelect">
+                    <select id="marcaSelect" name="marcaSelect" required>
                         <option data-placeholder="true"></option>
                     </select>
+                </div>
+            </div>
+            <div class="form-row col-12 d-flex justify-content-center">
+                <div class="mt-4 input-group col-md-4">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fotosInput" name="fotosInput" accept="image/*" multiple="multiple">
+                        <label class="custom-file-label" for="fotosInput" aria-describedby="fotosInput">Fotos</label>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-12 d-flex justify-content-center">
@@ -63,8 +95,27 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('script'); ?>
+
 <script>
+    var marcaSelect = new SlimSelect({
+        select: '#marcaSelect',
+        placeholder: "Selecione",
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar',
+        searchText: 'Não encontrado',
+    });
+
+    var anoModeloSelect = new SlimSelect({
+        select: '#anoModeloSelect',
+        placeholder: "Selecione",
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar ano',
+        searchText: 'Não encontrado',
+    });
+
     window.onload = function() {
+
         $.ajax({
             url: "<?php echo e(route('marcas.all.get', ['tenant' => $_COOKIE['tenant_name']])); ?>",
             type: "post",
@@ -82,4 +133,6 @@
         });
     }
 </script>
+
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/veiculo/modelosVeiculos.blade.php ENDPATH**/ ?>
