@@ -1,3 +1,11 @@
+<?php
+
+use Illuminate\Support\Facades\Session;
+
+$success = Session::get('success');
+$error = Session::get('error');
+?>
+
 @extends('layouts.adminLayout')
 
 @section('title', 'Marcas')
@@ -13,29 +21,11 @@
 <div class="content">
     <div class="container-fluid">
 
-        <div class="alerts col-12 d-flex justify-content-center">
-            @if(session('error'))
-            <div class="alert alert-danger d-flex align-items-center col-5" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            {{ session('error') }}
-                        </p>
-                    </small>
-                </div>
-            </div>
-            @elseif(session('success'))
-            <div class="alert alert-success d-flex align-items-center col-5" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            {{ session('success') }}
-                        </p>
-                    </small>
-                </div>
-            </div>
-            @endif
-        </div>
+        @if(session('success'))
+        <x-alert type="success" :message='$success' />
+        @elseif(session('error'))
+        <x-alert type="danger" :message='$error' />
+        @endif
 
         <form action=" {{ route('marcas.store', ['tenant' => $_COOKIE['tenant_name']]) }} " method="POST" class="col-12">
             @csrf

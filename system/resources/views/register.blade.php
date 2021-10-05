@@ -1,3 +1,11 @@
+<?php
+
+use Illuminate\Support\Facades\Session;
+
+$success = Session::get('success');
+$error = Session::get('error');
+?>
+
 @extends('layouts.main')
 
 @section('title', 'Cadastro')
@@ -38,26 +46,10 @@
                 </div>
             </div>
 
-            @if(session('error'))
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            {{ session('message') }}
-                        </p>
-                    </small>
-                </div>
-            </div>
-            @elseif(session('success'))
-            <div class="alert alert-success d-flex align-items-center" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            {{ session('success') }}
-                        </p>
-                    </small>
-                </div>
-            </div>
+            @if(session('success'))
+            <x-alert type="success" :message='$success' />
+            @elseif(session('error'))
+            <x-alert type="danger" :message='$error' />
             @endif
 
             <div class="d-flex justify-content-center">

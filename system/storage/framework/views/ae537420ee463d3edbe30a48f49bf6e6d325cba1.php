@@ -1,3 +1,11 @@
+<?php
+
+use Illuminate\Support\Facades\Session;
+
+$success = Session::get('success');
+$error = Session::get('error');
+?>
+
 
 
 <?php $__env->startSection('title', 'Modelos'); ?>
@@ -13,33 +21,35 @@
 <div class="content">
     <div class="container-fluid">
 
-        <div class="alerts col-12 d-flex justify-content-center">
-            <?php if(session('error')): ?>
-            <div class="alert alert-danger d-flex align-items-center col-5" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            <?php echo e(session('error')); ?>
+        <?php if(session('success')): ?>
+        <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'success','message' => $success]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+        <?php elseif(session('error')): ?>
+        <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','message' => $error]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+        <?php endif; ?>
 
-                        </p>
-                    </small>
-                </div>
-            </div>
-            <?php elseif(session('success')): ?>
-            <div class="alert alert-success d-flex align-items-center col-5" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            <?php echo e(session('success')); ?>
-
-                        </p>
-                    </small>
-                </div>
-            </div>
-            <?php endif; ?>
-        </div>
-
-        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12 needs-validation" id="formAddModelo" novalidate>
+        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
             <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
@@ -73,7 +83,7 @@
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
+                    <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
                     <div class="invalid-feedback">
                         Campo obrigatório
                     </div>
@@ -91,7 +101,7 @@
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="mt-4 input-group col-md-4">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="fotosInput" name="fotosInput" accept="image/*" multiple="multiple">
+                        <input type="file" class="custom-file-input" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
                         <label class="custom-file-label" for="fotosInput" aria-describedby="fotosInput">Fotos</label>
                     </div>
                 </div>

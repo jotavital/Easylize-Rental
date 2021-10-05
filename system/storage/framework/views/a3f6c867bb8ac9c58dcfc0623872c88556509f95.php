@@ -1,3 +1,11 @@
+<?php
+
+use Illuminate\Support\Facades\Session;
+
+$success = Session::get('success');
+$error = Session::get('error');
+?>
+
 
 
 <?php $__env->startSection('title', 'Cadastro'); ?>
@@ -38,28 +46,32 @@
                 </div>
             </div>
 
-            <?php if(session('error')): ?>
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            <?php echo e(session('message')); ?>
-
-                        </p>
-                    </small>
-                </div>
-            </div>
-            <?php elseif(session('success')): ?>
-            <div class="alert alert-success d-flex align-items-center" role="alert">
-                <div>
-                    <small>
-                        <p class="p-0 m-0" style="text-align:center;">
-                            <?php echo e(session('success')); ?>
-
-                        </p>
-                    </small>
-                </div>
-            </div>
+            <?php if(session('success')): ?>
+            <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'success','message' => $success]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+            <?php elseif(session('error')): ?>
+            <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','message' => $error]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
             <?php endif; ?>
 
             <div class="d-flex justify-content-center">

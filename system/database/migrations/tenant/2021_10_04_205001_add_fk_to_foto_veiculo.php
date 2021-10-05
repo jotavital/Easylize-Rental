@@ -14,7 +14,7 @@ class AddFkToFotoVeiculo extends Migration
     public function up()
     {
         Schema::table('fotos_veiculo', function (Blueprint $table) {
-            $table->foreign('fk_veiculo')->references('id')->on('veiculo');
+            $table->foreign('fk_modelo_veiculo')->references('id')->on('modelo_veiculo');
         });
     }
 

@@ -16,7 +16,7 @@ class CreateFotosVeiculo extends Migration
         Schema::create('fotos_veiculo', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('path');
-            $table->integer('fk_veiculo');
+            $table->integer('fk_modelo_veiculo');
             $table->timestamps();
         });
     }

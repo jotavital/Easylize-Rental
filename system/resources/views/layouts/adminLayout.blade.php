@@ -182,11 +182,13 @@
             var selects = document.querySelectorAll('.validate-select');
 
             // ! Example starter JavaScript for disabling form submissions if there are invalid fields
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation');
+
             (function() {
                 'use strict'
 
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation');
 
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms)
@@ -197,8 +199,14 @@
                                 event.stopPropagation()
 
                                 selects.forEach(select => {
-                                    select.classList.remove("valid-select");
-                                    select.classList.add("invalid-select");
+
+                                    if (select.value == '') {
+                                        select.classList.remove("valid-select");
+                                        select.classList.add("invalid-select");
+                                    } else {
+                                        select.classList.remove("invalid-select");
+                                        select.classList.add("valid-select");
+                                    }
                                 });
 
                             }
@@ -211,10 +219,19 @@
 
             selects.forEach(select => {
                 select.addEventListener('change', function() {
-                    if (!select.classList.contains('is-invalid')) {
-                        select.classList.remove("invalid-select");
-                        select.classList.add("valid-select");
-                    }
+
+                    forms.forEach(form => {
+                        if (form.classList.contains('was-validated') && !select.classList.contains('is-invalid')) {
+                            select.classList.remove("invalid-select");
+                            select.classList.add("valid-select");
+                        }
+
+                        if (select.value == '') {
+                            select.classList.remove("valid-select");
+                            select.classList.add("invalid-select");
+                        }
+                    });
+
                 })
             });
         </script>

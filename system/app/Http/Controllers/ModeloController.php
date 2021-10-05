@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FotosModeloVeiculo;
 use App\Models\Modelo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ModeloController extends Controller
 {
@@ -18,10 +20,25 @@ class ModeloController extends Controller
         $modelo = new Modelo;
 
         $modelo->nome = $request->nomeModeloInput;
+        $modelo->ano_modelo = $request->anoModeloSelect;
+        $modelo->motor = $request->motorModeloInput;
         $modelo->fk_marca = $request->marcaSelect;
 
+
         if ($modelo->save()) {
-            return redirect()->route('modelos.show', ['tenant' => $_COOKIE['tenant_name']])->with('success', 'Modelo cadastrada com sucesso');
+
+            if ($request->hasFile('fotosInput')) {
+                foreach ($request->fotosInput as $photo) {
+                    $photoPath = $photo->store('modelo_img', 'tenant_img');
+
+                    $fotosModeloVeiculo = new FotosModeloVeiculo();
+                    $fotosModeloVeiculo->path = $photoPath;
+                    $fotosModeloVeiculo->fk_modelo_veiculo = $modelo->id;
+                    $fotosModeloVeiculo->save();
+                }
+            }
+
+            return redirect()->route('modelos.show', ['tenant' => $_COOKIE['tenant_name']])->with('success', 'Modelo cadastrado com sucesso');
         } else {
             return redirect()->route('modelos.show', ['tenant' => $_COOKIE['tenant_name']])->withErrors('error', 'Não foi possível cadastrar o modelo, tente novamente.');
         }
