@@ -49,12 +49,24 @@ $error = Session::get('error');
 <?php endif; ?>
         <?php endif; ?>
 
-        <form action=" <?php echo e(route('marcas.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12">
+        <form action=" <?php echo e(route('marcas.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12 needs-validation" novalidate>
             <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">
                     <label for="nomeMarcaInput">Nome da marca <span class="text-danger">*</span></label>
                     <input type="text" class="form-control form-control-sm" name="nomeMarcaInput" id="nomeMarcaInput" placeholder="Marca" required>
+                    <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
+<?php $component->withName('campo-obrigatorio'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad)): ?>
+<?php $component = $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad; ?>
+<?php unset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
                 </div>
             </div>
             <div class="col-sm-12 d-flex justify-content-center">

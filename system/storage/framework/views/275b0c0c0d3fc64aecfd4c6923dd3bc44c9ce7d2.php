@@ -105,13 +105,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('veiculo.create.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
+                                    <a href="<?php echo e(route('veiculos.create.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('veiculo.all.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('todos-veiculos-menu-active'); ?>">
+                                    <a href="<?php echo e(route('veiculos.all.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('todos-veiculos-menu-active'); ?>">
                                         <i class="fas fa-list-alt nav-icon"></i>
                                         <p>Todos os veículos</p>
                                     </a>
@@ -173,6 +173,7 @@
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -200,12 +201,14 @@
 
                                 selects.forEach(select => {
 
-                                    if (select.value == '') {
-                                        select.classList.remove("valid-select");
-                                        select.classList.add("invalid-select");
-                                    } else {
-                                        select.classList.remove("invalid-select");
-                                        select.classList.add("valid-select");
+                                    if (!select.disabled) {
+                                        if (select.value == '') {
+                                            select.classList.remove("valid-select");
+                                            select.classList.add("invalid-select");
+                                        } else {
+                                            select.classList.remove("invalid-select");
+                                            select.classList.add("valid-select");
+                                        }
                                     }
                                 });
 

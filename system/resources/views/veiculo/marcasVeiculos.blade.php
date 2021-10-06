@@ -27,12 +27,13 @@ $error = Session::get('error');
         <x-alert type="danger" :message='$error' />
         @endif
 
-        <form action=" {{ route('marcas.store', ['tenant' => $_COOKIE['tenant_name']]) }} " method="POST" class="col-12">
+        <form action=" {{ route('marcas.store', ['tenant' => $_COOKIE['tenant_name']]) }} " method="POST" class="col-12 needs-validation" novalidate>
             @csrf
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">
                     <label for="nomeMarcaInput">Nome da marca <span class="text-danger">*</span></label>
                     <input type="text" class="form-control form-control-sm" name="nomeMarcaInput" id="nomeMarcaInput" placeholder="Marca" required>
+                    <x-campo-obrigatorio />
                 </div>
             </div>
             <div class="col-sm-12 d-flex justify-content-center">

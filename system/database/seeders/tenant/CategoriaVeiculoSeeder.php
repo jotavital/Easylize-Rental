@@ -15,8 +15,27 @@ class CategoriaVeiculoSeeder extends Seeder
     public function run()
     {
         DB::table('categoria')->insertOrIgnore([
-            'nome_categoria' => "SUV",
-            'fk_categoria' => "1"
+            [
+                'nome_categoria' => "SUV",
+                'fk_tipo_categoria' => "1"
+            ],
+            [
+                'nome_categoria' => "Esportivo",
+                'fk_tipo_categoria' => "1"
+            ],
+            [
+                'nome_categoria' => "Luxo",
+                'fk_tipo_categoria' => "1"
+            ],
+            [
+                'nome_categoria' => "Caminhonete",
+                'fk_tipo_categoria' => "1"
+            ],
+            [
+                'nome_categoria' => "Popular",
+                'fk_tipo_categoria' => "1"
+            ],
+
         ]);
     }
 }

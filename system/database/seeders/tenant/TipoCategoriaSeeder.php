@@ -15,8 +15,14 @@ class TipoCategoriaSeeder extends Seeder
     public function run()
     {
         DB::table('tipo_categoria')->insertOrIgnore([
-            'nome_tipo' => "Veículo",
-            'nome_tipo' => "Ocorrência",
+            [
+                'id' => 1,
+                'nome_tipo' => "Veículo"
+            ],
+            [
+                'id' => 2,
+                'nome_tipo' => "Ocorrência"
+            ]
         ]);
     }
 }

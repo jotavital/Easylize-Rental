@@ -33,9 +33,7 @@ $error = Session::get('error');
                 <div class="form-group col-md-4">
                     <label for="nomeModeloInput">Nome do modelo <span class="text-danger">*</span></label>
                     <input type="text" class="form-control form-control-sm" name="nomeModeloInput" id="nomeModeloInput" placeholder="Modelo" required>
-                    <div class="invalid-feedback">
-                        Campo obrigatório
-                    </div>
+                    <x-campo-obrigatorio />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
@@ -53,27 +51,21 @@ $error = Session::get('error');
                         ?>
 
                     </select>
-                    <div class="invalid-feedback">
-                        Campo obrigatório
-                    </div>
+                    <x-campo-obrigatorio />
                 </div>
             </div>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
                     <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
-                    <div class="invalid-feedback">
-                        Campo obrigatório
-                    </div>
+                    <x-campo-obrigatorio />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
                     </select>
-                    <div class="invalid-feedback">
-                        Campo obrigatório
-                    </div>
+                    <x-campo-obrigatorio />
                 </div>
             </div>
             <div class="form-row col-12 d-flex justify-content-center">

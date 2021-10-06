@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ModeloController;
@@ -45,8 +46,9 @@ Route::group([
     Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:web');
 
     // ! vehicle routes
-    Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculo.create.show');
-    Route::get('/veiculos/all', [VeiculoController::class, 'showAllVeiculos'])->name('veiculo.all.show');
+    Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculos.create.show');
+    Route::get('/veiculos/all', [VeiculoController::class, 'showAllVeiculos'])->name('veiculos.all.show');
+    Route::post('/veiculos/store', [VeiculoController::class, 'storeVeiculo'])->name('veiculos.store');
 
     // ! marcas routes
     Route::get('/marcas', [MarcaController::class, 'showAllMarcas'])->name('marcas.show');
@@ -58,5 +60,8 @@ Route::group([
     Route::post('/modelos/store', [ModeloController::class, 'storeModelo'])->name('modelos.store');
     Route::post('/modelos/getAll', [ModeloController::class, 'getAllModelos'])->name('modelos.all.get');
     Route::post('/modelos/getModelosByMarca', [ModeloController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
+
+    // ! categorias routes
+    Route::post('/categorias/getCategoriasVeiculos', [CategoriaController::class, 'getCategoriasVeiculos'])->name('categorias.veiculos.get');
 
 });
