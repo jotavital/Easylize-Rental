@@ -13,6 +13,11 @@ class VeiculoController extends Controller
         return view('veiculo/addVeiculo');
     }
 
+    public function showAllVeiculos()
+    {
+        return view('veiculo/allVeiculos');
+    }
+
     public function storeVeiculo(Request $request)
     {
 
@@ -30,5 +35,10 @@ class VeiculoController extends Controller
         } else {
             return redirect()->route('veiculos.create.show', ['tenant' => $_COOKIE['tenant_name']])->with('error', 'Não foi possível adicionar o veículo, tente novamente.');
         }
+    }
+
+    public function getAllVeiculos(){
+        echo json_encode(Veiculo::all()); 
+        // ! tentar retornar ja com os valores de marca, modelo e categoria
     }
 }

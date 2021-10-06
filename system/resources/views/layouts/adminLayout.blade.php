@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
     <title>{{ isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'showRegister' ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
 </head>
@@ -174,6 +175,7 @@
         <script src="/js/adminlte.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

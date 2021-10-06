@@ -49,6 +49,7 @@ Route::group([
     Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculos.create.show');
     Route::get('/veiculos/all', [VeiculoController::class, 'showAllVeiculos'])->name('veiculos.all.show');
     Route::post('/veiculos/store', [VeiculoController::class, 'storeVeiculo'])->name('veiculos.store');
+    Route::post('/veiculos/getAll', [VeiculoController::class, 'getAllVeiculos'])->name('veiculos.all.get');
 
     // ! marcas routes
     Route::get('/marcas', [MarcaController::class, 'showAllMarcas'])->name('marcas.show');
