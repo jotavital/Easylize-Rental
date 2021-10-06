@@ -11,20 +11,35 @@ use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
 {
-
-    public static function getAllCompanies()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        echo json_encode(Company::all());
+        
     }
 
-    public function showRegister()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         return view('register');
     }
 
-    public function register(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $company = new Company;
+        $company = new Company();
 
         $company->id = Uuid::uuid();
         $company->usuario = $request->usuario;
@@ -34,7 +49,7 @@ class CompanyController extends Controller
 
         if ($company->save()) {
 
-            $tenant = new Tenant;
+            $tenant = new Tenant();
 
             $tenant->id = $request->usuario;
 
@@ -52,5 +67,55 @@ class CompanyController extends Controller
         } else {
             return redirect()->back()->with('error', 'Erro ao realizar o cadastro, tente novamente.');
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public static function getAll()
+    {
+        echo json_encode(Company::all());
     }
 }

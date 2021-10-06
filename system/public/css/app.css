@@ -3,13 +3,12 @@ body{
     margin: 0;
 }
 
-form{
-    padding:10px;
+.wrapper{
+    min-height: 100vh !important;
 }
 
-.container{
-    min-height: 100vh;
-    height: 100%;
+form{
+    padding:10px;
 }
 
 .sidebar{

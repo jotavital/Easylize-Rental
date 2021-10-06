@@ -19,11 +19,8 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CompanyController;
 
 Route::get('/', function(){
-    return redirect()->route('showRegister');
+    return redirect()->route('companies.create');
 });
-Route::get('/register', [CompanyController::class, 'showRegister'])->name('showRegister');
-Route::post('/register/do', [CompanyController::class, 'register'])->name('register.do');
 
-
-// ! verify data routes
-Route::post('/getAllCompanies', [CompanyController::class, 'getAllCompanies'])->name('getAllCompanies');
+Route::post('companies/getAll', [CompanyController::class, 'getAll'])->name('companies.all.get');
+Route::resource('companies', CompanyController::class);

@@ -45,7 +45,7 @@ class UserAuthController extends Controller
 
         MyHelpers::deleteAllCookies();
 
-        return redirect()->route('showRegister');
+        return redirect()->route('companies.create');
     }
 
     public function dashboard()

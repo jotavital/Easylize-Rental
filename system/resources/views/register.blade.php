@@ -12,37 +12,43 @@ $error = Session::get('error');
 
 @section('content')
 
-<div class="container col-12 d-flex justify-content-center align-items-center">
+<div class="content d-flex align-items-center" style="height:100vh;">
+    <div class="container-fluid">
 
-    <div class="formDiv col-sm-5 col-lg-3">
         <h1 class="mb-4 text-center">Cadastro</h1>
-        <form action="{{ route('register.do') }}" id="registerForm" class="needs-validation" method="POST" novalidate>
+        <form action="{{ route('companies.store') }}" id="registerForm" class="col-12 needs-validation" method="POST" novalidate>
             @csrf
-            <div class="mb-3">
-                <label for="usuario" class="form-label">Usuário</label>
-                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nome de usuário da empresa" required>
-                <div class="invalid-feedback" id="invalid-usuario">
+            <div class="form-row d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                    <label for="usuario" class="form-label">Usuário</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nome de usuário da empresa" required>
+                    <div class="invalid-feedback" id="invalid-usuario">
 
+                    </div>
+                    <small class="form-text text-muted">
+                        Sua equipe usará este nome para acessar sua empresa. Ex.: easylizerental.com/nome_usuario
+                    </small>
                 </div>
-                <small class="form-text text-muted">
-                    Sua equipe usará este nome para acessar sua empresa. Ex.: easylizerental.com/nome_usuario
-                </small>
             </div>
-            <div class="mb-3">
-                <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha de acesso" required>
-                <div class="invalid-feedback" id="invalid-senha">
+            <div class="form-row d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha de acesso" required>
+                    <div class="invalid-feedback" id="invalid-senha">
 
+                    </div>
+                    <small class="form-text text-muted">
+                        Seu primeiro login será realizado com os dados acima
+                    </small>
                 </div>
-                <small class="form-text text-muted">
-                    Seu primeiro login será realizado com os dados acima
-                </small>
             </div>
-            <div class="mb-3">
-                <label for="nome_empresa" class="form-label">Nome da empresa</label>
-                <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" placeholder="Nome da empresa" required>
-                <div class="invalid-feedback" id="invalid-senha">
-                    Preencha este campo.
+            <div class="form-row d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                    <label for="nome_empresa" class="form-label">Nome da empresa</label>
+                    <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" placeholder="Nome da empresa" required>
+                    <div class="invalid-feedback" id="invalid-senha">
+                        Preencha este campo.
+                    </div>
                 </div>
             </div>
 
@@ -79,7 +85,7 @@ $error = Session::get('error');
         var VerifyCompanyUsernameObj = new VerifyCompanyUsername();
 
         $.ajax({
-            url: "/getAllCompanies",
+            url: "/companies/getAll",
             type: "post",
             async: false,
             data: {},

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/adminlte.min.css">
 
-    <title><?php echo e(isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'showRegister' ? $_COOKIE['nome_empresa'] : "Easylize Rental"); ?> - <?php echo $__env->yieldContent('title'); ?></title>
+    <title><?php echo e(isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'companies.create' ? $_COOKIE['nome_empresa'] : "Easylize Rental"); ?> - <?php echo $__env->yieldContent('title'); ?></title>
 </head>
 
 <body>
@@ -24,8 +24,7 @@
     </div>
 
     <footer>
-        <script src="js/classes/verifyCompanyUsername.js"></script>
-
+        <script src="/js/classes/verifyCompanyUsername.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/adminlte.min.js"></script>
         
