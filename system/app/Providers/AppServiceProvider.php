@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Classes\MyHelpers;
 use Dotenv\Dotenv;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
@@ -38,5 +39,6 @@ class AppServiceProvider extends ServiceProvider
         Artisan::call("database:createSystemDb");
         Artisan::call("database:migrateSystemDatabase");
         Artisan::call("database:seedSystemDb");
+        MyHelpers::setDefaultTenantParameterForRoutes();
     }
 }

@@ -1,11 +1,3 @@
-<?php
-
-use App\Classes\MyHelpers;
-
-MyHelpers::setDefaultTenantParameterForRoutes();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
