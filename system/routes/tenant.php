@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ModeloController;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::group([
     ], function () {
         // ! login routes
         Route::get('/', function () {
-            return redirect()->route('admin.login', ['tenant' => $_COOKIE['tenant_name']]);
+            return redirect()->route('admin.login', ['tenant' => Request::segment(1)]);
         });
         Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
         Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');
