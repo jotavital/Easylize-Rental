@@ -38,9 +38,9 @@ class ModeloController extends Controller
                 }
             }
 
-            return redirect()->route('modelos.show', ['tenant' => $_COOKIE['tenant_name']])->with('success', 'Modelo cadastrado com sucesso');
+            return redirect()->route('modelos.show')->with('success', 'Modelo cadastrado com sucesso');
         } else {
-            return redirect()->route('modelos.show', ['tenant' => $_COOKIE['tenant_name']])->withErrors('error', 'Não foi possível cadastrar o modelo, tente novamente.');
+            return redirect()->route('modelos.show')->withErrors('error', 'Não foi possível cadastrar o modelo, tente novamente.');
         }
     }
 

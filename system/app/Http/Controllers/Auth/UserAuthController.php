@@ -28,12 +28,8 @@ class UserAuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-
-            // $database_name = $company->banco_empresa;
-
-            // Tenant::updateOrCreate(['id' => $database_name]);
             
-            return redirect()->route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name']]);
+            return redirect()->route('admin.dashboard');
         } else {
             return redirect()->back()->with('message', "Não foi possível realizar o login, verifique as credenciais e tente novamente!");
         }

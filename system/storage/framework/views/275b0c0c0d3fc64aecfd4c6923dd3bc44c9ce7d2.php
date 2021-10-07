@@ -1,3 +1,11 @@
+<?php
+
+use App\Classes\MyHelpers;
+
+MyHelpers::setDefaultTenantParameterForRoutes();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +114,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo e(route('veiculos.create.show', ['tenant' => $_COOKIE['tenant_name']])); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
+                                    <a href="<?php echo e(route('veiculos.create.show')); ?>" class="nav-link <?php echo $__env->yieldContent('novo-veiculo-menu-active'); ?>">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>

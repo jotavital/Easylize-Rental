@@ -44,7 +44,7 @@ Route::group([
     Route::get('/admin/logout', [UserAuthController::class, 'logout'])->name('admin.logout.view');
     Route::post('/admin/logout/do', [UserAuthController::class, 'logout'])->name('admin.logout.do');
 
-    Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:web');
+    Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard');
 
     // ! vehicle routes
     Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculos.create.show');

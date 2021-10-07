@@ -20,9 +20,9 @@ class MarcaController extends Controller
         $marca->nome = $request->nomeMarcaInput;
 
         if ($marca->save()) {
-            return redirect()->route('marcas.show', ['tenant' => $_COOKIE['tenant_name']])->with('success', 'Marca cadastrada com sucesso');
+            return redirect()->route('marcas.show')->with('success', 'Marca cadastrada com sucesso');
         } else {
-            return redirect()->route('marcas.show', ['tenant' => $_COOKIE['tenant_name']])->withErrors('error', 'Não foi possível cadastrar a marca, tente novamente.');
+            return redirect()->route('marcas.show')->withErrors('error', 'Não foi possível cadastrar a marca, tente novamente.');
         }
     }
 

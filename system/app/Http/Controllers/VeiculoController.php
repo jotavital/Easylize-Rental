@@ -31,9 +31,9 @@ class VeiculoController extends Controller
         $veiculo->fk_categoria = $request->categoriaVeiculoSelect;
 
         if ($veiculo->save()) {
-            return redirect()->route('veiculos.create.show', ['tenant' => $_COOKIE['tenant_name']])->with('success', 'Veículo adicionado com sucesso!');
+            return redirect()->route('veiculos.create.show')->with('success', 'Veículo adicionado com sucesso!');
         } else {
-            return redirect()->route('veiculos.create.show', ['tenant' => $_COOKIE['tenant_name']])->with('error', 'Não foi possível adicionar o veículo, tente novamente.');
+            return redirect()->route('veiculos.create.show')->with('error', 'Não foi possível adicionar o veículo, tente novamente.');
         }
     }
 
