@@ -23,3 +23,7 @@ form{
     border: rgb(40, 167, 69) solid 1px; 
     border-radius: 4px;
 }
+
+table td{
+    cursor: pointer;
+}

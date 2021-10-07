@@ -13,7 +13,7 @@
 <div class="content">
     <div class="container-fluid">
 
-        <table id="tableVeiculos">
+        <table class="cell-border compact hover" id="tableVeiculos">
             <thead>
                 <th>ID</th>
                 <th>Placa</th>
@@ -49,9 +49,15 @@
             success: function(veiculos) {
 
                 $('#tableVeiculos').DataTable({
+                    language: {
+                        url: '/lang/pt-br/dataTables_pt-br.json'
+                    },
                     data: veiculos,
-                    columns: [
-                        {
+                    columnDefs: [{
+                        className: "dt-center",
+                        targets: "_all"
+                    }],
+                    columns: [{
                             data: 'id'
                         },
                         {
