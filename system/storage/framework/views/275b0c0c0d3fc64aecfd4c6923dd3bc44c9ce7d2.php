@@ -139,6 +139,9 @@
                                 </p>
                             </a>
                         </li>
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <a href=" <?php echo e(route('admin.logout')); ?> " class="btn btn-danger mt-3">Logout</a>
+                        </div>
                     </ul>
                 </nav>
             </div>
