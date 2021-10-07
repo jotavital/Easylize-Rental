@@ -25,7 +25,7 @@ use Stancl\Tenancy\Middleware\InitializeTenancyByPath;
 
 Route::group([
     'prefix' => '/{tenant}',
-    'middleware' => [InitializeTenancyByPath::class, 'web'],
+    'middleware' => [InitializeTenancyByPath::class, 'web', 'setTenantCookies'],
 ], function () {
 
     Route::group([

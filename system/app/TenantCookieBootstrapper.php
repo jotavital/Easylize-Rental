@@ -10,16 +10,7 @@ class TenantCookieBootstrapper implements TenancyBootstrapper
 {
     public function bootstrap(Tenant $tenant)
     {
-        if(setcookie('tenant_name', $tenant->getTenantKey(), time() + 60 * 60 * 24 * 30, '/')){
-
-            if(!isset($_COOKIE['tenant_name'])){
-                echo "<script> location.reload(); </script>";
-            }else{
-                $company = Company::where('banco_empresa', $_COOKIE['tenant_name'])->get()->first();
-                setcookie('nome_empresa', $company->nome_empresa, time() + 60 * 60 * 24 * 30, '/');
-            }
-            
-        }
+        
 
     }
 

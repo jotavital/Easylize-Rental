@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\MyHelpers;
 use App\Models\System\Company;
 use App\Models\Tenant;
 use Faker\Provider\Uuid;
@@ -28,6 +29,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
+        MyHelpers::deleteAllCookies();
         return view('register');
     }
 
