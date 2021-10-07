@@ -32,29 +32,28 @@ Route::group([
     // ! logout routes
     Route::get('/admin/logout', [UserAuthController::class, 'logout'])->name('admin.logout');
 
+    // ! dashboard routes
     Route::get('/admin/dashboard', [UserAuthController::class, 'dashboard'])->name('admin.dashboard');
 
     // ! vehicle routes
-    Route::get('/veiculos/create', [VeiculoController::class, 'showCreateVeiculo'])->name('veiculos.create.show');
-    Route::get('/veiculos/all', [VeiculoController::class, 'showAllVeiculos'])->name('veiculos.all.show');
-    Route::post('/veiculos/store', [VeiculoController::class, 'storeVeiculo'])->name('veiculos.store');
-    Route::post('/veiculos/getAll', [VeiculoController::class, 'getAllVeiculos'])->name('veiculos.all.get');
+    Route::post('/veiculos/getAll', [VeiculoController::class, 'getAll'])->name('veiculos.all.get');
+    Route::resource('veiculos', VeiculoController::class);
 
     // ! marcas routes
-    Route::get('/marcas', [MarcaController::class, 'showAllMarcas'])->name('marcas.show');
-    Route::post('/marcas/store', [MarcaController::class, 'storeMarca'])->name('marcas.store');
-    Route::post('/marcas/getAll', [MarcaController::class, 'getAllMarcas'])->name('marcas.all.get');
+    Route::post('/marcas/getAll', [MarcaController::class, 'getAll'])->name('marcas.all.get');
+    Route::resource('marcas', MarcaController::class);
 
     // ! modelos routes
-    Route::get('/modelos', [ModeloController::class, 'showAllModelos'])->name('modelos.show');
-    Route::post('/modelos/store', [ModeloController::class, 'storeModelo'])->name('modelos.store');
-    Route::post('/modelos/getAll', [ModeloController::class, 'getAllModelos'])->name('modelos.all.get');
+    Route::post('/modelos/getAll', [ModeloController::class, 'getAll'])->name('modelos.all.get');
     Route::post('/modelos/getModelosByMarca', [ModeloController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
+    Route::resource('modelos', ModeloController::class);
 
     // ! categorias routes
     Route::post('/categorias/getCategoriasVeiculos', [CategoriaController::class, 'getCategoriasVeiculos'])->name('categorias.veiculos.get');
 });
 
+
+// ! routes that must not be accessed if user is authenticated
 Route::group([
     'prefix' => '/{tenant}',
     'middleware' => [InitializeTenancyByPath::class, 'web', 'isLogged','setTenantCookies'],

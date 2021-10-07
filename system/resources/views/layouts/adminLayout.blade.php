@@ -106,25 +106,25 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculos.create.show') }}" class="nav-link @yield('novo-veiculo-menu-active')">
+                                    <a href="{{ route('veiculos.create') }}" class="nav-link @yield('novo-veiculo-menu-active')">
                                         <i class="fas fa-plus-circle nav-icon"></i>
                                         <p>Novo veículo</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculos.all.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('todos-veiculos-menu-active')">
+                                    <a href="{{ route('veiculos.index', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('todos-veiculos-menu-active')">
                                         <i class="fas fa-list-alt nav-icon"></i>
                                         <p>Todos os veículos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('marcas.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('marcas-veiculos-menu-active')">
+                                    <a href="{{ route('marcas.index', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('marcas-veiculos-menu-active')">
                                         <i class="fas fa-sitemap nav-icon"></i>
                                         <p>Marcas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('modelos.show', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('modelos-veiculos-menu-active')">
+                                    <a href="{{ route('modelos.index', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('modelos-veiculos-menu-active')">
                                         <i class="fas fa-car-side nav-icon"></i>
                                         <p>Modelos</p>
                                     </a>
@@ -139,9 +139,14 @@
                                 </p>
                             </a>
                         </li>
-                        <div class="col-sm-12 d-flex justify-content-center">
-                            <a href=" {{ route('admin.logout') }} " class="btn btn-danger mt-3">Logout</a>
-                        </div>
+                        <li class="nav-item">
+                            <a href=" {{ route('admin.logout') }} " class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
