@@ -12,23 +12,23 @@
 
 <div class="content">
     <div class="container-fluid">
+        <div class="col-12">
+            <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
+                <thead>
+                    <th>ID</th>
+                    <th>Placa</th>
+                    <th>Chassi</th>
+                    <th>Renavam</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Categoria</th>
+                    <th>Ativo</th>
+                </thead>
+                <tbody>
 
-        <table class="cell-border compact hover" id="tableVeiculos">
-            <thead>
-                <th>ID</th>
-                <th>Placa</th>
-                <th>Chassi</th>
-                <th>Renavam</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Categoria</th>
-                <th>Ativo</th>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -52,11 +52,8 @@
                     language: {
                         url: '/lang/pt-br/dataTables_pt-br.json'
                     },
+                    responsive: true,
                     data: veiculos,
-                    columnDefs: [{
-                        className: "dt-center",
-                        targets: "_all"
-                    }],
                     columns: [{
                             data: 'id'
                         },
