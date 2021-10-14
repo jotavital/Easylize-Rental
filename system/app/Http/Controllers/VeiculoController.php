@@ -96,8 +96,7 @@ class VeiculoController extends Controller
         //
     }
 
-    public function getAll(){
-        echo json_encode(Veiculo::all()); 
-        // ! tentar retornar ja com os valores de marca, modelo e categoria
+    public static function getAll(){
+        echo json_encode(Veiculo::with(['marca:id,nome', 'modelo:id,nome', 'categoria:id,nome'])->get()); 
     }
 }

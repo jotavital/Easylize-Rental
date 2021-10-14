@@ -11,6 +11,7 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="content">
+
     <div class="container-fluid">
         <div class="col-12">
             <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
@@ -47,7 +48,7 @@
             },
             dataType: "json",
             success: function(veiculos) {
-
+                console.log(veiculos);
                 $('#tableVeiculos').DataTable({
                     language: {
                         url: '/lang/pt-br/dataTables_pt-br.json'
@@ -67,13 +68,13 @@
                             data: 'renavam'
                         },
                         {
-                            data: 'fk_marca'
+                            data: 'marca.nome'
                         },
                         {
-                            data: 'fk_modelo'
+                            data: 'modelo.nome'
                         },
                         {
-                            data: 'fk_categoria'
+                            data: 'categoria.nome'
                         },
                         {
                             data: 'ativo'

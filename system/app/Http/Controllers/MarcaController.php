@@ -90,7 +90,7 @@ class MarcaController extends Controller
         //
     }
 
-    public function getAll()
+    public static function getAll()
     {
         echo json_encode(Marca::all());
     }

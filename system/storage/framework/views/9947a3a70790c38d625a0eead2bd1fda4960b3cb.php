@@ -261,7 +261,7 @@ $error = Session::get('error');
             success: function(categorias) {
 
                 categorias.forEach(element => {
-                    $('#categoriaVeiculoSelect').append('<option value="' + element.id + '">' + element.nome_categoria + '</option>');
+                    $('#categoriaVeiculoSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
                 });
 
             }
