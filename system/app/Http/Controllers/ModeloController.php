@@ -15,7 +15,7 @@ class ModeloController extends Controller
      */
     public function index()
     {
-        return view('veiculo/modelosVeiculos');
+        return view('modelo/modelosVeiculos');
     }
 
     /**

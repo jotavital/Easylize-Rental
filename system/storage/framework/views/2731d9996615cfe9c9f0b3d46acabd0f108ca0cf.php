@@ -78,4 +78,4 @@ $error = Session::get('error');
 </div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/veiculo/marcasVeiculos.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/marca/marcasVeiculos.blade.php ENDPATH**/ ?>

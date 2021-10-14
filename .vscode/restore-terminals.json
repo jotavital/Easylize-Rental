@@ -18,7 +18,7 @@
         {
             "splitTerminals": [
                 {
-                    "name": "cmd",
+                    "name": "watch",
                     "commands": [
                         "cd system/",
                         "npm run watch",

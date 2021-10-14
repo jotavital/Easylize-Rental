@@ -14,7 +14,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return view('veiculo/marcasVeiculos');
+        return view('marca/marcasVeiculos');
     }
 
     /**
@@ -24,7 +24,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        return view('veiculo/marcasVeiculos');
+        return view('marca/marcasVeiculos');
     }
 
     /**
