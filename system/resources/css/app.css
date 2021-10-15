@@ -27,3 +27,7 @@ form{
 table td{
     cursor: pointer;
 }
+
+.no-padding-form{
+    padding: 0;
+}

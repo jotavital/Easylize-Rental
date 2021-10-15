@@ -112,19 +112,19 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('veiculos.index', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('todos-veiculos-menu-active')">
+                                    <a href="{{ route('veiculos.index') }}" class="nav-link @yield('todos-veiculos-menu-active')">
                                         <i class="fas fa-list-alt nav-icon"></i>
                                         <p>Todos os veículos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('marcas.index', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('marcas-veiculos-menu-active')">
+                                    <a href="{{ route('marcas.index') }}" class="nav-link @yield('marcas-veiculos-menu-active')">
                                         <i class="fas fa-sitemap nav-icon"></i>
                                         <p>Marcas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('modelos.index', ['tenant' => $_COOKIE['tenant_name']]) }}" class="nav-link @yield('modelos-veiculos-menu-active')">
+                                    <a href="{{ route('modelos.index') }}" class="nav-link @yield('modelos-veiculos-menu-active')">
                                         <i class="fas fa-car-side nav-icon"></i>
                                         <p>Modelos</p>
                                     </a>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name']]) }}">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">@yield('contentTitle')</li>
                             </ol>
                         </div>

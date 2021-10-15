@@ -49,7 +49,7 @@ $error = Session::get('error');
 <?php endif; ?>
         <?php endif; ?>
 
-        <form action=" <?php echo e(route('modelos.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
+        <form action=" <?php echo e(route('modelos.store')); ?> " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
             <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
@@ -174,7 +174,7 @@ $error = Session::get('error');
     window.onload = function() {
 
         $.ajax({
-            url: "<?php echo e(route('marcas.all.get', ['tenant' => $_COOKIE['tenant_name']])); ?>",
+            url: "<?php echo e(route('marcas.all.get')); ?>",
             type: "post",
             data: {
                 "_token": "<?php echo e(csrf_token()); ?>"

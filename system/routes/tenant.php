@@ -37,6 +37,7 @@ Route::group([
 
     // ! vehicle routes
     Route::post('/veiculos/getAll', [VeiculoController::class, 'getAll'])->name('veiculos.all.get');
+    Route::post('/veiculos/ativarInativar', [VeiculoController::class, 'ativarInativar'])->name('veiculos.ativar-inativar');
     Route::resource('veiculos', VeiculoController::class);
 
     // ! marcas routes

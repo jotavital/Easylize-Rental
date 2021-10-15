@@ -27,7 +27,7 @@ $error = Session::get('error');
         <x-alert type="danger" :message='$error' />
         @endif
 
-        <form action=" {{ route('modelos.store', ['tenant' => $_COOKIE['tenant_name']]) }} " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
+        <form action=" {{ route('modelos.store') }} " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
             @csrf
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-md-4">
@@ -108,7 +108,7 @@ $error = Session::get('error');
     window.onload = function() {
 
         $.ajax({
-            url: "{{ route('marcas.all.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+            url: "{{ route('marcas.all.get') }}",
             type: "post",
             data: {
                 "_token": "{{ csrf_token() }}"

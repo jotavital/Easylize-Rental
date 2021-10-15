@@ -27,7 +27,7 @@ $error = Session::get('error');
         <x-alert type="danger" :message='$error' />
         @endif
 
-        <form action=" {{ route('marcas.store', ['tenant' => $_COOKIE['tenant_name']]) }} " method="POST" class="col-12 needs-validation" novalidate>
+        <form action=" {{ route('marcas.store') }} " method="POST" class="col-12 needs-validation" novalidate>
             @csrf
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">

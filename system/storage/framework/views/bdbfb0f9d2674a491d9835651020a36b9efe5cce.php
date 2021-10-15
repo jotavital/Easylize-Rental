@@ -49,7 +49,7 @@ $error = Session::get('error');
 <?php endif; ?>
         <?php endif; ?>
 
-        <form action=" <?php echo e(route('marcas.store', ['tenant' => $_COOKIE['tenant_name']])); ?> " method="POST" class="col-12 needs-validation" novalidate>
+        <form action=" <?php echo e(route('marcas.store')); ?> " method="POST" class="col-12 needs-validation" novalidate>
             <?php echo csrf_field(); ?>
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">

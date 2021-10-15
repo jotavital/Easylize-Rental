@@ -27,7 +27,7 @@ $error = Session::get('error');
         <x-alert type="danger" :message='$error' />
         @endif
 
-        <form action=" {{ route('veiculos.store', ['tenant' => $_COOKIE['tenant_name']]) }} " method="POST" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
+        <form action=" {{ route('veiculos.store') }} " method="POST" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
             @csrf
             <div class="form-row col-12 d-flex justify-content-center">
                 <div class="form-group col-sm-3">
@@ -116,7 +116,7 @@ $error = Session::get('error');
         });
 
         $.ajax({
-            url: "{{ route('marcas.all.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+            url: "{{ route('marcas.all.get') }}",
             type: "post",
             data: {
                 "_token": "{{ csrf_token() }}"
@@ -138,7 +138,7 @@ $error = Session::get('error');
                 modeloSelect.enable();
 
                 $.ajax({
-                    url: "{{ route('modelos.bymarca.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+                    url: "{{ route('modelos.bymarca.get') }}",
                     type: "post",
                     data: {
                         "_token": "{{ csrf_token() }}",
@@ -164,7 +164,7 @@ $error = Session::get('error');
         });
 
         $.ajax({
-            url: "{{ route('categorias.veiculos.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+            url: "{{ route('categorias.veiculos.get') }}",
             type: "post",
             data: {
                 "_token": "{{ csrf_token() }}"

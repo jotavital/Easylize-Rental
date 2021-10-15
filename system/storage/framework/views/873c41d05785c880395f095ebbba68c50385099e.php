@@ -38,10 +38,27 @@
 <?php $__env->startSection('script'); ?>
 
 <script>
+    function submitAtivarInativarForm(formId) {
+        $.ajax({
+            url: "<?php echo e(route('veiculos.ativar-inativar')); ?>",
+            type: "post",
+            data: {
+                "_token": "<?php echo e(csrf_token()); ?>",
+                "formId": formId
+            },
+            success: function(response) {
+                
+            },
+            error: function(response) {
+                alert("Não foi possível desativar este veículo, tente novamente.");
+            }
+        });
+    }
+
     window.onload = function() {
 
         $.ajax({
-            url: "<?php echo e(route('veiculos.all.get', ['tenant' => $_COOKIE['tenant_name']])); ?>",
+            url: "<?php echo e(route('veiculos.all.get')); ?>",
             type: "post",
             data: {
                 "_token": "<?php echo e(csrf_token()); ?>"
@@ -79,10 +96,31 @@
                             data: null,
                             render: function(data, type, row) {
                                 if (data.ativo == 1) {
-                                    // !! criar um componente para o switch que vai aparecer aqui
-                                    return `<x-alert type="success" message=oi" />`;
+                                    return `<?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => '` + data.id + `','checked' => 'checked']); ?>
+<?php $component->withName('switch-ativar-inativar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
+<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
+<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>`;
                                 } else {
-                                    return "noooo";
+                                    return `<?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => '` + data.id + `','checked' => 'false']); ?>
+<?php $component->withName('switch-ativar-inativar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
+<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
+<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>`;
                                 }
                             }
                         }
@@ -91,8 +129,6 @@
 
             }
         });
-
-
 
     }
 </script>

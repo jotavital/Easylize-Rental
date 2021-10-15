@@ -41,7 +41,7 @@
     window.onload = function() {
 
         $.ajax({
-            url: "<?php echo e(route('veiculos.all.get', ['tenant' => $_COOKIE['tenant_name']])); ?>",
+            url: "<?php echo e(route('veiculos.all.get')); ?>",
             type: "post",
             data: {
                 "_token": "<?php echo e(csrf_token()); ?>"

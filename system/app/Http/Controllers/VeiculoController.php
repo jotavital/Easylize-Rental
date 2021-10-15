@@ -96,7 +96,23 @@ class VeiculoController extends Controller
         //
     }
 
-    public static function getAll(){
-        echo json_encode(Veiculo::with(['marca:id,nome', 'modelo:id,nome', 'categoria:id,nome'])->get()); 
+    public static function getAll()
+    {
+        echo json_encode(Veiculo::with(['marca:id,nome', 'modelo:id,nome', 'categoria:id,nome'])->get());
+    }
+
+    public function ativarInativar(Request $request)
+    {
+        $formId = $request->formId;
+
+        $veiculo = Veiculo::find($formId);
+
+        if ($veiculo->ativo == 1) {
+            $veiculo->ativo = 0;
+        } else if ($veiculo->ativo == 0) {
+            $veiculo->ativo = 1;
+        }
+
+        $veiculo->save();
     }
 }

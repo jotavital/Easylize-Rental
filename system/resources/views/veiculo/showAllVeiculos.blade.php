@@ -38,10 +38,27 @@
 @section('script')
 
 <script>
+    function submitAtivarInativarForm(formId) {
+        $.ajax({
+            url: "{{ route('veiculos.ativar-inativar') }}",
+            type: "post",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "formId": formId
+            },
+            success: function(response) {
+                
+            },
+            error: function(response) {
+                alert("Não foi possível desativar este veículo, tente novamente.");
+            }
+        });
+    }
+
     window.onload = function() {
 
         $.ajax({
-            url: "{{ route('veiculos.all.get', ['tenant' => $_COOKIE['tenant_name']]) }}",
+            url: "{{ route('veiculos.all.get') }}",
             type: "post",
             data: {
                 "_token": "{{ csrf_token() }}"
@@ -79,10 +96,9 @@
                             data: null,
                             render: function(data, type, row) {
                                 if (data.ativo == 1) {
-                                    // !! criar um componente para o switch que vai aparecer aqui
-                                    return `<x-alert type="success" message=oi" />`;
+                                    return `<x-switch-ativar-inativar id="` + data.id + `" checked="checked" />`;
                                 } else {
-                                    return "noooo";
+                                    return `<x-switch-ativar-inativar id="` + data.id + `" checked="false" />`;
                                 }
                             }
                         }
@@ -91,8 +107,6 @@
 
             }
         });
-
-
 
     }
 </script>
