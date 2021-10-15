@@ -21,8 +21,7 @@
                     "name": "watch",
                     "commands": [
                         "cd system/",
-                        "npm run watch",
-                        "start http://localhost:3000"
+                        "npm run watch"
                     ]
                 }
             ]

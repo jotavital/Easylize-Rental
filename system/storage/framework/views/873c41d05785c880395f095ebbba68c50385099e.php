@@ -24,6 +24,7 @@
                     <th>Modelo</th>
                     <th>Categoria</th>
                     <th>Ativo</th>
+                    <th>Ações</th>
                 </thead>
                 <tbody>
 
@@ -31,6 +32,10 @@
             </table>
         </div>
     </div>
+</div>
+
+<div id="divModalEditarVeiculo">
+
 </div>
 
 <?php $__env->stopSection(); ?>
@@ -47,12 +52,28 @@
                 "formId": formId
             },
             success: function(response) {
-                
+
             },
             error: function(response) {
                 alert("Não foi possível desativar este veículo, tente novamente.");
             }
         });
+    }
+
+    function gerarModalEditarVeiculo(idModal){
+        // !!! passar os dados do veiculo para o modal
+        $('#divModalEditarVeiculo').append(`<?php if (isset($component)) { $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => '3']); ?>
+<?php $component->withName('modals.modal-editar-veiculo'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8)): ?>
+<?php $component = $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8; ?>
+<?php unset($__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>`);
     }
 
     window.onload = function() {
@@ -123,13 +144,43 @@
 <?php endif; ?>`;
                                 }
                             }
+                        },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                if (data.ativo == 1) {
+                                    return `<?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, []); ?>
+<?php $component->withName('acoes-tabela'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a)): ?>
+<?php $component = $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a; ?>
+<?php unset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>`;
+                                } else {
+                                    return `<?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, []); ?>
+<?php $component->withName('acoes-tabela'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a)): ?>
+<?php $component = $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a; ?>
+<?php unset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>`;
+                                }
+                            }
                         }
                     ]
                 });
-
             }
         });
-
     }
 </script>
 

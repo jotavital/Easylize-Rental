@@ -24,6 +24,7 @@
                     <th>Modelo</th>
                     <th>Categoria</th>
                     <th>Ativo</th>
+                    <th>Ações</th>
                 </thead>
                 <tbody>
 
@@ -31,6 +32,10 @@
             </table>
         </div>
     </div>
+</div>
+
+<div id="divModalEditarVeiculo">
+
 </div>
 
 @endsection
@@ -47,12 +52,17 @@
                 "formId": formId
             },
             success: function(response) {
-                
+
             },
             error: function(response) {
                 alert("Não foi possível desativar este veículo, tente novamente.");
             }
         });
+    }
+
+    function gerarModalEditarVeiculo(idModal){
+        // !!! passar os dados do veiculo para o modal
+        $('#divModalEditarVeiculo').append(`<x-modals.modal-editar-veiculo id='3' />`);
     }
 
     window.onload = function() {
@@ -101,13 +111,21 @@
                                     return `<x-switch-ativar-inativar id="` + data.id + `" checked="false" />`;
                                 }
                             }
+                        },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                if (data.ativo == 1) {
+                                    return `<x-acoes-tabela />`;
+                                } else {
+                                    return `<x-acoes-tabela />`;
+                                }
+                            }
                         }
                     ]
                 });
-
             }
         });
-
     }
 </script>
 

@@ -28,7 +28,8 @@ class UserAuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('admin.dashboard');
+            // return redirect()->route('admin.dashboard');
+            return redirect()->intended();
         } else {
             return redirect()->back()->with('message', "Não foi possível realizar o login, verifique as credenciais e tente novamente!");
         }
