@@ -31,3 +31,7 @@ table td{
 .no-padding-form{
     padding: 0;
 }
+
+.table-action-icon{
+    font-size: 1.2rem;
+}

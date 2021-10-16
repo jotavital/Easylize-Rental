@@ -35,7 +35,7 @@
 </div>
 
 <div id="divModalEditarVeiculo">
-
+    
 </div>
 
 @endsection
@@ -43,6 +43,8 @@
 @section('script')
 
 <script>
+    var tableVeiculosObj;
+
     function submitAtivarInativarForm(formId) {
         $.ajax({
             url: "{{ route('veiculos.ativar-inativar') }}",
@@ -60,9 +62,8 @@
         });
     }
 
-    function gerarModalEditarVeiculo(idModal){
-        // !!! passar os dados do veiculo para o modal
-        $('#divModalEditarVeiculo').append(`<x-modals.modal-editar-veiculo id='3' />`);
+    function gerarModalEditarVeiculo(id) {
+        $('#divModalEditarVeiculo').append(`<x-modals.modal-editar-veiculo id="` + id + `" />`);
     }
 
     window.onload = function() {
@@ -75,7 +76,7 @@
             },
             dataType: "json",
             success: function(veiculos) {
-                $('#tableVeiculos').DataTable({
+                tableVeiculosObj = $('#tableVeiculos').DataTable({
                     language: {
                         url: '/lang/pt-br/dataTables_pt-br.json'
                     },
@@ -115,17 +116,14 @@
                         {
                             data: null,
                             render: function(data, type, row) {
-                                if (data.ativo == 1) {
-                                    return `<x-acoes-tabela />`;
-                                } else {
-                                    return `<x-acoes-tabela />`;
-                                }
+                                return `<x-acoes-tabela id="` + data.id + `" />`;
                             }
                         }
                     ]
                 });
             }
         });
+
     }
 </script>
 

@@ -35,7 +35,7 @@
 </div>
 
 <div id="divModalEditarVeiculo">
-
+    
 </div>
 
 <?php $__env->stopSection(); ?>
@@ -43,6 +43,8 @@
 <?php $__env->startSection('script'); ?>
 
 <script>
+    var tableVeiculosObj;
+
     function submitAtivarInativarForm(formId) {
         $.ajax({
             url: "<?php echo e(route('veiculos.ativar-inativar')); ?>",
@@ -60,10 +62,9 @@
         });
     }
 
-    function gerarModalEditarVeiculo(idModal){
-        // !!! passar os dados do veiculo para o modal
+    function gerarModalEditarVeiculo(id) {
         $('#divModalEditarVeiculo').append(`<?php if (isset($component)) { $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => '3']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => '` + id + `']); ?>
 <?php $component->withName('modals.modal-editar-veiculo'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -86,7 +87,7 @@
             },
             dataType: "json",
             success: function(veiculos) {
-                $('#tableVeiculos').DataTable({
+                tableVeiculosObj = $('#tableVeiculos').DataTable({
                     language: {
                         url: '/lang/pt-br/dataTables_pt-br.json'
                     },
@@ -148,9 +149,8 @@
                         {
                             data: null,
                             render: function(data, type, row) {
-                                if (data.ativo == 1) {
-                                    return `<?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, []); ?>
+                                return `<?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, ['id' => '` + data.id + `']); ?>
 <?php $component->withName('acoes-tabela'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -161,26 +161,13 @@
 <?php endif; ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>`;
-                                } else {
-                                    return `<?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, []); ?>
-<?php $component->withName('acoes-tabela'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a)): ?>
-<?php $component = $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a; ?>
-<?php unset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>`;
-                                }
                             }
                         }
                     ]
                 });
             }
         });
+
     }
 </script>
 
