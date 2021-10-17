@@ -65,7 +65,7 @@
     function gerarModalEditarVeiculo(id) {
         $('#divModalEditarVeiculo').append(`<?php if (isset($component)) { $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8 = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => '` + id + `']); ?>
-<?php $component->withName('modals.modal-editar-veiculo'); ?>
+<?php $component->withName('modals.modalEditarVeiculo'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
@@ -172,4 +172,4 @@
 </script>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/veiculo/showAllVeiculos.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/veiculo/veiculos.blade.php ENDPATH**/ ?>

@@ -8,7 +8,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/js/app.js">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/css/fontawesome/all.min.css">
     <link rel="stylesheet" href="/css/adminlte.min.css">
@@ -132,10 +131,10 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href=" {{ route('configuracoes.index') }} " class="nav-link @yield('configuracoes-menu-active')">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
-                                    Ajustes
+                                    Configurações
                                 </p>
                             </a>
                         </li>
@@ -178,12 +177,12 @@
         <div class="text-right">
             <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital" target="_blank">Easylize Rental Team</a>.</strong> All rights reserved.
         </div>
-
-        <script src="/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="/js/app.js"></script>
         <script src="/js/adminlte.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sl-1.3.3/datatables.min.js"></script>

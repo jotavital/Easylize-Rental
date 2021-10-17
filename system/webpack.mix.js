@@ -13,8 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
 mix.js('vendor/almasaeed2010/adminlte/dist/js/adminlte.min.js', 'public/js')
-mix.js('node_modules/jquery/dist/jquery.min.js', 'public/js')
-mix.js('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', 'public/js')
 
 mix.postCss('resources/css/app.css', 'public/css')
 mix.postCss('vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css', 'public/css')

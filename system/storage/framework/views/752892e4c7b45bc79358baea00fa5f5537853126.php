@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
     <form class="no-padding-form" id="form-<?php echo e($id); ?>">
         <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="<?php echo e($id); ?>" <?php echo e($checked); ?> onChange="submitAtivarInativarForm(this.id)">
+            <input type="checkbox" class="custom-control-input" id="<?php echo e($id); ?>" <?php echo e($checked); ?> onChange="<?php echo e($submitFunctionName); ?>(this.id)">
             <label class="custom-control-label" for="<?php echo e($id); ?>"></label>
         </div>
     </form>

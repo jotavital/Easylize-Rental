@@ -1,0 +1,1 @@
+<?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/js/submitAtivarInativarForm.blade.php ENDPATH**/ ?>

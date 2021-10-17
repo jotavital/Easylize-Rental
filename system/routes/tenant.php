@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ConfiguracoesController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ModeloController;
@@ -51,6 +52,10 @@ Route::group([
 
     // ! categorias routes
     Route::post('/categorias/getCategoriasVeiculos', [CategoriaController::class, 'getCategoriasVeiculos'])->name('categorias.veiculos.get');
+
+    // ! configuracoes routes
+    Route::resource('configuracoes', ConfiguracoesController::class);
+    
 });
 
 
