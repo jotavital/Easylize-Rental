@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CompanyController;
 
 Route::get('/', function(){

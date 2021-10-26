@@ -31,10 +31,10 @@ class AppServiceProvider extends ServiceProvider
         if (!isset($_SESSION)) {
             session_start();
         }
-        
+
         $dotenv = Dotenv::createImmutable(base_path());
         $dotenv->load();
-        
+
         DB::purge('mysql');
 
         config(["database.connections.mysql.database" => "mysql"]);

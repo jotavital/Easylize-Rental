@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Session;
 
 $success = Session::get('success');
 $error = Session::get('error');
+
 ?>
 
 @extends('layouts.main')
