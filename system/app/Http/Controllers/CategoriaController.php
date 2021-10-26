@@ -10,6 +10,6 @@ class CategoriaController extends Controller
 
     public static function getCategoriasVeiculos(Request $request)
     {
-        echo json_encode(Categoria::all()->where('fk_tipo_categoria', 1));
+        echo json_encode(Categoria::all()->where('tipo_categoria_id', 1));
     }
 }

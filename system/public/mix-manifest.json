@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/adminlte.min.js": "/js/adminlte.min.js",
-    "/css/app.css": "/css/app.css",
     "/css/bootstrap.min.css": "/css/bootstrap.min.css",
     "/css/fontawesome/all.min.css": "/css/fontawesome/all.min.css",
-    "/css/adminlte.min.css": "/css/adminlte.min.css"
+    "/css/adminlte.min.css": "/css/adminlte.min.css",
+    "/css/app.css": "/css/app.css"
 }

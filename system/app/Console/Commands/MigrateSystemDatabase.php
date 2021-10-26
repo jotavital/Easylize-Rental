@@ -20,7 +20,7 @@ class MigrateSystemDatabase extends Command
      *
      * @var string
      */
-    protected $description = 'Run migrations on the system database';
+    protected $description = 'Run migrations on the system`s database';
 
     /**
      * Create a new command instance.

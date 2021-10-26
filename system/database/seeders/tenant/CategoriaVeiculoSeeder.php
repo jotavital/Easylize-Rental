@@ -17,23 +17,23 @@ class CategoriaVeiculoSeeder extends Seeder
         DB::table('categoria')->insertOrIgnore([
             [
                 'nome' => "SUV",
-                'fk_tipo_categoria' => "1"
+                'tipo_categoria_id' => "1"
             ],
             [
                 'nome' => "Esportivo",
-                'fk_tipo_categoria' => "1"
+                'tipo_categoria_id' => "1"
             ],
             [
                 'nome' => "Luxo",
-                'fk_tipo_categoria' => "1"
+                'tipo_categoria_id' => "1"
             ],
             [
                 'nome' => "Caminhonete",
-                'fk_tipo_categoria' => "1"
+                'tipo_categoria_id' => "1"
             ],
             [
                 'nome' => "Popular",
-                'fk_tipo_categoria' => "1"
+                'tipo_categoria_id' => "1"
             ],
 
         ]);

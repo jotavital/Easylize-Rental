@@ -19,6 +19,4 @@ mix.postCss('vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css', 'public/c
 mix.postCss('node_modules/@fortawesome/fontawesome-free/css/all.min.css', 'public/css/fontawesome')
 mix.postCss('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css')
 
-mix.sass('resources/sass/app.scss', 'public/css')
-
 mix.browserSync({ proxy: "http://localhost:8000" });

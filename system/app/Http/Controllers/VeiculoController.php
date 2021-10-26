@@ -40,9 +40,10 @@ class VeiculoController extends Controller
         $veiculo->placa = $request->placaInput;
         $veiculo->chassi = $request->chassiInput;
         $veiculo->renavam = $request->renavamInput;
-        $veiculo->fk_marca = $request->marcaSelect;
-        $veiculo->fk_modelo = $request->modeloSelect;
-        $veiculo->fk_categoria = $request->categoriaVeiculoSelect;
+        $veiculo->cor = $request->corInput;
+        $veiculo->marca_id = $request->marcaSelect;
+        $veiculo->modelo_id = $request->modeloSelect;
+        $veiculo->categoria_id = $request->categoriaVeiculoSelect;
 
         if ($veiculo->save()) {
             return redirect()->route('veiculos.create')->with('success', 'Veículo adicionado com sucesso!');

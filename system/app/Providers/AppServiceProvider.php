@@ -35,10 +35,13 @@ class AppServiceProvider extends ServiceProvider
         $dotenv = Dotenv::createImmutable(base_path());
         $dotenv->load();
         
+        DB::purge('mysql');
+
+        config(["database.connections.mysql.database" => "mysql"]);
+
         DB::setDefaultConnection('mysql');
         Artisan::call("database:createSystemDb");
         Artisan::call("database:migrateSystemDatabase");
-        Artisan::call("database:seedSystemDb");
         MyHelpers::setDefaultTenantParameterForRoutes();
     }
 }

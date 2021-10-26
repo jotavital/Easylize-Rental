@@ -15,6 +15,8 @@ class Initdb extends Migration
      */
     public function up()
     {
+        // !! importa o SQL para o banco de dados do tenant
+        
         $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
 
         $databaseName = Config::get('database.connections.tenant.database');

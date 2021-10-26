@@ -61,7 +61,12 @@ $error = Session::get('error');
                     </select>
                     <x-campo-obrigatorio />
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-2">
+                    <label for="corInput">Cor <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="corInput" name="corInput" placeholder="Cor" required>
+                    <x-campo-obrigatorio />
+                </div>
+                <div class="form-group col-sm-2">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>

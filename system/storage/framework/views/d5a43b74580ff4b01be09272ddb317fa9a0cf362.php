@@ -138,7 +138,23 @@ $error = Session::get('error');
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-2">
+                    <label for="corInput">Cor <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="corInput" name="corInput" placeholder="Cor" required>
+                    <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
+<?php $component->withName('campo-obrigatorio'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad)): ?>
+<?php $component = $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad; ?>
+<?php unset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                </div>
+                <div class="form-group col-sm-2">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>

@@ -44,11 +44,11 @@ class CreateSystemDatabase extends Command
         
         config(["database.connections.mysql" => [
             "driver" => "mysql",
-            "host" => "127.0.0.1",
-            "port" => "3308",
+            "host" => $_ENV['DB_HOST'],
+            "port" => $_ENV['DB_PORT'],
             "database" => "easylize_rental",
-            "username" => "root",
-            "password" => "",
+            "username" => $_ENV['DB_USERNAME'],
+            "password" => $_ENV['DB_PASSWORD'],
             "charset" => "utf8",
             "collation" => "utf8_unicode_ci",
             "prefix" => "",

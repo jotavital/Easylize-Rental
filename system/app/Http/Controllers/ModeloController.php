@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FotosModeloVeiculo;
+use App\Models\Marca;
 use App\Models\Modelo;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class ModeloController extends Controller
         $modelo->nome = $request->nomeModeloInput;
         $modelo->ano_modelo = $request->anoModeloSelect;
         $modelo->motor = $request->motorModeloInput;
-        $modelo->fk_marca = $request->marcaSelect;
+        $modelo->marca_id = $request->marcaSelect;
 
 
         if ($modelo->save()) {
@@ -115,7 +116,7 @@ class ModeloController extends Controller
 
     public function getModelosByMarca(Request $request)
     {
-
-        echo json_encode(Modelo::all()->where('fk_marca', $request->idMarca));
+        $marca = new Marca();
+        echo json_encode($marca::find($request->idMarca)->modelos);
     }
 }

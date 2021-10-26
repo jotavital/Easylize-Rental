@@ -17,6 +17,7 @@ class CreateTableTipoCategoria extends Migration
             $table->id();
             $table->string('nome_tipo');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

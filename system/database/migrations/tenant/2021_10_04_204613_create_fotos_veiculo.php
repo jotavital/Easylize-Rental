@@ -18,6 +18,7 @@ class CreateFotosVeiculo extends Migration
             $table->string('path');
             $table->integer('fk_modelo_veiculo');
             $table->timestamps();
+            $table->engine = "InnoDB";
         });
     }
 
