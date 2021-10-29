@@ -65,7 +65,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`funcionario` (
   `fk_cidade` INT NOT NULL,
   `telefone` VARCHAR(15) NOT NULL,
   `tipo_telefone` VARCHAR(9) NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC),
   UNIQUE INDEX `rg_UNIQUE` (`rg` ASC),
@@ -88,7 +87,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`usuario` (
   `privilegios` VARCHAR(45) NOT NULL,
   `data_cadastro` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fk_funcionario` INT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `login_UNIQUE` (`username` ASC),
   INDEX `fk_funcionario_usuario_idx` (`fk_funcionario` ASC),
@@ -113,7 +111,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`plano` (
   `qtd_veiculos` INT NOT NULL,
   `qtd_alugueis` INT NOT NULL,
   `qtd_funcionarios` INT NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -136,7 +133,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`empresa` (
   `fk_plano` INT NOT NULL DEFAULT 1,
   `telefone` VARCHAR(15) NOT NULL,
   `tipo_telefone` VARCHAR(9) NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_plano_contratado_empresa_idx` (`fk_plano` ASC),
   INDEX `fk_cidade_empresa_idx` (`fk_cidade` ASC),
@@ -158,7 +154,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `easylize_rental`.`marca_veiculo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -169,7 +164,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`modelo_veiculo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `fk_marca` INT NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_marca_veiculo_veiculo_idx` (`fk_marca` ASC),
   CONSTRAINT `fk_marca_veiculo_veiculo`
@@ -187,7 +181,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`categoria` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome_categoria` VARCHAR(45) NOT NULL,
   `tipo_categoria` VARCHAR(45) NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -204,7 +197,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`veiculo` (
   `fk_modelo` INT NOT NULL,
   `fk_categoria` INT NOT NULL,
   `ativo` INT NOT NULL DEFAULT 1,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `placa_UNIQUE` (`placa` ASC),
   INDEX `fk_marca_veiculo_idx` (`fk_marca` ASC),
@@ -234,7 +226,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`ocorrencia` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(255) NOT NULL,
   `data_ocorrencia` DATE NOT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -258,7 +249,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`cliente` (
   `cep` VARCHAR(10) NOT NULL,
   `fk_cidade` INT NOT NULL,
   `data_cadastro` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
@@ -292,7 +282,6 @@ CREATE TABLE IF NOT EXISTS `easylize_rental`.`aluguel` (
   `fk_cliente` INT NOT NULL,
   `tem_ocorrencia` INT NOT NULL DEFAULT 0,
   `fk_ocorrencia` INT NULL,
-  `lixo` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_ocorrencia_aluguel_idx` (`fk_ocorrencia` ASC),
   INDEX `fk_veiculo_aluguel_idx` (`fk_veiculo` ASC),

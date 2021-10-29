@@ -116,7 +116,6 @@ class ModeloController extends Controller
 
     public function getModelosByMarca(Request $request)
     {
-        $marca = new Marca();
-        echo json_encode($marca::find($request->idMarca)->modelos);
+        echo json_encode(Marca::find($request->idMarca)->modelos);
     }
 }

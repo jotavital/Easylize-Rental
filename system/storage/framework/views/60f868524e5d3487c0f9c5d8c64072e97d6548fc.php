@@ -154,40 +154,18 @@ $error = Session::get('error');
 
 <?php $__env->startSection('script'); ?>
 
+<script src="/js/initialize-slimSelects.js"></script>
+<script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
-    var marcaSelect = new SlimSelect({
-        select: '#marcaSelect',
-        placeholder: "Selecione",
-        allowDeselect: true,
-        searchPlaceholder: 'Pesquisar',
-        searchText: 'Não encontrado',
-    });
-
-    var anoModeloSelect = new SlimSelect({
-        select: '#anoModeloSelect',
-        placeholder: "Selecione",
-        allowDeselect: true,
-        searchPlaceholder: 'Pesquisar ano',
-        searchText: 'Não encontrado',
-    });
 
     window.onload = function() {
+        PopularSlimSelectsObj = new PopularSlimSelects();
 
-        $.ajax({
-            url: "<?php echo e(route('marcas.all.get')); ?>",
-            type: "post",
-            data: {
-                "_token": "<?php echo e(csrf_token()); ?>"
-            },
-            dataType: "json",
-            success: function(marcas) {
-
-                marcas.forEach(element => {
-                    $('#marcaSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
-                });
-
-            }
-        });
+        //! popular select marca
+        var dataAjaxMarca = {
+            "_token": "<?php echo e(csrf_token()); ?>"
+        };
+        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca);
     }
 </script>
 

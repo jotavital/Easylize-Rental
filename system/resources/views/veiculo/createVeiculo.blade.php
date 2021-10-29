@@ -86,105 +86,46 @@ $error = Session::get('error');
 
 @section('script')
 
+<script src="/js/mascaras-inputs.js"></script>
+<script src="/js/initialize-slimSelects.js"></script>
+<script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
-    var selectPlaceholder = "Selecione";
-
-    var marcaSelect = new SlimSelect({
-        select: '#marcaSelect',
-        placeholder: selectPlaceholder,
-        allowDeselect: true,
-        searchPlaceholder: 'Pesquisar',
-        searchText: 'Não encontrado',
-    });
-
-    var modeloSelect = new SlimSelect({
-        select: '#modeloSelect',
-        placeholder: selectPlaceholder,
-        allowDeselect: true,
-        searchPlaceholder: 'Pesquisar',
-        searchText: 'Não encontrado',
-    });
-
-    var categoriaVeiculoSelect = new SlimSelect({
-        select: '#categoriaVeiculoSelect',
-        placeholder: selectPlaceholder,
-        allowDeselect: true,
-        searchPlaceholder: 'Pesquisar',
-        searchText: 'Não encontrado',
-    });
 
     window.onload = function() {
+        PopularSlimSelectsObj = new PopularSlimSelects();
 
-        $('#placaInput').mask("AAA-0000");
-        $('#placaInput').keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
+        //! popular select marca
+        var dataAjaxMarca = {
+            "_token": "{{ csrf_token() }}"
+        };
+        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca);
 
-        $.ajax({
-            url: "{{ route('marcas.all.get') }}",
-            type: "post",
-            data: {
-                "_token": "{{ csrf_token() }}"
-            },
-            dataType: "json",
-            success: function(marcas) {
-
-                marcas.forEach(element => {
-                    $('#marcaSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
-                });
-
-            }
-        });
-
+        // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
-
             if (marcaSelect.selected() != '') {
                 $('#modeloSelect').empty();
                 modeloSelect.enable();
 
-                $.ajax({
-                    url: "{{ route('modelos.bymarca.get') }}",
-                    type: "post",
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        "idMarca": marcaSelect.selected()
-                    },
-                    dataType: "json",
-                    success: function(modelos) {
-
-                        if (modelos.length != 0) {
-
-                            for (var i in modelos) {
-                                $('#modeloSelect').append('<option value="' + modelos[i].id + '">' + modelos[i].nome + '</option>');
-                            }
-
-                        }
-
-                    }
-                });
+                var dataAjaxModelo = {
+                    "_token": "{{ csrf_token() }}",
+                    "idMarca": marcaSelect.selected()
+                };
+                PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
             } else {
                 $('#modeloSelect').empty();
                 modeloSelect.disable();
             }
         });
 
-        $.ajax({
-            url: "{{ route('categorias.veiculos.get') }}",
-            type: "post",
-            data: {
-                "_token": "{{ csrf_token() }}"
-            },
-            dataType: "json",
-            success: function(categorias) {
-
-                categorias.forEach(element => {
-                    $('#categoriaVeiculoSelect').append('<option value="' + element.id + '">' + element.nome + '</option>');
-                });
-
-            }
-        });
+        // ! popular select categoria
+        var dataAjaxCategoria = {
+            "_token": "{{ csrf_token() }}"
+        };
+        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('categorias.veiculos.get') }}", '#categoriaVeiculoSelect', 'id', 'nome', dataAjaxCategoria);
 
     }
+
+    //! IMPLEMENTAR O SOFT DELETE EM TODAS AS TABELAS
 </script>
 
 @endsection
