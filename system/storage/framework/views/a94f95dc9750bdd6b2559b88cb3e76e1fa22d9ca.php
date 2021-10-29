@@ -16,7 +16,7 @@
         <div class="col-12">
             <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
                 <thead>
-                    <th>ID</th>
+                    <th>ID </th>
                     <th>Placa</th>
                     <th>Chassi</th>
                     <th>Renavam</th>
@@ -35,19 +35,8 @@
 </div>
 
 <div id="divModalEditarVeiculo">
-
-</div>
-
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('script'); ?>
-
-<script>
-    var tableVeiculosObj;
-
-    function gerarModalEditarVeiculo(id) {
-        $('#divModalEditarVeiculo').append(`<?php if (isset($component)) { $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => '` + id + `']); ?>
+    <?php if (isset($component)) { $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => ''.e(request()->get('idVeiculoEditar')).'']); ?>
 <?php $component->withName('modals.modal-editar-veiculo'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -57,8 +46,36 @@
 <?php unset($__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8); ?>
 <?php endif; ?>
 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>`);
-    }
+<?php endif; ?>
+</div>
+
+<?php
+
+if (isset($_GET['idVeiculoEditar'])) {
+?>
+    <?php if (isset($component)) { $__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Scripts\ShowEditarVeiculoModal::class, []); ?>
+<?php $component->withName('scripts.show-editar-veiculo-modal'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee)): ?>
+<?php $component = $__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee; ?>
+<?php unset($__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php
+}
+
+?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+
+<script>
+    var tableVeiculosObj;
 
     function ativarInativarVeiculo(id) {
 
@@ -169,8 +186,8 @@
             }
         });
 
-        $(document).on('hidden.bs.modal', '#modalEditarVeiculo', function(e) {
-            $('#modalEditarVeiculo').remove(); // ! removes the modal for the other to be created with correct new values
+        $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
+            window.history.pushState(null, null, window.location.pathname);
         });
 
     }

@@ -16,7 +16,7 @@
         <div class="col-12">
             <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
                 <thead>
-                    <th>ID</th>
+                    <th>ID </th>
                     <th>Placa</th>
                     <th>Chassi</th>
                     <th>Renavam</th>
@@ -35,8 +35,18 @@
 </div>
 
 <div id="divModalEditarVeiculo">
-
+    <x-modals.modal-editar-veiculo id="{{ request()->get('idVeiculoEditar') }}" />
 </div>
+
+<?php
+
+if (isset($_GET['idVeiculoEditar'])) {
+?>
+    <x-scripts.show-editar-veiculo-modal />
+<?php
+}
+
+?>
 
 @endsection
 
@@ -44,10 +54,6 @@
 
 <script>
     var tableVeiculosObj;
-
-    function gerarModalEditarVeiculo(id) {
-        $('#divModalEditarVeiculo').append(`<x-modals.modal-editar-veiculo id="` + id + `" />`);
-    }
 
     function ativarInativarVeiculo(id) {
 
@@ -125,8 +131,8 @@
             }
         });
 
-        $(document).on('hidden.bs.modal', '#modalEditarVeiculo', function(e) {
-            $('#modalEditarVeiculo').remove(); // ! removes the modal for the other to be created with correct new values
+        $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
+            window.history.pushState(null, null, window.location.pathname);
         });
 
     }

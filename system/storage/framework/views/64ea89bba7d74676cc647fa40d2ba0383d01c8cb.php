@@ -1,3 +1,11 @@
+<?php
+
+use App\Models\Veiculo;
+
+$veiculo = Veiculo::find($id);
+
+?>
+
 <div class="modal fade" id="modalEditarVeiculo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -8,8 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <?php echo e($id); ?>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

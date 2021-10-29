@@ -116,4 +116,5 @@ class VeiculoController extends Controller
 
         $veiculo->save();
     }
+
 }
