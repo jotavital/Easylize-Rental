@@ -9,18 +9,18 @@ class SwitchAtivarInativar extends Component
 
     public $id;
     public $checked;
-    public $submitFunctionName;
+    public $rotaAtivarInativar;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $checked, $submitFunctionName)
+    public function __construct($id, $checked, $rotaAtivarInativar)
     {
         $this->id = $id;
         $this->checked = $checked;
-        $this->submitFunctionName = $submitFunctionName;
+        $this->rotaAtivarInativar = $rotaAtivarInativar;
     }
 
     /**

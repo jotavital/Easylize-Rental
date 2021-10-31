@@ -112,9 +112,9 @@ class VeiculoController extends Controller
 
     public function ativarInativar(Request $request)
     {
-        $formId = $request->formId;
+        $idRegistro = $request->idRegistro;
 
-        $veiculo = Veiculo::find($formId);
+        $veiculo = Veiculo::find($idRegistro);
 
         if ($veiculo->ativo == 1) {
             $veiculo->ativo = 0;

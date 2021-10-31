@@ -15,6 +15,7 @@
 use App\Models\Veiculo;
 
 $veiculos = Veiculo::all();
+$rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 
 ?>
 
@@ -46,9 +47,9 @@ $veiculos = Veiculo::all();
                         <td> {{ $veiculo->categoria->nome }} </td>
                         <td>
                             @if($veiculo->ativo)
-                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'checked'" :submitFunctionName="'ativarInativarVeiculo'" />
+                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'checked'" :rotaAtivarInativar="$rotaAtivarInativarVeiculo" />
                             @else
-                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'false'" :submitFunctionName="'ativarInativarVeiculo'" />
+                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'false'" :rotaAtivarInativar="$rotaAtivarInativarVeiculo" />
                             @endif
                         </td>
                         <td>
@@ -82,44 +83,17 @@ if (isset($_GET['idVeiculoEditar'])) {
 
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
+<script src="/js/ativar-inativar-registro.js"></script>
 <script>
     var tableVeiculosObj;
 
-    function ativarInativarVeiculo(id) {
-
-        $.ajax({
-            url: "{{ route('veiculos.ativar-inativar') }}",
-            type: "post",
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "formId": id
-            },
-            success: function(response) {
-
-            },
-            error: function(response) {
-                alert("Não foi possível desativar este veículo, tente novamente.");
-            }
-        });
-    }
-
     window.onload = function() {
 
-        $.ajax({
-            url: "{{ route('veiculos.all.get') }}",
-            type: "post",
-            data: {
-                "_token": "{{ csrf_token() }}"
+        tableVeiculosObj = $('#tableVeiculos').DataTable({
+            language: {
+                url: '/lang/pt-br/dataTables_pt-br.json'
             },
-            dataType: "json",
-            success: function(veiculos) {
-                tableVeiculosObj = $('#tableVeiculos').DataTable({
-                    language: {
-                        url: '/lang/pt-br/dataTables_pt-br.json'
-                    },
-                    responsive: true
-                });
-            }
+            responsive: true
         });
 
         $('#modalEditarVeiculo').on('hidden.bs.modal', function() {

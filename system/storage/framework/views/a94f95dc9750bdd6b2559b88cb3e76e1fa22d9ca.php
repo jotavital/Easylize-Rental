@@ -15,6 +15,7 @@
 use App\Models\Veiculo;
 
 $veiculos = Veiculo::all();
+$rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 
 ?>
 
@@ -47,7 +48,7 @@ $veiculos = Veiculo::all();
                         <td>
                             <?php if($veiculo->ativo): ?>
                             <?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'checked','submitFunctionName' => 'ativarInativarVeiculo']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'checked','rotaAtivarInativar' => $rotaAtivarInativarVeiculo]); ?>
 <?php $component->withName('switch-ativar-inativar'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -60,7 +61,7 @@ $veiculos = Veiculo::all();
 <?php endif; ?>
                             <?php else: ?>
                             <?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'false','submitFunctionName' => 'ativarInativarVeiculo']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'false','rotaAtivarInativar' => $rotaAtivarInativarVeiculo]); ?>
 <?php $component->withName('switch-ativar-inativar'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -137,44 +138,17 @@ if (isset($_GET['idVeiculoEditar'])) {
 
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
+<script src="/js/ativar-inativar-registro.js"></script>
 <script>
     var tableVeiculosObj;
 
-    function ativarInativarVeiculo(id) {
-
-        $.ajax({
-            url: "<?php echo e(route('veiculos.ativar-inativar')); ?>",
-            type: "post",
-            data: {
-                "_token": "<?php echo e(csrf_token()); ?>",
-                "formId": id
-            },
-            success: function(response) {
-
-            },
-            error: function(response) {
-                alert("Não foi possível desativar este veículo, tente novamente.");
-            }
-        });
-    }
-
     window.onload = function() {
 
-        $.ajax({
-            url: "<?php echo e(route('veiculos.all.get')); ?>",
-            type: "post",
-            data: {
-                "_token": "<?php echo e(csrf_token()); ?>"
+        tableVeiculosObj = $('#tableVeiculos').DataTable({
+            language: {
+                url: '/lang/pt-br/dataTables_pt-br.json'
             },
-            dataType: "json",
-            success: function(veiculos) {
-                tableVeiculosObj = $('#tableVeiculos').DataTable({
-                    language: {
-                        url: '/lang/pt-br/dataTables_pt-br.json'
-                    },
-                    responsive: true
-                });
-            }
+            responsive: true
         });
 
         $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
