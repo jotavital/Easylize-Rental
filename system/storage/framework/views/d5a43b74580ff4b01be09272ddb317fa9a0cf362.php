@@ -194,10 +194,10 @@ $error = Session::get('error');
         PopularSlimSelectsObj = new PopularSlimSelects();
 
         //! popular select marca
-        var dataAjaxMarca = {
+        var dataAjax = {
             "_token": "<?php echo e(csrf_token()); ?>"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca);
+        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax);
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
@@ -217,14 +217,10 @@ $error = Session::get('error');
         });
 
         // ! popular select categoria
-        var dataAjaxCategoria = {
-            "_token": "<?php echo e(csrf_token()); ?>"
-        };
-        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('categorias.veiculos.get')); ?>", '#categoriaVeiculoSelect', 'id', 'nome', dataAjaxCategoria);
+        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('categorias.veiculos.get')); ?>", '#categoriaVeiculoSelect', 'id', 'nome', dataAjax);
 
     }
 
-    //! IMPLEMENTAR O SOFT DELETE EM TODAS AS TABELAS
 </script>
 
 <?php $__env->stopSection(); ?>

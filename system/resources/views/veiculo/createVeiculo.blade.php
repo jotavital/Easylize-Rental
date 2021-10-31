@@ -95,10 +95,10 @@ $error = Session::get('error');
         PopularSlimSelectsObj = new PopularSlimSelects();
 
         //! popular select marca
-        var dataAjaxMarca = {
+        var dataAjax = {
             "_token": "{{ csrf_token() }}"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca);
+        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjax);
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
@@ -118,14 +118,10 @@ $error = Session::get('error');
         });
 
         // ! popular select categoria
-        var dataAjaxCategoria = {
-            "_token": "{{ csrf_token() }}"
-        };
-        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('categorias.veiculos.get') }}", '#categoriaVeiculoSelect', 'id', 'nome', dataAjaxCategoria);
+        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('categorias.veiculos.get') }}", '#categoriaVeiculoSelect', 'id', 'nome', dataAjax);
 
     }
 
-    //! IMPLEMENTAR O SOFT DELETE EM TODAS AS TABELAS
 </script>
 
 @endsection

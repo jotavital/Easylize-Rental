@@ -52,6 +52,8 @@ if (isset($_GET['idVeiculoEditar'])) {
 
 @section('script')
 
+<script src="/js/initialize-slimSelects.js"></script>
+<script src="/js/mascaras-inputs.js"></script>
 <script>
     var tableVeiculosObj;
 
@@ -134,7 +136,7 @@ if (isset($_GET['idVeiculoEditar'])) {
         $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
             window.history.pushState(null, null, window.location.pathname);
         });
-
+        
     }
 </script>
 
