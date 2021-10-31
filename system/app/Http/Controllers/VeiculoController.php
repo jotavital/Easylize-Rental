@@ -71,7 +71,7 @@ class VeiculoController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -83,7 +83,15 @@ class VeiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $veiculo = Veiculo::find($id);
+
+        $veiculo->placa = $request->placaInput;
+        $veiculo->chassi = $request->chassiInput;
+        $veiculo->renavam = $request->renavamInput;
+        $veiculo->cor = $request->corInput;
+        $veiculo->marca_id = $request->marcaSelect;
+        $veiculo->modelo_id = $request->modeloSelect;
+        $veiculo->categoria_id = $request->categoriaVeiculoSelect;
     }
 
     /**
@@ -116,5 +124,4 @@ class VeiculoController extends Controller
 
         $veiculo->save();
     }
-
 }

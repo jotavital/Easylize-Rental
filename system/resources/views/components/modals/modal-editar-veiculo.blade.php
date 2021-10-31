@@ -6,6 +6,7 @@ $veiculo = Veiculo::find($id);
 
 ?>
 
+@if(isset($veiculo))
 <div class="modal fade" id="modalEditarVeiculo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -16,7 +17,7 @@ $veiculo = Veiculo::find($id);
                 </button>
             </div>
             <div class="modal-body">
-                <form action=" {{ route('veiculos.store') }} " method="POST" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
+                <form action=" {{ route('veiculos.update', ['veiculo' => $veiculo->id]) }} " method="POST" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
                     @csrf
                     <div class="form-row col-12 d-flex justify-content-center">
                         <div class="form-group col-sm-3">
@@ -93,5 +94,17 @@ $veiculo = Veiculo::find($id);
 
     PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("{{ route('categorias.veiculos.get') }}", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "{{ $veiculo->categoria_id }}");
 
-    // !! popular dinamicamente select de modelo com base na marca selecionada
+    $("#marcaSelect").on('change', function() {
+        if (marcaSelect.selected() != '') {
+            $('#modeloSelect').empty();
+            modeloSelect.enable();
+
+            PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+        } else {
+            $('#modeloSelect').empty();
+            modeloSelect.disable();
+        }
+    });
 </script>
+
+@endif

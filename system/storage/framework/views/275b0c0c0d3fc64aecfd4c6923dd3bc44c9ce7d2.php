@@ -203,7 +203,6 @@
             (function() {
                 'use strict'
 
-
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms)
                     .forEach(function(form) {
@@ -245,6 +244,9 @@
                         if (select.value == '') {
                             select.classList.remove("valid-select");
                             select.classList.add("invalid-select");
+                        }else{
+                            select.classList.remove("invalid-select");
+                            select.classList.add("valid-select");
                         }
                     });
 
