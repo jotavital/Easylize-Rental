@@ -10,6 +10,14 @@
 
 @section('content')
 
+<?php
+
+use App\Models\Veiculo;
+
+$veiculos = Veiculo::all();
+
+?>
+
 <div class="content">
 
     <div class="container-fluid">
@@ -27,7 +35,27 @@
                     <th>Ações</th>
                 </thead>
                 <tbody>
-
+                    @foreach($veiculos as $veiculo)
+                    <tr>
+                        <td> {{ $veiculo->id }} </td>
+                        <td> {{ $veiculo->placa }} </td>
+                        <td> {{ $veiculo->chassi }} </td>
+                        <td> {{ $veiculo->renavam }} </td>
+                        <td> {{ $veiculo->marca->nome }} </td>
+                        <td> {{ $veiculo->modelo->nome }} </td>
+                        <td> {{ $veiculo->categoria->nome }} </td>
+                        <td>
+                            @if($veiculo->ativo)
+                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'checked'" :submitFunctionName="'ativarInativarVeiculo'" />
+                            @else
+                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'false'" :submitFunctionName="'ativarInativarVeiculo'" />
+                            @endif
+                        </td>
+                        <td>
+                            <x-acoes-tabela id="{{ $veiculo->id }}" />
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -89,46 +117,7 @@ if (isset($_GET['idVeiculoEditar'])) {
                     language: {
                         url: '/lang/pt-br/dataTables_pt-br.json'
                     },
-                    responsive: true,
-                    data: veiculos,
-                    columns: [{
-                            data: 'id'
-                        },
-                        {
-                            data: 'placa'
-                        },
-                        {
-                            data: 'chassi'
-                        },
-                        {
-                            data: 'renavam'
-                        },
-                        {
-                            data: 'marca.nome'
-                        },
-                        {
-                            data: 'modelo.nome'
-                        },
-                        {
-                            data: 'categoria.nome'
-                        },
-                        {
-                            data: null,
-                            render: function(data, type, row) {
-                                if (data.ativo == 1) {
-                                    return `<x-switch-ativar-inativar id="` + data.id + `" checked="checked" :submitFunctionName="'ativarInativarVeiculo'" />`;
-                                } else {
-                                    return `<x-switch-ativar-inativar id="` + data.id + `" checked="false" :submitFunctionName="'ativarInativarVeiculo'" />`;
-                                }
-                            }
-                        },
-                        {
-                            data: null,
-                            render: function(data, type, row) {
-                                return `<x-acoes-tabela id="` + data.id + `" />`;
-                            }
-                        }
-                    ]
+                    responsive: true
                 });
             }
         });
@@ -136,7 +125,7 @@ if (isset($_GET['idVeiculoEditar'])) {
         $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
             window.history.pushState(null, null, window.location.pathname);
         });
-        
+
     }
 </script>
 

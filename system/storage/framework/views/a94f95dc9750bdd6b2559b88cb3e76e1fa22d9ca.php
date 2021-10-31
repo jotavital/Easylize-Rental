@@ -10,6 +10,14 @@
 
 <?php $__env->startSection('content'); ?>
 
+<?php
+
+use App\Models\Veiculo;
+
+$veiculos = Veiculo::all();
+
+?>
+
 <div class="content">
 
     <div class="container-fluid">
@@ -27,7 +35,60 @@
                     <th>Ações</th>
                 </thead>
                 <tbody>
-
+                    <?php $__currentLoopData = $veiculos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $veiculo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td> <?php echo e($veiculo->id); ?> </td>
+                        <td> <?php echo e($veiculo->placa); ?> </td>
+                        <td> <?php echo e($veiculo->chassi); ?> </td>
+                        <td> <?php echo e($veiculo->renavam); ?> </td>
+                        <td> <?php echo e($veiculo->marca->nome); ?> </td>
+                        <td> <?php echo e($veiculo->modelo->nome); ?> </td>
+                        <td> <?php echo e($veiculo->categoria->nome); ?> </td>
+                        <td>
+                            <?php if($veiculo->ativo): ?>
+                            <?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'checked','submitFunctionName' => 'ativarInativarVeiculo']); ?>
+<?php $component->withName('switch-ativar-inativar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
+<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
+<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                            <?php else: ?>
+                            <?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'false','submitFunctionName' => 'ativarInativarVeiculo']); ?>
+<?php $component->withName('switch-ativar-inativar'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
+<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
+<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, ['id' => ''.e($veiculo->id).'']); ?>
+<?php $component->withName('acoes-tabela'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a)): ?>
+<?php $component = $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a; ?>
+<?php unset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
@@ -111,79 +172,7 @@ if (isset($_GET['idVeiculoEditar'])) {
                     language: {
                         url: '/lang/pt-br/dataTables_pt-br.json'
                     },
-                    responsive: true,
-                    data: veiculos,
-                    columns: [{
-                            data: 'id'
-                        },
-                        {
-                            data: 'placa'
-                        },
-                        {
-                            data: 'chassi'
-                        },
-                        {
-                            data: 'renavam'
-                        },
-                        {
-                            data: 'marca.nome'
-                        },
-                        {
-                            data: 'modelo.nome'
-                        },
-                        {
-                            data: 'categoria.nome'
-                        },
-                        {
-                            data: null,
-                            render: function(data, type, row) {
-                                if (data.ativo == 1) {
-                                    return `<?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => '` + data.id + `','checked' => 'checked','submitFunctionName' => 'ativarInativarVeiculo']); ?>
-<?php $component->withName('switch-ativar-inativar'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
-<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
-<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>`;
-                                } else {
-                                    return `<?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => '` + data.id + `','checked' => 'false','submitFunctionName' => 'ativarInativarVeiculo']); ?>
-<?php $component->withName('switch-ativar-inativar'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
-<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
-<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>`;
-                                }
-                            }
-                        },
-                        {
-                            data: null,
-                            render: function(data, type, row) {
-                                return `<?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, ['id' => '` + data.id + `']); ?>
-<?php $component->withName('acoes-tabela'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a)): ?>
-<?php $component = $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a; ?>
-<?php unset($__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>`;
-                            }
-                        }
-                    ]
+                    responsive: true
                 });
             }
         });
@@ -191,7 +180,7 @@ if (isset($_GET['idVeiculoEditar'])) {
         $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
             window.history.pushState(null, null, window.location.pathname);
         });
-        
+
     }
 </script>
 
