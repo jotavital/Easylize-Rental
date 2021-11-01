@@ -67,7 +67,7 @@
                 <div class="form-row col-12 d-flex justify-content-center">
                     <div class="form-group col-md-4">
                         <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
+                        <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" value=" <?php echo e($modelo->motor); ?> " required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -120,6 +120,9 @@
 
 <?php $__env->startSection('script'); ?>
 
+<script>
+    var anoModelo = "<?php echo e($modelo->ano_modelo); ?>"; // ! esta variável é iniciada agora pois é usada no script de inicializar os selects
+</script>
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
@@ -132,11 +135,9 @@
         var dataAjaxMarca = {
             "_token": "<?php echo e(csrf_token()); ?>"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca);
+        PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca, "<?php echo e($modelo->marca_id); ?>");
     }
 </script>
 
 <?php $__env->stopSection(); ?>
-
-//! continuar populando selects e campos dinamicamente
 <?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\OneDrive\Faculdade\6 sem\eng software 2\Easylize-Rental\system\resources\views/modelo/editModelo.blade.php ENDPATH**/ ?>

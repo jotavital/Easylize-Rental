@@ -45,7 +45,7 @@
                 <div class="form-row col-12 d-flex justify-content-center">
                     <div class="form-group col-md-4">
                         <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
+                        <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" value=" {{ $modelo->motor }} " required>
                         <x-campo-obrigatorio />
                     </div>
                     <div class="form-group col-md-4">
@@ -76,6 +76,9 @@
 
 @section('script')
 
+<script>
+    var anoModelo = "{{ $modelo->ano_modelo }}"; // ! esta variável é iniciada agora pois é usada no script de inicializar os selects
+</script>
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
@@ -88,10 +91,8 @@
         var dataAjaxMarca = {
             "_token": "{{ csrf_token() }}"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca);
+        PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca, "{{ $modelo->marca_id }}");
     }
 </script>
 
 @endsection
-
-//! continuar populando selects e campos dinamicamente

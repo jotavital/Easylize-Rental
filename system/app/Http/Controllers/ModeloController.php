@@ -44,7 +44,6 @@ class ModeloController extends Controller
         $modelo->motor = $request->motorModeloInput;
         $modelo->marca_id = $request->marcaSelect;
 
-
         if ($modelo->save()) {
 
             if ($request->hasFile('fotosInput')) {
@@ -53,7 +52,7 @@ class ModeloController extends Controller
 
                     $fotosModeloVeiculo = new FotosModeloVeiculo();
                     $fotosModeloVeiculo->path = $photoPath;
-                    $fotosModeloVeiculo->fk_modelo_veiculo = $modelo->id;
+                    $fotosModeloVeiculo->modelo_veiculo_id = $modelo->id;
                     $fotosModeloVeiculo->save();
                 }
             }
@@ -96,7 +95,30 @@ class ModeloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $modelo = Modelo::find($id);
+
+        $modelo->nome = $request->nomeModeloInput;
+        $modelo->ano_modelo = $request->anoModeloSelect;
+        $modelo->motor = $request->motorModeloInput;
+        $modelo->marca_id = $request->marcaSelect;
+
+        if ($modelo->save()) {
+
+            // if ($request->hasFile('fotosInput')) {
+            //     foreach ($request->fotosInput as $photo) {
+            //         $photoPath = $photo->store('modelo_img', 'tenant_img');
+
+            //         $fotosModeloVeiculo = new FotosModeloVeiculo();
+            //         $fotosModeloVeiculo->path = $photoPath;
+            //         $fotosModeloVeiculo->modelo_veiculo_id = $modelo->id;
+            //         $fotosModeloVeiculo->save();
+            //     }
+            // }
+
+            return redirect()->route('modelos.index')->with('success', 'Modelo editado com sucesso');
+        } else {
+            return redirect()->route('modelos.index')->withErrors('error', 'Não foi possível editar o modelo, tente novamente.');
+        }
     }
 
     /**

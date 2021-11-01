@@ -240,7 +240,7 @@
                             select.classList.remove("invalid-select");
                             select.classList.add("valid-select");
                         }
-
+                        
                         if (select.value == '') {
                             select.classList.remove("valid-select");
                             select.classList.add("invalid-select");

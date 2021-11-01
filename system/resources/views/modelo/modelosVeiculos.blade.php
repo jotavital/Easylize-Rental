@@ -44,15 +44,7 @@ $error = Session::get('error');
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
                             <option data-placeholder="true"></option>
 
-                            <?php
-                            foreach (range(date('Y') + 3, 1900) as $year) {
-                            ?>
-
-                                <option value="<?= $year ?>"><?= $year ?></option>
-
-                            <?php
-                            }
-                            ?>
+                            
 
                         </select>
                         <x-campo-obrigatorio />
@@ -138,7 +130,7 @@ $error = Session::get('error');
         var dataAjaxMarca = {
             "_token": "{{ csrf_token() }}"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca);
+        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca);
     }
 </script>
 

@@ -6,13 +6,33 @@ class PopularSlimSelects {
 
     }
 
-    popularSlimSelectBasico(url, slimSelectId, elementValueKey, elementTextKey, data = {}, type = "POST", dataType = "json") { //! popula um slimSelect com as informações mais básicas        
+    popularSlimSelectBasico(slimSelectId, data, elementValueKey, elementTextKey) {
+        if(elementTextKey == undefined && elementValueKey == undefined){
+            data.forEach(function (element) {
+                $(slimSelectId).append('<option value="' + element + '">' + element + '</option>');
+            });
+        }
+    }
+
+    popularSlimSelectBasicoComValorSelecionado(slimSelectId, data, valorSelecionado, elementValueKey, elementTextKey) {
+        if(elementTextKey == undefined && elementValueKey == undefined){
+            data.forEach(function (element) {
+                if(element == valorSelecionado){
+                    $(slimSelectId).append('<option selected value="' + element + '">' + element + '</option>');
+                }else{
+                    $(slimSelectId).append('<option value="' + element + '">' + element + '</option>');
+                }
+            });
+        }
+    }
+
+    popularSlimSelectAjaxBasico(url, slimSelectId, elementValueKey, elementTextKey, data = {}, type = "POST", dataType = "json") { //! popula um slimSelect com as informações mais básicas        
         $.ajax({
             url: url,
             type: type,
             data: data,
             dataType: dataType,
-            success: function(response) {
+            success: function (response) {
                 response.forEach(element => {
                     $(slimSelectId).append('<option value="' + element[elementValueKey] + '">' + element[elementTextKey] + '</option>');
                 });
@@ -21,17 +41,17 @@ class PopularSlimSelects {
         });
     }
 
-    popularSlimSelectComValorSelecionado(url, slimSelectId, elementValueKey, elementTextKey, data = {}, idObjetoSelecionado, type = "POST", dataType = "json") { //! popula um slimSelect com as informações mais básicas        
+    popularSlimSelectAjaxComValorSelecionado(url, slimSelectId, elementValueKey, elementTextKey, data = {}, idObjetoSelecionado, type = "POST", dataType = "json") { //! popula um slimSelect com as informações mais básicas        
         $.ajax({
             url: url,
             type: type,
             data: data,
             dataType: dataType,
-            success: function(response) {
+            success: function (response) {
                 response.forEach(element => {
-                    if(idObjetoSelecionado == element.id){
+                    if (idObjetoSelecionado == element.id) {
                         $(slimSelectId).append('<option selected value="' + element[elementValueKey] + '">' + element[elementTextKey] + '</option>');
-                    }else{
+                    } else {
                         $(slimSelectId).append('<option value="' + element[elementValueKey] + '">' + element[elementTextKey] + '</option>');
                     }
                 });

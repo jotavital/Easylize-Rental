@@ -77,15 +77,7 @@ $error = Session::get('error');
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
                             <option data-placeholder="true"></option>
 
-                            <?php
-                            foreach (range(date('Y') + 3, 1900) as $year) {
-                            ?>
-
-                                <option value="<?= $year ?>"><?= $year ?></option>
-
-                            <?php
-                            }
-                            ?>
+                            
 
                         </select>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
@@ -215,7 +207,7 @@ $error = Session::get('error');
         var dataAjaxMarca = {
             "_token": "<?php echo e(csrf_token()); ?>"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca);
+        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca);
     }
 </script>
 

@@ -197,7 +197,7 @@ $error = Session::get('error');
         var dataAjax = {
             "_token": "<?php echo e(csrf_token()); ?>"
         };
-        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax);
+        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax);
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
@@ -209,7 +209,7 @@ $error = Session::get('error');
                     "_token": "<?php echo e(csrf_token()); ?>",
                     "idMarca": marcaSelect.selected()
                 };
-                PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+                PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
             } else {
                 $('#modeloSelect').empty();
                 modeloSelect.disable();
@@ -217,7 +217,7 @@ $error = Session::get('error');
         });
 
         // ! popular select categoria
-        PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('categorias.veiculos.get')); ?>", '#categoriaVeiculoSelect', 'id', 'nome', dataAjax);
+        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('categorias.veiculos.get')); ?>", '#categoriaVeiculoSelect', 'id', 'nome', dataAjax);
 
     }
 

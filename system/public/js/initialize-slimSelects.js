@@ -31,11 +31,36 @@ if (document.getElementById('categoriaVeiculoSelect')) {
 }
 
 if (document.getElementById('anoModeloSelect')) {
+    var anos = [
+        {
+            'placeholder': true,
+            'text': selectPlaceholder,
+            'value': ''
+        }
+    ];
+
+    for (var i = new Date().getFullYear() + 3; i >= 1950; i--) {
+        if (anoModelo != undefined && i == anoModelo) {
+            var optionAno = {
+                text: i,
+                value: i,
+                selected: true
+            }
+        } else {
+            var optionAno = {
+                text: i,
+                value: i
+            }
+        }
+
+        anos.push(optionAno);
+    }
+
     var anoModeloSelect = new SlimSelect({
         select: '#anoModeloSelect',
-        placeholder: "Selecione",
         allowDeselect: true,
         searchPlaceholder: 'Pesquisar ano',
         searchText: 'Não encontrado',
+        data: anos
     });
 }

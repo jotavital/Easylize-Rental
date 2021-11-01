@@ -82,22 +82,22 @@
     var dataAjax = {
         "_token": "{{ csrf_token() }}"
     };
-    PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjax, "{{ $veiculo->marca_id }}");
+    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjax, "{{ $veiculo->marca_id }}");
 
     var dataAjaxModelo = {
         "_token": "{{ csrf_token() }}",
         "idMarca": "{{ $veiculo->marca_id }}"
     };
-    PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("{{ route('modelos.bymarca.get') }}", "#modeloSelect", "id", "nome", dataAjaxModelo, "{{ $veiculo->modelo_id }}");
+    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('modelos.bymarca.get') }}", "#modeloSelect", "id", "nome", dataAjaxModelo, "{{ $veiculo->modelo_id }}");
 
-    PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("{{ route('categorias.veiculos.get') }}", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "{{ $veiculo->categoria_id }}");
+    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('categorias.veiculos.get') }}", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "{{ $veiculo->categoria_id }}");
 
     $("#marcaSelect").on('change', function() {
         if (marcaSelect.selected() != '') {
             $('#modeloSelect').empty();
             modeloSelect.enable();
 
-            PopularSlimSelectsObj.popularSlimSelectBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+            PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
         } else {
             $('#modeloSelect').empty();
             modeloSelect.disable();

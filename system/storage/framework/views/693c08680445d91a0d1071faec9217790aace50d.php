@@ -55,22 +55,22 @@
     var dataAjax = {
         "_token": "<?php echo e(csrf_token()); ?>"
     };
-    PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax, "<?php echo e($marca->marca_id); ?>");
+    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax, "<?php echo e($marca->marca_id); ?>");
 
     var dataAjaxModelo = {
         "_token": "<?php echo e(csrf_token()); ?>",
         "idMarca": "<?php echo e($marca->marca_id); ?>"
     };
-    PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("<?php echo e(route('modelos.bymarca.get')); ?>", "#modeloSelect", "id", "nome", dataAjaxModelo, "<?php echo e($marca->modelo_id); ?>");
+    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('modelos.bymarca.get')); ?>", "#modeloSelect", "id", "nome", dataAjaxModelo, "<?php echo e($marca->modelo_id); ?>");
 
-    PopularSlimSelectsObj.popularSlimSelectComValorSelecionado("<?php echo e(route('categorias.veiculos.get')); ?>", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "<?php echo e($marca->categoria_id); ?>");
+    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('categorias.veiculos.get')); ?>", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "<?php echo e($marca->categoria_id); ?>");
 
     $("#marcaSelect").on('change', function() {
         if (marcaSelect.selected() != '') {
             $('#modeloSelect').empty();
             modeloSelect.enable();
 
-            PopularSlimSelectsObj.popularSlimSelectBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+            PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
         } else {
             $('#modeloSelect').empty();
             modeloSelect.disable();
