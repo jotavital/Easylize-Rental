@@ -71,7 +71,7 @@ class VeiculoController extends Controller
      */
     public function edit($id)
     {
-        
+        return view('veiculo.veiculos', ['editar' => true]);
     }
 
     /**

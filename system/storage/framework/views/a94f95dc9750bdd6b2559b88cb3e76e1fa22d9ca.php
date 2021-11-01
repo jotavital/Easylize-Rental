@@ -111,11 +111,11 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 <?php endif; ?>
 </div>
 
-<?php
+<?php $__env->stopSection(); ?>
 
-if (isset($_GET['idVeiculoEditar'])) {
-?>
-    <?php if (isset($component)) { $__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee = $component; } ?>
+<?php $__env->startSection('script'); ?>
+
+<?php if (isset($component)) { $__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\Scripts\ShowEditarVeiculoModal::class, []); ?>
 <?php $component->withName('scripts.show-editar-veiculo-modal'); ?>
 <?php if ($component->shouldRender()): ?>
@@ -127,15 +127,6 @@ if (isset($_GET['idVeiculoEditar'])) {
 <?php endif; ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php
-}
-
-?>
-
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('script'); ?>
-
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
 <script src="/js/ativar-inativar-registro.js"></script>

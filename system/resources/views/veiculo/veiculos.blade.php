@@ -67,20 +67,11 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
     <x-modals.modal-editar-veiculo id="{{ request()->get('idVeiculoEditar') }}" />
 </div>
 
-<?php
-
-if (isset($_GET['idVeiculoEditar'])) {
-?>
-    <x-scripts.show-editar-veiculo-modal />
-<?php
-}
-
-?>
-
 @endsection
 
 @section('script')
 
+<x-scripts.show-editar-veiculo-modal />
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
 <script src="/js/ativar-inativar-registro.js"></script>
