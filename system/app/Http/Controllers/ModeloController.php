@@ -83,7 +83,8 @@ class ModeloController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modelo = Modelo::find($id);
+        return view('modelo.editModelo', ['modelo' => $modelo]);
     }
 
     /**

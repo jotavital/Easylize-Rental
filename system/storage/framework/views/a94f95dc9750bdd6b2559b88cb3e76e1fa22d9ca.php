@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
 $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
+// $rotaEditar =  route('veiculos.edit', $id);
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -110,7 +111,7 @@ $error = Session::get('error');
                         </td>
                         <td>
                             <?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, ['id' => ''.e($veiculo->id).'']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AcoesTabela::class, ['id' => ''.e($veiculo->id).'','rotaEditar' => route('veiculos.edit', $veiculo->id)]); ?>
 <?php $component->withName('acoes-tabela'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>

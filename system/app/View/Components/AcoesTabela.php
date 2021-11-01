@@ -7,15 +7,18 @@ use Illuminate\View\Component;
 class AcoesTabela extends Component
 {
     public $id;
+    public $rotaEditar;
+    public $rotaExcluir;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($id, $rotaEditar)
     {
         $this->id = $id;
+        $this->rotaEditar = $rotaEditar;
     }
 
     /**

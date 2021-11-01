@@ -64,7 +64,8 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $marca = Marca::find($id);
+        return view('marca.editMarca', ['marca' => $marca]);
     }
 
     /**
@@ -76,7 +77,14 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $marca = Marca::find($id);
+        $marca->nome = $request->nomeMarcaInput;
+
+        if ($marca->save()) {
+            return redirect()->route('marcas.index')->with('success', 'Marca editada com sucesso');
+        } else {
+            return redirect()->route('marcas.index')->withErrors('error', 'Não foi possível editar a marca, tente novamente.');
+        }
     }
 
     /**

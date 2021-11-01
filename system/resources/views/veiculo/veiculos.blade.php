@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
 $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
+// $rotaEditar =  route('veiculos.edit', $id);
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -65,7 +66,7 @@ $error = Session::get('error');
                             @endif
                         </td>
                         <td>
-                            <x-acoes-tabela id="{{ $veiculo->id }}" />
+                            <x-acoes-tabela id="{{ $veiculo->id }}" :rotaEditar="route('veiculos.edit', $veiculo->id)" />
                         </td>
                     </tr>
                     @endforeach

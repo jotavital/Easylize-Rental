@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
     <div class="mr-2">
-        <form action="{{ route('veiculos.edit', $id) }}" method="GET" class="no-padding-form">
+        <form action="{{ $rotaEditar }}" method="GET" class="no-padding-form">
             <button type="submit" class="iconButton">
                 <i class="fas fa-edit text-primary table-action-icon"></i>
             </button>
