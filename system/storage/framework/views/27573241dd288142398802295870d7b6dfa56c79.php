@@ -1,7 +1,6 @@
 <div class="d-flex justify-content-center">
     <div class="mr-2">
-        <form action="<?php echo e(route('veiculos.index')); ?>" method="GET" class="no-padding-form">
-            <input type="hidden" name="idVeiculoEditar" value="<?php echo e($id); ?>">
+        <form action="<?php echo e(route('veiculos.edit', $id)); ?>" method="GET" class="no-padding-form">
             <button type="submit" class="iconButton">
                 <i class="fas fa-edit text-primary table-action-icon"></i>
             </button>

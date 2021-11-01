@@ -60,7 +60,6 @@ class VeiculoController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -71,7 +70,8 @@ class VeiculoController extends Controller
      */
     public function edit($id)
     {
-        return view('veiculo.veiculos', ['editar' => true]);
+        $veiculo = Veiculo::find($id);
+        return view('veiculo.editVeiculo', ['veiculo' => $veiculo]);
     }
 
     /**
@@ -83,6 +83,7 @@ class VeiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $veiculo = Veiculo::find($id);
 
         $veiculo->placa = $request->placaInput;
@@ -92,6 +93,12 @@ class VeiculoController extends Controller
         $veiculo->marca_id = $request->marcaSelect;
         $veiculo->modelo_id = $request->modeloSelect;
         $veiculo->categoria_id = $request->categoriaVeiculoSelect;
+
+        if ($veiculo->save()) {
+            return redirect()->route('veiculos.index')->with('success', 'Veículo editado com sucesso.');
+        }else{
+            return redirect()->route('veiculos.index')->with('error', 'Erro ao editar veículo.');
+        }
     }
 
     /**

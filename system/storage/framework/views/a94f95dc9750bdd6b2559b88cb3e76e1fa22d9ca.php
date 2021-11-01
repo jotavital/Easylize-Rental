@@ -13,13 +13,45 @@
 <?php
 
 use App\Models\Veiculo;
+use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
 $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 
+$success = Session::get('success');
+$error = Session::get('error');
+
 ?>
 
 <div class="content">
+
+    <?php if(session('success')): ?>
+    <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'success','message' => $success]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+    <?php elseif(session('error')): ?>
+    <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','message' => $error]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+    <?php endif; ?>
 
     <div class="container-fluid">
         <div class="col-12">
@@ -31,6 +63,7 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
                     <th>Renavam</th>
                     <th>Marca</th>
                     <th>Modelo</th>
+                    <th>Cor</th>
                     <th>Categoria</th>
                     <th>Ativo</th>
                     <th>Ações</th>
@@ -44,6 +77,7 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
                         <td> <?php echo e($veiculo->renavam); ?> </td>
                         <td> <?php echo e($veiculo->marca->nome); ?> </td>
                         <td> <?php echo e($veiculo->modelo->nome); ?> </td>
+                        <td> <?php echo e($veiculo->cor); ?> </td>
                         <td> <?php echo e($veiculo->categoria->nome); ?> </td>
                         <td>
                             <?php if($veiculo->ativo): ?>
@@ -96,37 +130,10 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
     </div>
 </div>
 
-<div id="divModalEditarVeiculo">
-    <?php if (isset($component)) { $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Modals\ModalEditarVeiculo::class, ['id' => ''.e(request()->get('idVeiculoEditar')).'']); ?>
-<?php $component->withName('modals.modal-editar-veiculo'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8)): ?>
-<?php $component = $__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8; ?>
-<?php unset($__componentOriginal956e40311102bef18de4b298a0d2bc47ad9852a8); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-</div>
-
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
 
-<?php if (isset($component)) { $__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Scripts\ShowEditarVeiculoModal::class, []); ?>
-<?php $component->withName('scripts.show-editar-veiculo-modal'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee)): ?>
-<?php $component = $__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee; ?>
-<?php unset($__componentOriginal8e6c8e8986b1c30e63e2aa7464ecca32fb6225ee); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
 <script src="/js/ativar-inativar-registro.js"></script>
@@ -140,10 +147,6 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true
-        });
-
-        $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
-            window.history.pushState(null, null, window.location.pathname);
         });
 
     }

@@ -13,13 +13,23 @@
 <?php
 
 use App\Models\Veiculo;
+use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
 $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 
+$success = Session::get('success');
+$error = Session::get('error');
+
 ?>
 
 <div class="content">
+
+    @if(session('success'))
+    <x-alert type="success" :message="$success" />
+    @elseif(session('error'))
+    <x-alert type="danger" :message='$error' />
+    @endif
 
     <div class="container-fluid">
         <div class="col-12">
@@ -31,6 +41,7 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
                     <th>Renavam</th>
                     <th>Marca</th>
                     <th>Modelo</th>
+                    <th>Cor</th>
                     <th>Categoria</th>
                     <th>Ativo</th>
                     <th>Ações</th>
@@ -44,6 +55,7 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
                         <td> {{ $veiculo->renavam }} </td>
                         <td> {{ $veiculo->marca->nome }} </td>
                         <td> {{ $veiculo->modelo->nome }} </td>
+                        <td> {{ $veiculo->cor }} </td>
                         <td> {{ $veiculo->categoria->nome }} </td>
                         <td>
                             @if($veiculo->ativo)
@@ -63,15 +75,10 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
     </div>
 </div>
 
-<div id="divModalEditarVeiculo">
-    <x-modals.modal-editar-veiculo id="{{ request()->get('idVeiculoEditar') }}" />
-</div>
-
 @endsection
 
 @section('script')
 
-<x-scripts.show-editar-veiculo-modal />
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
 <script src="/js/ativar-inativar-registro.js"></script>
@@ -85,10 +92,6 @@ $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true
-        });
-
-        $('#modalEditarVeiculo').on('hidden.bs.modal', function() {
-            window.history.pushState(null, null, window.location.pathname);
         });
 
     }
