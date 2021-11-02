@@ -40,11 +40,18 @@ if (document.getElementById('anoModeloSelect')) {
     ];
 
     for (var i = new Date().getFullYear() + 3; i >= 1950; i--) {
-        if (anoModelo != undefined && i == anoModelo) {
-            var optionAno = {
-                text: i,
-                value: i,
-                selected: true
+        if (typeof anoModelo != 'undefined') {
+            if (i == anoModelo) {
+                var optionAno = {
+                    text: i,
+                    value: i,
+                    selected: true
+                }
+            } else {
+                var optionAno = {
+                    text: i,
+                    value: i
+                }
             }
         } else {
             var optionAno = {
