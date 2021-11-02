@@ -10,6 +10,10 @@
 
 @section('content')
 
+<?php
+
+?>
+
 <div class="content">
     <div class="container-fluid">
 
@@ -56,7 +60,7 @@
                         <x-campo-obrigatorio />
                     </div>
                 </div>
-                <div class="form-row col-12 d-flex justify-content-center">
+                <div class="form-row mb-3 col-12 d-flex justify-content-center">
                     <div class="mt-4 input-group col-md-4">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
@@ -64,7 +68,20 @@
                         </div>
                     </div>
                 </div>
-                <img src=" {{ route('images.show', 'modelo_img/8XDKXMqqIW47jCmv2pJiWnnOaB13OhjVz9W6QRxJ.jpg') }} " alt="imagem">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="col-8 card card-primary card-outline">
+                        <div class="card-body">
+                            <h5 class="card-title">Fotos do modelo</h5>
+                            
+                            <?php
+                            print_r($modelo->fotos);
+                            ?>
+                            <div class="col-6">
+                                <img class="w-100" src=" {{ route('images.show', 'modelo_img/8XDKXMqqIW47jCmv2pJiWnnOaB13OhjVz9W6QRxJ.jpg') }} " alt="imagem">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-12 d-flex justify-content-center">
                     <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Pronto</button>
                 </div>
