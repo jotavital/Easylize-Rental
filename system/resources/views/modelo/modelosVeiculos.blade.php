@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Modelo;
+use App\Models\ModeloVeiculo;
 use Illuminate\Support\Facades\Session;
 
-$modelos = Modelo::all();
+$modelos = ModeloVeiculo::all();
 
 $success = Session::get('success');
 $error = Session::get('error');

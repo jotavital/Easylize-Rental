@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FotosModeloVeiculo;
 use App\Models\Marca;
-use App\Models\Modelo;
+use App\Models\ModeloVeiculo;
 use Illuminate\Http\Request;
 
 class ModeloController extends Controller
@@ -37,7 +37,7 @@ class ModeloController extends Controller
      */
     public function store(Request $request)
     {
-        $modelo = new Modelo;
+        $modelo = new ModeloVeiculo;
 
         $modelo->nome = $request->nomeModeloInput;
         $modelo->ano_modelo = $request->anoModeloSelect;
@@ -82,7 +82,7 @@ class ModeloController extends Controller
      */
     public function edit($id)
     {
-        $modelo = Modelo::find($id);
+        $modelo = ModeloVeiculo::find($id);
         return view('modelo.editModelo', ['modelo' => $modelo]);
     }
 
@@ -95,7 +95,7 @@ class ModeloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $modelo = Modelo::find($id);
+        $modelo = ModeloVeiculo::find($id);
 
         $modelo->nome = $request->nomeModeloInput;
         $modelo->ano_modelo = $request->anoModeloSelect;
@@ -134,7 +134,7 @@ class ModeloController extends Controller
 
     public function getAll()
     {
-        echo json_encode(Modelo::all());
+        echo json_encode(ModeloVeiculo::all());
     }
 
     public function getModelosByMarca(Request $request)
