@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FotosModeloVeiculo;
-use App\Models\Marca;
+use App\Models\MarcaVeiculo;
 use App\Models\ModeloVeiculo;
 use Illuminate\Http\Request;
 
@@ -139,6 +139,6 @@ class ModeloVeiculoController extends Controller
 
     public function getModelosByMarca(Request $request)
     {
-        echo json_encode(Marca::find($request->idMarca)->modelos);
+        echo json_encode(MarcaVeiculo::find($request->idMarca)->modelos);
     }
 }

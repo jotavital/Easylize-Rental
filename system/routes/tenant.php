@@ -7,7 +7,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ConfiguracoesController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\MarcaVeiculoController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ModeloVeiculoController;
 use Illuminate\Support\Facades\Request;
@@ -44,8 +44,8 @@ Route::group([
     Route::resource('veiculos', VeiculoController::class);
 
     // ! marcas routes
-    Route::post('/marcas/getAll', [MarcaController::class, 'getAll'])->name('marcas.all.get');
-    Route::resource('marcas', MarcaController::class);
+    Route::post('/marcas/getAll', [MarcaVeiculoController::class, 'getAll'])->name('marcas.all.get');
+    Route::resource('marcas', MarcaVeiculoController::class);
 
     // ! modelos routes
     Route::post('/modelos/getAll', [ModeloVeiculoController::class, 'getAll'])->name('modelos.all.get');

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Marca;
+use App\Models\MarcaVeiculo;
 use Illuminate\Http\Request;
 
-class MarcaController extends Controller
+class MarcaVeiculoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        $marca = new Marca();
+        $marca = new MarcaVeiculo();
         $marca->nome = $request->nomeMarcaInput;
 
         if ($marca->save()) {
@@ -64,7 +64,7 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        $marca = Marca::find($id);
+        $marca = MarcaVeiculo::find($id);
         return view('marca.editMarca', ['marca' => $marca]);
     }
 
@@ -77,7 +77,7 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $marca = Marca::find($id);
+        $marca = MarcaVeiculo::find($id);
         $marca->nome = $request->nomeMarcaInput;
 
         if ($marca->save()) {
@@ -100,6 +100,6 @@ class MarcaController extends Controller
 
     public static function getAll()
     {
-        echo json_encode(Marca::all());
+        echo json_encode(MarcaVeiculo::all());
     }
 }

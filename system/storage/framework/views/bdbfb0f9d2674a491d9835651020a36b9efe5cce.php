@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Marca;
+use App\Models\MarcaVeiculo;
 use Illuminate\Support\Facades\Session;
 
-$marcas = Marca::all();
+$marcas = MarcaVeiculo::all();
 
 $success = Session::get('success');
 $error = Session::get('error');
