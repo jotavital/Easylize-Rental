@@ -10,17 +10,13 @@
 
 <?php $__env->startSection('content'); ?>
 
-<?php
-
-?>
-
 <div class="content">
     <div class="container-fluid">
 
         <section class="mb-3">
             <form action=" <?php echo e(route('modelos.update', $modelo->id)); ?> " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
                 <?php echo csrf_field(); ?>
-                <?php echo method_field('PUT'); ?>                
+                <?php echo method_field('PUT'); ?>
                 <div class="form-row col-12 d-flex justify-content-center">
                     <div class="form-group col-md-4">
                         <label for="nomeModeloInput">Nome do modelo <span class="text-danger">*</span></label>
@@ -106,22 +102,28 @@
                 </div>
                 <div class="form-row mb-3 col-12 d-flex justify-content-center">
                     <div class="mt-4 input-group col-md-4">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
-                            <label class="custom-file-label" for="fotosInput" aria-describedby="fotosInput">Fotos</label>
-                        </div>
+                        <label for="fotosInput" aria-describedby="fotosInput">Fotos <span class="text-danger">(Máximo: 10 fotos)</span></label>
+                        <input type="file" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
                     </div>
                 </div>
+                <hr>
                 <div class="col-12 d-flex justify-content-center">
                     <div class="col-8 card card-primary card-outline">
                         <div class="card-body">
-                            <h5 class="card-title">Fotos do modelo</h5>
-                            
-                            <?php
-                            print_r($modelo->fotos);
-                            ?>
-                            <div class="col-6">
-                                <img class="w-100" src=" <?php echo e(route('images.show', 'modelo_img/8XDKXMqqIW47jCmv2pJiWnnOaB13OhjVz9W6QRxJ.jpg')); ?> " alt="imagem">
+                            <h5 class="mb-3 col-12 card-title">Fotos do modelo</h5>
+
+                            <div class="row d-flex justify-content-center">
+                                <?php if($modelo->fotos_modelo->isEmpty()): ?>
+                                <p><span class="text-danger">Sem fotos.</span></p>
+                                <?php else: ?>
+
+                                <?php $__currentLoopData = $modelo->fotos_modelo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto_modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="col-md-6">
+                                    <img class="w-100" src=" <?php echo e(route('images.show', $foto_modelo->path)); ?> " alt="imagem_<?php echo e($modelo->nome); ?>">
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -144,7 +146,6 @@
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
-
     window.onload = function() {
 
         PopularSlimSelectsObj = new PopularSlimSelects();

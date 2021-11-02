@@ -77,7 +77,7 @@ $error = Session::get('error');
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
                             <option data-placeholder="true"></option>
 
-                            
+
 
                         </select>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
@@ -130,12 +130,10 @@ $error = Session::get('error');
 <?php endif; ?>
                     </div>
                 </div>
-                <div class="form-row col-12 d-flex justify-content-center">
+                <div class="form-row mb-3 col-12 d-flex justify-content-center">
                     <div class="mt-4 input-group col-md-4">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
-                            <label class="custom-file-label" for="fotosInput" aria-describedby="fotosInput">Fotos</label>
-                        </div>
+                        <label for="fotosInput" aria-describedby="fotosInput">Fotos <span class="text-danger">(Máximo: 10 fotos)</span></label>
+                        <input type="file" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
                     </div>
                 </div>
                 <div class="col-sm-12 d-flex justify-content-center">
