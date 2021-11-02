@@ -48,7 +48,7 @@ class ModeloController extends Controller
 
             if ($request->hasFile('fotosInput')) {
                 foreach ($request->fotosInput as $photo) {
-                    $photoPath = $photo->store('modelo_img', 'tenant_img');
+                    $photoPath = $photo->store('modelos_img');
 
                     $fotosModeloVeiculo = new FotosModeloVeiculo();
                     $fotosModeloVeiculo->path = $photoPath;

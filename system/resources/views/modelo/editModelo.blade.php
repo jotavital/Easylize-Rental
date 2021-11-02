@@ -64,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+                <img src=" {{ route('images.show', 'modelo_img/8XDKXMqqIW47jCmv2pJiWnnOaB13OhjVz9W6QRxJ.jpg') }} " alt="imagem">
                 <div class="col-sm-12 d-flex justify-content-center">
                     <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Pronto</button>
                 </div>

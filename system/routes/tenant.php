@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ConfiguracoesController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ModeloController;
@@ -56,6 +58,8 @@ Route::group([
     // ! configuracoes routes
     Route::resource('configuracoes', ConfiguracoesController::class);
     
+    // ! images routes
+    Route::get('images/{imgPath}', [ImageController::class, 'show'])->name('images.show')->where('imgPath', '.*');;
 });
 
 
