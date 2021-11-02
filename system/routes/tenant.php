@@ -9,7 +9,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\VeiculoController;
-use App\Http\Controllers\ModeloController;
+use App\Http\Controllers\ModeloVeiculoController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -48,9 +48,9 @@ Route::group([
     Route::resource('marcas', MarcaController::class);
 
     // ! modelos routes
-    Route::post('/modelos/getAll', [ModeloController::class, 'getAll'])->name('modelos.all.get');
-    Route::post('/modelos/getModelosByMarca', [ModeloController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
-    Route::resource('modelos', ModeloController::class);
+    Route::post('/modelos/getAll', [ModeloVeiculoController::class, 'getAll'])->name('modelos.all.get');
+    Route::post('/modelos/getModelosByMarca', [ModeloVeiculoController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
+    Route::resource('modelos', ModeloVeiculoController::class);
 
     // ! categorias routes
     Route::post('/categorias/getCategoriasVeiculos', [CategoriaController::class, 'getCategoriasVeiculos'])->name('categorias.veiculos.get');

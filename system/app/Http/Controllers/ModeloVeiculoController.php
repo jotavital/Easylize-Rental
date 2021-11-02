@@ -7,7 +7,7 @@ use App\Models\Marca;
 use App\Models\ModeloVeiculo;
 use Illuminate\Http\Request;
 
-class ModeloController extends Controller
+class ModeloVeiculoController extends Controller
 {
     /**
      * Display a listing of the resource.
