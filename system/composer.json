@@ -14,7 +14,6 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "stancl/tenancy": "^3.4",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
@@ -29,13 +28,10 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Database\\Seeders\\Tenant\\": "database/seeders/tenant",
-            "Database\\Seeders\\System\\": "database/seeders/system"
+            "Database\\Seeders\\": "database/seeders/"
         },
         "classmap":[
-            "database/seeders/system",
-            "app/Models/system"
+            "app/Models"
         ]
     },
     "autoload-dev": {

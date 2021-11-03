@@ -42,6 +42,5 @@ class AppServiceProvider extends ServiceProvider
         DB::setDefaultConnection('mysql');
         Artisan::call("database:createSystemDb");
         Artisan::call("database:migrateSystemDatabase");
-        MyHelpers::setDefaultTenantParameterForRoutes();
     }
 }

@@ -5,11 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Classes\MyHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Artisan;
-use App\Models\System\Company;
 use App\Http\Controllers\Controller;
-use App\Models\Tenant;
-use Illuminate\Support\Facades\Session;
 
 class UserAuthController extends Controller
 {
