@@ -28,19 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-
-        $dotenv = Dotenv::createImmutable(base_path());
-        $dotenv->load();
-
-        DB::purge('mysql');
-
-        config(["database.connections.mysql.database" => "mysql"]);
-
-        DB::setDefaultConnection('mysql');
-        Artisan::call("database:createSystemDb");
-        Artisan::call("database:migrateSystemDatabase");
+        
     }
 }

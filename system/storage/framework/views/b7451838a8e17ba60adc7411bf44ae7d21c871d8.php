@@ -14,7 +14,7 @@ $message = Session::get('message');
 <div class="content d-flex align-items-center" style="height:100vh;">
     <div class="container-fluid">
 
-        <h1 class="mb-4 text-center">Login - <?php echo e(isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental"); ?> </h1>
+        <h1 class="mb-4 text-center">Logsin - <?php echo e(isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental"); ?> </h1>
         <form action="<?php echo e(route('admin.login.do')); ?>" class="col-12 form-floating" method="POST">
             <?php echo csrf_field(); ?>
             <div class="form-row d-flex justify-content-center">

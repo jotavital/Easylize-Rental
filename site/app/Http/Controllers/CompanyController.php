@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Tenant;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,13 +42,19 @@ class CompanyController extends Controller
     {
         $company = new Company();
 
-        $company->id = Uuid::uuid();
         $company->usuario = $request->usuario;
         $company->password = Hash::make($request->senha);
         $company->nome_empresa = $request->nome_empresa;
         $company->banco_empresa = $request->usuario;
 
         if ($company->save()) {
+            Artisan::call('database:createTenantDb ' . $request->usuario);
+            Artisan::call('database:seedTenantDb ' . $request->usuario);
+
+            // ! set the tenant database connection 
+            
+            Artisan::call('database:migrateTenantDb');
+            
             return redirect()->back()->with('success', 'Cadastro realizado com sucesso! Acesse sua dashboard em ' . $request->usuario . '.com');
         } else {
             return redirect()->back()->with('error', 'Erro ao realizar o cadastro, tente novamente.');

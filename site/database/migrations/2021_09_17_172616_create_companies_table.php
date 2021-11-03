@@ -15,7 +15,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('usuario', 50)->unique();
             $table->string('password', 255)->unique();
             $table->string('banco_empresa', 50)->unique();
