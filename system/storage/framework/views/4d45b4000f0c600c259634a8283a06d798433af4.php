@@ -118,11 +118,26 @@
                                 <?php else: ?>
 
                                 <?php $__currentLoopData = $modelo->fotos_modelo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto_modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="col-md-6">
-                                    <img class="w-100" src=" <?php echo e(route('images.show', $foto_modelo->path)); ?> " alt="imagem_<?php echo e($modelo->nome); ?>">
+                                <div class="img-actions col-md-6">
+                                    <img class="img-actions-image" src=" <?php echo e(route('images.show', $foto_modelo->path)); ?> " alt="imagem_<?php echo e($modelo->nome); ?>">
+
+                                    <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
+                                        <?php if (isset($component)) { $__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AcoesImagem::class, ['id' => ''.e($foto_modelo->id).'']); ?>
+<?php $component->withName('acoes-imagem'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648)): ?>
+<?php $component = $__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648; ?>
+<?php unset($__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                                    </div>
                                 </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                
+
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -155,6 +170,29 @@
             "_token": "<?php echo e(csrf_token()); ?>"
         };
         PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca, "<?php echo e($modelo->marca_id); ?>");
+
+        $("[id^='delete-photo-']").click(function() {
+            var idFoto = $(this).data('id');
+            var url = '<?php echo e(route("fotos_modelo_veiculo.destroy", ":idFoto")); ?>';
+            url = url.replace(':idFoto', idFoto);
+
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                data: {
+                    "_token": "<?php echo e(csrf_token()); ?>"
+                },
+                success: function(response) {
+                    
+                },
+                statusCode:{
+                    500: function(response) {
+                        alert("Não foi possível excluir esta foto, tente novamente.");
+                    }
+                }
+
+            });
+        })
     }
 </script>
 

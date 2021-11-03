@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ConfiguracoesController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FotosModeloVeiculoController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MarcaVeiculoController;
 use App\Http\Controllers\VeiculoController;
@@ -52,6 +53,9 @@ Route::group([
     Route::post('/modelos/getModelosByMarca', [ModeloVeiculoController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
     Route::resource('modelos', ModeloVeiculoController::class);
 
+    // ! rotas de fotos do modelo do veiculo
+    Route::resource('fotos_modelo_veiculo', FotosModeloVeiculoController::class);
+
     // ! categorias routes
     Route::post('/categorias/getCategoriasVeiculos', [CategoriaController::class, 'getCategoriasVeiculos'])->name('categorias.veiculos.get');
 
@@ -59,7 +63,7 @@ Route::group([
     Route::resource('configuracoes', ConfiguracoesController::class);
     
     // ! images routes
-    Route::get('images/{imgPath}', [ImageController::class, 'show'])->name('images.show')->where('imgPath', '.*');;
+    Route::get('images/{imgPath}', [ImageController::class, 'show'])->name('images.show')->where('imgPath', '.*');
 });
 
 

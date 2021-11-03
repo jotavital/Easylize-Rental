@@ -74,11 +74,15 @@
                                 @else
 
                                 @foreach ($modelo->fotos_modelo as $foto_modelo)
-                                <div class="col-md-6">
-                                    <img class="w-100" src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
+                                <div class="img-actions col-md-6">
+                                    <img class="img-actions-image" src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
+
+                                    <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
+                                        <x-acoes-imagem id="{{ $foto_modelo->id }}" />
+                                    </div>
                                 </div>
                                 @endforeach
-                                
+
                                 @endif
                             </div>
                         </div>
@@ -111,6 +115,29 @@
             "_token": "{{ csrf_token() }}"
         };
         PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca, "{{ $modelo->marca_id }}");
+
+        $("[id^='delete-photo-']").click(function() {
+            var idFoto = $(this).data('id');
+            var url = '{{ route("fotos_modelo_veiculo.destroy", ":idFoto") }}';
+            url = url.replace(':idFoto', idFoto);
+
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                data: {
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    
+                },
+                statusCode:{
+                    500: function(response) {
+                        alert("Não foi possível excluir esta foto, tente novamente.");
+                    }
+                }
+
+            });
+        })
     }
 </script>
 
