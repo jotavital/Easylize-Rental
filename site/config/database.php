@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Company;
 use Illuminate\Support\Str;
 
-$companies = Company::all();
+$companies = config('app.company_model');
+$companies = $companies::all();
 
 $configArray = [
 
@@ -65,8 +65,6 @@ $configArray = [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
-        'tenant' => include(base_path() . '/config/tenant_database_conf/databaseConf_default.php'),
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -153,9 +151,29 @@ $configArray = [
 
 foreach ($companies as $company) {
 
-    $tenantConfig = require base_path() . '/config/tenant_database_conf/database_' . $company->usuario . '.php';
+    $dbName = $company->banco_empresa;
 
-    $configArray['connections'] += [$company->usuario => $tenantConfig];
+    $tenantConfig = [
+        'driver' => 'mysql',
+        'url' => env('DATABASE_URL'),
+        'host' => env('DB_HOST', 'DB_HOST'),
+        'port' => env('DB_PORT', 'DB_PORT'),
+        'database' => env($dbName, $dbName),
+        'username' => env('DB_USERNAME', 'DB_USERNAME'),
+        'password' => env('DB_PASSWORD', ''),
+        'unix_socket' => env('DB_SOCKET', ''),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'prefix_indexes' => true,
+        'strict' => true,
+        'engine' => null,
+        'options' => extension_loaded('pdo_mysql') ? array_filter([
+            PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        ]) : [],
+    ];
+
+    $configArray['connections'] += ['tenant_' . $company->banco_empresa => $tenantConfig];
 }
 
 return $configArray;

@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'company_model' => App\Models\Company::class,
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 
 class MigrateTenantDb extends Command
 {
@@ -38,6 +39,6 @@ class MigrateTenantDb extends Command
      */
     public function handle()
     {
-        Artisan::call("migrate --database=tenant");
+        // Artisan::call("migrate --database=" . DB::getDefaultConnection());
     }
 }

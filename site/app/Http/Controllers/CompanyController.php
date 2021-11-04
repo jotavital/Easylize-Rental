@@ -45,19 +45,10 @@ class CompanyController extends Controller
         $company->usuario = $request->usuario;
         $company->password = Hash::make($request->senha);
         $company->nome_empresa = $request->nome_empresa;
-        $company->banco_empresa = $request->usuario;
+        $company->banco_empresa = "tenant_" . $request->usuario;
 
         if ($company->save()) {
-            Artisan::call('database:createTenantDb ' . $request->usuario);
-            Artisan::call('database:seedTenantDb ' . $request->usuario);
-            
-            // ! gerar o arquivo de config database do tenant e pegar tambem o arquivo de config dinamicamente
-
-            $databaseConf = file_get_contents(base_path() . "/config/tenant_database_conf/databaseConf_default.php");
-            $databaseConf = str_replace("DB_DATABASE", $request->usuario, $databaseConf);
-            file_put_contents(base_path() . "/config/tenant_database_conf/database_" . $request->usuario . ".php", $databaseConf);
-            
-            Artisan::call('database:migrateTenantDb');
+            Artisan::call('database:createTenantDb ' . $company->banco_empresa);
             
             return redirect()->back()->with('success', 'Cadastro realizado com sucesso! Acesse sua dashboard em ' . $request->usuario . '.com');
         } else {

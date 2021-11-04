@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    public $connection = "mysql";
     public $table = "companies";
     use HasFactory;
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Session;
 
 $message = Session::get('message');
+
 ?>
 
 
