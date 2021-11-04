@@ -63,6 +63,8 @@ return [
             ]) : [],
         ],
 
+        'tenant' => include(base_path() . '/config/tenant_database_conf/databaseConf_default.php'),
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

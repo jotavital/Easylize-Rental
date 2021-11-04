@@ -50,8 +50,8 @@ class CompanyController extends Controller
         if ($company->save()) {
             Artisan::call('database:createTenantDb ' . $request->usuario);
             Artisan::call('database:seedTenantDb ' . $request->usuario);
-
-            // ! set the tenant database connection 
+            
+            // ! gerar o arquivo de config database do tenant e pegar tambem o arquivo de config dinamicamente
             
             Artisan::call('database:migrateTenantDb');
             
