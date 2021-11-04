@@ -1,7 +1,14 @@
 <?php
 
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ConfiguracoesController;
+use App\Http\Controllers\FotosModeloVeiculoController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MarcaVeiculoController;
+use App\Http\Controllers\ModeloVeiculoController;
+use App\Http\Controllers\VeiculoController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -59,8 +66,12 @@ Route::group([
     'middleware' => ['web', 'isLogged'],
 ], function () {
     // ! login routes
-    Route::get('/', [CompanyController::class, 'showCompanyLogin'])->name('company.login'); // ! the name 'login' is for laravel to redirect to this route when user unauthenticated
-    Route::post('/company/login/do', [CompanyController::class, 'companyLogin'])->name('company.login.do');
+    Route::group([
+        'middleware' => ['isCompanyLogged', 'isLogged'],
+    ], function () {
+        Route::get('/', [CompanyController::class, 'showCompanyLogin'])->name('company.login'); // ! the name 'login' is for laravel to redirect to this route when user unauthenticated
+        Route::post('/company/login/do', [CompanyController::class, 'companyLogin'])->name('company.login.do');
+    });
 
     Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
     Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');

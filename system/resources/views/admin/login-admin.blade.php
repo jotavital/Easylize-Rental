@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 $message = Session::get('message');
 
-echo DB::getDefaultConnection();
+echo "usuario logado? " . Auth::check();
 ?>
 
 @extends('layouts.main')

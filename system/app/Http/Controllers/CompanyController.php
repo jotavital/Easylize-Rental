@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -14,11 +15,17 @@ class CompanyController extends Controller
 
     public function companyLogin(Request $request)
     {
-        if (Company::where('usuario', "=", $request->login)->exists()) {
-            echo "Ok";
+        $credentials = [
+            'username' => $request->login,
+            'password' => $request->senha
+        ];
+
+        if(Auth::guard('company')->attempt($credentials)){
+            // !!! configurar a conexao do banco de dados da empresa pra ser usado como padrao
+            return redirect()->route('admin.login');
         }else{
-            echo "no";
+            return redirect()->back()->with('message', "Erro ao realizar login, verifique as credenciais.");;
         }
-        exit;
+        
     }
 }

@@ -24,11 +24,11 @@ class UserAuthController extends Controller
             'password' => $request->senha
         ];
 
-        // if (Auth::attempt($credentials)) {
-        //     return redirect()->route('admin.dashboard');
-        // } else {
-        //     return redirect()->back()->with('message', "Não foi possível realizar o login, verifique as credenciais e tente novamente!");
-        // }
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->back()->with('message', "Não foi possível realizar o login, verifique as credenciais e tente novamente!");
+        }
     }
 
     public function logout()
