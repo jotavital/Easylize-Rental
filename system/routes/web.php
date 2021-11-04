@@ -59,8 +59,9 @@ Route::group([
 ], function () {
     // ! login routes
     Route::get('/', function () {
-        return redirect()->route('admin.login', ['tenant' => Request::segment(1)]);
+        return redirect()->route('admin.login');
     })->name('login'); // ! the name 'login' is for laravel to redirect to this route when user unauthenticated
+    
     Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
     Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');
 });

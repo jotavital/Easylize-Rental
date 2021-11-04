@@ -171,7 +171,7 @@ foreach ($companies as $company) {
         ]) : [],
     ];
 
-    $configArray['connections'] += ['tenant_' . $company->banco_empresa => $tenantConfig];
+    $configArray['connections'] += [$company->banco_empresa => $tenantConfig];
 }
 
 return $configArray;

@@ -15,7 +15,7 @@ $message = Session::get('message');
 <div class="content d-flex align-items-center" style="height:100vh;">
     <div class="container-fluid">
 
-        <h1 class="mb-4 text-center">Logsin - {{ isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} </h1>
+        <h1 class="mb-4 text-center">Login - {{ isset($_COOKIE['nome_empresa']) ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} </h1>
         <form action="{{ route('admin.login.do') }}" class="col-12 form-floating" method="POST">
             @csrf
             <div class="form-row d-flex justify-content-center">

@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    protected $connection = 'tenant';
     public $table = "usuario";
     public $timestamps = false;
 
