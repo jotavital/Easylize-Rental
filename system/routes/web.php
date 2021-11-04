@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +48,7 @@ Route::group([
 
     // ! configuracoes routes
     Route::resource('configuracoes', ConfiguracoesController::class);
-    
+
     // ! images routes
     Route::get('images/{imgPath}', [ImageController::class, 'show'])->name('images.show')->where('imgPath', '.*');
 });
@@ -58,10 +59,9 @@ Route::group([
     'middleware' => ['web', 'isLogged'],
 ], function () {
     // ! login routes
-    Route::get('/', function () {
-        return redirect()->route('admin.login');
-    })->name('login'); // ! the name 'login' is for laravel to redirect to this route when user unauthenticated
-    
+    Route::get('/', [CompanyController::class, 'showCompanyLogin'])->name('company.login'); // ! the name 'login' is for laravel to redirect to this route when user unauthenticated
+    Route::post('/company/login/do', [CompanyController::class, 'companyLogin'])->name('company.login.do');
+
     Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
     Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');
 });
