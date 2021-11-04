@@ -52,6 +52,10 @@ class CompanyController extends Controller
             Artisan::call('database:seedTenantDb ' . $request->usuario);
             
             // ! gerar o arquivo de config database do tenant e pegar tambem o arquivo de config dinamicamente
+
+            $databaseConf = file_get_contents(base_path() . "/config/tenant_database_conf/databaseConf_default.php");
+            $databaseConf = str_replace("DB_DATABASE", $request->usuario, $databaseConf);
+            file_put_contents(base_path() . "/config/tenant_database_conf/database_" . $request->usuario . ".php", $databaseConf);
             
             Artisan::call('database:migrateTenantDb');
             
