@@ -9,6 +9,8 @@ $message = Session::get('message');
 
 echo "logada? -> " . Auth::guard('company')->check();
 echo DB::getDefaultConnection();
+
+// dd(Config::get('database.connections'));
 ?>
 
 @extends('layouts.main')

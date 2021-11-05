@@ -9,7 +9,7 @@ $message = Session::get('message');
 
 // echo "usuario logado? " . Auth::check();
 
-dd(Config::get('database.connections'));
+// dd(Config::get('database.connections'));
 ?>
 
 

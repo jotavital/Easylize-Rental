@@ -49,6 +49,7 @@ class CompanyController extends Controller
 
     public function showCompanyLogin()
     {
+        self::generateDatabaseConfigFileWithAllCompanies();
         return view('login-empresa');
     }
 
@@ -62,7 +63,7 @@ class CompanyController extends Controller
         if (Auth::guard('company')->attempt($credentials)) {
 
             DB::setDefaultConnection(Auth::guard('company')->user()->banco_empresa);
-            // !!! configurar a conexao do banco de dados da empresa pra ser usado como padrao
+            
             $company = Auth::guard('company')->user();
 
             if ($company->needs_seeding) {
@@ -72,7 +73,7 @@ class CompanyController extends Controller
                 $companyModel->save();
             }
 
-            self::generateDatabaseConfigFileWithAllCompanies();
+            // !!! inserir o primeiro usuario no banco do tenant
 
             return redirect()->route('admin.login');
         } else {
