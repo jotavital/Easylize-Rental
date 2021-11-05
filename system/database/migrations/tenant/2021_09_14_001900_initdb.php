@@ -17,13 +17,13 @@ class Initdb extends Migration
     {
         // !! importa o SQL para o banco de dados do tenant
         
-        $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
+        // $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
 
-        $databaseName = Config::get('database.connections.tenant.database');
+        // $databaseName = Config::get('database.connections.tenant.database');
 
-        $sql = str_replace("easylize_rental", $databaseName, $sql);
+        // $sql = str_replace("easylize_rental", $databaseName, $sql);
         
-        DB::unprepared($sql);
+        // DB::unprepared($sql);
     }
 
     /**

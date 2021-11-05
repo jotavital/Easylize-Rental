@@ -14,8 +14,7 @@ class ImportCidade extends Migration
      */
     public function up()
     {
-        $sql = file_get_contents(base_path() . "/database/sql/cidade.sql");
-        DB::unprepared($sql);
+        
     }
 
     /**

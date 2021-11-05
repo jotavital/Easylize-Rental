@@ -18,7 +18,8 @@ class UserAuthController extends Controller
 
     public function userLogin(Request $request)
     {
-
+        DB::setDefaultConnection(Auth::guard('company')->user()->banco_empresa);
+        
         $credentials = [
             'username' => $request->login,
             'password' => $request->senha

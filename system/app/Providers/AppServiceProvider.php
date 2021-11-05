@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Classes\MyHelpers;
+use App\Http\Controllers\CompanyController;
+use App\Models\Company;
 use Dotenv\Dotenv;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        if (!file_exists(base_path() . "/config/tenants_database.json")) {
+            CompanyController::generateDatabaseConfigFileWithAllCompanies();
+        }
     }
 }

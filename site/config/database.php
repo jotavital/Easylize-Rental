@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-$configArray = [
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -145,5 +145,3 @@ $configArray = [
     ],
 
 ];
-
-return $configArray;

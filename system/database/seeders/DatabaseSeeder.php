@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\Tenant\TenantDatabaseSeeder;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(TenantDatabaseSeeder::class);
+        $this->call(TenantDbSeeder::class, false, ['tenantDbName' => Auth::guard('company')->user()->banco_empresa]);
+        $this->call(EstadoSeeder::class);
+        $this->call(CidadeSeeder::class);
     }
 }

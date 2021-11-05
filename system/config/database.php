@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Str;
 
-$companies = config('app.company_model');
-$companies = $companies::all();
+$companies = file_get_contents(base_path() . "/config/tenants_database.json");
+$companies = json_decode($companies);
 
 $configArray = [
 
@@ -149,29 +149,31 @@ $configArray = [
 
 ];
 
-foreach ($companies as $company) {
+if (!is_null($companies)) {
+    foreach ($companies as $company) {
 
-    $tenantConfig = [
-        'driver' => 'mysql',
-        'url' => env('DATABASE_URL'),
-        'host' => env('DB_HOST', 'DB_HOST'),
-        'port' => env('DB_PORT', 'DB_PORT'),
-        'database' => env($company->banco_empresa, $company->banco_empresa),
-        'username' => env('DB_USERNAME', 'DB_USERNAME'),
-        'password' => env('DB_PASSWORD', ''),
-        'unix_socket' => env('DB_SOCKET', ''),
-        'charset' => 'utf8mb4',
-        'collation' => 'utf8mb4_unicode_ci',
-        'prefix' => '',
-        'prefix_indexes' => true,
-        'strict' => true,
-        'engine' => null,
-        'options' => extension_loaded('pdo_mysql') ? array_filter([
-            PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-        ]) : [],
-    ];
+        $tenantConfig = [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', 'DB_HOST'),
+            'port' => env('DB_PORT', 'DB_PORT'),
+            'database' => env($company->banco_empresa, $company->banco_empresa),
+            'username' => env('DB_USERNAME', 'DB_USERNAME'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ];
 
-    $configArray['connections'] += [$company->banco_empresa => $tenantConfig];
+        $configArray['connections'] += [$company->banco_empresa => $tenantConfig];
+    }
 }
 
 return $configArray;

@@ -42,7 +42,7 @@ class CompanyController extends Controller
     {
         $company = new Company();
 
-        $company->usuario = $request->usuario;
+        $company->username = $request->usuario;
         $company->password = Hash::make($request->senha);
         $company->nome_empresa = $request->nome_empresa;
         $company->banco_empresa = "tenant_" . $request->usuario;

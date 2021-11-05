@@ -14,8 +14,7 @@ class ImportEstado extends Migration
      */
     public function up()
     {
-        $sql = file_get_contents(base_path() . "/database/sql/estado.sql");
-        DB::unprepared($sql);
+        
     }
 
     /**

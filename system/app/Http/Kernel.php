@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'setTenantCookies' => SetTenantCookies::class,
         'isCompanyLogged' => \App\Http\Middleware\IsCompanyLogged::class,
+        'SetDefaultDbConnectionForTenant' => \App\Http\Middleware\SetDefaultDbConnectionForTenant::class,
     ];
 }

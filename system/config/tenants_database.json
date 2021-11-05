@@ -1,0 +1,27 @@
+{
+    "rentalcar": {
+        "id": 1,
+        "username": "rentalcar",
+        "banco_empresa": "tenant_rentalcar"
+    },
+    "localiza": {
+        "id": 2,
+        "username": "localiza",
+        "banco_empresa": "tenant_localiza"
+    },
+    "teste": {
+        "id": 3,
+        "username": "teste",
+        "banco_empresa": "tenant_teste"
+    },
+    "asfasfasf": {
+        "id": 4,
+        "username": "asfasfasf",
+        "banco_empresa": "tenant_asfasfasf"
+    },
+    "lindo": {
+        "id": 5,
+        "username": "lindo",
+        "banco_empresa": "tenant_lindo"
+    }
+}
