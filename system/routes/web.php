@@ -63,7 +63,7 @@ Route::group([
 
 
 Route::group([
-    'middleware' => ['web'],
+    'middleware' => ['web', 'isLogged'],
 ], function () {
     Route::get('/', function () {
         return redirect()->route('admin.login');

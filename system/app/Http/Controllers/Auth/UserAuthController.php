@@ -35,8 +35,6 @@ class UserAuthController extends Controller
     {
         Auth::logout();
 
-        MyHelpers::deleteAllCookies();
-
         return redirect()->route('companies.create');
     }
 
