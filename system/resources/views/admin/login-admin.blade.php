@@ -9,6 +9,8 @@ $message = Session::get('message');
 
 // echo "usuario logado? " . Auth::check();
 
+// echo Auth::guard('company')->user()->banco_empresa;
+
 // dd(Config::get('database.connections'));
 ?>
 

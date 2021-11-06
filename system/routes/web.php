@@ -9,6 +9,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MarcaVeiculoController;
 use App\Http\Controllers\ModeloVeiculoController;
 use App\Http\Controllers\VeiculoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 

@@ -9,22 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    
-    public static function insertFirstUser(Request $request, $databaseName){
 
-        $usuario = $request->usuario;
-        $senha = Hash::make($request->senha);
+    public static function insertFirstUser($usuario, $senha)
+    {
+        $statement = DB::statement("INSERT INTO usuario (username, password, privilegios) VALUES ('$usuario', '$senha', 'admin')");
 
-        Config::set('database.connections.tenant.database', $databaseName);
-        
-        $sql = DB::connection('tenant')->statement("INSERT INTO usuario (username, password, privilegios) VALUES ('$usuario', '$senha', 'admin')");
-
-        if($sql){
+        if ($statement) {
             return true;
         }
 
         return false;
-
     }
-
 }

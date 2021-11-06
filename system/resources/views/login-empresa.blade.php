@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Session;
 
 $message = Session::get('message');
 
-echo "logada? -> " . Auth::guard('company')->check();
-echo DB::getDefaultConnection();
+// echo "logada? -> " . Auth::guard('company')->check();
+// echo DB::getDefaultConnection();
 
 // dd(Config::get('database.connections'));
 ?>

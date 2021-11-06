@@ -18,6 +18,7 @@ class UserAuthController extends Controller
 
     public function userLogin(Request $request)
     {
+        // !! esta funcao esta bugao ao tentar fazer login do usuario, fala que tabela usuario nao existe em easylize_rental
         DB::setDefaultConnection(Auth::guard('company')->user()->banco_empresa);
         
         $credentials = [

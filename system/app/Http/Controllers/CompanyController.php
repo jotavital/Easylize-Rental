@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\MyHelpers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -62,8 +63,11 @@ class CompanyController extends Controller
 
         if (Auth::guard('company')->attempt($credentials)) {
 
-            DB::setDefaultConnection(Auth::guard('company')->user()->banco_empresa);
-            
+            $empresa = Auth::guard('company')->user();
+
+            MyHelpers::createTenantDatabaseIfNotExists($empresa->id, $empresa->banco_empresa);
+            DB::setDefaultConnection($empresa->banco_empresa);
+
             $company = Auth::guard('company')->user();
 
             if ($company->needs_seeding) {
@@ -73,9 +77,13 @@ class CompanyController extends Controller
                 $companyModel->save();
             }
 
-            // !!! inserir o primeiro usuario no banco do tenant
+            Artisan::call('migrate');
 
-            return redirect()->route('admin.login');
+            if (UserController::insertFirstUser($company->username, $company->password)) {
+                return redirect()->route('admin.login');
+            } else {
+                return redirect()->back()->with('message', "Erro interno ao realizar login, tente novamente.");;
+            }
         } else {
             return redirect()->back()->with('message', "Erro ao realizar login, verifique as credenciais.");;
         }
