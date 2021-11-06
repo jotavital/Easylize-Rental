@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(TenantDbSeeder::class, false, ['tenantDbName' => Auth::guard('company')->user()->banco_empresa]);
+        DB::setDefaultConnection('default_mysql');
+        $this->call(MainDbSeeder::class);
         $this->call(EstadoSeeder::class);
         $this->call(CidadeSeeder::class);
     }

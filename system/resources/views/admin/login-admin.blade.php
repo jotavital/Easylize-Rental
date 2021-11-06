@@ -1,17 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 $message = Session::get('message');
 
-// echo "usuario logado? " . Auth::check();
-
-// echo Auth::guard('company')->user()->banco_empresa;
-
-// dd(Config::get('database.connections'));
 ?>
 
 @extends('layouts.main')
@@ -46,9 +39,7 @@ $message = Session::get('message');
             @if(session('message'))
             <x-alert type="danger" :message='$message' />
             @endif
-            <!-- <div class="mb-3 d-flex justify-content-center">
-          <small>Ainda não tem um login? <a href="register">Cadastre-se aqui.</a></small>
-        </div> -->
+            
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn-rounded">Entrar</button>
             </div>

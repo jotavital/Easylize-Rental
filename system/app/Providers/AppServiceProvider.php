@@ -3,13 +3,12 @@
 namespace App\Providers;
 
 use App\Classes\MyHelpers;
-use App\Http\Controllers\CompanyController;
-use App\Models\Company;
 use Dotenv\Dotenv;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,8 +29,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!file_exists(base_path() . "/config/tenants_database.json")) {
-            CompanyController::generateDatabaseConfigFileWithAllCompanies();
-        }
+        Schema::defaultStringLength(191);
+        $dotenv = Dotenv::createImmutable(base_path());
+        $dotenv->load();
+        
+        MyHelpers::createDatabaseIfNotExists();
+        
+        DB::setDefaultConnection('default_mysql');
+        Artisan::call('migrate');
     }
 }

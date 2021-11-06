@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sl-1.3.3/datatables.min.css" />
 
-    <title>{{ isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'companies.create' ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
+    <title>Empresa - @yield('title')</title>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -72,9 +72,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href=" {{ route('admin.dashboard', ['tenant' => $_COOKIE['tenant_name'] ]) }} " class="brand-link">
+            <a href=" {{ route('admin.dashboard') }} " class="brand-link">
                 <img src="/img/default_profile_picture.png" alt="Company Profile Picture" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ $_COOKIE['nome_empresa'] }}</span>
+                <span class="brand-text font-weight-light">Nome empresa</span>
             </a>
 
             <!-- Sidebar -->

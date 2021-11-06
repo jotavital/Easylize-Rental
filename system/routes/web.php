@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'middleware' => ['web', 'auth', 'SetDefaultDbConnectionForTenant'],
+    'middleware' => ['web', 'auth'],
 ], function () {
 
     // ! logout routes
@@ -62,18 +62,12 @@ Route::group([
 });
 
 
-// ! routes that must not be accessed if user is authenticated
 Route::group([
-    'middleware' => ['web', 'isLogged'],
+    'middleware' => ['web'],
 ], function () {
-    // ! login routes
-    Route::group([
-        
-    ], function () {
-        Route::get('/', [CompanyController::class, 'showCompanyLogin'])->name('company.login'); // ! the name 'login' is for laravel to redirect to this route when user unauthenticated
-        Route::post('/company/login/do', [CompanyController::class, 'companyLogin'])->name('company.login.do');
+    Route::get('/', function () {
+        return redirect()->route('admin.login');
     });
-
     Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
     Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');
 });
