@@ -12,7 +12,7 @@ class ImageController extends Controller
         $path = "/{$imgPath}";
         
         if (Storage::exists($path)) {
-            return response()->file(storage_path() . $path);
+            return response()->file(storage_path('app') . $path);
         }
 
         abort(404);

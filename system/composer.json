@@ -13,6 +13,7 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^8.54",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.7",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {

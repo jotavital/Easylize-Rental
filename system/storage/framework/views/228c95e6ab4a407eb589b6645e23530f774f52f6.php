@@ -136,6 +136,21 @@
 <?php endif; ?>
                                     </div>
                                 </div>
+                                <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('counter', [])->html();
+} elseif ($_instance->childHasBeenRendered('9mrNiep')) {
+    $componentId = $_instance->getRenderedChildComponentId('9mrNiep');
+    $componentTag = $_instance->getRenderedChildComponentTagName('9mrNiep');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('9mrNiep');
+} else {
+    $response = \Livewire\Livewire::mount('counter', []);
+    $html = $response->html();
+    $_instance->logRenderedChild('9mrNiep', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?> 
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                 <?php endif; ?>

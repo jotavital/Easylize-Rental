@@ -81,6 +81,7 @@
                                         <x-acoes-imagem id="{{ $foto_modelo->id }}" />
                                     </div>
                                 </div>
+                                <livewire:counter /> 
                                 @endforeach
 
                                 @endif

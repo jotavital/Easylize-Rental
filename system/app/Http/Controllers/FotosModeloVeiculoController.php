@@ -82,7 +82,7 @@ class FotosModeloVeiculoController extends Controller
     {
         $fotosObj = new FotosModeloVeiculo();
 
-        $foto = $fotosObj::find(30);
+        $foto = $fotosObj::find($id);
 
         if ($foto->delete()) {
             
