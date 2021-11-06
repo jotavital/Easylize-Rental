@@ -34,8 +34,9 @@ class AppServiceProvider extends ServiceProvider
         $dotenv->load();
         
         MyHelpers::createDatabaseIfNotExists();
-        
+
         DB::setDefaultConnection('default_mysql');
+    
         Artisan::call('migrate');
     }
 }

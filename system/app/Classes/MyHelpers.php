@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,7 @@ class MyHelpers
         if (empty($result)) {
             DB::unprepared('CREATE DATABASE IF NOT EXISTS ' . $_ENV['DB_DATABASE']);
 
+            DB::setDefaultConnection('default_mysql');
             Artisan::call('db:seed');
         }
     }
