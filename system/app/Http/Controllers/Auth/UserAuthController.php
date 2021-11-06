@@ -35,7 +35,7 @@ class UserAuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('companies.create');
+        return redirect()->route('admin.login'); 
     }
 
     public function dashboard()

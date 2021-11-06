@@ -14,7 +14,7 @@ class MainDbSeeder extends Seeder
      */
     public function run()
     {
-        $sql = file_get_contents(base_path() . "/database/sql/easylize_rental_db.sql");
+        $sql = file_get_contents(base_path() . "/database/sql/" . $_ENV['DB_DATABASE'] . ".sql");
         DB::unprepared($sql);
     }
 }

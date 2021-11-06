@@ -1,3 +1,11 @@
+<?php
+
+use App\Models\Empresa;
+
+$empresa = Empresa::first();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sl-1.3.3/datatables.min.css" />
 
-    <title>Empresa - <?php echo $__env->yieldContent('title'); ?></title>
+    <title><?php echo e($empresa->nome_empresa); ?> - <?php echo $__env->yieldContent('title'); ?></title>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -74,7 +82,7 @@
             <!-- Brand Logo -->
             <a href=" <?php echo e(route('admin.dashboard')); ?> " class="brand-link">
                 <img src="/img/default_profile_picture.png" alt="Company Profile Picture" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Nome empresa</span>
+                <span class="brand-text font-weight-light"><?php echo e($empresa->nome_empresa); ?></span>
             </a>
 
             <!-- Sidebar -->
