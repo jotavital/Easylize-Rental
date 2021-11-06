@@ -8,9 +8,8 @@
                 {
                     "name": "serve",
                     "commands": [
-                        "cd system/",
                         "php artisan optimize",
-                        "php artisan serve"
+                        "php artisan serve --port=8000"
                     ]
                 }
             ]
@@ -20,9 +19,15 @@
                 {
                     "name": "watch",
                     "commands": [
-                        "cd system/",
                         "npm run watch"
                     ]
+                }
+            ]
+        },
+        {
+            "splitTerminals": [
+                {
+                    "name": "cmd"
                 }
             ]
         }
