@@ -73,7 +73,7 @@
                                 <p><span class="text-danger">Sem fotos.</span></p>
                                 @else
 
-                                @foreach ($modelo->fotos_modelo as $foto_modelo)
+                                @foreach($modelo->fotos_modelo as $foto_modelo)
                                 <div id="img-modelo-{{ $foto_modelo->id }}" class="img-actions col-md-6">
                                     <img class="img-actions-image" src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
 
