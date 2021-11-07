@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/adminlte.min.css">
 
-    <title>{{ isset($_COOKIE['nome_empresa']) && Route::current()->getName() != 'companies.create' ? $_COOKIE['nome_empresa'] : "Easylize Rental" }} - @yield('title')</title>
+    <title>Easylize Rental - @yield('title')</title>
 </head>
 
 <body>

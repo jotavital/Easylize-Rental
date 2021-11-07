@@ -74,7 +74,7 @@
                                 @else
 
                                 @foreach ($modelo->fotos_modelo as $foto_modelo)
-                                <div class="img-actions col-md-6">
+                                <div id="img-modelo-{{ $foto_modelo->id }}" class="img-actions col-md-6">
                                     <img class="img-actions-image" src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
 
                                     <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
@@ -116,10 +116,12 @@
         };
         PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca, "{{ $modelo->marca_id }}");
 
-        $("[id^='delete-photo-']").click(function() {
+        $("[id^='delete-photo-']").click(function(event) {
             var idFoto = $(this).data('id');
             var url = '{{ route("fotos_modelo_veiculo.destroy", ":idFoto") }}';
             url = url.replace(':idFoto', idFoto);
+            divImgModelo = "#img-modelo-" + event.currentTarget.dataset.id;
+
 
             $.ajax({
                 type: "DELETE",
@@ -128,9 +130,9 @@
                     "_token": "{{ csrf_token() }}"
                 },
                 success: function(response) {
-                    
+                    $(divImgModelo).remove();
                 },
-                statusCode:{
+                statusCode: {
                     500: function(response) {
                         alert("Não foi possível excluir esta foto, tente novamente.");
                     }

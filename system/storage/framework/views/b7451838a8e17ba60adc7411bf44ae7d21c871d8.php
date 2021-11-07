@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\Empresa;
 use Illuminate\Support\Facades\Session;
+use App\Models\Empresa;
 
 $message = Session::get('message');
-
 $empresa = Empresa::first();
 
 ?>

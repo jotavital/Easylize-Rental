@@ -118,7 +118,7 @@
                                 <?php else: ?>
 
                                 <?php $__currentLoopData = $modelo->fotos_modelo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto_modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="img-actions col-md-6">
+                                <div id="img-modelo-<?php echo e($foto_modelo->id); ?>" class="img-actions col-md-6">
                                     <img class="img-actions-image" src=" <?php echo e(route('images.show', $foto_modelo->path)); ?> " alt="imagem_<?php echo e($modelo->nome); ?>">
 
                                     <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
@@ -136,21 +136,6 @@
 <?php endif; ?>
                                     </div>
                                 </div>
-                                <?php
-if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('counter', [])->html();
-} elseif ($_instance->childHasBeenRendered('9mrNiep')) {
-    $componentId = $_instance->getRenderedChildComponentId('9mrNiep');
-    $componentTag = $_instance->getRenderedChildComponentTagName('9mrNiep');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('9mrNiep');
-} else {
-    $response = \Livewire\Livewire::mount('counter', []);
-    $html = $response->html();
-    $_instance->logRenderedChild('9mrNiep', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-}
-echo $html;
-?> 
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                 <?php endif; ?>
@@ -186,10 +171,12 @@ echo $html;
         };
         PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca, "<?php echo e($modelo->marca_id); ?>");
 
-        $("[id^='delete-photo-']").click(function() {
+        $("[id^='delete-photo-']").click(function(event) {
             var idFoto = $(this).data('id');
             var url = '<?php echo e(route("fotos_modelo_veiculo.destroy", ":idFoto")); ?>';
             url = url.replace(':idFoto', idFoto);
+            divImgModelo = "#img-modelo-" + event.currentTarget.dataset.id;
+
 
             $.ajax({
                 type: "DELETE",
@@ -198,9 +185,9 @@ echo $html;
                     "_token": "<?php echo e(csrf_token()); ?>"
                 },
                 success: function(response) {
-                    
+                    $(divImgModelo).remove();
                 },
-                statusCode:{
+                statusCode: {
                     500: function(response) {
                         alert("Não foi possível excluir esta foto, tente novamente.");
                     }
