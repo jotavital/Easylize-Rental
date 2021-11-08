@@ -305,8 +305,6 @@ ENGINE = InnoDB;
 
 -- INSERT INTO `usuario` (`id`, `username`, `password`, `privilegios`, `data_cadastro`, `fk_funcionario`) VALUES (NULL, "FIRST_USER", "FIRST_PASSWORD", "FIRST_PRIVILEGIOS", CURRENT_TIMESTAMP, NULL);
 INSERT INTO `usuario` (`id`, `username`, `password`, `privilegios`, `data_cadastro`, `fk_funcionario`) VALUES (NULL, "easylize_rental", "$2a$12$9O8ul0pnKjxae5MmzQBjI.HrAmHAbsAKKKydISoHRZXBVut0VK11W", "primeiro_acesso", CURRENT_TIMESTAMP, NULL);
--- INSERT INTO `empresa` (`id`, `nome_empresa`) VALUES (`NOME_EMPRESA`);
-INSERT INTO `empresa` (`id`, `nome_empresa`) VALUES (1, "Easylize Rental");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

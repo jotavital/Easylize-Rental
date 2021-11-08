@@ -203,6 +203,7 @@ $empresa = Empresa::first();
         <?php echo \Livewire\Livewire::scripts(); ?>
 
 
+        <script src="/js/livewire-event-listeners.js"></script>
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

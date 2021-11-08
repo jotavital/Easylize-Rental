@@ -36,7 +36,6 @@ class AppServiceProvider extends ServiceProvider
         MyHelpers::createDatabaseIfNotExists();
 
         DB::setDefaultConnection('default_mysql');
-    
-        Artisan::call('migrate');
+        Artisan::call('db:seed'); //! may have perfomance issues
     }
 }

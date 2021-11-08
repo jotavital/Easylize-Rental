@@ -11,4 +11,8 @@ class Empresa extends Model
     protected $table = "empresa";
 
     use HasFactory;
+
+    public function plano(){
+        return $this->belongsTo(Plano::class);
+    }
 }

@@ -1,14 +1,14 @@
 <div class="form-row mb-3 col-12 d-flex justify-content-center">
     <div class="mt-4 mb-3 input-group col-md-6">
-        <label for="fotosInput" aria-describedby="fotosInput">Fotos <span class="text-danger">(Máximo: 10 fotos)</span></label>
-        <input type="file" wire:model="fotosInput" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple>
+        <label for="fotosInput" aria-describedby="fotosInput">Fotos <span class="text-danger">(Máximo: {{ $maximoFotos }} fotos)</span></label>
+        <input type="file" wire:model="fotosInput" wire:livewire-upload-finish="validar" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple>
     </div>
     <div class="col-md-10 col-sm-12 d-flex justify-content-center">
         <div class="col-md-8 col-sm-12 card card-primary card-outline">
             <div class="card-body">
                 <div class="row card-headers col-12">
                     <div class="card-title">
-                        <h5 class="mb-3 col-12 card-title">Fotos carregadas</h5>
+                        <h5 class="mb-3 col-12 card-title">Fotos carregadas ({{ count($fotosInput) }})</h5>
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center col-12">

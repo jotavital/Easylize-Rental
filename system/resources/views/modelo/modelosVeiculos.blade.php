@@ -2,6 +2,9 @@
 
 use App\Models\ModeloVeiculo;
 use Illuminate\Support\Facades\Session;
+use App\Models\Empresa;
+
+$empresa = Empresa::first();
 
 $modelos = ModeloVeiculo::all();
 
@@ -29,7 +32,6 @@ $error = Session::get('error');
         @elseif(session('error'))
         <x-alert type="danger" :message='$error' />
         @endif
-
         <section class="mb-3">
             <form action=" {{ route('modelos.store') }} " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
                 @csrf

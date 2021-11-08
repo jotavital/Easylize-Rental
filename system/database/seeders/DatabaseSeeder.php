@@ -15,8 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::setDefaultConnection('default_mysql');
-        $this->call(MainDbSeeder::class);
-        $this->call(EstadoSeeder::class);
-        $this->call(CidadeSeeder::class);
+        $this->call(PlanoSeeder::class);
+        $this->call(EmpresaSeeder::class);
     }
 }

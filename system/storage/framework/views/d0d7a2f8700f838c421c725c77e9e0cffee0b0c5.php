@@ -2,6 +2,9 @@
 
 use App\Models\ModeloVeiculo;
 use Illuminate\Support\Facades\Session;
+use App\Models\Empresa;
+
+$empresa = Empresa::first();
 
 $modelos = ModeloVeiculo::all();
 
@@ -51,7 +54,6 @@ $error = Session::get('error');
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
         <?php endif; ?>
-
         <section class="mb-3">
             <form action=" <?php echo e(route('modelos.store')); ?> " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
                 <?php echo csrf_field(); ?>
@@ -130,15 +132,15 @@ $error = Session::get('error');
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('QKqYQzR')) {
-    $componentId = $_instance->getRenderedChildComponentId('QKqYQzR');
-    $componentTag = $_instance->getRenderedChildComponentTagName('QKqYQzR');
+} elseif ($_instance->childHasBeenRendered('MoAdfM6')) {
+    $componentId = $_instance->getRenderedChildComponentId('MoAdfM6');
+    $componentTag = $_instance->getRenderedChildComponentTagName('MoAdfM6');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('QKqYQzR');
+    $_instance->preserveRenderedChild('MoAdfM6');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('QKqYQzR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('MoAdfM6', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
