@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\ModeloVeiculo;
 
+use App\Models\FotosModeloVeiculo;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,7 +12,6 @@ class InputImagensModelo extends Component
 
     public $fotosInput = [];
     public $maximoFotos;
-    protected $listeners = ['change'];
 
     public function removeImage($key)
     {
@@ -21,12 +21,10 @@ class InputImagensModelo extends Component
     public function validar()
     {
         $qtdFotos = count($this->fotosInput);
-        
-        $qtdExcedente = $qtdFotos - $this->maximoFotos;
 
         if ($qtdFotos > $this->maximoFotos) {
-            array_splice($this->fotosInput, 0, $qtdExcedente);
-            $this->emit('maximoFotosExcedido', "modelo");
+            $this->fotosInput = [];
+            $this->emit('maximoFotosExcedido', '#fotosInput', 'modelo');
         }
     }
 

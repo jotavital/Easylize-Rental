@@ -45,7 +45,6 @@ class ModeloVeiculoController extends Controller
         $modelo->marca_id = $request->marcaSelect;
 
         if ($modelo->save()) {
-
             if ($request->hasFile('fotosInput')) {
                 foreach ($request->fotosInput as $photo) {
                     $photoPath = $photo->store('modelos_img');
