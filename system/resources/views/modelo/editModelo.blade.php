@@ -56,12 +56,7 @@
                         <x-campo-obrigatorio />
                     </div>
                 </div>
-                <div class="form-row mb-3 col-12 d-flex justify-content-center">
-                    <div class="mt-4 input-group col-md-4">
-                        <label for="fotosInput" aria-describedby="fotosInput">Fotos <span class="text-danger">(Máximo: 10 fotos)</span></label>
-                        <input type="file" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
-                    </div>
-                </div>
+                <livewire:modelo-veiculo.input-imagens-modelo />
                 <hr>
                 <div class="col-12 d-flex justify-content-center">
                     <div class="col-8 card card-primary card-outline">

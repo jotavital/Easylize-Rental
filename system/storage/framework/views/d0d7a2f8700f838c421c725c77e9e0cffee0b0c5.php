@@ -130,15 +130,15 @@ $error = Session::get('error');
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('ky1VqLO')) {
-    $componentId = $_instance->getRenderedChildComponentId('ky1VqLO');
-    $componentTag = $_instance->getRenderedChildComponentTagName('ky1VqLO');
+} elseif ($_instance->childHasBeenRendered('QKqYQzR')) {
+    $componentId = $_instance->getRenderedChildComponentId('QKqYQzR');
+    $componentTag = $_instance->getRenderedChildComponentTagName('QKqYQzR');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('ky1VqLO');
+    $_instance->preserveRenderedChild('QKqYQzR');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('ky1VqLO', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('QKqYQzR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

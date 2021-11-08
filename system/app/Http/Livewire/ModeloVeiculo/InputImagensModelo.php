@@ -16,11 +16,6 @@ class InputImagensModelo extends Component
         unset($this->fotosInput[$key]);
     }
 
-    public function testar()
-    {
-        dd($this->fotosInput);
-    }
-
     public function render()
     {
         return view('livewire.modelo-veiculo.input-imagens-modelo');

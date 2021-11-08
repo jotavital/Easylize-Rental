@@ -104,16 +104,16 @@ class ModeloVeiculoController extends Controller
 
         if ($modelo->save()) {
 
-            // if ($request->hasFile('fotosInput')) {
-            //     foreach ($request->fotosInput as $photo) {
-            //         $photoPath = $photo->store('modelo_img', 'tenant_img');
+            if ($request->hasFile('fotosInput')) {
+                foreach ($request->fotosInput as $photo) {
+                    $photoPath = $photo->store('modelos_img');
 
-            //         $fotosModeloVeiculo = new FotosModeloVeiculo();
-            //         $fotosModeloVeiculo->path = $photoPath;
-            //         $fotosModeloVeiculo->modelo_veiculo_id = $modelo->id;
-            //         $fotosModeloVeiculo->save();
-            //     }
-            // }
+                    $fotosModeloVeiculo = new FotosModeloVeiculo();
+                    $fotosModeloVeiculo->path = $photoPath;
+                    $fotosModeloVeiculo->modelo_veiculo_id = $modelo->id;
+                    $fotosModeloVeiculo->save();
+                }
+            }
 
             return redirect()->route('modelos.index')->with('success', 'Modelo editado com sucesso');
         } else {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FotosModeloVeiculo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FotosModeloVeiculoController extends Controller
 {
@@ -85,7 +86,7 @@ class FotosModeloVeiculoController extends Controller
         $foto = $fotosObj::find($id);
 
         if ($foto->delete()) {
-            
+            Storage::delete($foto->path);
         } else {
             abort(500);
         }

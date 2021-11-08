@@ -31,6 +31,10 @@ $empresa = Empresa::first();
 </head>
 
 <body class="hold-transition sidebar-mini">
+    
+    <?php if(app()->isLocal()): ?>
+    <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
+    <?php endif; ?>
 
     <div class="wrapper">
         <!-- Navbar -->
@@ -187,7 +191,7 @@ $empresa = Empresa::first();
         <div class="text-right">
             <strong>Copyright &copy; <?= date('Y') ?> <a href="https://github.com/jotavital" target="_blank">Easylize Rental Team</a>.</strong> All rights reserved.
         </div>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <script src="/js/app.js"></script>
         <script src="/js/adminlte.min.js"></script>
@@ -198,7 +202,7 @@ $empresa = Empresa::first();
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sl-1.3.3/datatables.min.js"></script>
         <?php echo \Livewire\Livewire::scripts(); ?>
 
-        
+
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -252,11 +256,11 @@ $empresa = Empresa::first();
                             select.classList.remove("invalid-select");
                             select.classList.add("valid-select");
                         }
-                        
+
                         if (select.value == '') {
                             select.classList.remove("valid-select");
                             select.classList.add("invalid-select");
-                        }else{
+                        } else {
                             select.classList.remove("invalid-select");
                             select.classList.add("valid-select");
                         }
