@@ -43,9 +43,6 @@ $error = Session::get('error');
                         <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
                             <option data-placeholder="true"></option>
-
-
-
                         </select>
                         <x-campo-obrigatorio />
                     </div>
@@ -64,12 +61,7 @@ $error = Session::get('error');
                         <x-campo-obrigatorio />
                     </div>
                 </div>
-                <div class="form-row mb-3 col-12 d-flex justify-content-center">
-                    <div class="mt-4 input-group col-md-4">
-                        <label for="fotosInput" aria-describedby="fotosInput">Fotos <span class="text-danger">(Máximo: 10 fotos)</span></label>
-                        <input type="file" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple="multiple">
-                    </div>
-                </div>
+                <livewire:modelo-veiculo.input-imagens-modelo />
                 <div class="col-sm-12 d-flex justify-content-center">
                     <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Cadastrar</button>
                 </div>
