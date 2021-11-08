@@ -11,7 +11,13 @@ class InputImagensModelo extends Component
 
     public $fotosInput = [];
 
-    public function testar(){
+    public function removeImage($key)
+    {
+        unset($this->fotosInput[$key]);
+    }
+
+    public function testar()
+    {
         dd($this->fotosInput);
     }
 
