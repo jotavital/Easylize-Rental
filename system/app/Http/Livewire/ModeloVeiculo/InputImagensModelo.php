@@ -16,6 +16,7 @@ class InputImagensModelo extends Component
     public function removeImage($key)
     {
         unset($this->fotosInput[$key]);
+        $this->fotosInput = array_values($this->fotosInput);
     }
 
     public function validar()

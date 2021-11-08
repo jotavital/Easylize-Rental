@@ -103,55 +103,34 @@
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('w4BMJDT')) {
-    $componentId = $_instance->getRenderedChildComponentId('w4BMJDT');
-    $componentTag = $_instance->getRenderedChildComponentTagName('w4BMJDT');
+} elseif ($_instance->childHasBeenRendered('sTIF2jx')) {
+    $componentId = $_instance->getRenderedChildComponentId('sTIF2jx');
+    $componentTag = $_instance->getRenderedChildComponentTagName('sTIF2jx');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('w4BMJDT');
+    $_instance->preserveRenderedChild('sTIF2jx');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('w4BMJDT', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('sTIF2jx', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
                 <hr>
-                <div class="col-12 d-flex justify-content-center">
-                    <div class="col-8 card card-primary card-outline">
-                        <div class="card-body">
-                            <h5 class="mb-3 col-12 card-title">Fotos do modelo</h5>
-
-                            <div class="row d-flex justify-content-center">
-                                <?php if($modelo->fotos_modelo->isEmpty()): ?>
-                                <p><span class="text-danger">Sem fotos.</span></p>
-                                <?php else: ?>
-
-                                <?php $__currentLoopData = $modelo->fotos_modelo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto_modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div id="img-modelo-<?php echo e($foto_modelo->id); ?>" class="img-actions col-md-6">
-                                    <img class="img-actions-image" src=" <?php echo e(route('images.show', $foto_modelo->path)); ?> " alt="imagem_<?php echo e($modelo->nome); ?>">
-
-                                    <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
-                                        <?php if (isset($component)) { $__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\AcoesImagem::class, ['id' => ''.e($foto_modelo->id).'']); ?>
-<?php $component->withName('acoes-imagem'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648)): ?>
-<?php $component = $__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648; ?>
-<?php unset($__componentOriginal7168e8f2ce378f461094da5eafa2aa1313a76648); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                                    </div>
-                                </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo])->html();
+} elseif ($_instance->childHasBeenRendered('Cb663u6')) {
+    $componentId = $_instance->getRenderedChildComponentId('Cb663u6');
+    $componentTag = $_instance->getRenderedChildComponentTagName('Cb663u6');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('Cb663u6');
+} else {
+    $response = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo]);
+    $html = $response->html();
+    $_instance->logRenderedChild('Cb663u6', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                 <div class="col-sm-12 d-flex justify-content-center">
                     <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Pronto</button>
                 </div>
@@ -179,31 +158,6 @@ echo $html;
             "_token": "<?php echo e(csrf_token()); ?>"
         };
         PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca, "<?php echo e($modelo->marca_id); ?>");
-
-        $("[id^='delete-photo-']").click(function(event) {
-            var idFoto = $(this).data('id');
-            var url = '<?php echo e(route("fotos_modelo_veiculo.destroy", ":idFoto")); ?>';
-            url = url.replace(':idFoto', idFoto);
-            divImgModelo = "#img-modelo-" + event.currentTarget.dataset.id;
-
-
-            $.ajax({
-                type: "DELETE",
-                url: url,
-                data: {
-                    "_token": "<?php echo e(csrf_token()); ?>"
-                },
-                success: function(response) {
-                    $(divImgModelo).remove();
-                },
-                statusCode: {
-                    500: function(response) {
-                        alert("Não foi possível excluir esta foto, tente novamente.");
-                    }
-                }
-
-            });
-        })
     }
 </script>
 

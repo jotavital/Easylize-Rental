@@ -23,6 +23,7 @@
                     @else
 
                     @foreach($fotosInput as $foto)
+                    
                     <div class="img-actions col-md-6">
                         <img class="img-actions-image" src="{{ $foto->temporaryUrl() }}" alt="">
 

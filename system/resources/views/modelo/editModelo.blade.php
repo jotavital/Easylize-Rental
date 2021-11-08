@@ -58,31 +58,7 @@
                 </div>
                 <livewire:modelo-veiculo.input-imagens-modelo />
                 <hr>
-                <div class="col-12 d-flex justify-content-center">
-                    <div class="col-8 card card-primary card-outline">
-                        <div class="card-body">
-                            <h5 class="mb-3 col-12 card-title">Fotos do modelo</h5>
-
-                            <div class="row d-flex justify-content-center">
-                                @if($modelo->fotos_modelo->isEmpty())
-                                <p><span class="text-danger">Sem fotos.</span></p>
-                                @else
-
-                                @foreach($modelo->fotos_modelo as $foto_modelo)
-                                <div id="img-modelo-{{ $foto_modelo->id }}" class="img-actions col-md-6">
-                                    <img class="img-actions-image" src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
-
-                                    <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
-                                        <x-acoes-imagem id="{{ $foto_modelo->id }}" />
-                                    </div>
-                                </div>
-                                @endforeach
-
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <livewire:modelo-veiculo.card-fotos-modelo-veiculo :modelo="$modelo" />
                 <div class="col-sm-12 d-flex justify-content-center">
                     <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Pronto</button>
                 </div>
@@ -110,31 +86,6 @@
             "_token": "{{ csrf_token() }}"
         };
         PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca, "{{ $modelo->marca_id }}");
-
-        $("[id^='delete-photo-']").click(function(event) {
-            var idFoto = $(this).data('id');
-            var url = '{{ route("fotos_modelo_veiculo.destroy", ":idFoto") }}';
-            url = url.replace(':idFoto', idFoto);
-            divImgModelo = "#img-modelo-" + event.currentTarget.dataset.id;
-
-
-            $.ajax({
-                type: "DELETE",
-                url: url,
-                data: {
-                    "_token": "{{ csrf_token() }}"
-                },
-                success: function(response) {
-                    $(divImgModelo).remove();
-                },
-                statusCode: {
-                    500: function(response) {
-                        alert("Não foi possível excluir esta foto, tente novamente.");
-                    }
-                }
-
-            });
-        })
     }
 </script>
 

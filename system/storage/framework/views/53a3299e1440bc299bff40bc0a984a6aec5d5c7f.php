@@ -23,6 +23,7 @@
                     <?php else: ?>
 
                     <?php $__currentLoopData = $fotosInput; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    
                     <div class="img-actions col-md-6">
                         <img class="img-actions-image" src="<?php echo e($foto->temporaryUrl()); ?>" alt="">
 

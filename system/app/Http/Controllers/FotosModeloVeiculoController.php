@@ -34,7 +34,7 @@ class FotosModeloVeiculoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function store(Request $request)
+    public function store(Request $request)
     {
         
     }
@@ -79,7 +79,7 @@ class FotosModeloVeiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public static function destroy($id)
     {
         $fotosObj = new FotosModeloVeiculo();
 
@@ -87,8 +87,9 @@ class FotosModeloVeiculoController extends Controller
 
         if ($foto->delete()) {
             Storage::delete($foto->path);
+            return true;
         } else {
-            abort(500);
+            return false;
         }
     }
 }
