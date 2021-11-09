@@ -36,7 +36,7 @@ table td {
     font-size: 1.2rem;
 }
 
-a{
+a {
     cursor: pointer;
 }
 
@@ -45,41 +45,25 @@ a{
     background-color: transparent;
 }
 
-.img-actions {
-    position: relative;
-    margin: 0;
-    padding: 0;
-}
-
 .img-actions-image {
-    display: block;
-    width: 100%;
+    min-height: 180px;
 }
 
-.img-actions-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.img-actions-image img {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.25s;
+    max-height: 200px;
 }
 
-.img-actions-overlay:hover {
-    opacity: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+.img-actions-overlay{
+    padding: 3px;
+    border: black solid 1px;
 }
 
-.spinner{
+.img-actions-overlay i {
+    font-size: 1.25em;
+}
+
+.spinner {
     width: 100px;
     content: url('/img/spinner.gif');
 }

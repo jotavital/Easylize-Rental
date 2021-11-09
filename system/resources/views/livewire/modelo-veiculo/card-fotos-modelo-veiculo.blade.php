@@ -8,15 +8,15 @@
                 @else
 
                 @foreach($fotos_modelo as $foto_modelo)
-                <div class="img-actions col-md-6">
-                    <img class="img-actions-image" src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
-                    <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
-                        <div class="d-flex justify-content-center">
-                            <div class="mr-2">
-                                <a wire:click="deletarFoto({{ $foto_modelo->id }}, {{ $loop->index }})">
-                                    <i class="fas fa-trash-alt fa-2x text-white"></i>
-                                </a>
-                            </div>
+                <div class="d-flex justify-content-center align-content-between flex-wrap img-actions col-md-6 mb-5">
+                    <div class="row img-actions-image d-flex align-items-center">
+                        <img src=" {{ route('images.show', $foto_modelo->path) }} " alt="imagem_{{ $modelo->nome }}">
+                    </div>
+                    <div class="col-12 row img-actions-overlay">
+                        <div class="col-12 d-flex justify-content-center">
+                            <a wire:click="deletarFoto({{ $foto_modelo->id }}, {{ $loop->index }})">
+                                <i class="fas fa-trash-alt text-danger"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
