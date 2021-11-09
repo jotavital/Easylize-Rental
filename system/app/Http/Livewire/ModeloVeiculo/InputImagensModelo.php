@@ -10,14 +10,9 @@ class InputImagensModelo extends Component
 {
     use WithFileUploads;
 
+    public $modelo;
     public $fotosInput = [];
     public $maximoFotos;
-
-    public function removeImage($key)
-    {
-        unset($this->fotosInput[$key]);
-        $this->fotosInput = array_values($this->fotosInput);
-    }
 
     public function validar()
     {

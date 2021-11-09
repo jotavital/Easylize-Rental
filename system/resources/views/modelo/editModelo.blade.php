@@ -56,7 +56,7 @@
                         <x-campo-obrigatorio />
                     </div>
                 </div>
-                <livewire:modelo-veiculo.input-imagens-modelo />
+                <livewire:modelo-veiculo.input-imagens-modelo :modelo="$modelo"/>
                 <hr>
                 <livewire:modelo-veiculo.card-fotos-modelo-veiculo :modelo="$modelo" />
                 <div class="col-sm-12 d-flex justify-content-center">

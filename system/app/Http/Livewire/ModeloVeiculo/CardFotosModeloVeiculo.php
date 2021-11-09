@@ -12,16 +12,18 @@ class CardFotosModeloVeiculo extends Component
     public $fotos_modelo;
     public $qtd_fotos;
 
-    public function mount($modelo){
+    public function mount($modelo)
+    {
         $this->modelo = $modelo;
         $this->fotos_modelo = $modelo->fotos_modelo;
     }
 
-    public function deletarFoto($id_foto, $key){
-        if(FotosModeloVeiculoController::destroy($id_foto)){
-            unset($this->fotos_modelo[$key]);
-            $this->fotos_modelo = array_values($this->fotos_modelo);
-        }else{
+    public function deletarFoto($id_foto, $key)
+    {
+        if (FotosModeloVeiculoController::destroy($id_foto)) {
+            $this->fotos_modelo->forget($key);
+            $this->fotos_modelo = $this->fotos_modelo->values();
+        } else {
             $this->emit('erroExcluirImagem');
         }
     }

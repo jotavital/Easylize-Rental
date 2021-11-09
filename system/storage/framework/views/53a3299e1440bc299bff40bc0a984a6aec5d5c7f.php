@@ -26,16 +26,6 @@
                     
                     <div class="img-actions col-md-6">
                         <img class="img-actions-image" src="<?php echo e($foto->temporaryUrl()); ?>" alt="">
-
-                        <div class="img-actions-overlay col-12 d-flex justify-content-center align-items-center">
-                            <div class="d-flex justify-content-center">
-                                <div class="mr-2">
-                                    <a wire:click="removeImage(<?php echo e($loop->index); ?>)">
-                                        <i class="fas fa-trash-alt fa-2x text-white"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

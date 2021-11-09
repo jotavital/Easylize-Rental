@@ -102,16 +102,16 @@
                 </div>
                 <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('sTIF2jx')) {
-    $componentId = $_instance->getRenderedChildComponentId('sTIF2jx');
-    $componentTag = $_instance->getRenderedChildComponentTagName('sTIF2jx');
+    $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', ['modelo' => $modelo])->html();
+} elseif ($_instance->childHasBeenRendered('USymwGa')) {
+    $componentId = $_instance->getRenderedChildComponentId('USymwGa');
+    $componentTag = $_instance->getRenderedChildComponentTagName('USymwGa');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('sTIF2jx');
+    $_instance->preserveRenderedChild('USymwGa');
 } else {
-    $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
+    $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', ['modelo' => $modelo]);
     $html = $response->html();
-    $_instance->logRenderedChild('sTIF2jx', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('USymwGa', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -119,15 +119,15 @@ echo $html;
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo])->html();
-} elseif ($_instance->childHasBeenRendered('Cb663u6')) {
-    $componentId = $_instance->getRenderedChildComponentId('Cb663u6');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Cb663u6');
+} elseif ($_instance->childHasBeenRendered('yUFN6Sr')) {
+    $componentId = $_instance->getRenderedChildComponentId('yUFN6Sr');
+    $componentTag = $_instance->getRenderedChildComponentTagName('yUFN6Sr');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Cb663u6');
+    $_instance->preserveRenderedChild('yUFN6Sr');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo]);
     $html = $response->html();
-    $_instance->logRenderedChild('Cb663u6', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('yUFN6Sr', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
