@@ -16,9 +16,11 @@ class InputImagensModelo extends Component
 
     public function validar()
     {
-        $qtdFotos = count($this->fotosInput);
+        $qtd_fotos_input = count($this->fotosInput);
+        $qtd_fotos_atual = count($this->modelo->fotos_modelo);
+        $qtd_fotos_total = $qtd_fotos_atual + $qtd_fotos_input;
 
-        if ($qtdFotos > $this->maximoFotos) {
+        if ($qtd_fotos_input > $this->maximoFotos || $qtd_fotos_total > $this->maximoFotos) {
             $this->fotosInput = [];
             $this->emit('maximoFotosExcedido', '#fotosInput', 'modelo');
         }
@@ -26,7 +28,7 @@ class InputImagensModelo extends Component
 
     public function render()
     {
-        $this->maximoFotos = current_empresa()->plano->qtd_fotos_por_modelo_veiculo;
+        $this->maximoFotos = current_plano_empresa()->qtd_fotos_por_modelo_veiculo;
         return view('livewire.modelo-veiculo.input-imagens-modelo');
     }
 }

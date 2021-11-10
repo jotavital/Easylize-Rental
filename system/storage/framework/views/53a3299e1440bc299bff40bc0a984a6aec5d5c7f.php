@@ -4,7 +4,7 @@
         <input type="file" wire:model="fotosInput" wire:livewire-upload-finish="validar" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple>
     </div>
     <div class="col-md-10 col-sm-12 d-flex justify-content-center">
-        <div class="col-md-8 col-sm-12 card card-primary card-outline">
+        <div class="col-md-10 col-sm-12 card card-primary card-outline">
             <div class="card-body">
                 <div class="row card-headers col-12">
                     <div class="card-title">
@@ -22,12 +22,17 @@
                     <p><span wire:loading.remove class="text-danger">Sem fotos.</span></p>
                     <?php else: ?>
 
-                    <?php $__currentLoopData = $fotosInput; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    
-                    <div class="img-actions col-md-6">
-                        <img class="img-actions-image" src="<?php echo e($foto->temporaryUrl()); ?>" alt="">
+                    <div class="row col-12 d-flex justify-content-around">
+                        <?php $__currentLoopData = $fotosInput; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto_modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-md-5 col-sm-8 card d-flex align-content-between mb-3">
+                            <div class="img-actions p-0 col-12">
+                                <div class="img-actions-image d-flex align-items-center">
+                                    <img src=" <?php echo e($foto_modelo->temporaryUrl()); ?> " alt="imagem_<?php echo e($foto_modelo->temporaryUrl()); ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     <?php endif; ?>
 

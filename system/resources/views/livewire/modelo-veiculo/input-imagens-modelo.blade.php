@@ -4,7 +4,7 @@
         <input type="file" wire:model="fotosInput" wire:livewire-upload-finish="validar" class="form-control-file" id="fotosInput" name="fotosInput[]" accept="image/*" multiple>
     </div>
     <div class="col-md-10 col-sm-12 d-flex justify-content-center">
-        <div class="col-md-8 col-sm-12 card card-primary card-outline">
+        <div class="col-md-10 col-sm-12 card card-primary card-outline">
             <div class="card-body">
                 <div class="row card-headers col-12">
                     <div class="card-title">
@@ -22,12 +22,17 @@
                     <p><span wire:loading.remove class="text-danger">Sem fotos.</span></p>
                     @else
 
-                    @foreach($fotosInput as $foto)
-                    
-                    <div class="img-actions col-md-6">
-                        <img class="img-actions-image" src="{{ $foto->temporaryUrl() }}" alt="">
+                    <div class="row col-12 d-flex justify-content-around">
+                        @foreach($fotosInput as $foto_modelo)
+                        <div class="col-md-5 col-sm-8 card d-flex align-content-between mb-3">
+                            <div class="img-actions p-0 col-12">
+                                <div class="img-actions-image d-flex align-items-center">
+                                    <img src=" {{ $foto_modelo->temporaryUrl() }} " alt="imagem_{{ $foto_modelo->temporaryUrl() }}">
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
 
                     @endif
 
