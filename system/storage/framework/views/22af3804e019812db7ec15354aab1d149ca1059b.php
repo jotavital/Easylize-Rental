@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
 $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
-// $rotaEditar =  route('veiculos.edit', $id);
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -81,33 +80,21 @@ $error = Session::get('error');
                         <td> <?php echo e($veiculo->cor); ?> </td>
                         <td> <?php echo e($veiculo->categoria->nome); ?> </td>
                         <td>
-                            <?php if($veiculo->ativo): ?>
-                            <?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'checked','rotaAtivarInativar' => $rotaAtivarInativarVeiculo]); ?>
-<?php $component->withName('switch-ativar-inativar'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
-<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
-<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                            <?php else: ?>
-                            <?php if (isset($component)) { $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\SwitchAtivarInativar::class, ['id' => ''.e($veiculo->id).'','checked' => 'false','rotaAtivarInativar' => $rotaAtivarInativarVeiculo]); ?>
-<?php $component->withName('switch-ativar-inativar'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd)): ?>
-<?php $component = $__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd; ?>
-<?php unset($__componentOriginalabf495ef886160d8df487fdd04521d7d9d6ffebd); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                            <?php endif; ?>
+                            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo])->html();
+} elseif ($_instance->childHasBeenRendered('WuzTjEO')) {
+    $componentId = $_instance->getRenderedChildComponentId('WuzTjEO');
+    $componentTag = $_instance->getRenderedChildComponentTagName('WuzTjEO');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('WuzTjEO');
+} else {
+    $response = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo]);
+    $html = $response->html();
+    $_instance->logRenderedChild('WuzTjEO', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </td>
                         <td>
                             <?php if (isset($component)) { $__componentOriginal2462b2f6a8a5118e7627de1bfec3bf73e59e093a = $component; } ?>

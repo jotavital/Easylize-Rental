@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
 $rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
-// $rotaEditar =  route('veiculos.edit', $id);
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -59,11 +58,7 @@ $error = Session::get('error');
                         <td> {{ $veiculo->cor }} </td>
                         <td> {{ $veiculo->categoria->nome }} </td>
                         <td>
-                            @if($veiculo->ativo)
-                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'checked'" :rotaAtivarInativar="$rotaAtivarInativarVeiculo" />
-                            @else
-                            <x-switch-ativar-inativar id="{{ $veiculo->id }}" :checked="'false'" :rotaAtivarInativar="$rotaAtivarInativarVeiculo" />
-                            @endif
+                            <livewire:switch-ativar-inativar :model="$veiculo" />
                         </td>
                         <td>
                             <x-acoes-tabela id="{{ $veiculo->id }}" :rotaEditar="route('veiculos.edit', $veiculo->id)" />
