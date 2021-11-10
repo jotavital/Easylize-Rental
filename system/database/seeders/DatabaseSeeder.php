@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         DB::setDefaultConnection('default_mysql');
         $this->call(PlanoSeeder::class);
         $this->call(EmpresaSeeder::class);
+        $this->call(TipoCategoriaSeeder::class);
+        $this->call(CategoriaSeeder::class);
     }
 }

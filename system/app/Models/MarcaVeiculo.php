@@ -15,6 +15,6 @@ class MarcaVeiculo extends Model
 
     public function modelos()
     {
-        return $this->hasMany(ModeloVeiculo::class);
+        return $this->hasMany(ModeloVeiculo::class, 'marca_id');
     }
 }
