@@ -97,9 +97,4 @@ class MarcaVeiculoController extends Controller
     {
         //
     }
-
-    public static function getAll()
-    {
-        echo json_encode(MarcaVeiculo::all());
-    }
 }

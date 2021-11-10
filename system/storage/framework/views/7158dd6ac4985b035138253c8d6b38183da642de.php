@@ -1,9 +1,13 @@
 <?php
 
+use App\Models\MarcaVeiculo;
+use App\Models\TipoCategoria;
 use Illuminate\Support\Facades\Session;
 
 $success = Session::get('success');
 $error = Session::get('error');
+$marcas = MarcaVeiculo::all();
+$categorias = TipoCategoria::find(1)->categorias;
 ?>
 
 
@@ -106,6 +110,9 @@ $error = Session::get('error');
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
+                        <?php $__currentLoopData = $marcas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($marca->id); ?>"> <?php echo e($marca->nome); ?> </option>    
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -158,6 +165,9 @@ $error = Session::get('error');
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
+                        <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($categoria->id); ?>"> <?php echo e($categoria->nome); ?> </option>    
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -197,7 +207,6 @@ $error = Session::get('error');
         var dataAjax = {
             "_token": "<?php echo e(csrf_token()); ?>"
         };
-        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax);
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
@@ -215,9 +224,6 @@ $error = Session::get('error');
                 modeloSelect.disable();
             }
         });
-
-        // ! popular select categoria
-        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('categorias.veiculos.get')); ?>", '#categoriaVeiculoSelect', 'id', 'nome', dataAjax);
 
     }
 

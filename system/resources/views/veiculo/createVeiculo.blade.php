@@ -1,9 +1,13 @@
 <?php
 
+use App\Models\MarcaVeiculo;
+use App\Models\TipoCategoria;
 use Illuminate\Support\Facades\Session;
 
 $success = Session::get('success');
 $error = Session::get('error');
+$marcas = MarcaVeiculo::all();
+$categorias = TipoCategoria::find(1)->categorias;
 ?>
 
 @extends('layouts.adminLayout')
@@ -51,6 +55,9 @@ $error = Session::get('error');
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
+                        @foreach($marcas as $marca)
+                            <option value="{{ $marca->id }}"> {{ $marca->nome }} </option>    
+                        @endforeach
                     </select>
                     <x-campo-obrigatorio />
                 </div>
@@ -70,6 +77,9 @@ $error = Session::get('error');
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
+                        @foreach($categorias as $categoria)
+                            <option value="{{ $categoria->id }}"> {{ $categoria->nome }} </option>    
+                        @endforeach
                     </select>
                     <x-campo-obrigatorio />
                 </div>
@@ -98,7 +108,6 @@ $error = Session::get('error');
         var dataAjax = {
             "_token": "{{ csrf_token() }}"
         };
-        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjax);
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
@@ -116,9 +125,6 @@ $error = Session::get('error');
                 modeloSelect.disable();
             }
         });
-
-        // ! popular select categoria
-        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('categorias.veiculos.get') }}", '#categoriaVeiculoSelect', 'id', 'nome', dataAjax);
 
     }
 
