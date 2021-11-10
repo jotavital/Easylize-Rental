@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\ModeloVeiculo;
 
 use App\Http\Controllers\FotosModeloVeiculoController;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class CardFotosModeloVeiculo extends Component
@@ -26,6 +27,11 @@ class CardFotosModeloVeiculo extends Component
         } else {
             $this->emit('erroExcluirImagem');
         }
+    }
+
+    public function baixarFoto($path)
+    {
+        return Storage::download($path);
     }
 
     public function render()

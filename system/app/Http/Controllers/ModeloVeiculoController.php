@@ -104,6 +104,7 @@ class ModeloVeiculoController extends Controller
         if ($modelo->save()) {
 
             if ($request->hasFile('fotosInput')) {
+                // ! tenho que dar um jeito de verificar se excedeu o numero de imagens do veiculo contando as atuais com as novas fotos
                 foreach ($request->fotosInput as $photo) {
                     $photoPath = $photo->store('modelos_img');
 

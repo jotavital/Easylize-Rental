@@ -51,16 +51,24 @@ a {
 
 .img-actions-image img {
     width: 100%;
-    max-height: 200px;
+    max-height: 180px;
 }
 
-.img-actions-overlay{
+.img-actions-overlay {
     padding: 3px;
-    border: black solid 1px;
+}
+
+.img-actions hr {
+    margin: 5px;
 }
 
 .img-actions-overlay i {
     font-size: 1.25em;
+    color: rgba(0, 0, 0, .8);
+}
+
+.img-actions-overlay a + a i{
+    margin-left: 10px;
 }
 
 .spinner {
