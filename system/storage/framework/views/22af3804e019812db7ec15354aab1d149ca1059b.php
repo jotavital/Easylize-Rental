@@ -16,7 +16,6 @@ use App\Models\Veiculo;
 use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
-$rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -83,15 +82,15 @@ $error = Session::get('error');
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo])->html();
-} elseif ($_instance->childHasBeenRendered('WuzTjEO')) {
-    $componentId = $_instance->getRenderedChildComponentId('WuzTjEO');
-    $componentTag = $_instance->getRenderedChildComponentTagName('WuzTjEO');
+} elseif ($_instance->childHasBeenRendered('pBMihA4')) {
+    $componentId = $_instance->getRenderedChildComponentId('pBMihA4');
+    $componentTag = $_instance->getRenderedChildComponentTagName('pBMihA4');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('WuzTjEO');
+    $_instance->preserveRenderedChild('pBMihA4');
 } else {
     $response = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo]);
     $html = $response->html();
-    $_instance->logRenderedChild('WuzTjEO', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('pBMihA4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

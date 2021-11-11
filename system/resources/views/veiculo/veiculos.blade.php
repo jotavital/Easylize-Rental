@@ -16,7 +16,6 @@ use App\Models\Veiculo;
 use Illuminate\Support\Facades\Session;
 
 $veiculos = Veiculo::all();
-$rotaAtivarInativarVeiculo = route('veiculos.ativar-inativar');
 
 $success = Session::get('success');
 $error = Session::get('error');
