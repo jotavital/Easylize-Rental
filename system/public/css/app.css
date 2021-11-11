@@ -2,6 +2,18 @@ body {
     margin: 0;
 }
 
+.hide-element-with-transition {
+    max-height: 0;
+    opacity: 0;
+    transition: 1s;
+}
+
+.show-element-with-transition {
+    max-height: 500px;
+    opacity: 1;
+    transition: 1s;
+}
+
 .wrapper {
     min-height: 100vh !important;
 }
@@ -67,7 +79,7 @@ a {
     color: rgba(0, 0, 0, .8);
 }
 
-.img-actions-overlay a + a i{
+.img-actions-overlay a+a i {
     margin-left: 10px;
 }
 

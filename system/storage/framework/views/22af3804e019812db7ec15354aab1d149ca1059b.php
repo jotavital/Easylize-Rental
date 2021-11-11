@@ -12,6 +12,8 @@
 
 <?php
 
+use App\Models\MarcaVeiculo;
+use App\Models\TipoCategoria;
 use App\Models\Veiculo;
 use Illuminate\Support\Facades\Session;
 
@@ -19,6 +21,8 @@ $veiculos = Veiculo::all();
 
 $success = Session::get('success');
 $error = Session::get('error');
+$marcas = MarcaVeiculo::all();
+$categorias = TipoCategoria::find(1)->categorias;
 
 ?>
 
@@ -52,6 +56,23 @@ $error = Session::get('error');
 <?php endif; ?>
     <?php endif; ?>
 
+    <button onclick="toggleWithTransition('#form-create-veiculo')">Novo veículo</button>
+    <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('form-create-veiculo', [])->html();
+} elseif ($_instance->childHasBeenRendered('i9kkXjf')) {
+    $componentId = $_instance->getRenderedChildComponentId('i9kkXjf');
+    $componentTag = $_instance->getRenderedChildComponentTagName('i9kkXjf');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('i9kkXjf');
+} else {
+    $response = \Livewire\Livewire::mount('form-create-veiculo', []);
+    $html = $response->html();
+    $_instance->logRenderedChild('i9kkXjf', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
+
     <div class="container-fluid">
         <div class="col-12">
             <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
@@ -82,15 +103,15 @@ $error = Session::get('error');
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo])->html();
-} elseif ($_instance->childHasBeenRendered('pBMihA4')) {
-    $componentId = $_instance->getRenderedChildComponentId('pBMihA4');
-    $componentTag = $_instance->getRenderedChildComponentTagName('pBMihA4');
+} elseif ($_instance->childHasBeenRendered('nXui8ff')) {
+    $componentId = $_instance->getRenderedChildComponentId('nXui8ff');
+    $componentTag = $_instance->getRenderedChildComponentTagName('nXui8ff');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('pBMihA4');
+    $_instance->preserveRenderedChild('nXui8ff');
 } else {
     $response = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo]);
     $html = $response->html();
-    $_instance->logRenderedChild('pBMihA4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('nXui8ff', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -123,7 +144,8 @@ echo $html;
 
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
-<script src="/js/ativar-inativar-registro.js"></script>
+<script src="/js/classes/MyHelpers.js"></script>
+<script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
     var tableVeiculosObj;
 
@@ -134,6 +156,30 @@ echo $html;
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true
+        });
+
+
+        PopularSlimSelectsObj = new PopularSlimSelects();
+        //! popular select marca
+        var dataAjax = {
+            "_token": "<?php echo e(csrf_token()); ?>"
+        };
+
+        // ! popular select modelo 
+        $("#marcaSelect").on('change', function() {
+            if (marcaSelect.selected() != '') {
+                $('#modeloSelect').empty();
+                modeloSelect.enable();
+
+                var dataAjaxModelo = {
+                    "_token": "<?php echo e(csrf_token()); ?>",
+                    "idMarca": marcaSelect.selected()
+                };
+                PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+            } else {
+                $('#modeloSelect').empty();
+                modeloSelect.disable();
+            }
         });
 
     }
