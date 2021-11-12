@@ -56,19 +56,19 @@ $categorias = TipoCategoria::find(1)->categorias;
 <?php endif; ?>
     <?php endif; ?>
 
-    <button onclick="toggleWithTransition('#form-create-veiculo')">Novo veículo</button>
+    <button onclick="toggleWithTransition('#section-create-veiculo')">Novo veículo</button>
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('form-create-veiculo', [])->html();
-} elseif ($_instance->childHasBeenRendered('i9kkXjf')) {
-    $componentId = $_instance->getRenderedChildComponentId('i9kkXjf');
-    $componentTag = $_instance->getRenderedChildComponentTagName('i9kkXjf');
+} elseif ($_instance->childHasBeenRendered('jhnEFsR')) {
+    $componentId = $_instance->getRenderedChildComponentId('jhnEFsR');
+    $componentTag = $_instance->getRenderedChildComponentTagName('jhnEFsR');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('i9kkXjf');
+    $_instance->preserveRenderedChild('jhnEFsR');
 } else {
     $response = \Livewire\Livewire::mount('form-create-veiculo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('i9kkXjf', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('jhnEFsR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -103,15 +103,15 @@ echo $html;
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo])->html();
-} elseif ($_instance->childHasBeenRendered('nXui8ff')) {
-    $componentId = $_instance->getRenderedChildComponentId('nXui8ff');
-    $componentTag = $_instance->getRenderedChildComponentTagName('nXui8ff');
+} elseif ($_instance->childHasBeenRendered('ZGCxNly')) {
+    $componentId = $_instance->getRenderedChildComponentId('ZGCxNly');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ZGCxNly');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('nXui8ff');
+    $_instance->preserveRenderedChild('ZGCxNly');
 } else {
     $response = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo]);
     $html = $response->html();
-    $_instance->logRenderedChild('nXui8ff', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ZGCxNly', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

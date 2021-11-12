@@ -1,5 +1,5 @@
-<section id="form-create-veiculo" class="hide-element-with-transition">
-    <form wire:submit.prevent="submit" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
+<section id="section-create-veiculo" class="hide-element-with-transition">
+    <form id="form-create-veiculo" wire:submit.prevent="submit" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
         @csrf
         <div class="form-row col-12 d-flex justify-content-center">
             <div class="form-group col-sm-3">

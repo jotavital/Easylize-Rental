@@ -12,15 +12,8 @@ class FormCreateVeiculo extends Component
     public $marcas;
     public $categorias;
 
-    protected $rules = [
-        'name' => 'required|min:6',
-        'email' => 'required|email',
-        // !! validar infos do form
-    ];
-
     public function submit()
     {
-        $this->validate();
         dd("ok");
     }
 

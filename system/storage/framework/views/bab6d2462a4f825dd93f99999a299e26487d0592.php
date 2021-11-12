@@ -31,7 +31,7 @@ $empresa = Empresa::first();
 </head>
 
 <body class="hold-transition sidebar-mini">
-    
+
     <?php if(app()->isLocal()): ?>
     <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
     <?php endif; ?>

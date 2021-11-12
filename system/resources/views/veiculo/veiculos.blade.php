@@ -34,7 +34,7 @@ $categorias = TipoCategoria::find(1)->categorias;
     <x-alert type="danger" :message='$error' />
     @endif
 
-    <button onclick="toggleWithTransition('#form-create-veiculo')">Novo veículo</button>
+    <button onclick="toggleWithTransition('#section-create-veiculo')">Novo veículo</button>
     <livewire:form-create-veiculo />
 
     <div class="container-fluid">
