@@ -43,7 +43,6 @@ $marcas = MarcaVeiculo::all();
                     <div class="form-group col-md-4">
                         <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
-
                             <?php
                             foreach (range(date('Y') + 3, 1900) as $year) {
                             ?>
@@ -51,7 +50,6 @@ $marcas = MarcaVeiculo::all();
                             <?php
                             }
                             ?>
-
                         </select>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -108,15 +106,15 @@ $marcas = MarcaVeiculo::all();
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', ['modelo' => $modelo])->html();
-} elseif ($_instance->childHasBeenRendered('Qk6OHmz')) {
-    $componentId = $_instance->getRenderedChildComponentId('Qk6OHmz');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Qk6OHmz');
+} elseif ($_instance->childHasBeenRendered('WqGH8EJ')) {
+    $componentId = $_instance->getRenderedChildComponentId('WqGH8EJ');
+    $componentTag = $_instance->getRenderedChildComponentTagName('WqGH8EJ');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Qk6OHmz');
+    $_instance->preserveRenderedChild('WqGH8EJ');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', ['modelo' => $modelo]);
     $html = $response->html();
-    $_instance->logRenderedChild('Qk6OHmz', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('WqGH8EJ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -124,15 +122,15 @@ echo $html;
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo])->html();
-} elseif ($_instance->childHasBeenRendered('s6Y5boT')) {
-    $componentId = $_instance->getRenderedChildComponentId('s6Y5boT');
-    $componentTag = $_instance->getRenderedChildComponentTagName('s6Y5boT');
+} elseif ($_instance->childHasBeenRendered('5BGKhSE')) {
+    $componentId = $_instance->getRenderedChildComponentId('5BGKhSE');
+    $componentTag = $_instance->getRenderedChildComponentTagName('5BGKhSE');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('s6Y5boT');
+    $_instance->preserveRenderedChild('5BGKhSE');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo]);
     $html = $response->html();
-    $_instance->logRenderedChild('s6Y5boT', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('5BGKhSE', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

@@ -16,7 +16,7 @@ class ModeloVeiculo extends Model
 
     public function marca()
     {
-        return $this->belongsTo(MarcaVeiculo::class);
+        return $this->belongsTo(MarcaVeiculo::class)->withTrashed();
     }
 
     public function fotos_modelo()

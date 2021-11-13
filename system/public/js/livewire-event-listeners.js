@@ -13,3 +13,10 @@ Livewire.on('erroAtivarRecurso', function () {
 Livewire.on('erroDesativarRecurso', function () {
     alert("Erro ao desativar este recurso, tente novamente.");
 });
+
+Livewire.on('abrirModal', function (modalSelector) {
+    $(modalSelector).modal('show');
+});
+Livewire.on('fecharModal', function (modalSelector) {
+    $(modalSelector).modal('hide');
+});

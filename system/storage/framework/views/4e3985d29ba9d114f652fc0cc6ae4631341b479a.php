@@ -9,11 +9,11 @@
             </div>
             <?php else: ?>
 
-            <div class="row col-12 d-flex justify-content-around">
+            <div class="row d-flex justify-content-around">
                 <?php $__currentLoopData = $fotos_modelo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foto_modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-md-5 col-sm-8 card d-flex align-content-between mb-3">
+                <div class="col-md-5 col-sm-8 card d-flex align-content-between mb-3 py-1">
                     <div class="img-actions col-12">
-                        <div class="img-actions-image d-flex align-items-center">
+                        <div class="img-actions-image d-flex justify-content-center align-items-center">
                             <img src=" <?php echo e(route('images.show', $foto_modelo->path)); ?> " alt="imagem_<?php echo e($modelo->nome); ?>">
                         </div>
                         <hr>

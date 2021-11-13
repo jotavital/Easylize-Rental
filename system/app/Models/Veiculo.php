@@ -15,17 +15,17 @@ class Veiculo extends Model
 
     public function marca()
     {
-        return $this->belongsTo(MarcaVeiculo::class);
+        return $this->belongsTo(MarcaVeiculo::class)->withTrashed();
     }
 
     public function modelo()
     {
-        return $this->belongsTo(ModeloVeiculo::class);
+        return $this->belongsTo(ModeloVeiculo::class)->withTrashed();
     }
 
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Categoria::class)->withTrashed();
     }
 
 }
