@@ -1,3 +1,14 @@
+<?php
+
+use App\Models\MarcaVeiculo;
+use App\Models\ModeloVeiculo;
+use App\Models\TipoCategoria;
+
+$marcas = MarcaVeiculo::all();
+$categorias = TipoCategoria::find(1)->categorias;
+$modelos = MarcaVeiculo::find($veiculo->marca->id)->modelos;
+?>
+
 @extends('layouts.adminLayout')
 
 @section('title', 'Editar veículo')
@@ -37,14 +48,18 @@
                 <div class="form-group col-sm-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                        <option data-placeholder="true"></option>
+                        @foreach($marcas as $marca)
+                        <option value="{{ $marca->id }}" {{ ($marca->id == $veiculo->marca->id) ? "selected" : "" }}> {{ $marca->nome }} </option>
+                        @endforeach
                     </select>
                     <x-campo-obrigatorio />
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="modeloSelect">Modelo <span class="text-danger">*</span></label>
                     <select id="modeloSelect" name="modeloSelect" class="validate-select" required>
-                        <option data-placeholder="true"></option>
+                        @foreach($modelos as $modelo)
+                        <option value="{{ $modelo->id }}" {{ ($modelo->id == $veiculo->modelo->id) ? "selected" : "" }}> {{ $modelo->nome }} </option>
+                        @endforeach
                     </select>
                     <x-campo-obrigatorio />
                 </div>
@@ -56,7 +71,9 @@
                 <div class="form-group col-sm-2">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect" class="validate-select" required>
-                        <option data-placeholder="true"></option>
+                        @foreach($categorias as $categoria)
+                        <option value="{{ $categoria->id }}" {{ ($categoria->id == $veiculo->categoria->id) ? "selected" : "" }}> {{ $categoria->nome }} </option>
+                        @endforeach
                     </select>
                     <x-campo-obrigatorio />
                 </div>
@@ -76,32 +93,26 @@
 <script src="/js/mascaras-inputs.js"></script>
 <script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
-    var PopularSlimSelectsObj = new PopularSlimSelects();
+    window.onload = function() {
 
-    var dataAjax = {
-        "_token": "{{ csrf_token() }}"
+        var PopularSlimSelectsObj = new PopularSlimSelects();
+
+        $("#marcaSelect").on('change', function() {
+            if (marcaSelect.selected() != '' && marcaSelect.selected() !== undefined) {
+                $('#modeloSelect').empty();
+                modeloSelect.enable();
+
+                var dataAjaxModelo = {
+                    "_token": "{{ csrf_token() }}",
+                    "idMarca": marcaSelect.selected()
+                };
+                PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+            } else {
+                $('#modeloSelect').empty();
+                modeloSelect.disable();
+            }
+        });
     };
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjax, "{{ $veiculo->marca_id }}");
-
-    var dataAjaxModelo = {
-        "_token": "{{ csrf_token() }}",
-        "idMarca": "{{ $veiculo->marca_id }}"
-    };
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('modelos.bymarca.get') }}", "#modeloSelect", "id", "nome", dataAjaxModelo, "{{ $veiculo->modelo_id }}");
-
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('categorias.veiculos.get') }}", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "{{ $veiculo->categoria_id }}");
-
-    $("#marcaSelect").on('change', function() {
-        if (marcaSelect.selected() != '') {
-            $('#modeloSelect').empty();
-            modeloSelect.enable();
-
-            PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
-        } else {
-            $('#modeloSelect').empty();
-            modeloSelect.disable();
-        }
-    });
 </script>
 
 @endsection

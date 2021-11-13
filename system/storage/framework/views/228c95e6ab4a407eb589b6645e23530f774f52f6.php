@@ -1,3 +1,9 @@
+<?php
+use App\Models\MarcaVeiculo;
+
+$marcas = MarcaVeiculo::all();
+?>
+
 
 
 <?php $__env->startSection('title', 'Editar Modelo'); ?>
@@ -37,14 +43,11 @@
                     <div class="form-group col-md-4">
                         <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
 
                             <?php
                             foreach (range(date('Y') + 3, 1900) as $year) {
                             ?>
-
-                                <option value="<?= $year ?>"><?= $year ?></option>
-
+                                <option value="<?= $year ?>" <?php echo e(($modelo->ano_modelo == $year) ? "selected" : ""); ?>><?= $year ?></option>
                             <?php
                             }
                             ?>
@@ -84,7 +87,9 @@
                     <div class="form-group col-md-4">
                         <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                         <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
+                            <?php $__currentLoopData = $marcas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($marca->id); ?>" <?php echo e(($marca->id == $modelo->marca->id) ? "selected" : ""); ?>> <?php echo e($marca->nome); ?> </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -103,15 +108,15 @@
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', ['modelo' => $modelo])->html();
-} elseif ($_instance->childHasBeenRendered('Gghv6xA')) {
-    $componentId = $_instance->getRenderedChildComponentId('Gghv6xA');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Gghv6xA');
+} elseif ($_instance->childHasBeenRendered('Qk6OHmz')) {
+    $componentId = $_instance->getRenderedChildComponentId('Qk6OHmz');
+    $componentTag = $_instance->getRenderedChildComponentTagName('Qk6OHmz');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Gghv6xA');
+    $_instance->preserveRenderedChild('Qk6OHmz');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', ['modelo' => $modelo]);
     $html = $response->html();
-    $_instance->logRenderedChild('Gghv6xA', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('Qk6OHmz', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -119,15 +124,15 @@ echo $html;
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo])->html();
-} elseif ($_instance->childHasBeenRendered('Fpn6yYi')) {
-    $componentId = $_instance->getRenderedChildComponentId('Fpn6yYi');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Fpn6yYi');
+} elseif ($_instance->childHasBeenRendered('s6Y5boT')) {
+    $componentId = $_instance->getRenderedChildComponentId('s6Y5boT');
+    $componentTag = $_instance->getRenderedChildComponentTagName('s6Y5boT');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Fpn6yYi');
+    $_instance->preserveRenderedChild('s6Y5boT');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.card-fotos-modelo-veiculo', ['modelo' => $modelo]);
     $html = $response->html();
-    $_instance->logRenderedChild('Fpn6yYi', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('s6Y5boT', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -143,23 +148,7 @@ echo $html;
 
 <?php $__env->startSection('script'); ?>
 
-<script>
-    var anoModelo = "<?php echo e($modelo->ano_modelo); ?>"; // ! esta variável é iniciada agora pois é usada no script de inicializar os selects
-</script>
 <script src="/js/initialize-slimSelects.js"></script>
-<script src="/js/classes/PopularSlimSelects.js"></script>
-<script>
-    window.onload = function() {
-
-        PopularSlimSelectsObj = new PopularSlimSelects();
-
-        //! popular select marca
-        var dataAjaxMarca = {
-            "_token": "<?php echo e(csrf_token()); ?>"
-        };
-        PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca, "<?php echo e($modelo->marca_id); ?>");
-    }
-</script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/modelo/editModelo.blade.php ENDPATH**/ ?>

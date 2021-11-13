@@ -1,3 +1,9 @@
+<?php
+use App\Models\MarcaVeiculo;
+
+$marcas = MarcaVeiculo::all();
+?>
+
 @extends('layouts.adminLayout')
 
 @section('title', 'Editar Modelo')
@@ -26,18 +32,13 @@
                     <div class="form-group col-md-4">
                         <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
-
                             <?php
                             foreach (range(date('Y') + 3, 1900) as $year) {
                             ?>
-
-                                <option value="<?= $year ?>"><?= $year ?></option>
-
+                                <option value="<?= $year ?>" {{ ($modelo->ano_modelo == $year) ? "selected" : "" }}><?= $year ?></option>
                             <?php
                             }
                             ?>
-
                         </select>
                         <x-campo-obrigatorio />
                     </div>
@@ -51,12 +52,14 @@
                     <div class="form-group col-md-4">
                         <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                         <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
+                            @foreach($marcas as $marca)
+                            <option value="{{ $marca->id }}" {{ ($marca->id == $modelo->marca->id) ? "selected" : "" }}> {{ $marca->nome }} </option>
+                            @endforeach
                         </select>
                         <x-campo-obrigatorio />
                     </div>
                 </div>
-                <livewire:modelo-veiculo.input-imagens-modelo :modelo="$modelo"/>
+                <livewire:modelo-veiculo.input-imagens-modelo :modelo="$modelo" />
                 <hr>
                 <livewire:modelo-veiculo.card-fotos-modelo-veiculo :modelo="$modelo" />
                 <div class="col-sm-12 d-flex justify-content-center">
@@ -71,22 +74,6 @@
 
 @section('script')
 
-<script>
-    var anoModelo = "{{ $modelo->ano_modelo }}"; // ! esta variável é iniciada agora pois é usada no script de inicializar os selects
-</script>
 <script src="/js/initialize-slimSelects.js"></script>
-<script src="/js/classes/PopularSlimSelects.js"></script>
-<script>
-    window.onload = function() {
-
-        PopularSlimSelectsObj = new PopularSlimSelects();
-
-        //! popular select marca
-        var dataAjaxMarca = {
-            "_token": "{{ csrf_token() }}"
-        };
-        PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca, "{{ $modelo->marca_id }}");
-    }
-</script>
 
 @endsection

@@ -34,36 +34,4 @@
 
 @section('script')
 
-<script src="/js/initialize-slimSelects.js"></script>
-<script src="/js/mascaras-inputs.js"></script>
-<script src="/js/classes/PopularSlimSelects.js"></script>
-<script>
-    var PopularSlimSelectsObj = new PopularSlimSelects();
-
-    var dataAjax = {
-        "_token": "{{ csrf_token() }}"
-    };
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjax, "{{ $marca->marca_id }}");
-
-    var dataAjaxModelo = {
-        "_token": "{{ csrf_token() }}",
-        "idMarca": "{{ $marca->marca_id }}"
-    };
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('modelos.bymarca.get') }}", "#modeloSelect", "id", "nome", dataAjaxModelo, "{{ $marca->modelo_id }}");
-
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("{{ route('categorias.veiculos.get') }}", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "{{ $marca->categoria_id }}");
-
-    $("#marcaSelect").on('change', function() {
-        if (marcaSelect.selected() != '') {
-            $('#modeloSelect').empty();
-            modeloSelect.enable();
-
-            PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('modelos.bymarca.get') }}", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
-        } else {
-            $('#modeloSelect').empty();
-            modeloSelect.disable();
-        }
-    });
-</script>
-
 @endsection

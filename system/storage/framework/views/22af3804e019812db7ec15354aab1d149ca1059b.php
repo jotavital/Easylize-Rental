@@ -56,23 +56,6 @@ $categorias = TipoCategoria::find(1)->categorias;
 <?php endif; ?>
     <?php endif; ?>
 
-    <button onclick="toggleWithTransition('#section-create-veiculo')">Novo veículo</button>
-    <?php
-if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('form-create-veiculo', [])->html();
-} elseif ($_instance->childHasBeenRendered('jhnEFsR')) {
-    $componentId = $_instance->getRenderedChildComponentId('jhnEFsR');
-    $componentTag = $_instance->getRenderedChildComponentTagName('jhnEFsR');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('jhnEFsR');
-} else {
-    $response = \Livewire\Livewire::mount('form-create-veiculo', []);
-    $html = $response->html();
-    $_instance->logRenderedChild('jhnEFsR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-}
-echo $html;
-?>
-
     <div class="container-fluid">
         <div class="col-12">
             <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
@@ -103,15 +86,15 @@ echo $html;
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo])->html();
-} elseif ($_instance->childHasBeenRendered('ZGCxNly')) {
-    $componentId = $_instance->getRenderedChildComponentId('ZGCxNly');
-    $componentTag = $_instance->getRenderedChildComponentTagName('ZGCxNly');
+} elseif ($_instance->childHasBeenRendered('vFdirT7')) {
+    $componentId = $_instance->getRenderedChildComponentId('vFdirT7');
+    $componentTag = $_instance->getRenderedChildComponentTagName('vFdirT7');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('ZGCxNly');
+    $_instance->preserveRenderedChild('vFdirT7');
 } else {
     $response = \Livewire\Livewire::mount('switch-ativar-inativar', ['model' => $veiculo]);
     $html = $response->html();
-    $_instance->logRenderedChild('ZGCxNly', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('vFdirT7', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -167,7 +150,7 @@ echo $html;
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
-            if (marcaSelect.selected() != '') {
+            if (marcaSelect.selected() != '' && marcaSelect.selected() !== undefined) {
                 $('#modeloSelect').empty();
                 modeloSelect.enable();
 

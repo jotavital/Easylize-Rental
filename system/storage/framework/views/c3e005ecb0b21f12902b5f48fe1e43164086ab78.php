@@ -1,3 +1,14 @@
+<?php
+
+use App\Models\MarcaVeiculo;
+use App\Models\ModeloVeiculo;
+use App\Models\TipoCategoria;
+
+$marcas = MarcaVeiculo::all();
+$categorias = TipoCategoria::find(1)->categorias;
+$modelos = MarcaVeiculo::find($veiculo->marca->id)->modelos;
+?>
+
 
 
 <?php $__env->startSection('title', 'Editar veículo'); ?>
@@ -70,7 +81,9 @@
                 <div class="form-group col-sm-4">
                     <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                     <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                        <option data-placeholder="true"></option>
+                        <?php $__currentLoopData = $marcas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($marca->id); ?>" <?php echo e(($marca->id == $veiculo->marca->id) ? "selected" : ""); ?>> <?php echo e($marca->nome); ?> </option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -88,7 +101,9 @@
                 <div class="form-group col-sm-4">
                     <label for="modeloSelect">Modelo <span class="text-danger">*</span></label>
                     <select id="modeloSelect" name="modeloSelect" class="validate-select" required>
-                        <option data-placeholder="true"></option>
+                        <?php $__currentLoopData = $modelos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modelo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($modelo->id); ?>" <?php echo e(($modelo->id == $veiculo->modelo->id) ? "selected" : ""); ?>> <?php echo e($modelo->nome); ?> </option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -122,7 +137,9 @@
                 <div class="form-group col-sm-2">
                     <label for="categoriaVeiculoSelect">Categoria <span class="text-danger">*</span></label>
                     <select id="categoriaVeiculoSelect" name="categoriaVeiculoSelect" class="validate-select" required>
-                        <option data-placeholder="true"></option>
+                        <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($categoria->id); ?>" <?php echo e(($categoria->id == $veiculo->categoria->id) ? "selected" : ""); ?>> <?php echo e($categoria->nome); ?> </option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -151,35 +168,28 @@
 
 <script src="/js/initialize-slimSelects.js"></script>
 <script src="/js/mascaras-inputs.js"></script>
-<script src="/js/ativar-inativar-registro.js"></script>
 <script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
-    var PopularSlimSelectsObj = new PopularSlimSelects();
+    window.onload = function() {
 
-    var dataAjax = {
-        "_token": "<?php echo e(csrf_token()); ?>"
+        var PopularSlimSelectsObj = new PopularSlimSelects();
+
+        $("#marcaSelect").on('change', function() {
+            if (marcaSelect.selected() != '' && marcaSelect.selected() !== undefined) {
+                $('#modeloSelect').empty();
+                modeloSelect.enable();
+
+                var dataAjaxModelo = {
+                    "_token": "<?php echo e(csrf_token()); ?>",
+                    "idMarca": marcaSelect.selected()
+                };
+                PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
+            } else {
+                $('#modeloSelect').empty();
+                modeloSelect.disable();
+            }
+        });
     };
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjax, "<?php echo e($veiculo->marca_id); ?>");
-
-    var dataAjaxModelo = {
-        "_token": "<?php echo e(csrf_token()); ?>",
-        "idMarca": "<?php echo e($veiculo->marca_id); ?>"
-    };
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('modelos.bymarca.get')); ?>", "#modeloSelect", "id", "nome", dataAjaxModelo, "<?php echo e($veiculo->modelo_id); ?>");
-
-    PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado("<?php echo e(route('categorias.veiculos.get')); ?>", "#categoriaVeiculoSelect", "id", "nome", dataAjax, "<?php echo e($veiculo->categoria_id); ?>");
-
-    $("#marcaSelect").on('change', function() {
-        if (marcaSelect.selected() != '') {
-            $('#modeloSelect').empty();
-            modeloSelect.enable();
-
-            PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('modelos.bymarca.get')); ?>", '#modeloSelect', 'id', 'nome', dataAjaxModelo);
-        } else {
-            $('#modeloSelect').empty();
-            modeloSelect.disable();
-        }
-    });
 </script>
 
 <?php $__env->stopSection(); ?>

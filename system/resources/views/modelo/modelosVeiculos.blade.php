@@ -3,10 +3,12 @@
 use App\Models\ModeloVeiculo;
 use Illuminate\Support\Facades\Session;
 use App\Models\Empresa;
+use App\Models\MarcaVeiculo;
 
 $empresa = Empresa::first();
 
 $modelos = ModeloVeiculo::all();
+$marcas = MarcaVeiculo::all();
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -58,7 +60,9 @@ $error = Session::get('error');
                     <div class="form-group col-md-4">
                         <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                         <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
+                            @foreach($marcas as $marca)
+                            <option value="{{ $marca->id }}"> {{ $marca->nome }} </option>
+                            @endforeach
                         </select>
                         <x-campo-obrigatorio />
                     </div>
@@ -69,7 +73,7 @@ $error = Session::get('error');
                 </div>
             </form>
         </section>
-
+        <hr>
         <div class="mb-5">
             <table class="table table-striped table-bordered" width="100%" id="tableModelos">
                 <thead>
@@ -104,7 +108,6 @@ $error = Session::get('error');
 @section('script')
 
 <script src="/js/initialize-slimSelects.js"></script>
-<script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
     var tableModelosObj;
 
@@ -115,14 +118,6 @@ $error = Session::get('error');
             },
             responsive: true
         });
-
-        PopularSlimSelectsObj = new PopularSlimSelects();
-
-        //! popular select marca
-        var dataAjaxMarca = {
-            "_token": "{{ csrf_token() }}"
-        };
-        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("{{ route('marcas.all.get') }}", "#marcaSelect", "id", "nome", dataAjaxMarca);
     }
 </script>
 

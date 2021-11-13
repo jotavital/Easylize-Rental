@@ -1,4 +1,4 @@
-<section id="section-create-veiculo" class="hide-element-with-transition">
+<section id="section-create-veiculo" class="<?php echo e($showHideClass); ?>">
     <form id="form-create-veiculo" wire:submit.prevent="submit" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
         <?php echo csrf_field(); ?>
         <div class="form-row col-12 d-flex justify-content-center">

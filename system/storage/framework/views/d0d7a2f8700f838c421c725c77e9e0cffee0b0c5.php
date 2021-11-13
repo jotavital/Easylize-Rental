@@ -3,10 +3,12 @@
 use App\Models\ModeloVeiculo;
 use Illuminate\Support\Facades\Session;
 use App\Models\Empresa;
+use App\Models\MarcaVeiculo;
 
 $empresa = Empresa::first();
 
 $modelos = ModeloVeiculo::all();
+$marcas = MarcaVeiculo::all();
 
 $success = Session::get('success');
 $error = Session::get('error');
@@ -113,7 +115,9 @@ $error = Session::get('error');
                     <div class="form-group col-md-4">
                         <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
                         <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
+                            <?php $__currentLoopData = $marcas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($marca->id); ?>"> <?php echo e($marca->nome); ?> </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
@@ -132,15 +136,15 @@ $error = Session::get('error');
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('MoAdfM6')) {
-    $componentId = $_instance->getRenderedChildComponentId('MoAdfM6');
-    $componentTag = $_instance->getRenderedChildComponentTagName('MoAdfM6');
+} elseif ($_instance->childHasBeenRendered('jrSNh6r')) {
+    $componentId = $_instance->getRenderedChildComponentId('jrSNh6r');
+    $componentTag = $_instance->getRenderedChildComponentTagName('jrSNh6r');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('MoAdfM6');
+    $_instance->preserveRenderedChild('jrSNh6r');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('MoAdfM6', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('jrSNh6r', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -149,7 +153,7 @@ echo $html;
                 </div>
             </form>
         </section>
-
+        <hr>
         <div class="mb-5">
             <table class="table table-striped table-bordered" width="100%" id="tableModelos">
                 <thead>
@@ -195,7 +199,6 @@ echo $html;
 <?php $__env->startSection('script'); ?>
 
 <script src="/js/initialize-slimSelects.js"></script>
-<script src="/js/classes/PopularSlimSelects.js"></script>
 <script>
     var tableModelosObj;
 
@@ -206,14 +209,6 @@ echo $html;
             },
             responsive: true
         });
-
-        PopularSlimSelectsObj = new PopularSlimSelects();
-
-        //! popular select marca
-        var dataAjaxMarca = {
-            "_token": "<?php echo e(csrf_token()); ?>"
-        };
-        PopularSlimSelectsObj.popularSlimSelectAjaxBasico("<?php echo e(route('marcas.all.get')); ?>", "#marcaSelect", "id", "nome", dataAjaxMarca);
     }
 </script>
 

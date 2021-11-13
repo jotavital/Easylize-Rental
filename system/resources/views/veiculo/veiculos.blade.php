@@ -34,9 +34,6 @@ $categorias = TipoCategoria::find(1)->categorias;
     <x-alert type="danger" :message='$error' />
     @endif
 
-    <button onclick="toggleWithTransition('#section-create-veiculo')">Novo veículo</button>
-    <livewire:form-create-veiculo />
-
     <div class="container-fluid">
         <div class="col-12">
             <table class="table table-striped table-bordered" width="100%" id="tableVeiculos">
@@ -106,7 +103,7 @@ $categorias = TipoCategoria::find(1)->categorias;
 
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
-            if (marcaSelect.selected() != '') {
+            if (marcaSelect.selected() != '' && marcaSelect.selected() !== undefined) {
                 $('#modeloSelect').empty();
                 modeloSelect.enable();
 
