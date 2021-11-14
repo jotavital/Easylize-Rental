@@ -33,6 +33,7 @@ if (document.getElementById('categoriaVeiculoSelect')) {
 if (document.getElementById('anoModeloSelect')) {
     var anoModeloSelect = new SlimSelect({
         select: '#anoModeloSelect',
+        placeholder: selectPlaceholder,
         allowDeselect: true,
         searchPlaceholder: 'Pesquisar ano',
         searchText: 'Não encontrado'
@@ -45,6 +46,46 @@ if (document.getElementById('veiculoSelect')) {
         placeholder: selectPlaceholder,
         allowDeselect: true,
         searchPlaceholder: 'Pesquisar veículo',
+        searchText: 'Não encontrado'
+    });
+}
+
+if (document.getElementById('sexoSelect')) {
+    var sexoSelect = new SlimSelect({
+        select: '#sexoSelect',
+        placeholder: selectPlaceholder,
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar',
+        searchText: 'Não encontrado'
+    });
+}
+
+if (document.getElementById('tipoTelefoneSelect')) {
+    var tipoTelefoneSelect = new SlimSelect({
+        select: '#tipoTelefoneSelect',
+        placeholder: selectPlaceholder,
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar',
+        searchText: 'Não encontrado'
+    });
+}
+
+if (document.getElementById('cidadeSelect')) {
+    var cidadeSelect = new SlimSelect({
+        select: '#cidadeSelect',
+        placeholder: selectPlaceholder,
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar cidade',
+        searchText: 'Não encontrado'
+    });
+}
+
+if (document.getElementById('estadoSelect')) {
+    var estadoSelect = new SlimSelect({
+        select: '#estadoSelect',
+        placeholder: selectPlaceholder,
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar estado',
         searchText: 'Não encontrado'
     });
 }

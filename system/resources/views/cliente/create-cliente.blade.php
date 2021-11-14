@@ -15,5 +15,6 @@
 @endsection
 
 @section('script')
-
+<script src="/js/initialize-slimSelects.js"></script>
+<script src="/js/mascaras-inputs.js"></script>
 @endsection

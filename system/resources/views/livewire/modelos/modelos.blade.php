@@ -20,6 +20,13 @@
                         <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
                         <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
                             <option data-placeholder="true"></option>
+                            <?php
+                            foreach (range(date('Y') + 3, 1900) as $year) {
+                            ?>
+                                <option value="<?= $year ?>"><?= $year ?></option>
+                            <?php
+                            }
+                            ?>
                         </select>
                         <x-campo-obrigatorio />
                     </div>

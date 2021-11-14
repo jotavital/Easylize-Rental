@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('clientes.wire-create-cliente', [])->html();
-} elseif ($_instance->childHasBeenRendered('sGqTosC')) {
-    $componentId = $_instance->getRenderedChildComponentId('sGqTosC');
-    $componentTag = $_instance->getRenderedChildComponentTagName('sGqTosC');
+} elseif ($_instance->childHasBeenRendered('CFoYI6O')) {
+    $componentId = $_instance->getRenderedChildComponentId('CFoYI6O');
+    $componentTag = $_instance->getRenderedChildComponentTagName('CFoYI6O');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('sGqTosC');
+    $_instance->preserveRenderedChild('CFoYI6O');
 } else {
     $response = \Livewire\Livewire::mount('clientes.wire-create-cliente', []);
     $html = $response->html();
-    $_instance->logRenderedChild('sGqTosC', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('CFoYI6O', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -29,6 +29,7 @@ echo $html;
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
-
+<script src="/js/initialize-slimSelects.js"></script>
+<script src="/js/mascaras-inputs.js"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/cliente/create-cliente.blade.php ENDPATH**/ ?>

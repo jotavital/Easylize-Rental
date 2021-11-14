@@ -1,5 +1,4 @@
 <div class="content">
-
     <div class="container-fluid">
 
         @if(session('success'))
@@ -11,29 +10,79 @@
         <form action=" {{ route('clientes.store') }} " method="POST" class="col-12 needs-validation" enctype='multipart/form-data' novalidate>
             @csrf
             <div class="form-row col-12 d-flex justify-content-center">
-                <div class="form-group col-sm-2">
-                    <label for="dataInicioInput">Data Início <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control form-control-sm" id="dataInicioInput" name="dataInicioInput" required>
-                    <x-campo-obrigatorio />
-                </div>
-                <div class="form-group col-sm-2">
-                    <label for="horaInicioInput">Hora de Início <span class="text-danger">*</span></label>
-                    <input type="time" class="form-control form-control-sm" id="horaInicioInput" name="horaInicioInput" required>
+                <div class="form-group col-sm-4">
+                    <label for="nomeInput">Nome <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="nomeInput" name="nomeInput" placeholder="Nome" required>
                     <x-campo-obrigatorio />
                 </div>
                 <div class="form-group col-sm-3">
-                    <label for="dataPrevistaDevolucaoInput">Data Prevista Devolução <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control form-control-sm" id="dataPrevistaDevolucaoInput" name="dataPrevistaDevolucaoInput" required>
+                    <label for="cpfInput">CPF <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="cpfInput" name="cpfInput" placeholder="CPF" required>
                     <x-campo-obrigatorio />
                 </div>
                 <div class="form-group col-sm-3">
-                    <label for="horaDevolucaoInput">Hora de Devolução <span class="text-danger">*</span></label>
-                    <input type="time" class="form-control form-control-sm" id="horaDevolucaoInput" name="horaDevolucaoInput" required>
+                    <label for="dataNascimentoInput">Data Nascimento <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control form-control-sm" id="dataNascimentoInput" name="dataNascimentoInput" required>
                     <x-campo-obrigatorio />
                 </div>
                 <div class="form-group col-sm-2">
-                    <label for="valorInput">Valor <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control form-control-sm" id="valorInput" name="valorInput" placeholder="Valor do aluguel" required>
+                    <label for="sexoSelect">Sexo <span class="text-danger">*</span></label>
+                    <select id="sexoSelect" name="sexoSelect" class="validate-select" required>
+                        <option data-placeholder="true"></option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <x-campo-obrigatorio />
+                </div>
+            </div>
+            <div class="mb-2 form-row col-12 d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                    <label for="cnhInput">CNH <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="cnhInput" name="cnhInput" placeholder="CNH" required>
+                    <x-campo-obrigatorio />
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="rgInput">RG <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="rgInput" name="rgInput" placeholder="RG" required>
+                    <x-campo-obrigatorio />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="emailInput">E-mail <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control form-control-sm" id="emailInput" name="emailInput" placeholder="E-mail" required>
+                    <x-campo-obrigatorio />
+                </div>
+            </div>
+            <div class="mb-2 form-row col-12 d-flex justify-content-center">
+                <div class="form-group col-sm-3">
+                    <label for="tipoTelefoneSelect">Tipo de telefone <span class="text-danger">*</span></label>
+                    <select id="tipoTelefoneSelect" name="tipoTelefoneSelect" class="validate-select" required>
+                        <option data-placeholder="true"></option>
+                        <option value="Celular" selected>Celular</option>
+                        <option value="Fixo">Fixo</option>
+                    </select>
+                    <x-campo-obrigatorio />
+                </div>
+                <div class="form-group col-sm-2">
+                    <label for="telefoneInput">Telefone <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-sm" id="telefoneInput" name="telefoneInput" placeholder="Telefone" required>
+                    <x-campo-obrigatorio />
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="estadoSelect">Estado <span class="text-danger">*</span></label>
+                    <select id="estadoSelect" name="estadoSelect" class="validate-select" required>
+                        <option data-placeholder="true"></option>
+                        @foreach($estados as $estado)
+                        <option value="{{ $estado->id }}">{{ $estado->nome }}</option>
+                        @endforeach
+                    </select>
+                    <x-campo-obrigatorio />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="cidadeSelect">Cidade <span class="text-danger">*</span></label>
+                    <select id="cidadeSelect" name="cidadeSelect" class="validate-select" disabled required>
+                        <option data-placeholder="true"></option>
+                    </select>
                     <x-campo-obrigatorio />
                 </div>
             </div>
@@ -42,7 +91,6 @@
                     <label for="veiculoSelect">Veículo <span class="text-danger">*</span></label>
                     <select id="veiculoSelect" name="veiculoSelect" class="validate-select" required>
                         <option data-placeholder="true"></option>
-                        
                     </select>
                     <x-campo-obrigatorio />
                 </div>
@@ -51,12 +99,6 @@
                         <label class="custom-control-label" for="ativar-inativar">Pago?</label>
                         <input type="checkbox" id="ativar-inativar" class="custom-control-input" checked>
                     </div>
-                </div>
-            </div>
-            <div class="mb-2 form-row col-12 d-flex justify-content-center">
-                <div class="form-group col-sm-4">
-                    <label for="observacaoInput">Observação <span class="text-danger"></span></label>
-                    <textarea class="form-control" name="observacaoInput" id="observacaoInput" cols="30" rows="2"></textarea>
                 </div>
             </div>
             <div class="col-sm-12 d-flex justify-content-center">
