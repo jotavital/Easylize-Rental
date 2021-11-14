@@ -1,11 +1,3 @@
-<?php
-
-use App\Models\Empresa;
-
-$empresa = Empresa::first();
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -27,7 +19,7 @@ $empresa = Empresa::first();
     <?php echo \Livewire\Livewire::styles(); ?>
 
 
-    <title><?php echo e($empresa->nome_empresa); ?> - <?php echo $__env->yieldContent('title'); ?></title>
+    <title><?= current_empresa()->nome_empresa ?> - <?php echo $__env->yieldContent('title'); ?></title>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -88,7 +80,7 @@ $empresa = Empresa::first();
             <!-- Brand Logo -->
             <a href=" <?php echo e(route('admin.dashboard')); ?> " class="brand-link">
                 <img src="/img/default_profile_picture.png" alt="Company Profile Picture" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light"><?php echo e($empresa->nome_empresa); ?></span>
+                <span class="brand-text font-weight-light"><?= current_empresa()->nome_empresa ?></span>
             </a>
 
             <!-- Sidebar -->
@@ -140,6 +132,29 @@ $empresa = Empresa::first();
                                     <a href="<?php echo e(route('modelos.index')); ?>" class="nav-link <?php echo $__env->yieldContent('modelos-veiculos-menu-active'); ?>">
                                         <i class="fas fa-car-side nav-icon"></i>
                                         <p>Modelos</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item <?php echo $__env->yieldContent('alugueis-menu-open'); ?>">
+                            <a href="#" class="nav-link <?php echo $__env->yieldContent('alugueis-menu-active'); ?>">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>
+                                    Aluguéis
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?php echo e(route('alugueis.create')); ?>" class="nav-link <?php echo $__env->yieldContent('novo-aluguel-menu-active'); ?>">
+                                        <i class="fas fa-plus-circle nav-icon"></i>
+                                        <p>Novo aluguel</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo e(route('alugueis.index')); ?>" class="nav-link <?php echo $__env->yieldContent('todos-alugueis-menu-active'); ?>">
+                                        <i class="fas fa-list-alt nav-icon"></i>
+                                        <p>Todos os aluguéis</p>
                                     </a>
                                 </li>
                             </ul>

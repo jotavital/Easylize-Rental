@@ -87,3 +87,12 @@ a {
     width: 100px;
     content: url('/img/spinner.gif');
 }
+
+.nav-treeview .nav-item a {
+    padding-left: 30px;
+}
+
+/* ! disable textarea resize */
+#observacaoInput {
+    resize: none;
+}

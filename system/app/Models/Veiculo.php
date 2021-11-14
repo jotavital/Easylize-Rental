@@ -13,6 +13,11 @@ class Veiculo extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public static function getTodosNaoAlugados()
+    {
+        return Veiculo::where('esta_alugado', '=', 0)->get();
+    }
+
     public function marca()
     {
         return $this->belongsTo(MarcaVeiculo::class)->withTrashed();
@@ -27,5 +32,4 @@ class Veiculo extends Model
     {
         return $this->belongsTo(Categoria::class)->withTrashed();
     }
-
 }

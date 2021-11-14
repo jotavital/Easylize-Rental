@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AluguelController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CompanyController;
@@ -46,6 +47,9 @@ Route::group([
     Route::post('/modelos/getAll', [ModeloVeiculoController::class, 'getAll'])->name('modelos.all.get');
     Route::post('/modelos/getModelosByMarca', [ModeloVeiculoController::class, 'getModelosByMarca'])->name('modelos.bymarca.get');
     Route::resource('modelos', ModeloVeiculoController::class);
+
+    // ! rotas de alugueis
+    Route::resource('alugueis', AluguelController::class);
 
     // ! rotas de fotos do modelo do veiculo
     Route::resource('fotos_modelo_veiculo', FotosModeloVeiculoController::class);

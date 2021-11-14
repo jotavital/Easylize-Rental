@@ -1,11 +1,3 @@
-<?php
-
-use App\Models\Empresa;
-
-$empresa = Empresa::first();
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,7 +18,7 @@ $empresa = Empresa::first();
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/r-2.2.9/sl-1.3.3/datatables.min.css" />
     @livewireStyles
 
-    <title>{{ $empresa->nome_empresa }} - @yield('title')</title>
+    <title><?= current_empresa()->nome_empresa ?> - @yield('title')</title>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -87,7 +79,7 @@ $empresa = Empresa::first();
             <!-- Brand Logo -->
             <a href=" {{ route('admin.dashboard') }} " class="brand-link">
                 <img src="/img/default_profile_picture.png" alt="Company Profile Picture" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ $empresa->nome_empresa }}</span>
+                <span class="brand-text font-weight-light"><?= current_empresa()->nome_empresa ?></span>
             </a>
 
             <!-- Sidebar -->
@@ -139,6 +131,29 @@ $empresa = Empresa::first();
                                     <a href="{{ route('modelos.index') }}" class="nav-link @yield('modelos-veiculos-menu-active')">
                                         <i class="fas fa-car-side nav-icon"></i>
                                         <p>Modelos</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item @yield('alugueis-menu-open')">
+                            <a href="#" class="nav-link @yield('alugueis-menu-active')">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>
+                                    Aluguéis
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('alugueis.create') }}" class="nav-link @yield('novo-aluguel-menu-active')">
+                                        <i class="fas fa-plus-circle nav-icon"></i>
+                                        <p>Novo aluguel</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('alugueis.index') }}" class="nav-link @yield('todos-alugueis-menu-active')">
+                                        <i class="fas fa-list-alt nav-icon"></i>
+                                        <p>Todos os aluguéis</p>
                                     </a>
                                 </li>
                             </ul>

@@ -18,15 +18,6 @@ class SwitchAtivarInativar extends Component
         }
     }
 
-    public function ativarInativar()
-    {
-        if ($this->model->ativo) {
-            $this->desativar();
-        } else {
-            $this->ativar();
-        }
-    }
-
     public function ativar()
     {
         $this->model->ativo = 1;
@@ -45,6 +36,15 @@ class SwitchAtivarInativar extends Component
         }
 
         $this->render();
+    }
+
+    public function ativarInativar()
+    {
+        if ($this->model->ativo) {
+            $this->desativar();
+        } else {
+            $this->ativar();
+        }
     }
 
     public function render()

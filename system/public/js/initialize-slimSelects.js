@@ -38,3 +38,13 @@ if (document.getElementById('anoModeloSelect')) {
         searchText: 'Não encontrado'
     });
 }
+
+if (document.getElementById('veiculoSelect')) {
+    var veiculoSelect = new SlimSelect({
+        select: '#veiculoSelect',
+        placeholder: selectPlaceholder,
+        allowDeselect: true,
+        searchPlaceholder: 'Pesquisar veículo',
+        searchText: 'Não encontrado'
+    });
+}
