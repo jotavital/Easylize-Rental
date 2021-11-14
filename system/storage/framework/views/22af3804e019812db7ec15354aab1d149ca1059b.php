@@ -11,26 +11,17 @@
 <?php $__env->startSection('content'); ?>
 
 <?php
-
-use Illuminate\Support\Facades\Session;
-
-$success = Session::get('success');
-$error = Session::get('error');
-
-?>
-
-<?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('veiculos.veiculos', [])->html();
-} elseif ($_instance->childHasBeenRendered('jut71uD')) {
-    $componentId = $_instance->getRenderedChildComponentId('jut71uD');
-    $componentTag = $_instance->getRenderedChildComponentTagName('jut71uD');
+} elseif ($_instance->childHasBeenRendered('VmEACmg')) {
+    $componentId = $_instance->getRenderedChildComponentId('VmEACmg');
+    $componentTag = $_instance->getRenderedChildComponentTagName('VmEACmg');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('jut71uD');
+    $_instance->preserveRenderedChild('VmEACmg');
 } else {
     $response = \Livewire\Livewire::mount('veiculos.veiculos', []);
     $html = $response->html();
-    $_instance->logRenderedChild('jut71uD', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('VmEACmg', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -55,4 +46,4 @@ echo $html;
 </script>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/veiculo/veiculos.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/veiculo/veiculos.blade.php ENDPATH**/ ?>

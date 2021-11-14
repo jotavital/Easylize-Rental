@@ -3,6 +3,7 @@
 use App\Http\Controllers\AluguelController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ConfiguracoesController;
 use App\Http\Controllers\FotosModeloVeiculoController;
@@ -50,6 +51,9 @@ Route::group([
 
     // ! rotas de alugueis
     Route::resource('alugueis', AluguelController::class);
+
+    // ! rotas de clientes
+    Route::resource('clientes', ClienteController::class);
 
     // ! rotas de fotos do modelo do veiculo
     Route::resource('fotos_modelo_veiculo', FotosModeloVeiculoController::class);

@@ -23,7 +23,7 @@ class AluguelController extends Controller
      */
     public function create()
     {
-        return view("aluguel.alugueisIndex");
+        return view("aluguel.create-aluguel");
     }
 
     /**

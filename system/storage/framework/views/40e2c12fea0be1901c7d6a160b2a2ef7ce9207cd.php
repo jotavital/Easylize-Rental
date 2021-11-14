@@ -1,0 +1,1 @@
+<?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/livewire/clientes/clientes.blade.php ENDPATH**/ ?>

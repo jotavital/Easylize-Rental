@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout')
+@extends('layouts.admin-layout')
 
 @section('title', 'Todos os veículos')
 
@@ -9,15 +9,6 @@
 @section('frota-menu-open', 'menu-open')
 
 @section('content')
-
-<?php
-
-use Illuminate\Support\Facades\Session;
-
-$success = Session::get('success');
-$error = Session::get('error');
-
-?>
 
 <livewire:veiculos.veiculos />
 

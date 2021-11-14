@@ -24,7 +24,7 @@ class VeiculoController extends Controller
      */
     public function create()
     {
-        return view('veiculo/createVeiculo');
+        return view('veiculo/create-veiculo');
     }
 
     /**
@@ -71,7 +71,7 @@ class VeiculoController extends Controller
     public function edit($id)
     {
         $veiculo = Veiculo::find($id);
-        return view('veiculo.editVeiculo', ['veiculo' => $veiculo]);
+        return view('veiculo.edit-veiculo', ['veiculo' => $veiculo]);
     }
 
     /**

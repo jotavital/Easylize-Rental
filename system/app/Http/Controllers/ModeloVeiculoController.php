@@ -16,7 +16,7 @@ class ModeloVeiculoController extends Controller
      */
     public function index()
     {
-        return view('modelo/modelosVeiculos');
+        return view('modelo/modelos-veiculos');
     }
 
     /**
@@ -82,7 +82,7 @@ class ModeloVeiculoController extends Controller
     public function edit($id)
     {
         $modelo = ModeloVeiculo::find($id);
-        return view('modelo.editModelo', ['modelo' => $modelo]);
+        return view('modelo.edit-modelo', ['modelo' => $modelo]);
     }
 
     /**

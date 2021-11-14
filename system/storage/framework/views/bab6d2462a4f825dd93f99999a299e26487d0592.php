@@ -159,6 +159,29 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item <?php echo $__env->yieldContent('clientes-menu-open'); ?>">
+                            <a href="#" class="nav-link <?php echo $__env->yieldContent('clientes-menu-active'); ?>">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>
+                                    Clientes
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?php echo e(route('clientes.create')); ?>" class="nav-link <?php echo $__env->yieldContent('novo-cliente-menu-active'); ?>">
+                                        <i class="fas fa-plus-circle nav-icon"></i>
+                                        <p>Novo cliente</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo e(route('clientes.index')); ?>" class="nav-link <?php echo $__env->yieldContent('todos-clientes-menu-active'); ?>">
+                                        <i class="fas fa-list-alt nav-icon"></i>
+                                        <p>Todos os clientes</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href=" <?php echo e(route('configuracoes.index')); ?> " class="nav-link <?php echo $__env->yieldContent('configuracoes-menu-active'); ?>">
                                 <i class="nav-icon fas fa-cog"></i>
