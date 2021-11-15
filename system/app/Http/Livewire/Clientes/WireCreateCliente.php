@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Clientes;
 
+use App\Http\Controllers\IbgeApiController;
 use App\Models\Cidade;
 use App\Models\Estado;
 use Livewire\Component;
@@ -13,7 +14,7 @@ class WireCreateCliente extends Component
 
     public function render()
     {
-        $this->estados = Estado::all();
+        $this->estados = IbgeApiController::getAllEstados();
         $this->cidades = Cidade::all();
         return view('livewire.clientes.wire-create-cliente');
     }

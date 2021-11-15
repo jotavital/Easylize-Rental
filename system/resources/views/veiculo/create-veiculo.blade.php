@@ -104,11 +104,6 @@ $categorias = TipoCategoria::find(1)->categorias;
     window.onload = function() {
         PopularSlimSelectsObj = new PopularSlimSelects();
 
-        //! popular select marca
-        var dataAjax = {
-            "_token": "{{ csrf_token() }}"
-        };
-
         // ! popular select modelo 
         $("#marcaSelect").on('change', function() {
             if (marcaSelect.selected() != '') {

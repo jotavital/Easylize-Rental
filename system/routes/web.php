@@ -7,6 +7,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ConfiguracoesController;
 use App\Http\Controllers\FotosModeloVeiculoController;
+use App\Http\Controllers\IbgeApiController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MarcaVeiculoController;
 use App\Http\Controllers\ModeloVeiculoController;
@@ -77,4 +78,10 @@ Route::group([
     });
     Route::get('/admin/login', [UserAuthController::class, 'showUserLogin'])->name('admin.login');
     Route::post('/admin/login/do', [UserAuthController::class, 'userLogin'])->name('admin.login.do');
+});
+
+Route::group([
+    'middleware' => ['web'],
+], function () {
+    Route::get('/estados', [IbgeApiController::class, 'getAllEstados'])->name('estados.all.get');
 });
