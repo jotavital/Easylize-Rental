@@ -19,7 +19,6 @@ class MyHelpers
             DB::setDefaultConnection('default_mysql');
             Artisan::call('db:seedMain');
             Artisan::call('migrate');
-            Artisan::call('db:seedOnce');
             Artisan::call('db:seed');
         }
     }
