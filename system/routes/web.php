@@ -84,4 +84,5 @@ Route::group([
     'middleware' => ['web'],
 ], function () {
     Route::get('/estados', [IbgeApiController::class, 'getAllEstados'])->name('estados.all.get');
+    Route::get('/cidades/byEstado/{estado}', [IbgeApiController::class, 'getCidadesPorEstado'])->name('cidades.byestado.get');
 });

@@ -21,15 +21,15 @@ $error = Session::get('error');
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('alugueis.wire-create-aluguel', [])->html();
-} elseif ($_instance->childHasBeenRendered('mapHGcy')) {
-    $componentId = $_instance->getRenderedChildComponentId('mapHGcy');
-    $componentTag = $_instance->getRenderedChildComponentTagName('mapHGcy');
+} elseif ($_instance->childHasBeenRendered('G8dMl1g')) {
+    $componentId = $_instance->getRenderedChildComponentId('G8dMl1g');
+    $componentTag = $_instance->getRenderedChildComponentTagName('G8dMl1g');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('mapHGcy');
+    $_instance->preserveRenderedChild('G8dMl1g');
 } else {
     $response = \Livewire\Livewire::mount('alugueis.wire-create-aluguel', []);
     $html = $response->html();
-    $_instance->logRenderedChild('mapHGcy', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('G8dMl1g', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -48,4 +48,4 @@ echo $html;
 </script>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.adminLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/aluguel/create-aluguel.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/aluguel/create-aluguel.blade.php ENDPATH**/ ?>

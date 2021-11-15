@@ -260,4 +260,29 @@
             </div>
         </form>
     </div>
+
+    <script>
+        window.onload = function() {
+            PopularSlimSelectsObj = new PopularSlimSelects();
+
+            // ! popular select modelo 
+            $("#estadoSelect").on('change', function() {
+                if (estadoSelect.selected() != '') {
+                    $('#cidadeSelect').empty();
+                    cidadeSelect.enable();
+
+                    var dataAjaxCidades = {
+                        "_token": "<?php echo e(csrf_token()); ?>"
+                    };
+                    var url = '<?php echo e(route("cidades.byestado.get", ":id")); ?>';
+                    url = url.replace(':id', estadoSelect.selected());
+
+                    PopularSlimSelectsObj.popularSlimSelectAjaxBasico(url, '#cidadeSelect', 'id', 'nome', dataAjaxCidades, 'get');
+                } else {
+                    $('#cidadeSelect').empty();
+                    cidadeSelect.disable();
+                }
+            });
+        }
+    </script>
 </div><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/livewire/clientes/wire-create-cliente.blade.php ENDPATH**/ ?>

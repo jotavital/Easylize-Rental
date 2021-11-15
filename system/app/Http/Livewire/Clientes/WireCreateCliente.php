@@ -11,11 +11,11 @@ class WireCreateCliente extends Component
 {
     public $cidades;
     public $estados;
+    public $estadoSelecionado;
 
     public function render()
     {
         $this->estados = IbgeApiController::getAllEstados();
-        $this->cidades = Cidade::all();
         return view('livewire.clientes.wire-create-cliente');
     }
 }

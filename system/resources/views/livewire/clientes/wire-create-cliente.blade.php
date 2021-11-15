@@ -106,4 +106,29 @@
             </div>
         </form>
     </div>
+
+    <script>
+        window.onload = function() {
+            PopularSlimSelectsObj = new PopularSlimSelects();
+
+            // ! popular select modelo 
+            $("#estadoSelect").on('change', function() {
+                if (estadoSelect.selected() != '') {
+                    $('#cidadeSelect').empty();
+                    cidadeSelect.enable();
+
+                    var dataAjaxCidades = {
+                        "_token": "{{ csrf_token() }}"
+                    };
+                    var url = '{{ route("cidades.byestado.get", ":id") }}';
+                    url = url.replace(':id', estadoSelect.selected());
+
+                    PopularSlimSelectsObj.popularSlimSelectAjaxBasico(url, '#cidadeSelect', 'id', 'nome', dataAjaxCidades, 'get');
+                } else {
+                    $('#cidadeSelect').empty();
+                    cidadeSelect.disable();
+                }
+            });
+        }
+    </script>
 </div>
