@@ -8,32 +8,20 @@ class AcoesTabela extends Component
 {
     public $model; // ! objeto do tipo que se quer gerenciar
     public $rotaEditar;
+    public $rotaExcluir;
     public $textoSucessoDeletar;
     public $textoErroDeletar;
     public $tituloModalDeletar;
     public $textoModalDeletar; // ! texto que aparece no body do modal
-    public $idDeletar;
+    public $modalSelector;
 
-    public function mount($model, $rotaEditar, $textoSucessoDeletar, $textoErroDeletar, $tituloModalDeletar, $textoModalDeletar)
+    public function mount($model, $rotaEditar, $rotaExcluir, $textoSucessoDeletar, $textoErroDeletar, $tituloModalDeletar, $textoModalDeletar)
     {
     }
 
     public function modalDeletarRecurso()
     {
-        $this->idDeletar = $this->model->id;
-        $this->emit('abrirModal', '#modalDeletarRecurso');
-    }
-
-    public function deletarRecurso()
-    {
-        if ($this->model::destroy($this->idDeletar)) {
-            session()->flash('success', $this->textoSucessoDeletar);
-        } else {
-            session()->flash('error', $this->textoSucessoDeletar);
-        }
-
-        $this->emit('fecharModal', '#modalDeletarRecurso');
-        return redirect()->route('marcas.index');
+        $this->emit('abrirModal', $this->modalSelector);
     }
 
     public function editarRecurso()
@@ -43,6 +31,7 @@ class AcoesTabela extends Component
 
     public function render()
     {
+        $this->modalSelector = '#modalDeletarRecurso-' . $this->model->id;
         return view('livewire.acoes-tabela');
     }
 }

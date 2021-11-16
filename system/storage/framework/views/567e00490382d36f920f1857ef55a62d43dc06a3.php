@@ -69,23 +69,22 @@
                         <td> <?php echo e($marca->nome); ?> </td>
                         <td>
                             <?php
-                                $tituloModal = 'Deletar marca';
-                                $textoModal = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
-                                $textoSucessoDeletar = 'Marca deletada com sucesso';
-                                $textoErroDeletar = 'Erro ao deletar a marca';
+                                $textoModalDeletar = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
+                                $rotaEditar = route('marcas.edit', $marca->id);
+                                $rotaExcluir = route('marcas.destroy', $marca->id);
                             ?>
                             <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => route('marcas.edit', $marca->id),'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModal,'textoModalDeletar' => $textoModal])->html();
-} elseif ($_instance->childHasBeenRendered('4eJXJE0')) {
-    $componentId = $_instance->getRenderedChildComponentId('4eJXJE0');
-    $componentTag = $_instance->getRenderedChildComponentTagName('4eJXJE0');
+    $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar])->html();
+} elseif ($_instance->childHasBeenRendered('1nscms8')) {
+    $componentId = $_instance->getRenderedChildComponentId('1nscms8');
+    $componentTag = $_instance->getRenderedChildComponentTagName('1nscms8');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('4eJXJE0');
+    $_instance->preserveRenderedChild('1nscms8');
 } else {
-    $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => route('marcas.edit', $marca->id),'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModal,'textoModalDeletar' => $textoModal]);
+    $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar]);
     $html = $response->html();
-    $_instance->logRenderedChild('4eJXJE0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('1nscms8', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

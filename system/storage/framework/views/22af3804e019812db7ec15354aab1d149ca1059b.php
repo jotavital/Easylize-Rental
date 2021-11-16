@@ -12,16 +12,16 @@
 
 <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('veiculos.veiculos', [])->html();
-} elseif ($_instance->childHasBeenRendered('VmEACmg')) {
-    $componentId = $_instance->getRenderedChildComponentId('VmEACmg');
-    $componentTag = $_instance->getRenderedChildComponentTagName('VmEACmg');
+    $html = \Livewire\Livewire::mount('veiculos.wire-veiculos', [])->html();
+} elseif ($_instance->childHasBeenRendered('gAPieNd')) {
+    $componentId = $_instance->getRenderedChildComponentId('gAPieNd');
+    $componentTag = $_instance->getRenderedChildComponentTagName('gAPieNd');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('VmEACmg');
+    $_instance->preserveRenderedChild('gAPieNd');
 } else {
-    $response = \Livewire\Livewire::mount('veiculos.veiculos', []);
+    $response = \Livewire\Livewire::mount('veiculos.wire-veiculos', []);
     $html = $response->html();
-    $_instance->logRenderedChild('VmEACmg', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('gAPieNd', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

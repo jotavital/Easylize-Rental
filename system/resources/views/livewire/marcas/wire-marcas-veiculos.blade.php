@@ -36,12 +36,11 @@
                         <td> {{ $marca->nome }} </td>
                         <td>
                             <?php
-                                $tituloModal = 'Deletar marca';
-                                $textoModal = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
-                                $textoSucessoDeletar = 'Marca deletada com sucesso';
-                                $textoErroDeletar = 'Erro ao deletar a marca';
+                                $textoModalDeletar = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
+                                $rotaEditar = route('marcas.edit', $marca->id);
+                                $rotaExcluir = route('marcas.destroy', $marca->id);
                             ?>
-                            <livewire:acoes-tabela :model="$marca" :rotaEditar="route('marcas.edit', $marca->id)" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModal" :textoModalDeletar="$textoModal" />
+                            <livewire:acoes-tabela :model="$marca" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" />
                         </td>
                     </tr>
                     @endforeach

@@ -10,7 +10,7 @@
 
 @section('content')
 
-<livewire:veiculos.veiculos />
+<livewire:veiculos.wire-veiculos />
 
 @endsection
 

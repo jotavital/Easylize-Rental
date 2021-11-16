@@ -8,27 +8,9 @@ use Livewire\Component;
 class WireMarcasVeiculos extends Component
 {
     public $marcas;
-    public $nomeMarca;
-    public $idDeletar;
-
-    public function modalDeletarMarca($idDeletar)
-    {
-        $this->idDeletar = $idDeletar;
-        $this->nomeMarca = MarcaVeiculo::find($idDeletar)->nome;
-        $this->emit('abrirModal', '#modalDeletarMarca');
-    }
-
-    public function deletarMarca()
-    {
-        if (MarcaVeiculo::destroy($this->idDeletar)) {
-            session()->flash('success', 'Marca excluída com sucesso');
-        } else {
-            session()->flash('error', 'Erro ao excluir marca');
-        }
-
-        $this->emit('fecharModal', '#modalDeletarMarca');
-        return redirect()->route('marcas.index');
-    }
+    public $tituloModalDeletar = 'Deletar marca';
+    public $textoSucessoDeletar = 'Marca deletada com sucesso';
+    public $textoErroDeletar = 'Erro ao deletar a marca';
 
     public function render()
     {

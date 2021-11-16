@@ -73,43 +73,17 @@
                         <td> {{ $modelo->motor }} </td>
                         <td> {{ $modelo->marca->nome }} </td>
                         <td>
-                            <div class="d-flex justify-content-center">
-                                <div class="mr-2">
-                                    <form action="{{ route('modelos.edit', $modelo->id) }}" method="GET" class="no-padding-form">
-                                        <button type="submit" class="iconButton">
-                                            <i class="fas fa-edit text-primary table-action-icon"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <i wire:click="modalDeletarModelo({{ $modelo->id }})" class="fas fa-trash-alt text-danger table-action-icon"></i>
-                                </div>
-                            </div>
+                            <?php
+                            $textoModalDeletar = 'Deseja realmente deletar o modelo de nome "' . $modelo->nome . '"?';
+                            $rotaEditar = route('modelos.edit', $modelo->id);
+                            $rotaExcluir = route('modelos.destroy', $modelo->id);
+                            ?>
+                            <livewire:acoes-tabela :wire:key="$modelo->id" :model="$modelo" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" />
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-    
-    <div class="modal fade" id="modalDeletarModelo" tabindex="-1" aria-labelledby="modalDeletarModelo" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeletarModelo">Deletar modelo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Deletar modelo de nome "{{ $nomeModelo }}"?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" wire:click="deletarModelo" class="btn btn-danger">Deletar</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>

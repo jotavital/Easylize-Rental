@@ -96,7 +96,7 @@ class VeiculoController extends Controller
 
         if ($veiculo->save()) {
             return redirect()->route('veiculos.index')->with('success', 'Veículo editado com sucesso.');
-        }else{
+        } else {
             return redirect()->route('veiculos.index')->with('error', 'Erro ao editar veículo.');
         }
     }
@@ -109,7 +109,13 @@ class VeiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $veiculo = Veiculo::find($id);
+
+        if ($veiculo->delete()) {
+            return redirect()->route('veiculos.index')->with('success', 'Veículo deletado com sucesso');
+        } else {
+            return redirect()->route('veiculos.index')->with('error', 'Erro ao deletar o veículo');
+        }
     }
 
     public static function getAll()

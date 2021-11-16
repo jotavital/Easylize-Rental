@@ -12,6 +12,9 @@ class WireModelosVeiculos extends Component
     public $modelos;
     public $idDeletar;
     public $nomeModelo;
+    public $textoSucessoDeletar = "Modelo deletado com sucesso";
+    public $textoErroDeletar = "Erro ao deletar o modelo";
+    public $tituloModalDeletar = "Deletar modelo";
 
     public function modalDeletarModelo($idDeletar)
     {

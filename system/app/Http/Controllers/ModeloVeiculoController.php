@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FotosModeloVeiculo;
 use App\Models\MarcaVeiculo;
 use App\Models\ModeloVeiculo;
+use App\Models\Veiculo;
 use Illuminate\Http\Request;
 
 class ModeloVeiculoController extends Controller
@@ -129,7 +130,14 @@ class ModeloVeiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $modelo = ModeloVeiculo::find($id);
+
+        if ($modelo->delete()) {
+            // !deletar fotos do modelo
+            return redirect()->route('modelos.index')->with('success', 'Modelo deletado com sucesso');
+        } else {
+            return redirect()->route('modelos.index')->with('error', 'Erro ao deletar o modelo');
+        }
     }
 
     public function getAll()

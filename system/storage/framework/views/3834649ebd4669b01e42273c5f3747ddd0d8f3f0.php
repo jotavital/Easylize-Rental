@@ -116,15 +116,15 @@
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('T7fgbro')) {
-    $componentId = $_instance->getRenderedChildComponentId('T7fgbro');
-    $componentTag = $_instance->getRenderedChildComponentTagName('T7fgbro');
+} elseif ($_instance->childHasBeenRendered('9IATbuI')) {
+    $componentId = $_instance->getRenderedChildComponentId('9IATbuI');
+    $componentTag = $_instance->getRenderedChildComponentTagName('9IATbuI');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('T7fgbro');
+    $_instance->preserveRenderedChild('9IATbuI');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('T7fgbro', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('9IATbuI', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -153,43 +153,31 @@ echo $html;
                         <td> <?php echo e($modelo->motor); ?> </td>
                         <td> <?php echo e($modelo->marca->nome); ?> </td>
                         <td>
-                            <div class="d-flex justify-content-center">
-                                <div class="mr-2">
-                                    <form action="<?php echo e(route('modelos.edit', $modelo->id)); ?>" method="GET" class="no-padding-form">
-                                        <button type="submit" class="iconButton">
-                                            <i class="fas fa-edit text-primary table-action-icon"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <i wire:click="modalDeletarModelo(<?php echo e($modelo->id); ?>)" class="fas fa-trash-alt text-danger table-action-icon"></i>
-                                </div>
-                            </div>
+                            <?php
+                            $textoModalDeletar = 'Deseja realmente deletar o modelo de nome "' . $modelo->nome . '"?';
+                            $rotaEditar = route('modelos.edit', $modelo->id);
+                            $rotaExcluir = route('modelos.destroy', $modelo->id);
+                            ?>
+                            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $modelo,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar])->html();
+} elseif ($_instance->childHasBeenRendered($modelo->id)) {
+    $componentId = $_instance->getRenderedChildComponentId($modelo->id);
+    $componentTag = $_instance->getRenderedChildComponentTagName($modelo->id);
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild($modelo->id);
+} else {
+    $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $modelo,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar]);
+    $html = $response->html();
+    $_instance->logRenderedChild($modelo->id, $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-    
-    <div class="modal fade" id="modalDeletarModelo" tabindex="-1" aria-labelledby="modalDeletarModelo" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeletarModelo">Deletar modelo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Deletar modelo de nome "<?php echo e($nomeModelo); ?>"?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" wire:click="deletarModelo" class="btn btn-danger">Deletar</button>
-                </div>
-            </div>
         </div>
     </div>
 </div><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/livewire/modelo-veiculo/wire-modelos-veiculos.blade.php ENDPATH**/ ?>

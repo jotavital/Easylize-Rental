@@ -95,6 +95,12 @@ class MarcaVeiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $marca = MarcaVeiculo::find($id);
+
+        if ($marca->delete()) {
+            return redirect()->route('marcas.index')->with('success', 'Marca deletada com sucesso');
+        } else {
+            return redirect()->route('marcas.index')->with('error', 'Erro ao deletar a marca');
+        }
     }
 }
