@@ -18,7 +18,9 @@
                 </div>
                 <div class="modal-body">
                     <p class="mb-3">{{ $textoModalDeletar }}</p>
-                    <x-alert type="danger" title="Atenção" message="Se deletar este veículo, suas fotos também serão excluídas" />
+                    @if($temAlert)
+                    <x-alert :type="$alertType" :title="$alertTitle" :message="$alertMessage" />
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

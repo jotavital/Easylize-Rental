@@ -24,7 +24,17 @@
             language: {
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
-            responsive: true
+            responsive: true,
+            columnDefs: [
+            {
+                "targets": [ 2 ],
+                "visible": true
+            },
+            {
+                "targets": [ 3 ],
+                "visible": true
+            }
+        ]
         });
 
     }

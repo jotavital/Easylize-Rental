@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('clientes.wire-clientes', [])->html();
-} elseif ($_instance->childHasBeenRendered('jfskFMP')) {
-    $componentId = $_instance->getRenderedChildComponentId('jfskFMP');
-    $componentTag = $_instance->getRenderedChildComponentTagName('jfskFMP');
+} elseif ($_instance->childHasBeenRendered('ep8kJfM')) {
+    $componentId = $_instance->getRenderedChildComponentId('ep8kJfM');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ep8kJfM');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('jfskFMP');
+    $_instance->preserveRenderedChild('ep8kJfM');
 } else {
     $response = \Livewire\Livewire::mount('clientes.wire-clientes', []);
     $html = $response->html();
-    $_instance->logRenderedChild('jfskFMP', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ep8kJfM', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -38,7 +38,17 @@ echo $html;
             language: {
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
-            responsive: true
+            responsive: true,
+            columnDefs: [
+            {
+                "targets": [ 2 ],
+                "visible": true
+            },
+            {
+                "targets": [ 3 ],
+                "visible": true
+            }
+        ]
         });
 
     }

@@ -17,6 +17,7 @@
                     <th>Modelo</th>
                     <th>Cor</th>
                     <th>Categoria</th>
+                    <th>Status</th>
                     <th>Ativo</th>
                     <th>Ações</th>
                 </thead>
@@ -31,6 +32,13 @@
                         <td> {{ $veiculo->modelo->nome }} </td>
                         <td> {{ $veiculo->cor }} </td>
                         <td> {{ $veiculo->categoria->nome }} </td>
+                        <td>
+                            @if($veiculo->esta_alugado)
+                            <x-alert type="danger" message="Alugado" class="py-0" />
+                            @else
+                            <x-alert type="success" message="Disponível" class="py-0" />
+                            @endif
+                        </td>
                         <td>
                             <livewire:switch-ativar-inativar :wire:key="$veiculo->id" :model="$veiculo" />
                         </td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -36,6 +37,8 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $cliente = new Cliente();
+        $endereco = new Endereco();
+        $estado = IbgeApiController::getEstadosById($request->estadoSelect);
 
         $cliente->cpf = $request->cpfInput;
         $cliente->nome = $request->nomeInput;
@@ -46,13 +49,15 @@ class ClienteController extends Controller
         $cliente->rg = $request->rgInput;
         $cliente->email = $request->emailInput;
         $cliente->data_nascimento = $request->dataNascimentoInput;
-        $cliente->rua = $request->ruaInput;
-        $cliente->bairro = $request->bairroInput;
-        $cliente->numero = $request->numeroInput;
-        $cliente->cep = $request->cepInput;
-        $cliente->cidade = $request->cidadeSelect;
+        $endereco->rua = $request->ruaInput;
+        $endereco->bairro = $request->bairroInput;
+        $endereco->numero = $request->numeroInput;
+        $endereco->cep = $request->cepInput;
+        $endereco->cidade = $request->cidadeSelect;
+        $endereco->estado = $estado->nome;
+        $endereco->sigla_estado = $estado->sigla;
 
-        if ($cliente->save()) {
+        if ($endereco->save() && $cliente->endereco()->associate($endereco) && $cliente->save()) {
             return redirect()->back()->with('success', "Cliente cadastrado com sucesso");
         }else{
             return redirect()->back()->with('error', "Erro ao cadastrar o cliente.");

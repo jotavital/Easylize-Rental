@@ -12,4 +12,9 @@ class Cliente extends Model
 
     use HasFactory;
     use SoftDeletes;
+
+    public function endereco()
+    {
+        return $this->belongsTo(Endereco::class);
+    }
 }

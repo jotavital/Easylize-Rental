@@ -7,7 +7,7 @@
 <?php $component->withName('alert'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
+<?php $component->withAttributes(['class' => 'col-5']); ?>
 <?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
 <?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
 <?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
@@ -20,7 +20,7 @@
 <?php $component->withName('alert'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
+<?php $component->withAttributes(['class' => 'col-5']); ?>
 <?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
 <?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
 <?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>

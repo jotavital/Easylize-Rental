@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <div class="col-12 d-flex justify-content-center">
             @if(session('success'))
-            <x-alert type="success" :message="session('success')" />
+            <x-alert type="success" :message="session('success')" class="col-5" />
             @elseif(session('error'))
-            <x-alert type="danger" :message="session('success')" />
+            <x-alert type="danger" :message="session('success')" class="col-5" />
             @endif
         </div>
 

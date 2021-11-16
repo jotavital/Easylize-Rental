@@ -116,15 +116,15 @@
                 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('mZVsQ14')) {
-    $componentId = $_instance->getRenderedChildComponentId('mZVsQ14');
-    $componentTag = $_instance->getRenderedChildComponentTagName('mZVsQ14');
+} elseif ($_instance->childHasBeenRendered('EHBBxRY')) {
+    $componentId = $_instance->getRenderedChildComponentId('EHBBxRY');
+    $componentTag = $_instance->getRenderedChildComponentTagName('EHBBxRY');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('mZVsQ14');
+    $_instance->preserveRenderedChild('EHBBxRY');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('mZVsQ14', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('EHBBxRY', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -157,17 +157,19 @@ echo $html;
                             $textoModalDeletar = 'Deseja realmente deletar o modelo de nome "' . $modelo->nome . '"?';
                             $rotaEditar = route('modelos.edit', $modelo->id);
                             $rotaExcluir = route('modelos.destroy', $modelo->id);
+                            $alertTitle = "Atenção";
+                            $alertMessage = "Se deletar este modelo, as fotos associadas a ele também serão deletadas.";
                             ?>
                             <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $modelo,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar])->html();
+    $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $modelo,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar,'temAlert' => 1,'alertType' => 'danger','alertTitle' => $alertTitle,'alertMessage' => $alertMessage])->html();
 } elseif ($_instance->childHasBeenRendered($modelo->id)) {
     $componentId = $_instance->getRenderedChildComponentId($modelo->id);
     $componentTag = $_instance->getRenderedChildComponentTagName($modelo->id);
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
     $_instance->preserveRenderedChild($modelo->id);
 } else {
-    $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $modelo,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar]);
+    $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $modelo,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar,'temAlert' => 1,'alertType' => 'danger','alertTitle' => $alertTitle,'alertMessage' => $alertMessage]);
     $html = $response->html();
     $_instance->logRenderedChild($modelo->id, $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }

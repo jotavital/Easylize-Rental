@@ -77,8 +77,10 @@
                             $textoModalDeletar = 'Deseja realmente deletar o modelo de nome "' . $modelo->nome . '"?';
                             $rotaEditar = route('modelos.edit', $modelo->id);
                             $rotaExcluir = route('modelos.destroy', $modelo->id);
+                            $alertTitle = "Atenção";
+                            $alertMessage = "Se deletar este modelo, as fotos associadas a ele também serão deletadas.";
                             ?>
-                            <livewire:acoes-tabela :wire:key="$modelo->id" :model="$modelo" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" />
+                            <livewire:acoes-tabela :wire:key="$modelo->id" :model="$modelo" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" :temAlert="1" alertType="danger" :alertTitle="$alertTitle" :alertMessage="$alertMessage" />
                         </td>
                     </tr>
                     @endforeach

@@ -1,61 +1,49 @@
 <div class="content">
     <div class="container-fluid">
         @if(session('success'))
-        <x-alert type="success" :message="session('success')" />
+        <x-alert type="success" :message="session('success')" class="col-5" />
         @elseif(session('error'))
-        <x-alert type="danger" :message="session('error')" />
+        <x-alert type="danger" :message="session('error')" class="col-5" />
         @endif
-
+        
         <div wire:ignore class="mb-5">
-            <table class="table table-striped table-bordered" width="100%" id="tableMarcas">
+            <table class="table table-striped table-bordered" width="100%" id="tableClientes">
                 <thead>
-                    <th>ID</th>
                     <th>Nome</th>
+                    <th>CPF</th>
+                    <th>RG</th>
+                    <th>CNH</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th>Data nascimento</th>
+                    <th>Sexo</th>
+                    <th>Endereço</th>
                     <th>Ações</th>
                 </thead>
                 <tbody>
                     @foreach($clientes as $cliente)
                     <tr>
-                        <td> {{ $cliente->id }} </td>
                         <td> {{ $cliente->nome }} </td>
+                        <td> {{ $cliente->cpf }} </td>
+                        <td> {{ $cliente->rg }} </td>
+                        <td> {{ $cliente->cnh }} </td>
+                        <td> {{ $cliente->telefone }} </td>
+                        <td> {{ $cliente->email }} </td>
+                        <td> {{ $cliente->data_nascimento }} </td>
+                        <td> {{ $cliente->sexo }} </td>
+                        <td> {{ $cliente->endereco->rua }}, n° {{ $cliente->endereco->numero }}, {{ $cliente->endereco->bairro }}, {{ $cliente->endereco->cidade }}, {{ $cliente->endereco->sigla_estado }}, {{ $cliente->endereco->cep }} </td>
                         <td>
-                            <div class="d-flex justify-content-center">
-                                <div class="mr-2">
-                                    <form action="{{ route('clientes.edit', $cliente->id) }}" method="GET" class="no-padding-form">
-                                        <button type="submit" class="iconButton">
-                                            <i class="fas fa-edit text-primary table-action-icon"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <i wire:click="modalDeletarCliente({{ $cliente->id }})" class="fas fa-trash-alt text-danger table-action-icon"></i>
-                                </div>
-                            </div>
+                            <?php
+                            $rotaEditar = route('clientes.edit', $cliente->id);
+                            $rotaExcluir = route('clientes.destroy', $cliente->id);
+                            $textoModalDeletar = 'Tem certeza que deseja deletar o cliente de nome "' . $cliente->nome . '" e CPF "' . $cliente->cpf . '"?';
+                            ?>
+                            <livewire:acoes-tabela :wire:key="$cliente->id" :model="$cliente" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" />
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalDeletarCliente" tabindex="-1" aria-labelledby="modalDeletarCliente" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeletarCliente">Deletar cliente</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Deletar cliente de nome "{{ $nomeCliente }}" e CPF "{{ $cpfCliente }}" ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" wire:click="deletarCliente" class="btn btn-danger">Deletar</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>

@@ -11,7 +11,6 @@ class WireCreateCliente extends Component
 {
     public $cidades;
     public $estados;
-    public $estadoSelecionado;
 
     public function render()
     {

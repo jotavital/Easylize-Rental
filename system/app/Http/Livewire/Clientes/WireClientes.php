@@ -9,6 +9,9 @@ class WireClientes extends Component
 {
 
     public $clientes;
+    public $textoSucessoDeletar = "Cliente deletado com sucesso";
+    public $textoErroDeletar = "Erro ao deletar o cliente";
+    public $tituloModalDeletar = "Deletar cliente";
 
     public function render()
     {

@@ -18,8 +18,9 @@
                 </div>
                 <div class="modal-body">
                     <p class="mb-3"><?php echo e($textoModalDeletar); ?></p>
+                    <?php if($temAlert): ?>
                     <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','title' => 'Atenção','message' => 'Se deletar este veículo, suas fotos também serão excluídas']); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => $alertType,'title' => $alertTitle,'message' => $alertMessage]); ?>
 <?php $component->withName('alert'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -30,6 +31,7 @@
 <?php endif; ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

@@ -14,6 +14,10 @@ class AcoesTabela extends Component
     public $tituloModalDeletar;
     public $textoModalDeletar; // ! texto que aparece no body do modal
     public $modalSelector;
+    public $temAlert = 0;
+    public $alertType = null;
+    public $alertTitle = null;
+    public $alertMessage = null;
 
     public function mount($model, $rotaEditar, $rotaExcluir, $textoSucessoDeletar, $textoErroDeletar, $tituloModalDeletar, $textoModalDeletar)
     {
