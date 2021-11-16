@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Modelos;
+namespace App\Http\Livewire\ModeloVeiculo;
 
 use App\Models\MarcaVeiculo;
 use App\Models\ModeloVeiculo;
 use Livewire\Component;
 
-class Modelos extends Component
+class WireModelosVeiculos extends Component
 {
-
     public $marcas;
     public $modelos;
     public $idDeletar;
@@ -37,6 +36,6 @@ class Modelos extends Component
     {
         $this->marcas = MarcaVeiculo::all();
         $this->modelos = ModeloVeiculo::all();
-        return view('livewire.modelos.modelos');
+        return view('livewire.modelo-veiculo.wire-modelos-veiculos');
     }
 }

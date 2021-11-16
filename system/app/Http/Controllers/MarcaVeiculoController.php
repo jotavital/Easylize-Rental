@@ -65,7 +65,7 @@ class MarcaVeiculoController extends Controller
     public function edit($id)
     {
         $marca = MarcaVeiculo::find($id);
-        return view('marca.editMarca', ['marca' => $marca]);
+        return view('marca.edit-marca', ['marca' => $marca]);
     }
 
     /**

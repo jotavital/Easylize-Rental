@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 d-flex justify-content-center">
+                <div class="col-sm-12 mb-5 d-flex justify-content-center">
                     <button type="submit" class="btn btn-success mt-3 col-sm-2">Pronto</button>
                 </div>
             </form>

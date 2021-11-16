@@ -1,11 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Session;
-
-$success = Session::get('success');
-$error = Session::get('error');
-?>
-
 @extends('layouts.admin-layout')
 
 @section('title', 'Marcas')
@@ -18,7 +10,7 @@ $error = Session::get('error');
 
 @section('content')
 
-<livewire:marcas.marcas />
+<livewire:marcas.wire-marcas-veiculos />
 
 @endsection
 

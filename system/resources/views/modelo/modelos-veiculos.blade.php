@@ -10,7 +10,7 @@
 
 @section('content')
 
-<livewire:modelos.modelos />
+<livewire:modelo-veiculo.wire-modelos-veiculos />
 
 @endsection
 
