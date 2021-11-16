@@ -105,7 +105,7 @@ class ModeloVeiculoController extends Controller
         if ($modelo->save()) {
 
             if ($request->hasFile('fotosInput')) {
-                // ! tenho que dar um jeito de verificar se excedeu o numero de imagens do veiculo contando as atuais com as novas fotos
+
                 foreach ($request->fotosInput as $photo) {
                     $photoPath = $photo->store('modelos_img');
 
@@ -133,7 +133,11 @@ class ModeloVeiculoController extends Controller
         $modelo = ModeloVeiculo::find($id);
 
         if ($modelo->delete()) {
-            // !deletar fotos do modelo
+            foreach ($modelo->fotos_modelo as $foto) {
+                if (!FotosModeloVeiculoController::destroy($foto->id)) {
+                    return redirect()->route('modelos.index')->with('error', 'Erro ao deletar o modelo');
+                }
+            }
             return redirect()->route('modelos.index')->with('success', 'Modelo deletado com sucesso');
         } else {
             return redirect()->route('modelos.index')->with('error', 'Erro ao deletar o modelo');

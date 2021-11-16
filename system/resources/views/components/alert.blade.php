@@ -1,9 +1,12 @@
 <div class="alerts col-12 d-flex justify-content-center">
-    <div class="alert alert-{{ $type }} d-flex align-items-center col-5" role="alert">
-        <div class="col-12">
-            <p class="p-0 m-0 col-12" style="text-align:center;">
-                {{ $message }}
-            </p>
-        </div>
+    <div {{ $attributes->merge(['class' => 'alert alert-'.$type]) }} role="alert">
+        @if($title)
+        <h6 class="m-0 text-center py-1">
+            <strong>{{ $title }}</strong>
+        </h6>
+        @endif
+        <p class="m-0 text-center">
+            {{ $message }}
+        </p>
     </div>
 </div>

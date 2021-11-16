@@ -9,14 +9,16 @@ class Alert extends Component
 
     public $message;
     public $type;
+    public $title;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $message)
+    public function __construct($type, $title = null, $message)
     {
+        $this->title = $title;
         $this->type = $type;
         $this->message = $message;
     }

@@ -2,9 +2,9 @@
     <div class="container-fluid">
 
         @if(session('success'))
-        <x-alert type="success" :message="session('success')" />
+        <x-alert type="success" :message="session('success')" class="col-5" />
         @elseif(session('error'))
-        <x-alert type="danger" :message="session('error')" />
+        <x-alert type="danger" :message="session('error')" class="col-5" />
         @endif
 
         <section class="mb-3">
