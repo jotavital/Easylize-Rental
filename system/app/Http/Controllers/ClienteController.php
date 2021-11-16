@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -13,7 +14,6 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -34,7 +34,28 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente();
+
+        $cliente->cpf = $request->cpfInput;
+        $cliente->nome = $request->nomeInput;
+        $cliente->sexo = $request->sexoSelect;
+        $cliente->telefone = $request->telefoneInput;
+        $cliente->tipo_telefone = $request->tipoTelefoneSelect;
+        $cliente->cnh = $request->cnhInput;
+        $cliente->rg = $request->rgInput;
+        $cliente->email = $request->emailInput;
+        $cliente->data_nascimento = $request->dataNascimentoInput;
+        $cliente->rua = $request->ruaInput;
+        $cliente->bairro = $request->bairroInput;
+        $cliente->numero = $request->numeroInput;
+        $cliente->cep = $request->cepInput;
+        $cliente->cidade = $request->cidadeSelect;
+
+        if ($cliente->save()) {
+            return redirect()->back()->with('success', "Cliente cadastrado com sucesso");
+        }else{
+            return redirect()->back()->with('error', "Erro ao cadastrar o cliente.");
+        }
     }
 
     /**

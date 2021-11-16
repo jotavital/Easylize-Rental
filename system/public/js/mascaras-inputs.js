@@ -5,6 +5,10 @@ $('#placaInput').keyup(function () {
 
 $('#cpfInput').mask("000.000.000-00");
 
+$('#cepInput').mask("00000-000");
+
+$('#numeroInput').mask("000000");
+
 $('#telefoneInput').mask("(00) 00000-0000");
 $($('#tipoTelefoneSelect')).on('change', function () {
     if ($('#tipoTelefoneSelect').val() == "Celular") {
