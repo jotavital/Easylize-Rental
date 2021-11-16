@@ -68,43 +68,32 @@
                         <td> <?php echo e($marca->id); ?> </td>
                         <td> <?php echo e($marca->nome); ?> </td>
                         <td>
-                            <div class="d-flex justify-content-center">
-                                <div class="mr-2">
-                                    <form action="<?php echo e(route('marcas.edit', $marca->id)); ?>" method="GET" class="no-padding-form">
-                                        <button type="submit" class="iconButton">
-                                            <i class="fas fa-edit text-primary table-action-icon"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <i wire:click="modalDeletarMarca(<?php echo e($marca->id); ?>)" class="fas fa-trash-alt text-danger table-action-icon"></i>
-                                </div>
-                            </div>
+                            <?php
+                                $tituloModal = 'Deletar marca';
+                                $textoModal = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
+                                $textoSucessoDeletar = 'Marca deletada com sucesso';
+                                $textoErroDeletar = 'Erro ao deletar a marca';
+                            ?>
+                            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => route('marcas.edit', $marca->id),'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModal,'textoModalDeletar' => $textoModal])->html();
+} elseif ($_instance->childHasBeenRendered('4eJXJE0')) {
+    $componentId = $_instance->getRenderedChildComponentId('4eJXJE0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('4eJXJE0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('4eJXJE0');
+} else {
+    $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => route('marcas.edit', $marca->id),'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModal,'textoModalDeletar' => $textoModal]);
+    $html = $response->html();
+    $_instance->logRenderedChild('4eJXJE0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalDeletarMarca" tabindex="-1" aria-labelledby="modalDeletarMarca" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeletarMarca">Deletar marca</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Deletar marca de nome "<?php echo e($nomeMarca); ?>"?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" wire:click="deletarMarca" class="btn btn-danger">Deletar</button>
-                </div>
-            </div>
         </div>
     </div>
 </div><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/livewire/marcas/wire-marcas-veiculos.blade.php ENDPATH**/ ?>

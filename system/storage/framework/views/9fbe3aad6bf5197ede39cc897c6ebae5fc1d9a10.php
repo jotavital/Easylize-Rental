@@ -1,11 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Session;
-
-$success = Session::get('success');
-$error = Session::get('error');
-?>
-
 
 
 <?php $__env->startSection('title', 'Marcas'); ?>
@@ -21,15 +13,15 @@ $error = Session::get('error');
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('marcas.wire-marcas-veiculos', [])->html();
-} elseif ($_instance->childHasBeenRendered('Co2dLkX')) {
-    $componentId = $_instance->getRenderedChildComponentId('Co2dLkX');
-    $componentTag = $_instance->getRenderedChildComponentTagName('Co2dLkX');
+} elseif ($_instance->childHasBeenRendered('LXJqPMB')) {
+    $componentId = $_instance->getRenderedChildComponentId('LXJqPMB');
+    $componentTag = $_instance->getRenderedChildComponentTagName('LXJqPMB');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('Co2dLkX');
+    $_instance->preserveRenderedChild('LXJqPMB');
 } else {
     $response = \Livewire\Livewire::mount('marcas.wire-marcas-veiculos', []);
     $html = $response->html();
-    $_instance->logRenderedChild('Co2dLkX', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('LXJqPMB', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

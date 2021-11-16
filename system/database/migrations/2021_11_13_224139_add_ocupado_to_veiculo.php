@@ -14,7 +14,7 @@ class AddOcupadoToVeiculo extends Migration
     public function up()
     {
         Schema::table('veiculo', function (Blueprint $table) {
-            $table->boolean('esta_alugado')->after('ativo');
+            $table->boolean('esta_alugado')->after('ativo')->default('0');
         });
     }
 

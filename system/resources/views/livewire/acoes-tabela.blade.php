@@ -3,7 +3,7 @@
         <i wire:click="editarRecurso" class="fas fa-edit text-primary table-action-icon"></i>
     </div>
     <div>
-        <i wire:click="modalDeletarRecurso(<?php echo e($model->id); ?>)" class="fas fa-trash-alt text-danger table-action-icon"></i>
+        <i wire:click="modalDeletarRecurso({{ $model->id }})" class="fas fa-trash-alt text-danger table-action-icon"></i>
     </div>
 
     <!-- modal de deletar -->
@@ -11,14 +11,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeletarRecurso"><?php echo e($tituloModalDeletar); ?></h5>
+                    <h5 class="modal-title" id="modalDeletarRecurso">{{ $tituloModalDeletar }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?php echo e($textoModalDeletar); ?>
-
+                    {{ $textoModalDeletar }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -27,4 +26,4 @@
             </div>
         </div>
     </div>
-</div><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/livewire/acoes-tabela.blade.php ENDPATH**/ ?>
+</div>

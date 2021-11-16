@@ -13,12 +13,17 @@ class InputImagensModelo extends Component
     public $modelo;
     public $fotosInput = [];
     public $maximoFotos;
+    public $qtd_fotos_atual = 0;
 
     public function validar()
     {
         $qtd_fotos_input = count($this->fotosInput);
-        $qtd_fotos_atual = count($this->modelo->fotos_modelo);
-        $qtd_fotos_total = $qtd_fotos_atual + $qtd_fotos_input;
+
+        if(isset($this->modelo)){
+            $this->qtd_fotos_atual = count($this->modelo->fotos_modelo);
+        }
+
+        $qtd_fotos_total = $this->qtd_fotos_atual + $qtd_fotos_input;
 
         if ($qtd_fotos_input > $this->maximoFotos || $qtd_fotos_total > $this->maximoFotos) {
             $this->fotosInput = [];

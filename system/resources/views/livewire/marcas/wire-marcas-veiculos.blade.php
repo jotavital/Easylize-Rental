@@ -35,43 +35,18 @@
                         <td> {{ $marca->id }} </td>
                         <td> {{ $marca->nome }} </td>
                         <td>
-                            <div class="d-flex justify-content-center">
-                                <div class="mr-2">
-                                    <form action="{{ route('marcas.edit', $marca->id) }}" method="GET" class="no-padding-form">
-                                        <button type="submit" class="iconButton">
-                                            <i class="fas fa-edit text-primary table-action-icon"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <i wire:click="modalDeletarMarca({{ $marca->id }})" class="fas fa-trash-alt text-danger table-action-icon"></i>
-                                </div>
-                            </div>
+                            <?php
+                                $tituloModal = 'Deletar marca';
+                                $textoModal = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
+                                $textoSucessoDeletar = 'Marca deletada com sucesso';
+                                $textoErroDeletar = 'Erro ao deletar a marca';
+                            ?>
+                            <livewire:acoes-tabela :model="$marca" :rotaEditar="route('marcas.edit', $marca->id)" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModal" :textoModalDeletar="$textoModal" />
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalDeletarMarca" tabindex="-1" aria-labelledby="modalDeletarMarca" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeletarMarca">Deletar marca</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Deletar marca de nome "{{ $nomeMarca }}"?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" wire:click="deletarMarca" class="btn btn-danger">Deletar</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
