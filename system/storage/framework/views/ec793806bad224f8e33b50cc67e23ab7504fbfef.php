@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('clientes.wire-clientes', [])->html();
-} elseif ($_instance->childHasBeenRendered('ep8kJfM')) {
-    $componentId = $_instance->getRenderedChildComponentId('ep8kJfM');
-    $componentTag = $_instance->getRenderedChildComponentTagName('ep8kJfM');
+} elseif ($_instance->childHasBeenRendered('f2twWBr')) {
+    $componentId = $_instance->getRenderedChildComponentId('f2twWBr');
+    $componentTag = $_instance->getRenderedChildComponentTagName('f2twWBr');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('ep8kJfM');
+    $_instance->preserveRenderedChild('f2twWBr');
 } else {
     $response = \Livewire\Livewire::mount('clientes.wire-clientes', []);
     $html = $response->html();
-    $_instance->logRenderedChild('ep8kJfM', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('f2twWBr', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -39,18 +39,39 @@ echo $html;
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true,
-            columnDefs: [
-            {
-                "targets": [ 2 ],
-                "visible": true
-            },
-            {
-                "targets": [ 3 ],
-                "visible": true
-            }
-        ]
+            columns: [
+                {
+                    responsivePriority: 2
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 8
+                },
+                {
+                    responsivePriority: 3
+                },
+                {
+                    responsivePriority: 4
+                },
+                {
+                    responsivePriority: 6
+                },
+                {
+                    responsivePriority: 9
+                },
+                {
+                    responsivePriority: 10
+                },
+                {
+                    responsivePriority: 7
+                },
+                {
+                    responsivePriority: 1
+                },
+            ]
         });
-
     }
 </script>
 <?php $__env->stopSection(); ?>

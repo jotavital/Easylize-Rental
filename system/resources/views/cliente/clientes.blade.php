@@ -25,18 +25,39 @@
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true,
-            columnDefs: [
-            {
-                "targets": [ 2 ],
-                "visible": true
-            },
-            {
-                "targets": [ 3 ],
-                "visible": true
-            }
-        ]
+            columns: [
+                {
+                    responsivePriority: 2
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 8
+                },
+                {
+                    responsivePriority: 3
+                },
+                {
+                    responsivePriority: 4
+                },
+                {
+                    responsivePriority: 6
+                },
+                {
+                    responsivePriority: 9
+                },
+                {
+                    responsivePriority: 10
+                },
+                {
+                    responsivePriority: 7
+                },
+                {
+                    responsivePriority: 1
+                },
+            ]
         });
-
     }
 </script>
 @endsection
