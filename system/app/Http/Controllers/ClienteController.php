@@ -38,7 +38,9 @@ class ClienteController extends Controller
     {
         $cliente = new Cliente();
         $endereco = new Endereco();
+
         $estado = IbgeApiController::getEstadosById($request->estadoSelect);
+        $cidade = IbgeApiController::getCidadeById($request->cidadeSelect);
 
         $cliente->cpf = $request->cpfInput;
         $cliente->nome = $request->nomeInput;
@@ -53,8 +55,11 @@ class ClienteController extends Controller
         $endereco->bairro = $request->bairroInput;
         $endereco->numero = $request->numeroInput;
         $endereco->cep = $request->cepInput;
-        $endereco->cidade = $request->cidadeSelect;
+
+        $endereco->cidade_id = $request->cidadeSelect;
+        $endereco->cidade = $cidade->nome;
         $endereco->estado = $estado->nome;
+        $endereco->estado_id = $request->estadoSelect;
         $endereco->sigla_estado = $estado->sigla;
 
         if ($endereco->save() && $cliente->endereco()->associate($endereco) && $cliente->save()) {
@@ -106,6 +111,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // ! fazer isso meu caro amigo.
+        
     }
 }

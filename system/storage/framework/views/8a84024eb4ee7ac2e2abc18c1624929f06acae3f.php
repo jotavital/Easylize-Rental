@@ -328,7 +328,7 @@
                     var url = '<?php echo e(route("cidades.byestado.get", ":id")); ?>';
                     url = url.replace(':id', estadoSelect.selected());
 
-                    PopularSlimSelectsObj.popularSlimSelectAjaxBasico(url, '#cidadeSelect', 'nome', 'nome', dataAjaxCidades, 'get');
+                    PopularSlimSelectsObj.popularSlimSelectAjaxBasico(url, '#cidadeSelect', 'id', 'nome', dataAjaxCidades, 'get');
                 } else {
                     $('#cidadeSelect').empty();
                     cidadeSelect.disable();

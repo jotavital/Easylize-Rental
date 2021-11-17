@@ -31,7 +31,7 @@
                         <td> {{ $cliente->email }} </td>
                         <td> {{ $cliente->data_nascimento }} </td>
                         <td> {{ $cliente->sexo }} </td>
-                        <td> {{ $cliente->endereco->rua }}, n° {{ $cliente->endereco->numero }}, {{ $cliente->endereco->bairro }}, {{ $cliente->endereco->cidade }}, {{ $cliente->endereco->sigla_estado }}, {{ $cliente->endereco->cep }} </td>
+                        <td> {{ $cliente->endereco->rua }}, n° {{ $cliente->endereco->numero }}, {{ $cliente->endereco->bairro }}, {{ $cliente->endereco->cidade }} - {{ $cliente->endereco->sigla_estado }} </td>
                         <td>
                             <?php
                             $rotaEditar = route('clientes.edit', $cliente->id);
