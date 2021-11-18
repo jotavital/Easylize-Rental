@@ -29,30 +29,47 @@
         <?php endif; ?>
 
         <div wire:ignore class="mb-5">
-            <table class="table table-striped table-bordered" width="100%" id="tablealuguels">
+            <table class="table table-striped table-bordered" width="100%" id="tableAlugueis">
                 <thead>
                     <th>ID</th>
                     <th>Data e hora saída</th>
                     <th>Data e hora prev. devolução</th>
+                    <th>Valor</th>
+                    <th>Pago</th>
+                    <th>Veículo</th>
+                    <th>Cliente - CPF</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </thead>
                 <tbody>
                     <?php $__currentLoopData = $alugueis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aluguel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td> <?php echo e($aluguel->nome); ?> </td>
-                        <td> <?php echo e($aluguel->cpf); ?> </td>
-                        <td> <?php echo e($aluguel->rg); ?> </td>
-                        <td> <?php echo e($aluguel->cnh); ?> </td>
-                        <td> <?php echo e($aluguel->telefone); ?> </td>
-                        <td> <?php echo e($aluguel->email); ?> </td>
-                        <td> <?php echo e($aluguel->data_nascimento); ?> </td>
-                        <td> <?php echo e($aluguel->sexo); ?> </td>
+                        <td> <?php echo e($aluguel->id); ?> </td>
+                        <td> <?php echo e($aluguel->data_hora_saida); ?> </td>
+                        <td> <?php echo e($aluguel->data_hora_prevista_devolucao); ?> </td>
+                        <td> <?php echo e($aluguel->valor); ?> </td>
+                        <td> <?php echo e(($aluguel->pago) ? "Sim" : "Não"); ?> </td>
+                        <td> <?php echo e($aluguel->veiculo->placa); ?> </td>
+                        <td> <?php echo e($aluguel->cliente->nome); ?> - <?php echo e($aluguel->cliente->cpf); ?> </td>
+                        <td> 
+                            <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => ''.e($aluguel->status->tipo_alert).'','message' => $aluguel->status->descricao]); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                        </td>
                         <td>
                             <?php
                             $rotaEditar = route('alugueis.edit', $aluguel->id);
                             $rotaExcluir = route('alugueis.destroy', $aluguel->id);
-                            $textoModalDeletar = 'Tem certeza que deseja deletar o aluguel de nome "' . $aluguel->nome . '" e CPF "' . $aluguel->cpf . '"?';
+                            $textoModalDeletar = 'Tem certeza que deseja deletar o aluguel ID "' . $aluguel->id . '"?';
                             ?>
                             <?php
 if (! isset($_instance)) {

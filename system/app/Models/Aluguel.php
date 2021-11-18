@@ -27,4 +27,9 @@ class Aluguel extends Model
     {
         return $this->belongsTo(Ocorrencia::class);
     }
+
+    public function status()
+    {
+        return $this->belongsTo(StatusAluguel::class);
+    }
 }

@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('alugueis.wire-alugueis', [])->html();
-} elseif ($_instance->childHasBeenRendered('zVt3q6O')) {
-    $componentId = $_instance->getRenderedChildComponentId('zVt3q6O');
-    $componentTag = $_instance->getRenderedChildComponentTagName('zVt3q6O');
+} elseif ($_instance->childHasBeenRendered('NYAMHLB')) {
+    $componentId = $_instance->getRenderedChildComponentId('NYAMHLB');
+    $componentTag = $_instance->getRenderedChildComponentTagName('NYAMHLB');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('zVt3q6O');
+    $_instance->preserveRenderedChild('NYAMHLB');
 } else {
     $response = \Livewire\Livewire::mount('alugueis.wire-alugueis', []);
     $html = $response->html();
-    $_instance->logRenderedChild('zVt3q6O', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('NYAMHLB', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -39,38 +39,6 @@ echo $html;
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true,
-            columns: [
-                {
-                    responsivePriority: 2
-                },
-                {
-                    responsivePriority: 5
-                },
-                {
-                    responsivePriority: 8
-                },
-                {
-                    responsivePriority: 3
-                },
-                {
-                    responsivePriority: 4
-                },
-                {
-                    responsivePriority: 6
-                },
-                {
-                    responsivePriority: 9
-                },
-                {
-                    responsivePriority: 10
-                },
-                {
-                    responsivePriority: 7
-                },
-                {
-                    responsivePriority: 1
-                },
-            ]
         });
     }
 </script>

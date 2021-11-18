@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('clientes.wire-clientes', [])->html();
-} elseif ($_instance->childHasBeenRendered('f2twWBr')) {
-    $componentId = $_instance->getRenderedChildComponentId('f2twWBr');
-    $componentTag = $_instance->getRenderedChildComponentTagName('f2twWBr');
+} elseif ($_instance->childHasBeenRendered('NRYfbC5')) {
+    $componentId = $_instance->getRenderedChildComponentId('NRYfbC5');
+    $componentTag = $_instance->getRenderedChildComponentTagName('NRYfbC5');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('f2twWBr');
+    $_instance->preserveRenderedChild('NRYfbC5');
 } else {
     $response = \Livewire\Livewire::mount('clientes.wire-clientes', []);
     $html = $response->html();
-    $_instance->logRenderedChild('f2twWBr', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('NRYfbC5', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -30,7 +30,7 @@ echo $html;
 
 <?php $__env->startSection('script'); ?>
 <script>
-    var tableMarcasObj;
+    var tableClientesObj;
 
     window.onload = function() {
 

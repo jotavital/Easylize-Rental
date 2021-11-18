@@ -7,30 +7,36 @@
         @endif
 
         <div wire:ignore class="mb-5">
-            <table class="table table-striped table-bordered" width="100%" id="tablealuguels">
+            <table class="table table-striped table-bordered" width="100%" id="tableAlugueis">
                 <thead>
                     <th>ID</th>
                     <th>Data e hora saída</th>
                     <th>Data e hora prev. devolução</th>
+                    <th>Valor</th>
+                    <th>Pago</th>
+                    <th>Veículo</th>
+                    <th>Cliente - CPF</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </thead>
                 <tbody>
                     @foreach($alugueis as $aluguel)
                     <tr>
-                        <td> {{ $aluguel->nome }} </td>
-                        <td> {{ $aluguel->cpf }} </td>
-                        <td> {{ $aluguel->rg }} </td>
-                        <td> {{ $aluguel->cnh }} </td>
-                        <td> {{ $aluguel->telefone }} </td>
-                        <td> {{ $aluguel->email }} </td>
-                        <td> {{ $aluguel->data_nascimento }} </td>
-                        <td> {{ $aluguel->sexo }} </td>
+                        <td> {{ $aluguel->id }} </td>
+                        <td> {{ $aluguel->data_hora_saida }} </td>
+                        <td> {{ $aluguel->data_hora_prevista_devolucao }} </td>
+                        <td> {{ $aluguel->valor }} </td>
+                        <td> {{ ($aluguel->pago) ? "Sim" : "Não" }} </td>
+                        <td> {{ $aluguel->veiculo->placa }} </td>
+                        <td> {{ $aluguel->cliente->nome }} - {{ $aluguel->cliente->cpf }} </td>
+                        <td> 
+                            <x-alert type="{{ $aluguel->status->tipo_alert }}" :message="$aluguel->status->descricao" />
+                        </td>
                         <td>
                             <?php
                             $rotaEditar = route('alugueis.edit', $aluguel->id);
                             $rotaExcluir = route('alugueis.destroy', $aluguel->id);
-                            $textoModalDeletar = 'Tem certeza que deseja deletar o aluguel de nome "' . $aluguel->nome . '" e CPF "' . $aluguel->cpf . '"?';
+                            $textoModalDeletar = 'Tem certeza que deseja deletar o aluguel ID "' . $aluguel->id . '"?';
                             ?>
                             <livewire:acoes-tabela :wire:key="$aluguel->id" :model="$aluguel" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" />
                         </td>

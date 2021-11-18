@@ -28,6 +28,6 @@ class IbgeApiController extends Controller
     public static function getCidadesPorEstado($idEstado)
     {
         $response = Http::withoutVerifying()->get('https://servicodados.ibge.gov.br/api/v1/localidades/estados/' . $idEstado . '/municipios?orderBy=nome');
-        return $response->json();
+        return $response->object();
     }
 }

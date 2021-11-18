@@ -269,15 +269,14 @@
 
                                 selects.forEach(select => {
 
-                                    if (!select.disabled) {
-                                        if (select.value == '') {
-                                            select.classList.remove("valid-select");
-                                            select.classList.add("invalid-select");
-                                        } else {
-                                            select.classList.remove("invalid-select");
-                                            select.classList.add("valid-select");
-                                        }
+                                    if (select.value == '') {
+                                        select.classList.remove("valid-select");
+                                        select.classList.add("invalid-select");
+                                    } else {
+                                        select.classList.remove("invalid-select");
+                                        select.classList.add("valid-select");
                                     }
+
                                 });
 
                             }
@@ -295,6 +294,11 @@
                         if (form.classList.contains('was-validated') && !select.classList.contains('is-invalid')) {
                             select.classList.remove("invalid-select");
                             select.classList.add("valid-select");
+                        }
+
+                        if (select.disabled) {
+                            select.classList.remove("valid-select");
+                            select.classList.add("invalid-select");
                         }
 
                         if (select.value == '') {
