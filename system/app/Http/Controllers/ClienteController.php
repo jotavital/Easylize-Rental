@@ -64,7 +64,7 @@ class ClienteController extends Controller
 
         if ($endereco->save() && $cliente->endereco()->associate($endereco) && $cliente->save()) {
             return redirect()->back()->with('success', "Cliente cadastrado com sucesso");
-        }else{
+        } else {
             return redirect()->back()->with('error', "Erro ao cadastrar o cliente.");
         }
     }
@@ -111,7 +111,12 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        // ! fazer isso meu caro amigo.
-        
+        $cliente = Cliente::find($id);
+
+        if ($cliente->endereco->delete() && $cliente->delete()) {
+            return redirect()->route('clientes.index')->with('success', 'Cliente deletado com sucesso');
+        } else {
+            return redirect()->route('clientes.index')->with('error', 'Erro ao deletar o cliente');
+        }
     }
 }
