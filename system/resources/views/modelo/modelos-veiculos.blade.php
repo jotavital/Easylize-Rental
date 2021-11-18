@@ -16,7 +16,6 @@
 
 @section('script')
 
-<script src="/js/initialize-slimSelects.js"></script>
 <script>
     var tableModelosObj;
 

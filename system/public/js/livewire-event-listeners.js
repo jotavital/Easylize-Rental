@@ -20,3 +20,7 @@ Livewire.on('abrirModal', function (modalSelector) {
 Livewire.on('fecharModal', function (modalSelector) {
     $(modalSelector).modal('hide');
 });
+
+Livewire.on('ativarInput', function (inputSelector) {
+    $(inputSelector).prop("disabled", false);
+});

@@ -23,4 +23,9 @@ class ModeloVeiculo extends Model
     {
         return $this->hasMany(FotosModeloVeiculo::class);
     }
+
+    public function veiculos()
+    {
+        return $this->hasMany(Veiculo::class, 'modelo_id');
+    }
 }

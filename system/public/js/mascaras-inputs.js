@@ -3,11 +3,13 @@ $('#placaInput').keyup(function () {
     $(this).val($(this).val().toUpperCase());
 });
 
-$('#cpfInput').mask("000.000.000-00");
+$('#cpfInput').mask("000.000.000-00", {reverse: true});
 
 $('#cepInput').mask("00000-000");
 
 $('#numeroInput').mask("000000");
+
+$('#valorInput').mask('0.000.000,00', {reverse: true});
 
 $('#telefoneInput').mask("(00) 00000-0000");
 $($('#tipoTelefoneSelect')).on('change', function () {

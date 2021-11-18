@@ -30,108 +30,21 @@
         <?php endif; ?>
 
         <section class="mb-3">
-            <form action=" <?php echo e(route('modelos.store')); ?> " method="POST" enctype="multipart/form-data" class="col-12 needs-validation" id="formAddModelo" novalidate>
-                <?php echo csrf_field(); ?>
-                <div class="form-row col-12 d-flex justify-content-center">
-                    <div class="form-group col-md-4">
-                        <label for="nomeModeloInput">Nome do modelo <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" name="nomeModeloInput" id="nomeModeloInput" placeholder="Modelo" required>
-                        <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
-<?php $component->withName('campo-obrigatorio'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad)): ?>
-<?php $component = $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad; ?>
-<?php unset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="anoModeloSelect">Ano do modelo <span class="text-danger">*</span></label>
-                        <select id="anoModeloSelect" name="anoModeloSelect" class="validate-select" required>
-                            <option data-placeholder="true"></option>
-                            <?php
-                            foreach (range(date('Y') + 3, 1900) as $year) {
-                            ?>
-                                <option value="<?= $year ?>"><?= $year ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                        <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
-<?php $component->withName('campo-obrigatorio'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad)): ?>
-<?php $component = $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad; ?>
-<?php unset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                    </div>
-                </div>
-                <div class="form-row col-12 d-flex justify-content-center">
-                    <div class="form-group col-md-4">
-                        <label for="motorModeloInput">Motor <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" name="motorModeloInput" id="motorModeloInput" placeholder="2.0" maxlength="3" required>
-                        <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
-<?php $component->withName('campo-obrigatorio'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad)): ?>
-<?php $component = $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad; ?>
-<?php unset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="marcaSelect">Marca <span class="text-danger">*</span></label>
-                        <select id="marcaSelect" name="marcaSelect" class="validate-select" required>
-                            <?php $__currentLoopData = $marcas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($marca->id); ?>"> <?php echo e($marca->nome); ?> </option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </select>
-                        <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
-<?php $component->withName('campo-obrigatorio'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes([]); ?>
-<?php if (isset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad)): ?>
-<?php $component = $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad; ?>
-<?php unset($__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-                    </div>
-                </div>
-                <?php
+            <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('EHBBxRY')) {
-    $componentId = $_instance->getRenderedChildComponentId('EHBBxRY');
-    $componentTag = $_instance->getRenderedChildComponentTagName('EHBBxRY');
+    $html = \Livewire\Livewire::mount('modelo-veiculo.form-create-edit-modelo', [])->html();
+} elseif ($_instance->childHasBeenRendered('XCezBcK')) {
+    $componentId = $_instance->getRenderedChildComponentId('XCezBcK');
+    $componentTag = $_instance->getRenderedChildComponentTagName('XCezBcK');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('EHBBxRY');
+    $_instance->preserveRenderedChild('XCezBcK');
 } else {
-    $response = \Livewire\Livewire::mount('modelo-veiculo.input-imagens-modelo', []);
+    $response = \Livewire\Livewire::mount('modelo-veiculo.form-create-edit-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('EHBBxRY', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('XCezBcK', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
-                <div class="col-sm-12 d-flex justify-content-center">
-                    <button type="submit" id="btnSubmit" class="btn btn-success mt-3 col-sm-2">Cadastrar</button>
-                </div>
-            </form>
         </section>
         <hr>
         <div class="mb-5">

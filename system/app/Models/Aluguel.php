@@ -12,4 +12,19 @@ class Aluguel extends Model
 
     use HasFactory;
     use SoftDeletes;
+
+    public function veiculo()
+    {
+        return $this->belongsTo(Veiculo::class);
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function ocorrencia()
+    {
+        return $this->belongsTo(Ocorrencia::class);
+    }
 }

@@ -88,7 +88,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        return view("cliente.edit-cliente", ['cliente' => $cliente]);
     }
 
     /**
@@ -100,7 +101,35 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $estado = IbgeApiController::getEstadosById($request->estadoSelect);
+        $cidade = IbgeApiController::getCidadeById($request->cidadeSelect);
+
+        $cliente->cpf = $request->cpfInput;
+        $cliente->nome = $request->nomeInput;
+        $cliente->sexo = $request->sexoSelect;
+        $cliente->telefone = $request->telefoneInput;
+        $cliente->tipo_telefone = $request->tipoTelefoneSelect;
+        $cliente->cnh = $request->cnhInput;
+        $cliente->rg = $request->rgInput;
+        $cliente->email = $request->emailInput;
+        $cliente->data_nascimento = $request->dataNascimentoInput;
+        $cliente->endereco->rua = $request->ruaInput;
+        $cliente->endereco->bairro = $request->bairroInput;
+        $cliente->endereco->numero = $request->numeroInput;
+        $cliente->endereco->cep = $request->cepInput;
+
+        $cliente->endereco->cidade_id = $request->cidadeSelect;
+        $cliente->endereco->cidade = $cidade->nome;
+        $cliente->endereco->estado = $estado->nome;
+        $cliente->endereco->estado_id = $request->estadoSelect;
+        $cliente->endereco->sigla_estado = $estado->sigla;
+
+        if ($cliente->endereco->save() && $cliente->save()) {
+            return redirect()->route('clientes.index')->with('success', 'Cliente editado com sucesso');
+        } else {
+            return redirect()->route('clientes.index')->withErrors('error', 'Não foi possível editar o cliente, tente novamente.');
+        }
     }
 
     /**

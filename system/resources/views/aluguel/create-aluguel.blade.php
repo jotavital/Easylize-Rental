@@ -18,7 +18,19 @@ $error = Session::get('error');
 
 @section('content')
 
-<livewire:alugueis.wire-create-aluguel />
+<div class="content">
+
+    <div class="container-fluid">
+
+        @if(session('success'))
+        <x-alert type="success" :message='$success' />
+        @elseif(session('error'))
+        <x-alert type="danger" :message='$error' />
+        @endif
+
+        <livewire:alugueis.form-create-edit-aluguel />
+    </div>
+</div>
 
 @endsection
 

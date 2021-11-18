@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.wire-modelos-veiculos', [])->html();
-} elseif ($_instance->childHasBeenRendered('CWlybSJ')) {
-    $componentId = $_instance->getRenderedChildComponentId('CWlybSJ');
-    $componentTag = $_instance->getRenderedChildComponentTagName('CWlybSJ');
+} elseif ($_instance->childHasBeenRendered('s9YVwQr')) {
+    $componentId = $_instance->getRenderedChildComponentId('s9YVwQr');
+    $componentTag = $_instance->getRenderedChildComponentTagName('s9YVwQr');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('CWlybSJ');
+    $_instance->preserveRenderedChild('s9YVwQr');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.wire-modelos-veiculos', []);
     $html = $response->html();
-    $_instance->logRenderedChild('CWlybSJ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('s9YVwQr', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -30,7 +30,6 @@ echo $html;
 
 <?php $__env->startSection('script'); ?>
 
-<script src="/js/initialize-slimSelects.js"></script>
 <script>
     var tableModelosObj;
 

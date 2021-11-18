@@ -16,7 +16,7 @@
 
 @section('script')
 <script>
-    var tableMarcasObj;
+    var tableClientesObj;
 
     window.onload = function() {
 
