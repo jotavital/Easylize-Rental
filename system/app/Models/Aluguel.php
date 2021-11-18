@@ -32,4 +32,10 @@ class Aluguel extends Model
     {
         return $this->belongsTo(StatusAluguel::class);
     }
+
+    public static function getQtdTotalAlugueisEmAndamento()
+    {
+        $alugueis = Aluguel::all()->where('status_id', '=', 1);
+        return count($alugueis);
+    }
 }
