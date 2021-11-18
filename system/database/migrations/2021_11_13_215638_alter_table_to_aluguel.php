@@ -31,7 +31,12 @@ class AlterTableToAluguel extends Migration
     public function down()
     {
         Schema::table('aluguel', function (Blueprint $table) {
-            //
+            $table->date('data_cadastrado');
+            $table->dropTimestamps();
+            $table->dropSoftDeletes();
+            $table->renameColumn('veiculo_id', 'fk_veiculo');
+            $table->renameColumn('cliente_id', 'fk_cliente');
+            $table->renameColumn('ocorrencia_id', 'fk_ocorrencia');
         });
     }
 }

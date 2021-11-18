@@ -44,6 +44,35 @@ class DropEstadoCidadeTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('cliente', function (Blueprint $table) {
+            // $table->dropForeign('fk_cidade_cliente');
+            $table->integer('cidade_id');
+            $table->dropColumn('cidade');
+        });
+        Schema::table('funcionario', function (Blueprint $table) {
+            // $table->dropForeign('fk_cidade_funcionario');
+            $table->integer('fk_cidade');
+            $table->dropColumn('cidade');
+        });
+        Schema::table('empresa', function (Blueprint $table) {
+            // $table->dropForeign('fk_cidade_empresa');
+            $table->integer('cidade_id');
+            $table->dropColumn('cidade');
+        });
+
+        Schema::create('estado', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->timestamps();
+            $table->softDeletes();
+            
+            $table->engine = 'InnoDB';
+        });
+        Schema::create('cidade', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->timestamps();
+            $table->softDeletes();
+            
+            $table->engine = 'InnoDB';
+        });
     }
 }

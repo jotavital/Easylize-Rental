@@ -26,7 +26,7 @@ class AddAnoModeloToModeloVeiculo extends Migration
     public function down()
     {
         Schema::table('modelo_veiculo', function (Blueprint $table) {
-            //
+            $table->dropColumn('ano_modelo');
         });
     }
 }

@@ -41,10 +41,8 @@ class AluguelController extends Controller
         $veiculo = Veiculo::find($request->veiculoSelect);
         $cliente = Cliente::find($request->clienteSelect);
 
-        $aluguel->data_inicio = $request->dataInicioInput;
-        $aluguel->data_prevista_devolucao = $request->dataPrevistaDevolucaoInput;
-        $aluguel->hora_inicio = $request->horaInicioInput;
-        $aluguel->hora_devolucao = $request->horaDevolucaoInput;
+        $aluguel->data_hora_saida = $request->dataHoraSaidaInput;
+        $aluguel->data_hora_prevista_devolucao = $request->dataHoraPrevistaDevolucaoInput;
         $aluguel->observacao = $request->observacaoInput;
         $aluguel->valor = $request->valorInput;
 

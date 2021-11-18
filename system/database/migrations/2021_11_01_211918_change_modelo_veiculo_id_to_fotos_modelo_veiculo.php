@@ -26,7 +26,7 @@ class ChangeModeloVeiculoIdToFotosModeloVeiculo extends Migration
     public function down()
     {
         Schema::table('fotos_modelo_veiculo', function (Blueprint $table) {
-            //
+            $table->renameColumn('modelo_veiculo_id', 'fk_modelo_veiculo');
         });
     }
 }

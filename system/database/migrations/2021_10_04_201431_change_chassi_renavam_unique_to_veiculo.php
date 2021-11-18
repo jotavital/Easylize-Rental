@@ -27,7 +27,8 @@ class ChangeChassiRenavamUniqueToVeiculo extends Migration
     public function down()
     {
         Schema::table('veiculo', function (Blueprint $table) {
-            //
+            $table->string('chassi')->change();
+            $table->string('renavam')->change();
         });
     }
 }

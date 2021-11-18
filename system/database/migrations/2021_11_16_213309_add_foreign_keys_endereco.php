@@ -34,6 +34,14 @@ class AddForeignKeysEndereco extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('cliente', function (Blueprint $table) {
+            $table->dropForeign('cliente_endereco_id_foreign');
+        });
+        Schema::table('empresa', function (Blueprint $table) {
+            $table->dropForeign('empresa_endereco_id_foreign');
+        });
+        Schema::table('funcionario', function (Blueprint $table) {
+            $table->dropForeign('funcionario_endereco_id_foreign');
+        });
     }
 }

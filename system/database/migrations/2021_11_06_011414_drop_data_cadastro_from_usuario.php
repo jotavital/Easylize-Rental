@@ -26,7 +26,7 @@ class DropDataCadastroFromUsuario extends Migration
     public function down()
     {
         Schema::table('usuario', function (Blueprint $table) {
-            //
+            $table->date('data_cadastro')->nullable();
         });
     }
 }

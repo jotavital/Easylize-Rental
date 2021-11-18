@@ -27,7 +27,8 @@ class AddCidadeEstadoColumnsToEndereco extends Migration
     public function down()
     {
         Schema::table('endereco', function (Blueprint $table) {
-            //
+            $table->dropColumn('cidade_id');
+            $table->dropColumn('estado_id');
         });
     }
 }

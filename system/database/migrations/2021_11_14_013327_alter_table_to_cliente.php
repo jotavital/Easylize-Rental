@@ -29,7 +29,10 @@ class AlterTableToCliente extends Migration
     public function down()
     {
         Schema::table('cliente', function (Blueprint $table) {
-            //
+            $table->string('sexo')->change();
+            $table->renameColumn('data_nascimento', 'data_nasc');
+            $table->renameColumn('cidade_id', 'fk_cidade');
+            $table->date('data_cadastro');
         });
     }
 }

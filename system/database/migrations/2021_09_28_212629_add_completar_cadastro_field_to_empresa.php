@@ -26,7 +26,7 @@ class AddCompletarCadastroFieldToEmpresa extends Migration
     public function down()
     {
         Schema::table('empresa', function (Blueprint $table) {
-            //
+            $table->dropColumn('completar_cadastro');
         });
     }
 }

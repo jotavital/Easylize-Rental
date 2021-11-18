@@ -23,6 +23,6 @@ class RenameFotosVeiculoTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::rename('fotos_modelo_veiculo', 'fotos_veiculo');
     }
 }

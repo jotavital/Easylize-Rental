@@ -43,8 +43,26 @@ class DropEnderecoFieldsToTables extends Migration
      */
     public function down()
     {
-        Schema::table('tables', function (Blueprint $table) {
-            //
+        Schema::table('cliente', function (Blueprint $table) {
+            $table->string('rua');
+            $table->string('bairro');
+            $table->string('numero');
+            $table->string('cep');
+            $table->string('cidade');
+        });
+        Schema::table('empresa', function (Blueprint $table) {
+            $table->string('rua');
+            $table->string('bairro');
+            $table->string('numero');
+            $table->string('cep');
+            $table->string('cidade');
+        });
+        Schema::table('funcionario', function (Blueprint $table) {
+            $table->string('rua');
+            $table->string('bairro');
+            $table->string('numero');
+            $table->string('cep');
+            $table->string('cidade');
         });
     }
 }

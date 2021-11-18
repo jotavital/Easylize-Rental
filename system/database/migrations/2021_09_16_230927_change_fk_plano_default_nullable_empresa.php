@@ -25,6 +25,8 @@ class ChangeFkPlanoDefaultNullableEmpresa extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('empresa', function (Blueprint $table) {
+            $table->integer('fk_plano')->default(0)->change();
+        });
     }
 }

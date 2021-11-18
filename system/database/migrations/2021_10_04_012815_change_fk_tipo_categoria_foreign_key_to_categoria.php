@@ -26,7 +26,7 @@ class ChangeFkTipoCategoriaForeignKeyToCategoria extends Migration
     public function down()
     {
         Schema::table('categoria', function (Blueprint $table) {
-            //
+            $table->dropConstrainedForeignId('fk_tipo_categoria');
         });
     }
 }

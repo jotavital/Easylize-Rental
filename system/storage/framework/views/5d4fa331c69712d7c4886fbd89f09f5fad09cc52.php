@@ -31,14 +31,10 @@
         <div wire:ignore class="mb-5">
             <table class="table table-striped table-bordered" width="100%" id="tablealuguels">
                 <thead>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>RG</th>
-                    <th>CNH</th>
-                    <th>Telefone</th>
-                    <th>E-mail</th>
-                    <th>Data nascimento</th>
-                    <th>Sexo</th>
+                    <th>ID</th>
+                    <th>Data e hora saída</th>
+                    <th>Data e hora prev. devolução</th>
+                    <th>Status</th>
                     <th>Ações</th>
                 </thead>
                 <tbody>

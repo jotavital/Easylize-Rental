@@ -26,7 +26,7 @@ class AddTimestampsToUsuario extends Migration
     public function down()
     {
         Schema::table('usuario', function (Blueprint $table) {
-            //
+            $table->dropTimestamps();
         });
     }
 }

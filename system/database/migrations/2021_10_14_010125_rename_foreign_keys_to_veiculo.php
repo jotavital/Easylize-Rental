@@ -28,7 +28,9 @@ class RenameForeignKeysToVeiculo extends Migration
     public function down()
     {
         Schema::table('veiculo', function (Blueprint $table) {
-            //
+            $table->renameColumn('marca_id', 'fk_marca');
+            $table->renameColumn('modelo_id', 'fk_modelo');
+            $table->renameColumn('categoria_id', 'fk_categoria');
         });
     }
 }

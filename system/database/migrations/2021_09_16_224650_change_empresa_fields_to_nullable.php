@@ -24,7 +24,6 @@ class ChangeEmpresaFieldsToNullable extends Migration
             foreach ($intColumnsToChange as $column) {
                 $table->integer($column)->nullable()->change();
             }
-            
         });
     }
 
@@ -35,8 +34,17 @@ class ChangeEmpresaFieldsToNullable extends Migration
      */
     public function down()
     {
-        Schema::table('nullable', function (Blueprint $table) {
-            //
+        Schema::table('empresa', function (Blueprint $table) {
+            $stringColumnsToChange = array("nome_empresa", "razao_social", "rua", "bairro", "numero", "cep", "email", "inscricao_estadual", "cnpj", "telefone", "tipo_telefone");
+            $intColumnsToChange = array("fk_cidade");
+
+            foreach ($stringColumnsToChange as $column) {
+                $table->string($column)->change();
+            }
+
+            foreach ($intColumnsToChange as $column) {
+                $table->integer($column)->change();
+            }
         });
     }
 }

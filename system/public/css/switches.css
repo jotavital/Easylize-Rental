@@ -1,0 +1,103 @@
+:root {
+    --switch-sm-width: 30px;
+    --switch-sm-height: auto;
+    --switch-sm-height: calc(var(--switch-sm-width) - 12px);
+    --slider-sm-width: 10px;
+    --slider-sm-width: calc(var(--switch-sm-width) - 20px);;
+    --slider-sm-height: var(--slider-sm-width);
+    --slider-sm-translate-x: 12px;
+
+    --switch-md-width: 35px;
+    --switch-md-height: auto;
+    --switch-md-height: calc(var(--switch-md-width) - 12px);
+    --slider-md-width: 10px;
+    --slider-md-width: calc(var(--switch-md-width) - 20px);;
+    --slider-md-height: var(--slider-md-width);
+    --slider-md-translate-x: 12px;
+}
+
+
+/* !! switch tamanho normal */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    /* width: var(--switch-sm-width);
+    height: var(--switch-sm-height); */
+}
+.switch-sm{
+    width: var(--switch-sm-width);
+    height: var(--switch-sm-height);
+}
+.switch-md{
+    width: var(--switch-md-width);
+    height: var(--switch-md-height);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    left: 4px;
+    bottom: 4px;
+    /* height: var(--slider-sm-height);
+    width: var(--slider-sm-width); */
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider-sm:before{
+    height: var(--slider-sm-height);
+    width: var(--slider-sm-width);
+}
+.slider-md:before{
+    height: var(--slider-md-height);
+    width: var(--slider-md-width);
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider-sm:before {
+    -webkit-transform: translateX(var(--slider-sm-translate-x));
+    -ms-transform: translateX(var(--slider-sm-translate-x));
+    transform: translateX(var(--slider-sm-translate-x));
+}
+input:checked+.slider-md:before {
+    -webkit-transform: translateX(var(--slider-md-translate-x));
+    -ms-transform: translateX(var(--slider-md-translate-x));
+    transform: translateX(var(--slider-md-translate-x));
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

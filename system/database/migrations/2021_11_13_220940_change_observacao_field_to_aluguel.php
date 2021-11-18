@@ -26,7 +26,7 @@ class ChangeObservacaoFieldToAluguel extends Migration
     public function down()
     {
         Schema::table('aluguel', function (Blueprint $table) {
-            //
+            $table->string('observacao')->change();
         });
     }
 }

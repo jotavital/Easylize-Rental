@@ -26,7 +26,7 @@ class RenameDataNascToFuncionario extends Migration
     public function down()
     {
         Schema::table('funcionario', function (Blueprint $table) {
-            //
+            $table->renameColumn('data_nascimento', 'data_nasc');
         });
     }
 }

@@ -27,7 +27,8 @@ class RenameFieldsToPlano extends Migration
     public function down()
     {
         Schema::table('plano', function (Blueprint $table) {
-            //
+            $table->renameColumn('qtd_alugueis_mensais', 'qtd_alugueis');
+            $table->renameColumn('qtd_fotos_por_modelo_veiculo', 'qtd_fotos_modelo_veiculo');
         });
     }
 }

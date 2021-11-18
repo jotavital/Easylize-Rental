@@ -26,7 +26,7 @@ class RenameFkMarcaToModeloVeiculo extends Migration
     public function down()
     {
         Schema::table('modelo_veiculo', function (Blueprint $table) {
-            //
+            $table->renameColumn('marca_id', 'fk_marca');
         });
     }
 }

@@ -25,6 +25,8 @@ class ChangeCompletarCadastroDefaultEmpresa extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('empresa', function (Blueprint $table) {
+            
+        });
     }
 }

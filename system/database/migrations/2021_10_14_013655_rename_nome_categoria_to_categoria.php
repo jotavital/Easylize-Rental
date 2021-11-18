@@ -27,7 +27,8 @@ class RenameNomeCategoriaToCategoria extends Migration
     public function down()
     {
         Schema::table('categoria', function (Blueprint $table) {
-            //
+            $table->renameColumn('nome', 'nome_categoria');
+            $table->renameColumn('tipo_categoria_id', 'fk_tipo_categoria');
         });
     }
 }

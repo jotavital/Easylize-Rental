@@ -1,11 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Session;
-
-$success = Session::get('success');
-$error = Session::get('error');
-?>
-
 
 
 <?php $__env->startSection('title', 'Novo aluguel'); ?>
@@ -24,7 +16,7 @@ $error = Session::get('error');
 
         <?php if(session('success')): ?>
         <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'success','message' => $success]); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'success','message' => session('success')]); ?>
 <?php $component->withName('alert'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -37,7 +29,7 @@ $error = Session::get('error');
 <?php endif; ?>
         <?php elseif(session('error')): ?>
         <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','message' => $error]); ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','message' => session('error')]); ?>
 <?php $component->withName('alert'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -53,15 +45,15 @@ $error = Session::get('error');
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('alugueis.form-create-edit-aluguel', [])->html();
-} elseif ($_instance->childHasBeenRendered('WLH99tR')) {
-    $componentId = $_instance->getRenderedChildComponentId('WLH99tR');
-    $componentTag = $_instance->getRenderedChildComponentTagName('WLH99tR');
+} elseif ($_instance->childHasBeenRendered('bow9w6v')) {
+    $componentId = $_instance->getRenderedChildComponentId('bow9w6v');
+    $componentTag = $_instance->getRenderedChildComponentTagName('bow9w6v');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('WLH99tR');
+    $_instance->preserveRenderedChild('bow9w6v');
 } else {
     $response = \Livewire\Livewire::mount('alugueis.form-create-edit-aluguel', []);
     $html = $response->html();
-    $_instance->logRenderedChild('WLH99tR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('bow9w6v', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

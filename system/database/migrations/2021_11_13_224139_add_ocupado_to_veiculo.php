@@ -26,7 +26,7 @@ class AddOcupadoToVeiculo extends Migration
     public function down()
     {
         Schema::table('veiculo', function (Blueprint $table) {
-            //
+            $table->dropColumn('esta_alugado');
         });
     }
 }

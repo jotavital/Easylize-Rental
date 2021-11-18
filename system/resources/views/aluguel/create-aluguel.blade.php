@@ -1,11 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Session;
-
-$success = Session::get('success');
-$error = Session::get('error');
-?>
-
 @extends('layouts.admin-layout')
 
 @section('title', 'Novo aluguel')
@@ -23,9 +15,9 @@ $error = Session::get('error');
     <div class="container-fluid">
 
         @if(session('success'))
-        <x-alert type="success" :message='$success' />
+        <x-alert type="success" :message="session('success')" />
         @elseif(session('error'))
-        <x-alert type="danger" :message='$error' />
+        <x-alert type="danger" :message="session('error')" />
         @endif
 
         <livewire:alugueis.form-create-edit-aluguel />

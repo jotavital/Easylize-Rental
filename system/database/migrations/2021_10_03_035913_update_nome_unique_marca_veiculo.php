@@ -25,6 +25,8 @@ class UpdateNomeUniqueMarcaVeiculo extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('marca_veiculo', function (Blueprint $table){
+            $table->string('nome')->change();
+        });
     }
 }

@@ -27,9 +27,14 @@ class FormCreateEditAluguel extends Component
     public function setVeiculos()
     {
         $modelo = ModeloVeiculo::find($this->modeloSelecionado);
-        $this->veiculos = $modelo->veiculos()->get();
 
-        if (count($this->veiculos)) {
+        if ($modelo) {
+            $this->veiculos = $modelo->veiculos()->get();
+        }else{
+            $this->veiculos = null;
+        }
+
+        if ($this->veiculos != null && count($this->veiculos)) {
             return true;
         } else {
             return false;

@@ -26,7 +26,7 @@ class AddFkToFotoVeiculo extends Migration
     public function down()
     {
         Schema::table('foto_veiculo', function (Blueprint $table) {
-            //
+            
         });
     }
 }

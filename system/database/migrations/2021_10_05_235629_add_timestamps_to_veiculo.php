@@ -26,7 +26,7 @@ class AddTimestampsToVeiculo extends Migration
     public function down()
     {
         Schema::table('veiculo', function (Blueprint $table) {
-            //
+            $table->dropTimestamps();
         });
     }
 }

@@ -26,7 +26,7 @@ class RenameFkCidadeToEmpresa extends Migration
     public function down()
     {
         Schema::table('empresa', function (Blueprint $table) {
-            //
+            $table->renameColumn('cidade_id', 'fk_cidade');
         });
     }
 }

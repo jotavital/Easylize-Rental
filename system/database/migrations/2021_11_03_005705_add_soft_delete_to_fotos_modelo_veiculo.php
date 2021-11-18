@@ -26,7 +26,7 @@ class AddSoftDeleteToFotosModeloVeiculo extends Migration
     public function down()
     {
         Schema::table('fotos_modelo_veiculo', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
         });
     }
 }

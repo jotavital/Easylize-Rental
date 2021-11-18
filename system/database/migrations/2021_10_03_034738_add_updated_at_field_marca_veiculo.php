@@ -26,6 +26,9 @@ class AddUpdatedAtFieldMarcaVeiculo extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('marca_veiculo', function (Blueprint $table){
+            $table->dropColumn('updated_at');
+            $table->dropColumn('created_at');
+        });
     }
 }

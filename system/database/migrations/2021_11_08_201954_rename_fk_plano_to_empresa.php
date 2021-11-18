@@ -26,7 +26,7 @@ class RenameFkPlanoToEmpresa extends Migration
     public function down()
     {
         Schema::table('empresa', function (Blueprint $table) {
-            //
+            $table->renameColumn('plano_id', 'fk_plano');
         });
     }
 }

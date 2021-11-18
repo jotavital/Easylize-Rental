@@ -30,7 +30,11 @@ class AddFieldsToPlano extends Migration
     public function down()
     {
         Schema::table('plano', function (Blueprint $table) {
-            //
+            $table->renameColumn('nome', 'nome_plano');
+            $table->dropColumn('qtd_modelo_veiculo');
+            $table->dropColumn('qtd_marca_veiculo');
+            $table->dropColumn('qtd_fotos_modelo_veiculo');
+            $table->dropColumn('qtd_usuario');
         });
     }
 }

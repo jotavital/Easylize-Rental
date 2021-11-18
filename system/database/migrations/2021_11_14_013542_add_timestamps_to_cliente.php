@@ -27,7 +27,8 @@ class AddTimestampsToCliente extends Migration
     public function down()
     {
         Schema::table('cliente', function (Blueprint $table) {
-            //
+            $table->dropTimestamps();
+            $table->dropSoftDeletes();
         });
     }
 }

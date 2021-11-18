@@ -26,7 +26,7 @@ class ChangeDescricaoToPlano extends Migration
     public function down()
     {
         Schema::table('plano', function (Blueprint $table) {
-            //
+            $table->string('descricao')->change();
         });
     }
 }
