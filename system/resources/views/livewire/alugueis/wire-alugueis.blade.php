@@ -23,10 +23,16 @@
                     @foreach($alugueis as $aluguel)
                     <tr>
                         <td> {{ $aluguel->id }} </td>
-                        <td> {{ $aluguel->data_hora_saida }} </td>
-                        <td> {{ $aluguel->data_hora_prevista_devolucao }} </td>
-                        <td> {{ $aluguel->valor }} </td>
-                        <td> {{ ($aluguel->pago) ? "Sim" : "Não" }} </td>
+                        <td> {{ formatar_data_hora($aluguel->data_hora_inicio) }} </td>
+                        <td> {{ formatar_data_hora($aluguel->data_hora_prevista_devolucao) }} </td>
+                        <td> {{ formatar_real($aluguel->valor) }} </td>
+                        <td> 
+                            @if($aluguel->pago)
+                            <x-alert type="success" message="Pago" />
+                            @else
+                            <x-alert type="danger" message="Pendente" />
+                            @endif
+                        </td>
                         <td> {{ $aluguel->veiculo->placa }} </td>
                         <td> {{ $aluguel->cliente->nome }} - {{ $aluguel->cliente->cpf }} </td>
                         <td> 

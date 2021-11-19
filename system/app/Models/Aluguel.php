@@ -38,4 +38,10 @@ class Aluguel extends Model
         $alugueis = Aluguel::all()->where('status_id', '=', 1);
         return count($alugueis);
     }
+
+    public static function getQtdTotalAlugueisPagamentoPendente()
+    {
+        $alugueis = Aluguel::all()->where('pago', '=', 0);
+        return count($alugueis);
+    }
 }

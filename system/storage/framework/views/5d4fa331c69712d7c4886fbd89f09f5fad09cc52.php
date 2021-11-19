@@ -45,10 +45,38 @@
                     <?php $__currentLoopData = $alugueis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aluguel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td> <?php echo e($aluguel->id); ?> </td>
-                        <td> <?php echo e($aluguel->data_hora_saida); ?> </td>
-                        <td> <?php echo e($aluguel->data_hora_prevista_devolucao); ?> </td>
-                        <td> <?php echo e($aluguel->valor); ?> </td>
-                        <td> <?php echo e(($aluguel->pago) ? "Sim" : "Não"); ?> </td>
+                        <td> <?php echo e(formatar_data_hora($aluguel->data_hora_inicio)); ?> </td>
+                        <td> <?php echo e(formatar_data_hora($aluguel->data_hora_prevista_devolucao)); ?> </td>
+                        <td> <?php echo e(formatar_real($aluguel->valor)); ?> </td>
+                        <td> 
+                            <?php if($aluguel->pago): ?>
+                            <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'success','message' => 'Pago']); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                            <?php else: ?>
+                            <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, ['type' => 'danger','message' => 'Pendente']); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+                            <?php endif; ?>
+                        </td>
                         <td> <?php echo e($aluguel->veiculo->placa); ?> </td>
                         <td> <?php echo e($aluguel->cliente->nome); ?> - <?php echo e($aluguel->cliente->cpf); ?> </td>
                         <td> 

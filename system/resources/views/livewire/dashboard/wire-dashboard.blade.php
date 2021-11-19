@@ -1,75 +1,12 @@
-<div class="row">
-    <div class="col-lg-6">
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>{{ $qtdAlugueisEmAndamento }}</h3>
-                <p> {{ ($qtdAlugueisEmAndamento == 1) ? 'Aluguel em andamento' : 'Aluguéis em andamento' }} </p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-car"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-                Ver todos <i class="fas fa-arrow-circle-right"></i>
-            </a>
-        </div>
-        
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's
-                    content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's
-                    content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div><!-- /.card -->
-    </div>
-    <!-- /.col-md-6 -->
-    <div class="col-lg-6">
-        <div class="info-box bg-success">
-            <span class="info-box-icon"><i class="far fa-flag"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Bookmarks</span>
-                <span class="info-box-number">410</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card card-primary card-outline">
+<div>
+    @if($completarCadastro)
+    <div class="col-6">
+        <div class="card card-danger card-outline">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="col-9">
-                    <h5 class="m-0">Featured</h5>
+                    <h5 class="m-0">Complete o cadastro da sua empresa</h5>
                 </div>
                 <div class="card-tools">
-                    <!-- This will cause the card to maximize when clicked -->
-                    <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
                     <!-- This will cause the card to collapse when clicked -->
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                     <!-- This will cause the card to be removed when clicked -->
@@ -77,11 +14,59 @@
                 </div>
             </div>
             <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
+                <h6 class="card-title">Sua empresa precisa completar o cadastro nas configurações.</h6>
 
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text">Acrescente informações como endereço, CNPJ, e outros dados essenciais.</p>
+                <a href="#" class="btn btn-primary">Completar cadastro</a>
             </div>
         </div>
+    </div>
+    @endif
+
+    <div class="row col-12">
+        <div class="col-3">
+            <div class="col-12">
+                <div class="small-box bg-info">
+                    <div class="col-6 inner">
+                        <h3 class="text-center">{{ $qtdAlugueisEmAndamento }}</h3>
+                        <p class="text-center"> {{ ($qtdAlugueisEmAndamento == 1) ? 'Aluguel em andamento' : 'Aluguéis em andamento' }} </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <a href="{{ route('alugueis.index') }}" class="small-box-footer">
+                        Ver todos <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="col-12">
+                <div class="small-box bg-danger">
+                    <div class="col-6 inner">
+                        <h3 class="text-center">{{ $qtdAlugueisPagamentoPendente }}</h3>
+                        <p class="text-center"> {{ ($qtdAlugueisPagamentoPendente == 1) ? 'Aluguel com pagamento pendente' : 'Aluguéis com pagamento pendente' }} </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <a href="{{ route('alugueis.index') }}" class="small-box-footer">
+                        Ver todos <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12">
+        <div class="col-6">
+            <div class="info-box bg-success">
+                <span class="info-box-icon"><i class="far fa-flag"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Bookmarks</span>
+                    <span class="info-box-number">410</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
