@@ -32,4 +32,9 @@ class Veiculo extends Model
     {
         return $this->belongsTo(Categoria::class)->withTrashed();
     }
+
+    public function status()
+    {
+        return $this->belongsTo(StatusVeiculo::class);
+    }
 }

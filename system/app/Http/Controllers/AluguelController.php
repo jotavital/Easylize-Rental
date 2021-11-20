@@ -53,6 +53,8 @@ class AluguelController extends Controller
         }
 
         if ($aluguel->veiculo()->associate($veiculo) && $aluguel->cliente()->associate($cliente) && $aluguel->save()) {
+            $veiculo->status_id = 2;
+            $veiculo->save();
             return redirect()->route('alugueis.index')->with('success', 'Aluguel cadastrado com sucesso');
         } else {
             return redirect()->route('alugueis.index')->withErrors('error', 'Não foi possível cadastrar o aluguel, tente novamente.');

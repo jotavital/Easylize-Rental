@@ -28,4 +28,9 @@ class ModeloVeiculo extends Model
     {
         return $this->hasMany(Veiculo::class, 'modelo_id');
     }
+
+    public function veiculos_disponiveis()
+    {
+        return $this->veiculos()->where('ativo', '=', 1)->where('status_id', '=', 1);
+    }
 }

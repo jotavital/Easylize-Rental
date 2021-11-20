@@ -3,7 +3,7 @@
     <!-- !! formulario de criação -->
         <form action=" <?php echo e(route('clientes.store')); ?> " method="POST" class="col-lg-8 col-md-12 col-sm-12 needs-validation" enctype='multipart/form-data' novalidate>
             <?php echo csrf_field(); ?>
-            <div class="form-section mb-3">
+            <div wire:ignore class="form-section mb-3">
                 <h6><strong class="text-primary">Dados pessoais</strong></h6>
                 <div class="form-row col-12 d-flex justify-content-center">
                     <div class="form-group col-md-4 col-sm-5">

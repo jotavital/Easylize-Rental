@@ -33,11 +33,7 @@
                         <td> {{ $veiculo->cor }} </td>
                         <td> {{ $veiculo->categoria->nome }} </td>
                         <td>
-                            @if($veiculo->esta_alugado)
-                            <x-alert type="danger" message="Alugado" class="py-0" />
-                            @else
-                            <x-alert type="success" message="Disponível" class="py-0" />
-                            @endif
+                            <x-alert :type="$veiculo->status->tipo_alert" :message="$veiculo->status->descricao" class="py-0" />
                         </td>
                         <td>
                             <livewire:switch-ativar-inativar :wire:key="$veiculo->id" :model="$veiculo" />

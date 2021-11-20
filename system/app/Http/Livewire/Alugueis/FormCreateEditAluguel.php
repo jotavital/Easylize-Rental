@@ -29,7 +29,7 @@ class FormCreateEditAluguel extends Component
         $modelo = ModeloVeiculo::find($this->modeloSelecionado);
 
         if ($modelo) {
-            $this->veiculos = $modelo->veiculos()->get();
+            $this->veiculos = $modelo->veiculos_disponiveis()->get();
         }else{
             $this->veiculos = null;
         }
@@ -56,7 +56,7 @@ class FormCreateEditAluguel extends Component
         }
 
         $this->clientes = Cliente::all();
-        $this->modelos = ModeloVeiculo::all();
+        $this->modelos = ModeloVeiculo::has('veiculos')->get();
     }
 
     public function render()
