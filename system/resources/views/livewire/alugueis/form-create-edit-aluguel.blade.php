@@ -16,7 +16,7 @@
             </div>
             <div wire:ignore class="form-group col-sm-6 col-md-3 col-lg-3">
                 <label for="valorInput">Valor <span class="text-danger">*</span></label>
-                <input type="text" class="form-control form-control-sm" id="valorInput" name="valorInput" placeholder="Valor do aluguel" required>
+                <input type="text" inputmode="numeric" novalidate class="form-control form-control-sm" id="valorInput" name="valorInput" placeholder="Valor do aluguel" required>
                 <x-campo-obrigatorio />
             </div>
             <div wire:ignore class="form-group col-sm-6 col-md-4 col-lg-4">

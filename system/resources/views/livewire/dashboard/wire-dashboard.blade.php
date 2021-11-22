@@ -3,10 +3,10 @@
         <div class="col-md-4 col-sm-6 col-12">
             <a href="{{ route('alugueis.index') }}" class="text-dark">
                 <div class="col-12 info-box">
-                    <span class="col-3 info-box-icon bg-info"><i class="fas fa-car"></i></span>
+                    <span class="col-3 info-box-icon bg-success"><i class="fas fa-car"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Alugúeis em andamento</span>
-                        <span class="info-box-number">{{ $qtdAlugueisEmAndamento }}</span>
+                        <h3 class="info-box-number">{{ $qtdAlugueisEmAndamento }}</h3>
                     </div>
                 </div>
             </a>
@@ -17,19 +17,21 @@
                     <span class="col-3 info-box-icon bg-danger"><i class="fas fa-hand-holding-usd"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Aluguéis com pagamento pendente</span>
-                        <span class="info-box-number">{{ $qtdAlugueisPagamentoPendente }}</span>
+                        <h3 class="info-box-number">{{ $qtdAlugueisPagamentoPendente }}</h3>
                     </div>
                 </div>
             </a>
         </div>
         <div class="col-md-4 col-sm-6 col-12">
-            <div class="col-12 info-box">
-                <span class="col-3 info-box-icon bg-info"><i class="fas fa-car"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Sem dados ainda</span>
-                    <span class="info-box-number">{{ $qtdAlugueisEmAndamento }}</span>
+            <a href="{{ route('alugueis.index') }}" class="text-dark">
+                <div class="col-12 info-box">
+                    <span class="col-3 info-box-icon bg-info"><i class="fas fa-calendar-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Aluguéis com devolução hoje</span>
+                        <h3 class="info-box-number">{{ $qtdAlugueisDevolucaoHoje }}</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 

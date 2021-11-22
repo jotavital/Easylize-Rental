@@ -63,7 +63,7 @@
                 <div class="form-row col-12 d-flex justify-content-center">
                     <div class="form-group col-sm-4">
                         <label for="cpfInput">CPF <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="cpfInput" name="cpfInput" placeholder="CPF" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="cpfInput" name="cpfInput" placeholder="CPF" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -149,7 +149,7 @@
                     </div>
                     <div class="form-group col-sm-3">
                         <label for="telefoneInput">Telefone <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="telefoneInput" name="telefoneInput" placeholder="Telefone" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="telefoneInput" name="telefoneInput" placeholder="Telefone" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -214,7 +214,7 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="cepInput">CEP <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="cepInput" name="cepInput" placeholder="CEP" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="cepInput" name="cepInput" placeholder="CEP" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -264,7 +264,7 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="numeroInput">Número <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="numeroInput" name="numeroInput" placeholder="Número" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="numeroInput" name="numeroInput" placeholder="Número" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -351,7 +351,7 @@
                 <div class="form-row col-12 d-flex justify-content-center">
                     <div class="form-group col-sm-4">
                         <label for="cpfInput">CPF <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="cpfInput" name="cpfInput" placeholder="CPF" value="<?php echo e($cliente->cpf); ?>" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="cpfInput" name="cpfInput" placeholder="CPF" value="<?php echo e($cliente->cpf); ?>" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -437,7 +437,7 @@
                     </div>
                     <div class="form-group col-sm-3">
                         <label for="telefoneInput">Telefone <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="telefoneInput" name="telefoneInput" placeholder="Telefone" value="<?php echo e($cliente->telefone); ?>" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="telefoneInput" name="telefoneInput" placeholder="Telefone" value="<?php echo e($cliente->telefone); ?>" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -497,7 +497,7 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="cepInput">CEP <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="cepInput" name="cepInput" placeholder="CEP" value="<?php echo e($cliente->endereco->cep); ?>" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="cepInput" name="cepInput" placeholder="CEP" value="<?php echo e($cliente->endereco->cep); ?>" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
@@ -547,7 +547,7 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="numeroInput">Número <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-sm" id="numeroInput" name="numeroInput" placeholder="Número" value="<?php echo e($cliente->endereco->numero); ?>" required>
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control form-control-sm" id="numeroInput" name="numeroInput" placeholder="Número" value="<?php echo e($cliente->endereco->numero); ?>" required>
                         <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>

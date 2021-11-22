@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Aluguel extends Model
 {
@@ -42,6 +44,12 @@ class Aluguel extends Model
     public static function getQtdTotalAlugueisPagamentoPendente()
     {
         $alugueis = Aluguel::all()->where('pago', '=', 0);
+        return count($alugueis);
+    }
+
+    public static function getQtdTotalAlugueisDevolucaoHoje()
+    {
+        $alugueis = DB::table('aluguel')->whereDate('data_hora_prevista_devolucao', '=', Carbon::now()->toDateString())->get();
         return count($alugueis);
     }
 }

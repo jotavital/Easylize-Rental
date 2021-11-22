@@ -9,6 +9,7 @@ class WireDashboard extends Component
 {
     public $qtdAlugueisEmAndamento;
     public $qtdAlugueisPagamentoPendente;
+    public $qtdAlugueisDevolucaoHoje;
     public $completarCadastro;
 
     public function mount()
@@ -16,6 +17,7 @@ class WireDashboard extends Component
         $this->completarCadastro = current_empresa()->completar_cadastro;
         $this->qtdAlugueisEmAndamento = Aluguel::getQtdTotalAlugueisEmAndamento();
         $this->qtdAlugueisPagamentoPendente = Aluguel::getQtdTotalAlugueisPagamentoPendente();
+        $this->qtdAlugueisDevolucaoHoje = Aluguel::getQtdTotalAlugueisDevolucaoHoje();
     }
 
     public function render()

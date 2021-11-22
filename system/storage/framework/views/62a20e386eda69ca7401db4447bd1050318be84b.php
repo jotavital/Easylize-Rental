@@ -38,7 +38,7 @@
             </div>
             <div wire:ignore class="form-group col-sm-6 col-md-3 col-lg-3">
                 <label for="valorInput">Valor <span class="text-danger">*</span></label>
-                <input type="text" class="form-control form-control-sm" id="valorInput" name="valorInput" placeholder="Valor do aluguel" required>
+                <input type="text" inputmode="numeric" novalidate class="form-control form-control-sm" id="valorInput" name="valorInput" placeholder="Valor do aluguel" required>
                 <?php if (isset($component)) { $__componentOriginald24a2f68bee7330b51a82cfc2027287566d1ffad = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\CampoObrigatorio::class, []); ?>
 <?php $component->withName('campo-obrigatorio'); ?>
