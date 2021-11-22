@@ -18,6 +18,11 @@ function formatar_data_hora($dataHora)
     return Carbon::parse($dataHora)->format('d/m/Y à\s H:i');
 }
 
+function formatar_data($data)
+{
+    return Carbon::parse($data)->format('d/m/Y');
+}
+
 function formatar_real(float $val): string
 {
     setlocale(LC_ALL, 'pt_BR');

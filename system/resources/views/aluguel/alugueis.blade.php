@@ -25,6 +25,35 @@
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true,
+            columns: [
+                {
+                    responsivePriority: 1
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 8
+                },
+                {
+                    responsivePriority: 3
+                },
+                {
+                    responsivePriority: 4
+                },
+                {
+                    responsivePriority: 6
+                },
+                {
+                    responsivePriority: 2
+                },
+                {
+                    responsivePriority: 10
+                },
+                {
+                    responsivePriority: 1
+                }
+            ]
         });
     }
 </script>

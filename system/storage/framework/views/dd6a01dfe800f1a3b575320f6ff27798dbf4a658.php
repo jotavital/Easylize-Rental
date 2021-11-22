@@ -51,7 +51,7 @@
                         <td> <?php echo e($cliente->cnh); ?> </td>
                         <td> <?php echo e($cliente->telefone); ?> </td>
                         <td> <?php echo e($cliente->email); ?> </td>
-                        <td> <?php echo e($cliente->data_nascimento); ?> </td>
+                        <td> <?php echo e(formatar_data($cliente->data_nascimento)); ?> </td>
                         <td> <?php echo e($cliente->sexo); ?> </td>
                         <td> <?php echo e($cliente->endereco->rua); ?>, n° <?php echo e($cliente->endereco->numero); ?>, <?php echo e($cliente->endereco->bairro); ?>, <?php echo e($cliente->endereco->cidade); ?> - <?php echo e($cliente->endereco->sigla_estado); ?> </td>
                         <td>

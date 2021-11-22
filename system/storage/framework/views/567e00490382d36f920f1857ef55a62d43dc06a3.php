@@ -54,7 +54,7 @@
                 </div>
             </form>
         </section>
-
+        <hr>
         <div wire:ignore class="mb-5">
             <table class="table table-striped table-bordered" width="100%" id="tableMarcas">
                 <thead>
@@ -69,22 +69,22 @@
                         <td> <?php echo e($marca->nome); ?> </td>
                         <td>
                             <?php
-                                $textoModalDeletar = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
-                                $rotaEditar = route('marcas.edit', $marca->id);
-                                $rotaExcluir = route('marcas.destroy', $marca->id);
+                            $textoModalDeletar = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
+                            $rotaEditar = route('marcas.edit', $marca->id);
+                            $rotaExcluir = route('marcas.destroy', $marca->id);
                             ?>
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar])->html();
-} elseif ($_instance->childHasBeenRendered('1nscms8')) {
-    $componentId = $_instance->getRenderedChildComponentId('1nscms8');
-    $componentTag = $_instance->getRenderedChildComponentTagName('1nscms8');
+} elseif ($_instance->childHasBeenRendered('zXEszOH')) {
+    $componentId = $_instance->getRenderedChildComponentId('zXEszOH');
+    $componentTag = $_instance->getRenderedChildComponentTagName('zXEszOH');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('1nscms8');
+    $_instance->preserveRenderedChild('zXEszOH');
 } else {
     $response = \Livewire\Livewire::mount('acoes-tabela', ['model' => $marca,'rotaEditar' => $rotaEditar,'rotaExcluir' => $rotaExcluir,'textoSucessoDeletar' => $textoSucessoDeletar,'textoErroDeletar' => $textoErroDeletar,'tituloModalDeletar' => $tituloModalDeletar,'textoModalDeletar' => $textoModalDeletar]);
     $html = $response->html();
-    $_instance->logRenderedChild('1nscms8', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('zXEszOH', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

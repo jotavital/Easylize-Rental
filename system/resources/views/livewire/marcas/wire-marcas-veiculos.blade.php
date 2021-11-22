@@ -21,7 +21,7 @@
                 </div>
             </form>
         </section>
-
+        <hr>
         <div wire:ignore class="mb-5">
             <table class="table table-striped table-bordered" width="100%" id="tableMarcas">
                 <thead>
@@ -36,9 +36,9 @@
                         <td> {{ $marca->nome }} </td>
                         <td>
                             <?php
-                                $textoModalDeletar = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
-                                $rotaEditar = route('marcas.edit', $marca->id);
-                                $rotaExcluir = route('marcas.destroy', $marca->id);
+                            $textoModalDeletar = 'Deseja realmente deletar a marca "' . $marca->nome . '"?';
+                            $rotaEditar = route('marcas.edit', $marca->id);
+                            $rotaExcluir = route('marcas.destroy', $marca->id);
                             ?>
                             <livewire:acoes-tabela :model="$marca" :rotaEditar="$rotaEditar" :rotaExcluir="$rotaExcluir" :textoSucessoDeletar="$textoSucessoDeletar" :textoErroDeletar="$textoErroDeletar" :tituloModalDeletar="$tituloModalDeletar" :textoModalDeletar="$textoModalDeletar" />
                         </td>

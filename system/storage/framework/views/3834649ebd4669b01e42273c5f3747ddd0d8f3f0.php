@@ -33,15 +33,15 @@
             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('modelo-veiculo.form-create-edit-modelo', [])->html();
-} elseif ($_instance->childHasBeenRendered('XCezBcK')) {
-    $componentId = $_instance->getRenderedChildComponentId('XCezBcK');
-    $componentTag = $_instance->getRenderedChildComponentTagName('XCezBcK');
+} elseif ($_instance->childHasBeenRendered('2V9OATD')) {
+    $componentId = $_instance->getRenderedChildComponentId('2V9OATD');
+    $componentTag = $_instance->getRenderedChildComponentTagName('2V9OATD');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('XCezBcK');
+    $_instance->preserveRenderedChild('2V9OATD');
 } else {
     $response = \Livewire\Livewire::mount('modelo-veiculo.form-create-edit-modelo', []);
     $html = $response->html();
-    $_instance->logRenderedChild('XCezBcK', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('2V9OATD', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

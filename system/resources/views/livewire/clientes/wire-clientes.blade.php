@@ -29,7 +29,7 @@
                         <td> {{ $cliente->cnh }} </td>
                         <td> {{ $cliente->telefone }} </td>
                         <td> {{ $cliente->email }} </td>
-                        <td> {{ $cliente->data_nascimento }} </td>
+                        <td> {{ formatar_data($cliente->data_nascimento) }} </td>
                         <td> {{ $cliente->sexo }} </td>
                         <td> {{ $cliente->endereco->rua }}, n° {{ $cliente->endereco->numero }}, {{ $cliente->endereco->bairro }}, {{ $cliente->endereco->cidade }} - {{ $cliente->endereco->sigla_estado }} </td>
                         <td>

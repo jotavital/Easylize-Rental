@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('veiculos.wire-veiculos', [])->html();
-} elseif ($_instance->childHasBeenRendered('gAPieNd')) {
-    $componentId = $_instance->getRenderedChildComponentId('gAPieNd');
-    $componentTag = $_instance->getRenderedChildComponentTagName('gAPieNd');
+} elseif ($_instance->childHasBeenRendered('H5lqsdn')) {
+    $componentId = $_instance->getRenderedChildComponentId('H5lqsdn');
+    $componentTag = $_instance->getRenderedChildComponentTagName('H5lqsdn');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('gAPieNd');
+    $_instance->preserveRenderedChild('H5lqsdn');
 } else {
     $response = \Livewire\Livewire::mount('veiculos.wire-veiculos', []);
     $html = $response->html();
-    $_instance->logRenderedChild('gAPieNd', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('H5lqsdn', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -39,7 +39,42 @@ echo $html;
             language: {
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
-            responsive: true
+            responsive: true,
+            columns: [
+                {
+                    responsivePriority: 2
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 1
+                },
+            ]
         });
 
     }

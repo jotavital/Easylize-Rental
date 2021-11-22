@@ -13,15 +13,15 @@
 <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('alugueis.wire-alugueis', [])->html();
-} elseif ($_instance->childHasBeenRendered('NYAMHLB')) {
-    $componentId = $_instance->getRenderedChildComponentId('NYAMHLB');
-    $componentTag = $_instance->getRenderedChildComponentTagName('NYAMHLB');
+} elseif ($_instance->childHasBeenRendered('XaNqxSM')) {
+    $componentId = $_instance->getRenderedChildComponentId('XaNqxSM');
+    $componentTag = $_instance->getRenderedChildComponentTagName('XaNqxSM');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('NYAMHLB');
+    $_instance->preserveRenderedChild('XaNqxSM');
 } else {
     $response = \Livewire\Livewire::mount('alugueis.wire-alugueis', []);
     $html = $response->html();
-    $_instance->logRenderedChild('NYAMHLB', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('XaNqxSM', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -39,6 +39,35 @@ echo $html;
                 url: '/lang/pt-br/dataTables_pt-br.json'
             },
             responsive: true,
+            columns: [
+                {
+                    responsivePriority: 1
+                },
+                {
+                    responsivePriority: 5
+                },
+                {
+                    responsivePriority: 8
+                },
+                {
+                    responsivePriority: 3
+                },
+                {
+                    responsivePriority: 4
+                },
+                {
+                    responsivePriority: 6
+                },
+                {
+                    responsivePriority: 2
+                },
+                {
+                    responsivePriority: 10
+                },
+                {
+                    responsivePriority: 1
+                }
+            ]
         });
     }
 </script>
