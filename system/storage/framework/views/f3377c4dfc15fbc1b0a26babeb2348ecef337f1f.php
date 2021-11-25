@@ -45,55 +45,27 @@
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('clientes.form-create-edit-cliente', ['cliente' => $cliente])->html();
-} elseif ($_instance->childHasBeenRendered('LT4rLwY')) {
-    $componentId = $_instance->getRenderedChildComponentId('LT4rLwY');
-    $componentTag = $_instance->getRenderedChildComponentTagName('LT4rLwY');
+} elseif ($_instance->childHasBeenRendered('L0MvKQ8')) {
+    $componentId = $_instance->getRenderedChildComponentId('L0MvKQ8');
+    $componentTag = $_instance->getRenderedChildComponentTagName('L0MvKQ8');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('LT4rLwY');
+    $_instance->preserveRenderedChild('L0MvKQ8');
 } else {
     $response = \Livewire\Livewire::mount('clientes.form-create-edit-cliente', ['cliente' => $cliente]);
     $html = $response->html();
-    $_instance->logRenderedChild('LT4rLwY', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('L0MvKQ8', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
 
     </div>
-
-    <script>
-        window.onload = function() {
-            PopularSlimSelectsObj = new PopularSlimSelects();
-
-            var url = '<?php echo e(route("cidades.byestado.get", ":id")); ?>';
-            url = url.replace(':id', estadoSelect.selected());
-
-            PopularSlimSelectsObj.popularSlimSelectAjaxComValorSelecionado(url, "#cidadeSelect", 'id', 'nome', null, '<?php echo e($cliente->endereco->cidade_id); ?>', 'get');
-
-            // ! popular select modelo 
-            $("#estadoSelect").on('change', function() {
-                if (estadoSelect.selected() != '') {
-                    $('#cidadeSelect').empty();
-                    cidadeSelect.enable();
-
-                    var url = '<?php echo e(route("cidades.byestado.get", ":id")); ?>';
-                    url = url.replace(':id', estadoSelect.selected());
-                    
-                    PopularSlimSelectsObj.popularSlimSelectAjaxBasico(url, '#cidadeSelect', 'id', 'nome', null, 'get');
-                } else {
-                    $('#cidadeSelect').empty();
-                    cidadeSelect.disable();
-                }
-            });
-        }
-    </script>
 </div>
 
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
-<script src="/js/initialize-slimSelects.js"></script>
+
 <script src="/js/mascaras-inputs.js"></script>
-<script src="/js/classes/PopularSlimSelects.js"></script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin-layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\Easylize-Rental\system\resources\views/cliente/edit-cliente.blade.php ENDPATH**/ ?>

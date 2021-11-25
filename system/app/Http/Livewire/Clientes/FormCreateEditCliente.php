@@ -20,6 +20,7 @@ class FormCreateEditCliente extends Component
     public $celularSelected = "";
     public $fixoSelected = "";
     public $estadoSelecionado;
+    public $cidadeSelecionada;
 
     public function updatedEstadoSelecionado()
     {
@@ -32,18 +33,20 @@ class FormCreateEditCliente extends Component
 
         if (Route::getCurrentRoute()->getName() == 'clientes.create') {
             $this->rotaCreate = true;
+            $this->setEstadoCidade();
         } else if (Route::getCurrentRoute()->getName() == 'clientes.edit') {
             $this->cliente = $cliente;
             $this->setSexoSelected();
             $this->setTipoTelefoneSelected();
+            $this->setEstadoCidade($cliente);
             $this->rotaEdit = true;
         }
-
     }
 
     public function render()
     {
         $this->estados = IbgeApiController::getAllEstados();
+        $this->cidades = IbgeApiController::getCidadesPorEstado($this->estadoSelecionado);
         return view('livewire.clientes.form-create-edit-cliente');
     }
 
@@ -68,6 +71,17 @@ class FormCreateEditCliente extends Component
             $this->celularSelected = "selected";
         } else if ($tipoTelefone == "Fixo") {
             $this->fixoSelected = "selected";
+        }
+    }
+
+    public function setEstadoCidade($cliente = null)
+    {
+        if($cliente != null){
+            $this->cidades = IbgeApiController::getCidadesPorEstado($cliente->endereco->estado_id);
+            $this->estadoSelecionado = $cliente->endereco->estado_id;
+            $this->cidadeSelecionada = $cliente->endereco->cidade_id;
+        }else{
+            $this->cidades = null;
         }
     }
 }
